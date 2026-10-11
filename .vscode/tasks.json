@@ -1,0 +1,7 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Portfolio: controlli", "type": "process", "command": "node", "args": ["--test", "tests/portfolio.test.mjs"], "problemMatcher": [], "group": "test" },
+    { "label": "Portfolio: build", "type": "process", "command": "node", "args": ["scripts/build.mjs"], "problemMatcher": [], "group": { "kind": "build", "isDefault": true } }
+  ]
+}

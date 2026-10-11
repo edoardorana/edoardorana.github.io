@@ -1,0 +1,1 @@
+Read `AGENTS.md`, `docs/PROJECT_CONTEXT.md`, and `docs/STATUS.md` for this project's shared instructions and current state. Use `proposal/` as the editable source, preserve the map navigation and run `npm run check` and `npm run build`. Reply in Italian. Do not add API keys or private chat exports to this repository.
