@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { areas, projects, parseRoute, mailto, mapUrl, places } from '../proposal/data.mjs';
+import { areas, projects, parseRoute, mailto, mapPoint, places } from '../proposal/data.mjs';
 import { resolveAsset } from '../scripts/dev.mjs';
 
 test('all areas and project deep links resolve; missing content gets a not-found route', () => {
@@ -17,14 +17,17 @@ test('email content remains encoded, including special characters and new lines'
   assert.equal(url.searchParams.get('subject'), 'Dati & AI?');
   assert.equal(url.searchParams.get('body'), 'Ciao\nParliamo di A+B e costi 10%?');
 });
-test('maps preserve geographical extent and do not imply precise foreign work locations', () => {
+test('Europe markers stay inside the map and distinguish stays from remote work', () => {
+  assert.deepEqual(Object.keys(places), ['milano','norvegia','svizzera','stoccarda']);
   for (const place of Object.values(places)) {
-    const url = new URL(mapUrl(place));
-    assert.equal(url.hostname, 'www.openstreetmap.org');
-    assert.equal(url.searchParams.get('bbox'), place.bbox.join(','));
+    const [x,y] = mapPoint(place.coordinates);
+    assert.ok(x > 0 && x < 600 && y > 0 && y < 650);
   }
-  assert.equal(new URL(mapUrl(places.svizzera)).searchParams.has('marker'), false);
-  assert.equal(new URL(mapUrl(places.norvegia)).searchParams.has('marker'), false);
+  assert.ok(mapPoint(places.stoccarda.coordinates)[1] < mapPoint(places.milano.coordinates)[1]);
+  assert.equal(places.svizzera.locationType, 'remote');
+  assert.equal(places.norvegia.locationType, 'country');
+  assert.equal(places.stoccarda.locationType, 'stay');
+  assert.match(places.stoccarda.dates, /prevista.*31 dicembre 2026/);
 });
 test('local preview limits assets to public files and rejects path escape attempts', () => {
   assert.match(resolveAsset('/').file, /index\.html$/);

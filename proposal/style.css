@@ -158,13 +158,23 @@ em { font-family: var(--serif); color: var(--accent); font-weight: 400; }
 #place-info > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
 #place-info .place-dates { font-size: 11px !important; }
 #place-info .chips { margin-top: 23px; }
-#geo-map { min-height: 360px; background: #e6ebdf; border: 1px solid #d1dac7; border-radius: 8px; overflow: hidden; }
-#geo-map iframe { display: block; width: 100%; height: 360px; border: 0; }
-.map-placeholder { text-align: center; padding: 25px; }
-.map-placeholder .eyebrow { font-size: 9px; margin-bottom: 3px; }
-.geo-symbol { font-size: 72px; font-weight: 400; color: #8fa07e; display: block; line-height: 1.4; }
-.map-placeholder h3 { font-size: 23px; }
-.map-placeholder p { font-size: 10px; color: var(--muted); margin: 13px 0 0; }
+.europe-map { position: relative; aspect-ratio: 600 / 650; background: #eef0e8; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; isolation: isolate; }
+.europe-base, .europe-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.europe-overlay path { fill: none; stroke: #809476; stroke-width: 1.2; }
+.europe-overlay circle { fill: var(--ink); stroke: var(--paper); stroke-width: 2; }
+.europe-overlay .is-selected path { stroke: var(--accent); stroke-width: 2; }
+.europe-overlay .is-selected circle { fill: var(--accent); r: 7; }
+.europe-caption { position: absolute; left: 22px; top: 20px; font-size: 9px; letter-spacing: 1.3px; color: var(--muted); }
+.map-point, .map-label { position: absolute; transform: translate(-50%,-50%); }
+.map-point { width: 22px; height: 22px; border: 0; border-radius: 50%; background: transparent; }
+.map-point:hover, .map-point[aria-pressed=true] { box-shadow: 0 0 0 2px #a3462f55; }
+.map-label { background: var(--card); border: 1px solid #bdc9b3; border-radius: 4px; padding: 9px 12px; min-height: 44px; white-space: nowrap; font-size: 12px; line-height: 1.3; box-shadow: 0 3px 12px #25392d08; }
+.map-label > span { font: 9px monospace; margin-right: 4px; opacity: .7; }
+.map-label small { display: block; font-size: 7px; letter-spacing: 1.2px; margin-top: 5px; }
+.map-label[aria-pressed=true] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.map-label:hover { border-color: var(--accent); }
+@media (max-width: 1000px) and (min-width: 761px) { .journey-layout { grid-template-columns: 1fr 1.2fr; gap: 24px; } .map-label { font-size: 11px; padding: 8px; } }
+@media (max-width: 370px) { .map-label { font-size: 11px; padding: 7px; } .europe-caption { font-size: 7px; } }
 .map-attribution { font-size: 9px; color: var(--muted); display: block; margin-top: 9px; }
 .timeline { margin-top: 65px; }
 .timeline > h2 { font-size: 30px; }

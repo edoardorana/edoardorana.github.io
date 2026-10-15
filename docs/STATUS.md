@@ -1,5 +1,13 @@
 # Stato del progetto
 
+## Versione 0.3 — 15 ottobre 2026
+
+- Percorso con mappa europea locale e quattro tappe cliccabili: Milano, Norvegia, Svizzera, Stoccarda. Pulsanti accessibili da tastiera, selezione sincronizzata e scheda annunciata con aria-live.
+- Stoccarda in corso da ottobre 2026, termine previsto circa 31 dicembre; soggiorno distinto da impiego. Svizzera resta lavoro da remoto.
+- Profilo e cronologia web distinguono Linux Administrator da maggio 2025 e DBA ottobre 2024–maggio 2025. CV Word: testo fornito in chat; CV web stampabile da rivedere successivamente.
+- Approccio da riscrivere con calma; Progetti destinato ai repository futuri. Ecosistema email/LinkedIn/ricerca opportunità ancora in discussione.
+- Verifiche: sintassi, test automatici e build statica. Browser QA non disponibile in questa sessione: resa desktop/mobile da validare con Edoardo.
+
 ## Versione 0.2 — 11 ottobre 2026
 
 - Nuova home a mappa con cinque aree esplorabili e collegamenti contestuali.
@@ -20,7 +28,7 @@
 
 ## Verifiche
 
-Controlli automatici su routing, deep link, encoding email, URL mappa, limiti del server locale e riferimenti HTML. Build statica e controlli sintassi eseguiti nella sessione di preparazione; risultati riportati nella conversazione.
+Controlli automatici su routing, deep link, encoding email, coordinate e semantica della mappa, limiti del server locale e riferimenti HTML. Build statica e controlli sintassi eseguiti nella sessione di preparazione; risultati riportati nella conversazione.
 
 Limite: QA visiva/interattiva in browser e avvio sul PC Windows dell'utente ancora da eseguire. Seguire la checklist in SETUP_VSCODE. Le transizioni spaziali sono una prima implementazione da calibrare visivamente con Edoardo.
 
