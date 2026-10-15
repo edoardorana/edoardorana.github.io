@@ -5,11 +5,11 @@ export const person = {
   title: 'Linux Administrator · Data Analyst',
 };
 export const areas = [
-  { id: 'profilo', number: '01', title: 'Profilo', note: 'La persona dietro i dati', word: 'CONOSCIAMOCI' },
-  { id: 'approccio', number: '02', title: 'Approccio', note: 'Dal problema alla soluzione', word: 'COME LAVORO' },
-  { id: 'percorso', number: '03', title: 'Percorso', note: 'Luoghi, incontri, competenze', word: 'LE MIE COORDINATE' },
-  { id: 'progetti', number: '04', title: 'Progetti', note: 'Le idee messe in pratica', word: 'DENTRO IL LAVORO' },
-  { id: 'contatti', number: '05', title: 'Collaboriamo', note: 'La prossima connessione', word: 'PARTIAMO DA QUI' },
+  { id: 'profilo', number: '01', title: 'Profilo', note: 'Esperienza e competenze', word: 'CHI SONO', preview: 'Una formazione in statistica, il lavoro sui sistemi Linux e l’esperienza nella gestione dei database.' },
+  { id: 'approccio', number: '02', title: 'Approccio', note: 'Metodo di lavoro', word: 'COME LAVORO', preview: 'Dall’analisi del problema alla scelta degli strumenti, con attenzione a manutenzione e continuità.' },
+  { id: 'percorso', number: '03', title: 'Percorso', note: 'Luoghi ed esperienze', word: 'TAPPE', preview: 'Milano, Norvegia, lavoro da remoto per la Svizzera e un periodo di vita a Stoccarda.' },
+  { id: 'progetti', number: '04', title: 'Progetti', note: 'Lavori ed esperienze', word: 'NEL DETTAGLIO', preview: 'Tre schede su raccolta dati, Business Intelligence e attività sui database di produzione.' },
+  { id: 'contatti', number: '05', title: 'Collaborazioni', note: 'Contatti', word: 'CONTATTI', preview: 'Un indirizzo email diretto per proposte, domande e possibili collaborazioni.' },
 ];
 export const steps = [
   { title: 'Capire', short: 'Il problema prima dello strumento.', text: 'Parto da chi usa i dati, dalle attività ripetitive e dalle decisioni da prendere. Un confronto iniziale serve a delimitare il problema e scegliere un primo intervento utile.', result: 'Una domanda precisa, fonti individuate e un obiettivo condiviso.', tags: ['Processi', 'Domande', 'Priorità'] },

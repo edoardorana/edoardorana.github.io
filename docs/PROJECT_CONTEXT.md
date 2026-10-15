@@ -56,3 +56,10 @@ Le API AI servono agli strumenti di sviluppo nell'editor: il sito non dipende da
 - Testo inglese dei ruoli richiesto solo per copia/incolla in Word. Il CV web stampabile resta da riallineare nella futura revisione del CV.
 
 Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico dominio), tramite world-atlas 2.0.2, countries-110m.json. Proiezione Mercator, scala 500, origine longitudine -20°, limite superiore 73° N, viewBox 600 × 650; stessa formula in mapPoint. Fonti: https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json e https://www.naturalearthdata.com/about/terms-of-use/ . Nessun caricamento cartografico esterno a runtime.
+
+## Direzione visiva del 16 ottobre 2026
+
+- La versione a card colorate e slogan è stata scartata. Riferimento attuale: sobrietà tipografica del CV web, palette quasi monocromatica, bordi leggeri e spazi ben distribuiti.
+- Firma in testata: `Edo.`; nome completo e descrizione sintetica `Sistemi e dati`. Menu con linee, senza pulsante di contatto separato.
+- La quinta area è `Collaborazioni` (route tecnica invariata: `#/contatti`). Tono di contatto neutro, niente inviti commerciali forzati. Email accessibile anche dal footer.
+- Home con cinque nodi e anteprima della sezione al passaggio del mouse o con focus da tastiera. Su mobile la mappa diventa una griglia leggibile. Evitare di ripristinare slogan, grafiche decorative o istruzioni ridondanti sulla mappa senza confronto con Edoardo.

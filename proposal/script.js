@@ -22,12 +22,13 @@ function pageHeader(id, title, text) {
   return `<div class="page-bar">${backLink()}<span>${area.number} / ${area.title.toUpperCase()}</span></div><header class="page-heading"><p class="eyebrow">${area.word}</p><h1>${title}</h1><p class="page-intro">${text}</p></header>`;
 }
 function related(ids) {
-  return `<nav class="related" aria-label="Continua a esplorare"><span>La connessione continua</span>${ids.map(id => { const area = areas.find(a => a.id === id); return `<a href="#/${id}">${area.title} ${arrow}</a>`; }).join('')}</nav>`;
+  return `<nav class="related" aria-label="Altre sezioni"><span>Altre sezioni</span>${ids.map(id => { const area = areas.find(a => a.id === id); return `<a href="#/${id}">${area.title} ${arrow}</a>`; }).join('')}</nav>`;
 }
 function home() {
-  return `<section class="home"><div class="home-intro"><div><p class="eyebrow"><span class="status-dot"></span> CIAO, SONO EDOARDO</p><h1>Connetto dati,<br>sistemi <em>e idee.</em></h1></div><p>Lavoro con database, analisi e automazioni.<br>Mi piace capire come funzionano le cose<br>e trovare un modo per farle funzionare meglio.</p></div>
-  <div class="atlas" aria-label="Esplora le cinque aree del portfolio"><div class="atlas-label">UNA MAPPA PER CONOSCERMI <span>SEGUI LE CONNESSIONI</span></div><svg class="connections" aria-hidden="true"></svg><div class="map-core"><span class="core-orbit" aria-hidden="true"></span><span class="core-caption">DATI · PERSONE · POSSIBILITÀ</span><strong>Ogni connessione<br>è un punto <em>di partenza.</em></strong><span class="core-invite">Scegli un’area ed esplora</span></div>
-  ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><span class="area-top"><span>${area.number} / ${area.word}</span>${arrow}</span><div class="area-art art-${area.id}" aria-hidden="true"><i></i><i></i><i></i></div><h2>${area.title}</h2><p>${area.note}</p><span class="node-dot" aria-hidden="true"></span></a>`).join('')}<div class="atlas-coordinate">ER / 45°27′ N · 9°11′ E</div></div></section>`;
+  const first = areas[0];
+  return `<section class="home"><div class="home-intro"><h1>Sistemi, database, analisi.</h1><p>Lavoro come Linux Administrator, dopo un’esperienza come Database Administrator su Oracle e PostgreSQL. Ho una formazione in statistica e frequento la magistrale in Data Science.</p></div>
+  <div class="atlas" aria-label="Esplora le cinque aree del portfolio"><svg class="connections" aria-hidden="true"></svg><div class="map-preview" aria-live="polite"><span class="preview-index">${first.number} / ${first.word}</span><h2 class="preview-title">${first.title}</h2><p class="preview-copy">${first.preview}</p></div>
+  ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><span class="area-number">${area.number}</span><span class="area-content"><strong>${area.title}</strong><small>${area.note}</small></span><span class="area-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
 }
 function profile() {
   return `<section class="page">${pageHeader('profilo', 'La curiosità è<br>il mio <em>punto di partenza.</em>', 'Sono Edoardo Rana. Mi interessa il percorso completo del dato: dove nasce, come viene custodito e cosa ci permette di capire.')}
@@ -46,7 +47,7 @@ function projectList() {
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail"><div class="page-bar">${backLink('#/progetti','Tutti i progetti')}<span>PROGETTO / ${p.number}</span></div><header class="page-heading"><p class="eyebrow">${p.kind}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><span>01 / CONTESTO</span><h2>Da dove si parte.</h2><p>${p.context}</p></section><section><span>02 / CONTRIBUTO</span><h2>Il mio lavoro.</h2><p>${p.contribution}</p></section><section><span>03 / COSA RACCONTA</span><h2>Il punto di arrivo.</h2><p>${p.output}</p></section></div><a class="button" href="${mailto('Parliamo di '+p.subtitle)}">Hai un problema simile? ${arrow}</a>${related(['approccio','contatti'])}</article>`;
+  return `<article class="page project-detail"><div class="page-bar">${backLink('#/progetti','Tutti i progetti')}<span>PROGETTO / ${p.number}</span></div><header class="page-heading"><p class="eyebrow">${p.kind}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><span>01 / CONTESTO</span><h2>Da dove si parte.</h2><p>${p.context}</p></section><section><span>02 / CONTRIBUTO</span><h2>Il mio lavoro.</h2><p>${p.contribution}</p></section><section><span>03 / COSA RACCONTA</span><h2>Il punto di arrivo.</h2><p>${p.output}</p></section></div>${related(['approccio','contatti'])}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -64,8 +65,8 @@ function journey() {
   <div class="timeline"><h2>Le esperienze, in sequenza.</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox, monitoraggio con checkmk, script SQL e shell, aggiornamenti di sistema. Debian 13, MariaDB, MultiPortal e Cubbit.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle, PostgreSQL, monitoraggio e processi operativi su Linux.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Progetti sociali e culturali, organizzazione di attività e amministrazione Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Analisi dati, classificazione e dashboard BI.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di formazione e vita in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>Percorso in corso, con focus su machine learning, big data e modelli predittivi.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Tesi sul web scraping per analisi di mercato.</p></div></li></ol></div>${related(['profilo','progetti'])}</section>`;
 }
 function contact() {
-  return `<section class="page contact-page">${pageHeader('contatti','La prossima connessione<br>potrebbe essere <em>la nostra.</em>','Raccontami cosa stai costruendo, cosa ti rallenta o quale domanda vorresti approfondire.')}
-  <div class="contact-layout"><div><a class="email-link" href="mailto:${person.email}">${person.email} ${arrow}</a><p class="muted">Un primo contatto per capire se e come possiamo lavorare insieme.</p><div class="contact-topics"><span>Automazioni</span><span>Database</span><span>Analisi e dashboard</span><span>Idee da esplorare</span></div><a class="text-link" href="${person.github}" target="_blank" rel="noopener noreferrer">Il mio GitHub ${arrow}</a></div><form id="contact-form"><label for="message">Da quale problema partiamo?</label><textarea id="message" rows="5" placeholder="Oggi facciamo questa attività a mano… Vorremmo riuscire a…">${escapeHTML(contactDraft)}</textarea><button class="button" type="submit">Prepara un’email ${arrow}</button><p class="form-note">Si apre il tuo programma di posta. Nulla viene inviato dal sito.</p><button class="copy-email" type="button">Copia indirizzo email</button><p id="contact-status" role="status"></p></form></div>${related(['approccio','progetti'])}</section>`;
+  return `<section class="page contact-page">${pageHeader('contatti','Contatti e collaborazioni.','Per una proposta o una domanda, puoi scrivermi direttamente via email.')}
+  <div class="contact-layout"><div><a class="email-link" href="mailto:${person.email}">${person.email} ${arrow}</a><p class="muted">Per informazioni sul mio lavoro o proposte di collaborazione.</p><div class="contact-topics"><span>Automazioni</span><span>Database</span><span>Analisi e dashboard</span><span>Collaborazioni</span></div><a class="text-link" href="${person.github}" target="_blank" rel="noopener noreferrer">GitHub ${arrow}</a></div><form id="contact-form"><label for="message">Messaggio (facoltativo)</label><textarea id="message" rows="5" placeholder="Descrivi in breve il contesto o la domanda…">${escapeHTML(contactDraft)}</textarea><button class="button" type="submit">Apri email ${arrow}</button><p class="form-note">Si apre il tuo programma di posta. Nulla viene inviato dal sito.</p><button class="copy-email" type="button">Copia indirizzo email</button><p id="contact-status" role="status"></p></form></div>${related(['approccio','progetti'])}</section>`;
 }
 function setStep(i, focus = false) {
   selectedStep = i;
@@ -89,12 +90,31 @@ function drawConnections() {
   const svg=atlas.querySelector('.connections');
   svg.setAttribute('viewBox',`0 0 ${rect.width} ${rect.height}`);
   const positions={};
-  atlas.querySelectorAll('[data-node], .map-core').forEach(el=>{const r=el.getBoundingClientRect();positions[el.dataset.node||'core']=[r.x-rect.x+r.width/2,r.y-rect.y+r.height/2];});
-  const links=areas.map(a=>['core',a.id]).concat([['profilo','percorso'],['approccio','progetti'],['progetti','contatti']]);
+  atlas.querySelectorAll('[data-node], .map-preview').forEach(el=>{const r=el.getBoundingClientRect();positions[el.dataset.node||'core']=[r.x-rect.x+r.width/2,r.y-rect.y+r.height/2];});
+  const links=areas.map(a=>['core',a.id]);
   svg.replaceChildren(...links.map(([a,b])=>{const path=document.createElementNS('http://www.w3.org/2000/svg','path');const [x,y]=positions[a];const [tx,ty]=positions[b];path.setAttribute('d',`M${x},${y} C${x},${(y+ty)/2} ${tx},${(y+ty)/2} ${tx},${ty}`);return path;}));
 }
+function setMapPreview(id = 'profilo') {
+  const area = areas.find(entry => entry.id === id);
+  if (!area) return;
+  const atlas = document.querySelector('.atlas');
+  atlas.querySelector('.preview-index').textContent = `${area.number} / ${area.word}`;
+  atlas.querySelector('.preview-title').textContent = area.title;
+  atlas.querySelector('.preview-copy').textContent = area.preview;
+  atlas.querySelectorAll('[data-node]').forEach(node => node.classList.toggle('is-active', node.dataset.node === id));
+}
 function bindPage(route) {
-  if(route.page==='mappa'){mapObserver=new ResizeObserver(drawConnections);mapObserver.observe(document.querySelector('.atlas'));drawConnections();}
+  if(route.page==='mappa'){
+    const atlas = document.querySelector('.atlas');
+    mapObserver = new ResizeObserver(drawConnections);
+    mapObserver.observe(atlas);
+    drawConnections();
+    setMapPreview();
+    atlas.addEventListener('pointerover', e => { const node = e.target.closest('[data-node]'); if(node) setMapPreview(node.dataset.node); });
+    atlas.addEventListener('pointerleave', () => setMapPreview());
+    atlas.addEventListener('focusin', e => { const node = e.target.closest('[data-node]'); if(node) setMapPreview(node.dataset.node); });
+    atlas.addEventListener('focusout', e => { if(!e.relatedTarget?.closest?.('[data-node]')) setMapPreview(); });
+  }
   if(route.page==='approccio'){
     setStep(selectedStep);
     document.querySelectorAll('[data-step]').forEach((b,i)=>{b.addEventListener('click',()=>setStep(i));b.addEventListener('keydown',e=>{let next=i;if(['ArrowRight','ArrowDown'].includes(e.key))next=(i+1)%steps.length;else if(['ArrowLeft','ArrowUp'].includes(e.key))next=(i+steps.length-1)%steps.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=steps.length-1;else return;e.preventDefault();setStep(next,true);});});
@@ -116,7 +136,7 @@ function render() {
   main.innerHTML=renderers[route.page]();
   document.body.dataset.page=route.page;
   const area=areas.find(a=>a.id===route.page);
-  document.title=`${route.item?projects.find(p=>p.id===route.item).subtitle:area?.title||'Dati, sistemi, connessioni'} — Edoardo Rana`;
+  document.title=`${route.item?projects.find(p=>p.id===route.item).subtitle:area?.title||'Sistemi, database e analisi'} — Edoardo Rana`;
   index.hidden=true;indexToggle.setAttribute('aria-expanded','false');
   document.querySelectorAll('#site-index a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash===location.hash)a.setAttribute('aria-current','page');});
   bindPage(route);
