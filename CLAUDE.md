@@ -1,0 +1,1 @@
+Project context and instructions: read `AGENTS.md`, `docs/PROJECT_CONTEXT.md`, and `docs/STATUS.md`. Active source: `proposal/`. Checks: `npm run check`; build: `npm run build`. Reply in Italian. Keep the area-map design and verified CV content.

@@ -1,0 +1,1 @@
+Read and follow the project guidance in `AGENTS.md`, `docs/PROJECT_CONTEXT.md`, and `docs/STATUS.md` before making changes. The active portfolio source is `proposal/`; `dist/` is generated. Preserve the explorable area-map navigation, verified CV facts and accessible controls. Reply to Edoardo in Italian. Never put AI credentials in website assets.
