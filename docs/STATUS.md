@@ -2,11 +2,11 @@
 
 ## Lancio GitHub Pages — 18 ottobre 2026
 
-- Preparato il workflow che su `main` esegue check e build, carica `dist/` e lo pubblica su GitHub Pages. La sorgente Pages va impostata su GitHub Actions prima dell'integrazione della PR.
+- Sito pubblicato su https://edoardorana.github.io/ dopo l'integrazione della PR #1 in `main` (squash commit `5584021`). La sorgente Pages è GitHub Actions: il workflow esegue check e build, carica `dist/` e lo distribuisce automaticamente dai push pertinenti su `main`.
 - Rimossi `noindex,nofollow` dalla home e dal CV web per il lancio pubblico. Nella mappa Percorso, Norvegia e Svizzera ora indicano rispettivamente Tromsø e Zugo; Zugo resta esplicitamente lavoro da remoto, non sede personale. Aggiornato anche il CV web.
 - Creata la revisione critica `docs/FREELANCE_REVIEW.md` con priorità su posizionamento, prove del lavoro, ripetizioni e contatto.
-- Verifiche locali: `npm.cmd run check` (5 test), `npm.cmd run build` e `git diff --check` superati; nel browser le due nuove tappe si selezionano e i nomi sulla mappa restano entro i bordi a 320, 390 e 1280 px, senza overflow orizzontale. Interazione da tastiera sulla pagina condivisa in background non confermata in questa sessione; dispositivi fisici e Safari non verificati.
-- Prossimo passo immediato: integrare la PR dopo il controllo CI, verificare il deploy e l'URL pubblico. La preview Sites resta separata.
+- Verifiche: `npm.cmd run check` (5 test), `npm.cmd run build` e `git diff --check` superati; i job GitHub `check` e `deploy` del run `39134114314` sono riusciti. Sul sito pubblico home, CSS, moduli, SVG e CV rispondono 200 e non contengono `noindex`; refresh della route Percorso, Indietro/Avanti, menu e selezione di Zugo/Tromsø da tastiera verificati. La scheda progetto non ha overflow orizzontale a 390 px; le etichette della mappa restano nei bordi a 320, 390 e 1280 px nel browser locale. Non verificati dispositivi fisici o Safari.
+- Prossimi passi: seguire le priorità di `docs/FREELANCE_REVIEW.md`. La preview Sites resta separata e non è stata aggiornata.
 
 ## Rimozione del sito legacy — 18 ottobre 2026
 
@@ -69,25 +69,22 @@
 ## Pubblicazione
 
 - Repository: edoardorana/edoardorana.github.io.
-- Branch: feat/freelance-portfolio; PR #1.
-- Sorgenti attivi: proposal/. Il sito legacy alla radice è stato rimosso dal branch di lavoro dopo la verifica degli asset; `main` resta invariato.
+- Branch pubblicato: `main`; PR #1 integrata il 18 ottobre 2026.
+- URL pubblico: https://edoardorana.github.io/ . Sorgenti attivi in `proposal/`, output generato in `dist/`; il sito legacy alla radice è stato rimosso.
 - Preview privata: https://edo-data-studio.loyalsage32.chatgpt.site
-- GitHub e Sites sono due destinazioni aggiornate esplicitamente. Nessun deploy GitHub Pages automatico configurato.
+- Il workflow GitHub Pages aggiorna il sito dai push pertinenti su `main`; Sites è una destinazione separata, aggiornata esplicitamente.
 
 ## Verifiche
 
-Controlli automatici su routing, deep link, encoding email, coordinate e semantica della mappa, limiti del server locale e riferimenti HTML. Build statica e controlli sintassi eseguiti nella sessione di preparazione; risultati riportati nella conversazione.
-
-Limite: QA visiva/interattiva in browser e avvio sul PC Windows dell'utente ancora da eseguire. Seguire la checklist in SETUP_VSCODE. Le transizioni spaziali sono una prima implementazione da calibrare visivamente con Edoardo.
+Controlli automatici su routing, deep link, encoding email, coordinate e semantica della mappa, limiti del server locale e riferimenti HTML. Il run GitHub Pages del lancio ha superato check, build e deploy; verifiche browser pubbliche e limiti sono riportati nella sezione di lancio in alto. Resta utile un controllo manuale su dispositivi fisici e Safari.
 
 ## Prossimi passi
 
-1. Aprire il workspace sul PC e completare login GitHub/Codex.
-2. Verificare resa desktop/mobile, interazioni e sensazione di ingresso nelle aree.
-3. Raccogliere screenshot pubblicabili e risultati verificabili per le schede progetto.
-4. Confermare eventuali link LinkedIn e canali di contatto aggiuntivi.
-5. Versione inglese e localizzazione della navigazione.
-6. Definire URL pubblico definitivo e lancio; poi brochure e QR.
+1. Decidere il primo tipo di interlocutore e 1–2 problemi concreti da presentare in home e Collaborazioni.
+2. Pubblicare almeno una prova del lavoro: caso autorizzato e anonimizzato oppure progetto personale dichiarato come tale, con materiale osservabile.
+3. Ridurre le ripetizioni tra Profilo, Percorso, Progetti e CV; rendere più comprensibili gli strumenti a lettori non tecnici.
+4. Dopo la revisione editoriale, migliorare le anteprime dei link, la scoperta sui motori di ricerca e valutare la versione inglese.
+5. Verificare il sito su dispositivi fisici e Safari; decidere se aggiornare anche la preview Sites. Preparare brochure e QR solo dopo aver stabilizzato l'URL e il messaggio.
 
 ## Regola di continuità
 

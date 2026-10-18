@@ -41,7 +41,7 @@ Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'
 
 Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
 
-Il vecchio sito alla radice è stato rimosso dal branch `feat/freelance-portfolio` su richiesta di Edoardo. Per il lancio pubblico richiesto il 18 ottobre 2026, il workflow GitHub Actions esegue controlli, genera `dist/` da `proposal/` e pubblica l'artefatto su GitHub Pages dopo un push su `main`. Il branch di lavoro va integrato solo dopo aver configurato Pages per i workflow. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
+Il vecchio sito alla radice è stato rimosso su richiesta di Edoardo. Il portfolio a mappa è online su https://edoardorana.github.io/ dal 18 ottobre 2026: la PR #1 è stata integrata in `main` e la sorgente Pages è GitHub Actions. Il workflow esegue controlli, genera `dist/` da `proposal/` e pubblica l'artefatto dopo i push pertinenti su `main`. Per le prossime migliorie usare branch e revisione prima dell'integrazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
 
 ## Lavorare da VS Code e con più assistenti
 
