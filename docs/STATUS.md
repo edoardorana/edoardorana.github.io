@@ -1,8 +1,15 @@
 # Stato del progetto
 
-## Pulizia repository — 18 ottobre 2026
+## Rimozione del sito legacy — 18 ottobre 2026
 
-- Verificati i dodici asset PNG alla radice: sono tutti ancora referenziati da `index.html`, il sito legacy, quindi non sono stati rimossi.
+- Rimossi dal branch `feat/freelance-portfolio` il vecchio `index.html` alla radice, `cv_style.css`, undici PNG usati solo dal sito legacy e `coding.png`, già privo di riferimenti (340.395 byte complessivi). I file restano recuperabili dalla cronologia Git; `main` non è stato modificato.
+- `proposal/` è invariato e resta l'unica sorgente del portfolio. Aggiornati README e istruzioni di progetto; la mappa geografica è documentata come SVG locale.
+- Verifiche: `npm.cmd run check` (5 test superati), `npm.cmd run build` e `git diff --check` superati. Nel browser locale: home mobile a 390 px senza overflow orizzontale, menu e navigazione da tastiera, refresh della scheda progetto e pulsanti Indietro/Avanti verificati.
+- Prossimi passi: configurare il deploy di `dist/` prima di usare questo branch per GitHub Pages dalla radice; la preview Sites va aggiornata separatamente. Non verificati dispositivi fisici o Safari.
+
+## Verifica iniziale degli asset — 18 ottobre 2026
+
+- Verificati i dodici asset PNG alla radice: undici erano ancora referenziati da `index.html`, il sito legacy; `coding.png` era già inutilizzato. Durante questa prima verifica non sono stati rimossi.
 - Nessun asset immagine inutilizzato individuato nella versione attiva in `proposal/`.
 - Verifiche eseguite: `npm.cmd run check` e `npm.cmd run build`.
 - Limite: la pulizia non include una verifica su dispositivi fisici o Safari; il sito legacy non è stato modificato.
@@ -55,7 +62,7 @@
 
 - Repository: edoardorana/edoardorana.github.io.
 - Branch: feat/freelance-portfolio; PR #1.
-- Sorgenti attivi: proposal/. Il sito legacy alla radice resta invariato.
+- Sorgenti attivi: proposal/. Il sito legacy alla radice è stato rimosso dal branch di lavoro dopo la verifica degli asset; `main` resta invariato.
 - Preview privata: https://edo-data-studio.loyalsage32.chatgpt.site
 - GitHub e Sites sono due destinazioni aggiornate esplicitamente. Nessun deploy GitHub Pages automatico configurato.
 

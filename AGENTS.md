@@ -2,7 +2,7 @@
 
 Leggi `docs/PROJECT_CONTEXT.md` e `docs/STATUS.md` prima di cambiare il progetto.
 
-- La versione attiva è in `proposal/`. Il vecchio `index.html` alla radice del repository GitHub rimane il sito legacy: non sostituirlo senza una richiesta di lancio su GitHub Pages.
+- La versione attiva è in `proposal/`. Il sito legacy alla radice è stato rimosso dal branch di lavoro su richiesta. Prima di usare questo branch per GitHub Pages, configura la pubblicazione di `dist/`; non spostare i sorgenti alla radice senza una richiesta di lancio.
 - `dist/` è generato con `npm run build`. Non modificarlo direttamente.
 - HTML, CSS e JavaScript ES modules, senza dipendenze. Dev server locale: `npm run dev`. Node 22 o superiore.
 - Mantieni la navigazione a mappa e le cinque aree. Non tornare a una lunga landing page.

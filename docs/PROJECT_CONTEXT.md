@@ -41,7 +41,7 @@ Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'
 
 Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
 
-La versione GitHub precedente resta alla radice. La versione nuova è sul branch `feat/freelance-portfolio`, PR #1. Non modificare `main` durante l'iterazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
+Il vecchio sito alla radice è stato rimosso dal branch `feat/freelance-portfolio` su richiesta di Edoardo; il portfolio attivo resta in `proposal/` e la build in `dist/`. Prima di integrare il branch su una sorgente GitHub Pages basata sulla radice, configurare la pubblicazione di `dist/`. Non modificare `main` durante l'iterazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
 
 ## Lavorare da VS Code e con più assistenti
 

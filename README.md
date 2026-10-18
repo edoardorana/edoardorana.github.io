@@ -31,14 +31,14 @@ Apri http://127.0.0.1:4173. In PowerShell puoi usare `npm.cmd` se `npm.ps1` è b
 
 La mappa collega cinque aree con URL dedicati: `#/profilo`, `#/approccio`, `#/percorso`, `#/progetti` e `#/contatti`. I progetti hanno un ulteriore livello `#/progetti/<id>`. Le route hash funzionano su hosting statico senza rewrite.
 
-Il contatto usa il programma di posta del visitatore. La mappa geografica richiede OpenStreetMap e viene caricata con un pulsante; le descrizioni restano leggibili senza il servizio esterno. Il portfolio non contiene API AI, analytics o un backend.
+Il contatto usa il programma di posta del visitatore. La mappa geografica è un SVG locale, senza servizi cartografici caricati a runtime. Il portfolio non contiene API AI, analytics o un backend.
 
 ## Versioni e pubblicazione
 
-La nuova proposta è sul branch `feat/freelance-portfolio`, PR #1. Nel repository GitHub i vecchi file alla radice restano disponibili; l'home precedente non viene sostituita automaticamente.
+Il portfolio è sul branch `feat/freelance-portfolio`, PR #1. Il vecchio sito alla radice e le sue immagini sono stati rimossi da questo branch; `main` non viene modificato da questa pulizia.
 
 Anteprima privata: https://edo-data-studio.loyalsage32.chatgpt.site
 
-Il push al branch aggiorna il codice e i controlli GitHub, non la preview Sites. La sincronizzazione con Sites è esplicita. Per un futuro lancio con GitHub Pages, pubblicare `dist/` con un workflow dedicato; non è stato attivato in questa iterazione.
+Il push al branch aggiorna il codice e i controlli GitHub, non la preview Sites. La sincronizzazione con Sites è esplicita. Prima di integrare questo branch in una pubblicazione GitHub Pages dalla radice, configurare il deploy di `dist/`: il branch non contiene più un `index.html` alla radice.
 
 Il sito è una versione di lavoro: prima del lancio pubblico verificare la checklist browser in `docs/SETUP_VSCODE.md` e rimuovere `noindex` quando la pubblicazione pubblica è intenzionale.
