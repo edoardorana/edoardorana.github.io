@@ -39,6 +39,6 @@ test('entry and CV use local assets and contain no duplicate HTML ids', async ()
     const html = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
     assert.equal(new Set(ids).size, ids.length);
-    for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))"/g)) await readFile(new URL('../proposal/' + asset, import.meta.url));
+    for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))(?:\?[^\"]*)?"/g)) await readFile(new URL('../proposal/' + asset, import.meta.url));
   }
 });

@@ -1,5 +1,21 @@
 # Stato del progetto
 
+## Pulizia repository — 18 ottobre 2026
+
+- Verificati i dodici asset PNG alla radice: sono tutti ancora referenziati da `index.html`, il sito legacy, quindi non sono stati rimossi.
+- Nessun asset immagine inutilizzato individuato nella versione attiva in `proposal/`.
+- Verifiche eseguite: `npm.cmd run check` e `npm.cmd run build`.
+- Limite: la pulizia non include una verifica su dispositivi fisici o Safari; il sito legacy non è stato modificato.
+
+## Versione 0.6 — 16 ottobre 2026
+
+- Rimossi `er` dall'icona della scheda e `ER` dal Profilo: ora l'icona è `E.` e il riquadro del Profilo usa `Edoardo Rana`. Eliminato anche l'incipit `Sono Edoardo Rana` dal testo visibile.
+- Revisione editoriale di home, Profilo, Approccio, Percorso, Progetti, Collaborazioni, testi delle anteprime e CV web: titoli descrittivi, meno frasi vaghe e ripetizioni; nessun dato professionale inventato.
+- Corretto il CV web: Linux Administrator da maggio 2025, Database Administrator ottobre 2024–maggio 2025, magistrale ancora in corso. Icona aggiornata con parametro di versione per evitare la vecchia favicon in cache.
+- Sostituiti i collegamenti arbitrari `Altre sezioni` con navigazione numerata: pagina iniziale 00, precedente e successiva in sequenza. Prima e ultima sezione mostrano solo i due link pertinenti; le schede progetto restano nella sezione 04.
+- Verifiche: `npm.cmd run check` (5 test) e `npm.cmd run build` superati. Browser integrato: tutte le route e la navigazione numerata controllate a 1280, 390 e 320 px senza overflow orizzontale; refresh, tastiera, Indietro e CV web verificati. Non verificati dispositivi fisici o Safari.
+- Prossimo passo: revisione dei testi con Edoardo per sfumature di voce personale; la preview Sites resta separata e non è stata aggiornata.
+
 ## Versione 0.5 — 16 ottobre 2026
 
 - Ripensata la grafica del sito attivo in chiave minimale: testata `Edo.`, menu a linee, palette quasi monocromatica e tipografia coerente con il CV web.

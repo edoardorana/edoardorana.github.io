@@ -22,17 +22,20 @@ Il filo conduttore è il percorso completo del dato: analisi dei processi, racco
 
 ## Fonte professionale
 
-CV_RANA_2026_ENG.pdf, fornito dall'utente. Il file completo non è incluso nel repository pubblico: il sito contiene una sintesi professionale. Evitare copie grezze della conversazione, data di nascita, telefono e dettagli dei clienti.
+Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'utente come versione più aggiornata. Il PDF completo è solo locale e non va incluso nel repository pubblico: il sito contiene una sintesi professionale. Evitare copie grezze della conversazione, data di nascita, telefono e nomi o dettagli dei clienti. In caso di divergenza con le note precedenti, prevale questo CV.
 
-- Broway SA: Linux Administrator da maggio 2025, infrastruttura Proxmox, checkmk, Debian 13, MariaDB, MultiPortal, Cubbit, script SQL/shell e aggiornamenti. Database Administrator, ottobre 2024 – maggio 2025. Oracle/PostgreSQL, checkmk, OEM, SQL/batch, backup/recovery, schemi e remap, rilasci su Linux.
-- Hubita APS: collaboratore, gennaio 2024 – gennaio 2026. Progetti sociali/culturali e Google Workspace.
-- SB Italia: stage, gennaio 2023 – novembre 2023. Analisi dati, classificazione, Qlik/Power BI/Tableau.
+- Posizionamento nel CV: consulenza tecnica su infrastrutture, dati e automazione, con attenzione a requisiti, diagnosi delle cause, documentazione e processi aziendali. Non trasformare questa sintesi in risultati o servizi promessi senza evidenza.
+- Broway SA: Linux Administrator da maggio 2025; infrastrutture Linux e Proxmox VE/Backup Server, checkmk, log e diagnostica, Debian, MariaDB, MultiPortal, script SQL/shell, storage S3-compatibile, guide operative e attività di hardening. Database Administrator, ottobre 2024 – maggio 2025; Oracle/PostgreSQL, checkmk, OEM, SQL/batch, backup/ripristino, schemi, remap e rilasci. Non pubblicare i nomi dei clienti riportati nel CV.
+- Hubita APS: collaboratore operativo, gennaio 2024 – gennaio 2026. Coordinamento di iniziative sociali/culturali, eventi, interlocutori e Google Workspace.
+- SB Italia: stage, gennaio 2023 – novembre 2023. Analisi di dataset aziendali, metodi di classificazione, report e dashboard Qlik/Power BI/Tableau.
+- Esperienze iniziali: LTA Advisory, stage in contabilità e supporto alla consulenza (2016); TaxiBlu, stage in contabilità, Zucchetti e manutenzione database (2015). Omettere il numero incluso nel nome esteso dell'azienda, per non pubblicare un telefono.
+- Diploma in Amministrazione, Finanza e Marketing, Istituto San Vincenzo / Regina Mundi, 2012–2017.
 - Milano-Bicocca: laurea in Statistica e Gestione delle Informazioni 2017–2021; magistrale Data Science dal 2021, in corso.
-- Erasmus Arctic University of Norway: agosto 2021 – agosto 2022. Campus esatto non confermato; non inventare coordinate puntuali.
+- Erasmus UiT The Arctic University of Norway: agosto 2021 – agosto 2022. Campus esatto non confermato; non inventare coordinate puntuali.
 - EDB Postgres Essentials v17, 2025.
 - Italiano madrelingua; inglese C1; spagnolo B2.
 - Email: edoardorana@outlook.com. GitHub: https://github.com/edoardorana.
-- Il dettaglio della tesi sugli annunci immobiliari deriva dal precedente CV nel repository. Metriche, codice e dataset del progetto non sono disponibili.
+- La tesi riguarda web scraping di annunci immobiliari per analisi di mercato. Metriche, codice e dataset del progetto non sono disponibili.
 
 ## Architettura
 
@@ -63,3 +66,10 @@ Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico domi
 - Firma in testata: `Edo.`; nome completo e descrizione sintetica `Sistemi e dati`. Menu con linee, senza pulsante di contatto separato.
 - La quinta area è `Collaborazioni` (route tecnica invariata: `#/contatti`). Tono di contatto neutro, niente inviti commerciali forzati. Email accessibile anche dal footer.
 - Home con cinque nodi e anteprima della sezione al passaggio del mouse o con focus da tastiera. Su mobile la mappa diventa una griglia leggibile. Evitare di ripristinare slogan, grafiche decorative o istruzioni ridondanti sulla mappa senza confronto con Edoardo.
+
+## Revisione editoriale del 16 ottobre 2026
+
+- Evitare monogrammi `er`/`ER`: la firma in testata resta `Edo.`, l'icona della scheda usa `E.`, nel Profilo compare il nome completo.
+- Preferire titoli descrittivi, fatti documentati e frasi dirette. Non ripetere il nome all'inizio della biografia, non usare slogan generici o inviti al contatto ridondanti.
+- Navigazione di fondo: `00 Mappa`, sezione precedente e successiva secondo l'ordine `01 Profilo`, `02 Approccio`, `03 Percorso`, `04 Progetti`, `05 Collaborazioni`. Alla prima e all'ultima sezione non duplicare la mappa come link precedente/successivo. Le schede progetto mantengono il contesto della sezione 04 e un ritorno all'elenco.
+- Il CV web deve distinguere Linux Administrator (da maggio 2025) da Database Administrator (ottobre 2024 – maggio 2025). La magistrale resta in corso. Non presentare la Svizzera come sede fisica né Stoccarda come nuovo impiego.

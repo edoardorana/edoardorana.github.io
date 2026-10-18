@@ -3,7 +3,6 @@ import { person, areas, steps, projects, places, parseRoute, mailto, mapPoint } 
 const main = document.querySelector('#main');
 const index = document.querySelector('#site-index');
 const indexToggle = document.querySelector('.index-toggle');
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 const chips = tags => `<div class="chips">${tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join('')}</div>`;
 const arrow = '<span aria-hidden="true">↗</span>';
@@ -12,42 +11,46 @@ let mapObserver;
 let selectedStep = 0;
 let selectedPlace = 'milano';
 let contactDraft = '';
-let transitionBusy = false;
 
 function backLink(href = '#/', text = 'Torna alla mappa') {
   return `<a class="back-link" href="${href}"><span aria-hidden="true">←</span> ${text}</a>`;
 }
 function pageHeader(id, title, text) {
   const area = areas.find(area => area.id === id);
-  return `<div class="page-bar">${backLink()}<span>${area.number} / ${area.title.toUpperCase()}</span></div><header class="page-heading"><p class="eyebrow">${area.word}</p><h1>${title}</h1><p class="page-intro">${text}</p></header>`;
+  return `<div class="page-bar"><span>SEZIONE ${area.number} / 05</span><span>${area.title.toUpperCase()}</span></div><header class="page-heading"><p class="eyebrow">${area.word}</p><h1>${title}</h1><p class="page-intro">${text}</p></header>`;
 }
-function related(ids) {
-  return `<nav class="related" aria-label="Altre sezioni"><span>Altre sezioni</span>${ids.map(id => { const area = areas.find(a => a.id === id); return `<a href="#/${id}">${area.title} ${arrow}</a>`; }).join('')}</nav>`;
+function sectionNav(id) {
+  const position = areas.findIndex(area => area.id === id);
+  const previous = areas[position - 1];
+  const next = areas[position + 1];
+  const link = (area, label, symbol) => `<a href="#/${area.id}"><span class="section-nav-direction">${symbol} ${label}</span><strong>${area.number} / ${area.title}</strong></a>`;
+  return `<nav class="section-nav" aria-label="Navigazione tra le sezioni"><div class="section-nav-prev">${previous ? link(previous, 'Precedente', '←') : ''}</div><a class="section-nav-home" href="#/"><span class="section-nav-direction">Pagina iniziale</span><strong>00 / Mappa</strong></a><div class="section-nav-next">${next ? link(next, 'Successiva', '→') : ''}</div></nav>`;
 }
 function home() {
   const first = areas[0];
-  return `<section class="home"><div class="home-intro"><h1>Sistemi, database, analisi.</h1><p>Lavoro come Linux Administrator, dopo un’esperienza come Database Administrator su Oracle e PostgreSQL. Ho una formazione in statistica e frequento la magistrale in Data Science.</p></div>
+  return `<section class="home"><div class="home-intro"><h1>Sistemi, database, analisi.</h1><p>Lavoro come consulente IT su infrastrutture Linux e database. Il mio percorso comprende analisi dei dati e una formazione iniziale in amministrazione e contabilità.</p></div>
   <div class="atlas" aria-label="Esplora le cinque aree del portfolio"><svg class="connections" aria-hidden="true"></svg><div class="map-preview" aria-live="polite"><span class="preview-index">${first.number} / ${first.word}</span><h2 class="preview-title">${first.title}</h2><p class="preview-copy">${first.preview}</p></div>
   ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><span class="area-number">${area.number}</span><span class="area-content"><strong>${area.title}</strong><small>${area.note}</small></span><span class="area-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
 }
 function profile() {
-  return `<section class="page">${pageHeader('profilo', 'La curiosità è<br>il mio <em>punto di partenza.</em>', 'Sono Edoardo Rana. Mi interessa il percorso completo del dato: dove nasce, come viene custodito e cosa ci permette di capire.')}
-  <div class="profile-layout"><div class="portrait-type" aria-label="Monogramma Edoardo Rana"><span>ER</span><small>STATISTICA ↔ SISTEMI</small><p>Una base analitica.<br>Un approccio pratico.</p></div><div class="prose"><h2>Fra analisi e infrastruttura.</h2><p>Ho studiato Statistica e Gestione delle Informazioni a Milano-Bicocca e sto proseguendo il percorso magistrale in Data Science. Oggi lavoro come Linux Administrator in Broway SA, dopo un’esperienza come Database Administrator nella stessa azienda.</p><p>Passo dalle query SQL ai processi batch, dal monitoraggio ai backup. L’esperienza nell’analisi dati e nella Business Intelligence mi aiuta a guardare anche a ciò che succede dopo: come le informazioni vengono lette e utilizzate.</p><p>Sto costruendo uno spazio per nuove collaborazioni su dati, automazioni e strumenti utili al lavoro quotidiano.</p><a class="button" href="cv.html" target="_blank" rel="noopener">Leggi il CV ${arrow}</a></div></div>
-  <div class="skills-grid"><article><span class="eyebrow">CUSTODIRE</span><h3>Database & sistemi</h3>${chips(['Oracle','PostgreSQL','MySQL','Linux','checkmk','OEM'])}</article><article><span class="eyebrow">COMPRENDERE</span><h3>Analisi & visualizzazione</h3>${chips(['Python','R','SQL','Power BI','Tableau','Qlik'])}</article><article><span class="eyebrow">ESPLORARE</span><h3>Modelli & possibilità</h3>${chips(['Statistica','Machine learning','Knime','Orange'])}</article></div>
-  <div class="human-note"><div><p class="eyebrow">FUORI DALLO SCHERMO</p><h2>Equilibrio, movimento,<br><em>un po’ di strada.</em></h2></div><p>Judo e arti marziali, skateboard, moto e auto. Interessi diversi, che fanno parte della persona con cui lavorerai. Parlo italiano, inglese e spagnolo.</p></div>${related(['percorso','progetti','contatti'])}</section>`;
+  return `<section class="page">${pageHeader('profilo', 'Profilo professionale', 'Consulenza tecnica, infrastrutture Linux, database e analisi dei dati. L’esperienza in ambito amministrativo mi aiuta a considerare anche processi e vincoli di chi utilizza i sistemi.')}
+  <div class="profile-layout"><div class="portrait-type" aria-label="Edoardo Rana"><span>Edoardo<br>Rana</span><small>INFRASTRUTTURE · DATI · PROCESSI</small></div><div class="prose"><h2>Esperienza operativa</h2><p>Da maggio 2025 lavoro come Linux Administrator in Broway SA. Mi occupo di infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi di log e anomalie, aggiornamenti di sistema e diagnosi di script SQL e shell. Il lavoro comprende servizi Debian e MariaDB, archiviazione S3-compatibile, documentazione tecnica e attività per rafforzare la sicurezza operativa.</p><p>Tra ottobre 2024 e maggio 2025 ho lavorato come Database Administrator su Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci. Condivido le evidenze con gli altri referenti tecnici per coordinare la diagnosi dei problemi.</p><p>Durante lo stage in SB Italia ho lavorato su analisi dei dati, metodi di classificazione e dashboard BI. In Hubita APS ho seguito attività operative per progetti sociali e culturali e l’ambiente Google Workspace.</p><a class="button" href="cv.html" target="_blank" rel="noopener">CV sintetico ${arrow}</a></div></div>
+  <div class="skills-grid"><article><span class="eyebrow">CONSULENZA</span><h3>Supporto e metodo</h3>${chips(['Requisiti','Diagnosi delle cause','Documentazione','Processi'])}</article><article><span class="eyebrow">INFRASTRUTTURA</span><h3>Sistemi Linux</h3>${chips(['Debian','Proxmox VE / PBS','checkmk','Storage S3','Backup'])}</article><article><span class="eyebrow">DATABASE</span><h3>Dati e automazione</h3>${chips(['Oracle','PostgreSQL','MariaDB / MySQL','SQL','Bash','Python'])}</article><article><span class="eyebrow">ANALISI</span><h3>Business Intelligence</h3>${chips(['KPI','Power BI','Qlik Sense','Tableau','R','KNIME','Orange'])}</article></div>
+  <div class="foundation-note"><div><p class="eyebrow">FORMAZIONE ED ESPERIENZE INIZIALI</p><h2>Statistica e amministrazione</h2></div><p>Ho una laurea in Statistica e Gestione delle Informazioni e frequento la magistrale in Data Science a Milano-Bicocca. Prima dell’esperienza nell’IT ho conseguito il diploma in Amministrazione, Finanza e Marketing e svolto stage in contabilità e consulenza presso LTA Advisory (2016) e TaxiBlu (2015), usando anche Zucchetti e occupandomi di manutenzione di database.</p></div>
+  <div class="human-note"><div><p class="eyebrow">ALTRE INFORMAZIONI</p><h2>Lingue e interessi</h2></div><p>Italiano madrelingua, inglese C1 e spagnolo B2. Tra i miei interessi ci sono judo e arti marziali, skateboard, moto e auto.</p></div>${sectionNav('profilo')}</section>`;
 }
 function approach() {
-  return `<section class="page">${pageHeader('approccio','Prima il problema.<br>Poi <em>gli strumenti.</em>','Possiamo iniziare da un’attività da automatizzare, un archivio da organizzare o una domanda ancora senza risposta.')}
+  return `<section class="page">${pageHeader('approccio','Metodo di lavoro','Definisco obiettivo, dati disponibili e vincoli operativi prima di scegliere gli strumenti.')}
   <div class="method"><div class="method-steps" role="tablist" aria-label="Il percorso del dato">${steps.map((s,i) => `<button role="tab" id="method-${i}" aria-controls="method-panel" aria-selected="${i === selectedStep}" tabindex="${i === selectedStep ? 0 : -1}" data-step="${i}"><span>0${i+1}</span>${s.title}</button>`).join('')}</div><article id="method-panel" role="tabpanel" aria-labelledby="method-${selectedStep}"></article></div>
-  <div class="principles"><article><span>01</span><h3>Un primo passo concreto.</h3><p>Definire un ambito piccolo e verificabile permette di capire presto se stiamo risolvendo il problema giusto.</p></article><article><span>02</span><h3>Strumenti proporzionati.</h3><p>Uno script può bastare. Un database può essere necessario. La scelta dipende dal processo e da chi lo utilizzerà.</p></article><article><span>03</span><h3>Continuità dopo il rilascio.</h3><p>Controlli, documentazione e passaggio di conoscenze fanno parte del lavoro.</p></article></div>${related(['progetti','contatti'])}</section>`;
+  <div class="principles"><article><span>01</span><h3>Ambito definito</h3><p>Un intervento circoscritto permette di verificare presto se la soluzione risponde al problema.</p></article><article><span>02</span><h3>Strumenti proporzionati</h3><p>Uno script può bastare; in altri casi servono un database o una dashboard. La scelta dipende dal contesto.</p></article><article><span>03</span><h3>Continuità operativa</h3><p>Controlli, documentazione e trasferimento delle informazioni rendono il lavoro gestibile anche dopo il rilascio.</p></article></div>${sectionNav('approccio')}</section>`;
 }
 function projectList() {
-  return `<section class="page">${pageHeader('progetti','Dalle idee<br>al <em>lavoro concreto.</em>','Una selezione di esperienze, dalla raccolta dei dati alla loro gestione in produzione. Ogni scheda racconta il contesto e il mio contributo.')}
-  <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div class="project-number">${p.number}</div><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>${related(['approccio','percorso','contatti'])}</section>`;
+  return `<section class="page">${pageHeader('progetti','Esperienze selezionate','Tre schede tratte dalla tesi, dallo stage in Business Intelligence e dal lavoro su database e infrastrutture. I materiali non pubblici sono indicati nelle singole schede.')}
+  <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div class="project-number">${p.number}</div><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>${sectionNav('progetti')}</section>`;
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail"><div class="page-bar">${backLink('#/progetti','Tutti i progetti')}<span>PROGETTO / ${p.number}</span></div><header class="page-heading"><p class="eyebrow">${p.kind}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><span>01 / CONTESTO</span><h2>Da dove si parte.</h2><p>${p.context}</p></section><section><span>02 / CONTRIBUTO</span><h2>Il mio lavoro.</h2><p>${p.contribution}</p></section><section><span>03 / COSA RACCONTA</span><h2>Il punto di arrivo.</h2><p>${p.output}</p></section></div>${related(['approccio','contatti'])}</article>`;
+  return `<article class="page project-detail"><div class="page-bar">${backLink('#/progetti','Tutti i progetti')}<span>SCHEDA / ${p.number}</span></div><header class="page-heading"><p class="eyebrow">${p.kind}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><span>01</span><h2>Contesto</h2><p>${p.context}</p></section><section><span>02</span><h2>Attività svolte</h2><p>${p.contribution}</p></section><section><span>03</span><h2>Materiali disponibili</h2><p>${p.output}</p></section></div>${sectionNav('progetti')}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -60,13 +63,13 @@ function europeMap() {
   }).join('')}</div>`;
 }
 function journey() {
-  return `<section class="page">${pageHeader('percorso','I luoghi cambiano.<br>Le connessioni <em>restano.</em>','Formazione, esperienze e persone hanno aggiunto prospettive diverse al mio modo di lavorare.')}
-  <div class="journey-layout"><div><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">Seleziona un punto o il suo nome per esplorare la tappa. Norvegia e Svizzera: posizioni indicative del paese. Cartografia: Natural Earth.</span></div></div>
-  <div class="timeline"><h2>Le esperienze, in sequenza.</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox, monitoraggio con checkmk, script SQL e shell, aggiornamenti di sistema. Debian 13, MariaDB, MultiPortal e Cubbit.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle, PostgreSQL, monitoraggio e processi operativi su Linux.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Progetti sociali e culturali, organizzazione di attività e amministrazione Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Analisi dati, classificazione e dashboard BI.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di formazione e vita in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>Percorso in corso, con focus su machine learning, big data e modelli predittivi.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Tesi sul web scraping per analisi di mercato.</p></div></li></ol></div>${related(['profilo','progetti'])}</section>`;
+  return `<section class="page">${pageHeader('percorso','Formazione ed esperienze','Quattro tappe: gli studi a Milano e in Norvegia, il lavoro da remoto per un’azienda svizzera e un soggiorno a Stoccarda.')}
+  <div class="journey-layout"><div><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti di Norvegia e Svizzera indicano posizioni rappresentative dei paesi, non indirizzi precisi. Cartografia: Natural Earth.</span></div></div>
+  <div class="timeline"><h2>Esperienze e formazione</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi dei log, script SQL e shell. Attività su Debian, MariaDB, storage S3-compatibile, documentazione tecnica e sicurezza operativa.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore operativo · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Coordinamento di attività per progetti sociali e culturali, eventi e amministrazione di Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Analisi di dataset aziendali, metodi di classificazione e dashboard con Qlik, Power BI e Tableau.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · UiT The Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di studio in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>In corso. Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Statistica, sistemi informativi e programmazione; tesi sul web scraping di annunci immobiliari.</p></div></li><li><span>2015 — 2016</span><div><h3>Prime esperienze in amministrazione</h3><p>Stage in contabilità e supporto alla consulenza presso LTA Advisory (2016). Stage in contabilità presso TaxiBlu (2015), con Zucchetti e manutenzione di database.</p></div></li><li><span>2012 — 2017</span><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Materie economico-aziendali, contabilità e marketing.</p></div></li></ol></div>${sectionNav('percorso')}</section>`;
 }
 function contact() {
-  return `<section class="page contact-page">${pageHeader('contatti','Contatti e collaborazioni.','Per una proposta o una domanda, puoi scrivermi direttamente via email.')}
-  <div class="contact-layout"><div><a class="email-link" href="mailto:${person.email}">${person.email} ${arrow}</a><p class="muted">Per informazioni sul mio lavoro o proposte di collaborazione.</p><div class="contact-topics"><span>Automazioni</span><span>Database</span><span>Analisi e dashboard</span><span>Collaborazioni</span></div><a class="text-link" href="${person.github}" target="_blank" rel="noopener noreferrer">GitHub ${arrow}</a></div><form id="contact-form"><label for="message">Messaggio (facoltativo)</label><textarea id="message" rows="5" placeholder="Descrivi in breve il contesto o la domanda…">${escapeHTML(contactDraft)}</textarea><button class="button" type="submit">Apri email ${arrow}</button><p class="form-note">Si apre il tuo programma di posta. Nulla viene inviato dal sito.</p><button class="copy-email" type="button">Copia indirizzo email</button><p id="contact-status" role="status"></p></form></div>${related(['approccio','progetti'])}</section>`;
+  return `<section class="page contact-page">${pageHeader('contatti','Contatti e collaborazioni','Per informazioni sul mio lavoro o proposte di collaborazione, puoi scrivermi via email.')}
+  <div class="contact-layout"><div><a class="email-link" href="mailto:${person.email}">${person.email} ${arrow}</a><p><a class="text-link" href="${person.github}" target="_blank" rel="noopener noreferrer">Profilo GitHub ${arrow}</a></p></div><form id="contact-form"><label for="message">Messaggio (facoltativo)</label><textarea id="message" rows="5" placeholder="Descrivi in breve il contesto o la domanda…">${escapeHTML(contactDraft)}</textarea><button class="button" type="submit">Apri email ${arrow}</button><p class="form-note">Si apre il tuo programma di posta. Nulla viene inviato dal sito.</p><button class="copy-email" type="button">Copia indirizzo email</button><p id="contact-status" role="status"></p></form></div>${sectionNav('contatti')}</section>`;
 }
 function setStep(i, focus = false) {
   selectedStep = i;
@@ -74,7 +77,7 @@ function setStep(i, focus = false) {
   const panel = document.querySelector('#method-panel');
   document.querySelectorAll('[data-step]').forEach((b,n)=>{b.setAttribute('aria-selected',String(i===n));b.tabIndex=i===n?0:-1;if(focus&&i===n)b.focus();});
   panel.setAttribute('aria-labelledby',`method-${i}`);
-  panel.innerHTML = `<span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">IL PERCORSO DEL DATO / 0${i+1}</p><h2>${s.short}</h2><p>${s.text}</p><div class="method-output"><span>A COSA PUNTIAMO</span><p>${s.result}</p></div>${chips(s.tags)}`;
+  panel.innerHTML = `<span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><h2>${s.short}</h2><p>${s.text}</p><div class="method-output"><span>ESITO ATTESO</span><p>${s.result}</p></div>${chips(s.tags)}`;
 }
 function setPlace(key) {
   selectedPlace = key;
@@ -132,7 +135,7 @@ function bindPage(route) {
 function render() {
   const route=parseRoute(location.hash);
   mapObserver?.disconnect();
-  const renderers={mappa:home,profilo:profile,approccio:approach,percorso:journey,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}<h1>Questa connessione<br>non esiste ancora.</h1><p>Torna alla mappa per riprendere il percorso.</p></section>`};
+  const renderers={mappa:home,profilo:profile,approccio:approach,percorso:journey,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}<h1>Pagina non trovata</h1><p>Controlla l’indirizzo oppure torna alla mappa.</p></section>`};
   main.innerHTML=renderers[route.page]();
   document.body.dataset.page=route.page;
   const area=areas.find(a=>a.id===route.page);
@@ -144,19 +147,12 @@ function render() {
   else main.focus({preventScroll:true});
   previousRoute=route;
 }
-async function navigate() {
-  if(transitionBusy)return;
-  transitionBusy=true;
-  if(!reducedMotion.matches&&document.startViewTransition){const transition=document.startViewTransition(()=>{render();window.scrollTo(0,0);});try{await transition.finished;}catch{/* navigation still completed */}}
-  else {render();window.scrollTo(0,0);}
-  transitionBusy=false;
-  // A fast Back/Forward during a transition must still reach the latest hash.
-  const current=parseRoute(location.hash);
-  if(current.page!==previousRoute.page||current.item!==previousRoute.item)navigate();
+function navigate() {
+  render();
+  window.scrollTo(0,0);
 }
 indexToggle.addEventListener('click',()=>{index.hidden=!index.hidden;indexToggle.setAttribute('aria-expanded',String(!index.hidden));});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!index.hidden){index.hidden=true;indexToggle.setAttribute('aria-expanded','false');indexToggle.focus();}});
-document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#/"]');if(a){const card=a.closest('.area');if(card){const r=card.getBoundingClientRect();const mr=main.getBoundingClientRect();document.documentElement.style.setProperty('--entry-x',`${r.x+r.width/2-mr.x}px`);document.documentElement.style.setProperty('--entry-y',`${r.y+r.height/2-mr.y}px`);}}});
 document.querySelector('.skip').addEventListener('click',e=>{e.preventDefault();main.focus();});
 window.addEventListener('hashchange',()=>{if(location.hash==='#main'){main.focus();return;}navigate();});
 render();
