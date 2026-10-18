@@ -25,7 +25,9 @@ test('Europe markers stay inside the map and distinguish stays from remote work'
   }
   assert.ok(mapPoint(places.stoccarda.coordinates)[1] < mapPoint(places.milano.coordinates)[1]);
   assert.equal(places.svizzera.locationType, 'remote');
-  assert.equal(places.norvegia.locationType, 'country');
+  assert.equal(places.norvegia.locationType, 'city');
+  assert.match(places.norvegia.text, /Tromsø.*Norvegia/);
+  assert.match(places.svizzera.text, /Zugo.*da remoto/);
   assert.equal(places.stoccarda.locationType, 'stay');
   assert.match(places.stoccarda.dates, /prevista.*31 dicembre 2026/);
 });

@@ -1,5 +1,13 @@
 # Stato del progetto
 
+## Lancio GitHub Pages — 18 ottobre 2026
+
+- Preparato il workflow che su `main` esegue check e build, carica `dist/` e lo pubblica su GitHub Pages. La sorgente Pages va impostata su GitHub Actions prima dell'integrazione della PR.
+- Rimossi `noindex,nofollow` dalla home e dal CV web per il lancio pubblico. Nella mappa Percorso, Norvegia e Svizzera ora indicano rispettivamente Tromsø e Zugo; Zugo resta esplicitamente lavoro da remoto, non sede personale. Aggiornato anche il CV web.
+- Creata la revisione critica `docs/FREELANCE_REVIEW.md` con priorità su posizionamento, prove del lavoro, ripetizioni e contatto.
+- Verifiche locali: `npm.cmd run check` (5 test), `npm.cmd run build` e `git diff --check` superati; nel browser le due nuove tappe si selezionano e i nomi sulla mappa restano entro i bordi a 320, 390 e 1280 px, senza overflow orizzontale. Interazione da tastiera sulla pagina condivisa in background non confermata in questa sessione; dispositivi fisici e Safari non verificati.
+- Prossimo passo immediato: integrare la PR dopo il controllo CI, verificare il deploy e l'URL pubblico. La preview Sites resta separata.
+
 ## Rimozione del sito legacy — 18 ottobre 2026
 
 - Rimossi dal branch `feat/freelance-portfolio` il vecchio `index.html` alla radice, `cv_style.css`, undici PNG usati solo dal sito legacy e `coding.png`, già privo di riferimenti (340.395 byte complessivi). I file restano recuperabili dalla cronologia Git; `main` non è stato modificato.

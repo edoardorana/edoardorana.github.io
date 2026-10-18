@@ -7,7 +7,7 @@ export const person = {
 export const areas = [
   { id: 'profilo', number: '01', title: 'Profilo', note: 'Esperienza e competenze', word: 'ESPERIENZA', preview: 'Infrastrutture Linux, database e analisi dati, con una precedente formazione in amministrazione e contabilità.' },
   { id: 'approccio', number: '02', title: 'Approccio', note: 'Metodo di lavoro', word: 'METODO', preview: 'Definizione del problema, verifica dei dati disponibili e scelta di strumenti proporzionati al contesto.' },
-  { id: 'percorso', number: '03', title: 'Percorso', note: 'Formazione e lavoro', word: 'TAPPE', preview: 'Studi a Milano e in Norvegia, lavoro da remoto per un’azienda svizzera e soggiorno a Stoccarda.' },
+  { id: 'percorso', number: '03', title: 'Percorso', note: 'Formazione e lavoro', word: 'TAPPE', preview: 'Studi a Milano e Tromsø, lavoro da remoto con un’azienda svizzera a Zugo e soggiorno a Stoccarda.' },
   { id: 'progetti', number: '04', title: 'Progetti', note: 'Esperienze selezionate', word: 'SCHEDE', preview: 'Tre schede su raccolta dati, Business Intelligence e amministrazione di database.' },
   { id: 'contatti', number: '05', title: 'Collaborazioni', note: 'Contatti', word: 'CONTATTI', preview: 'Un indirizzo email diretto per proposte, domande e possibili collaborazioni.' },
 ];
@@ -25,8 +25,8 @@ export const projects = [
 ];
 export const places = {
   milano: { name: 'Milano', label: 'FORMAZIONE', coordinates: [9.19,45.4642], mapLabel: [420,590], locationType: 'city', text: 'Laurea in Statistica e Gestione delle Informazioni a Milano-Bicocca. Il percorso magistrale in Data Science è in corso.', skills: ['Statistica', 'Python / R', 'Analisi'], dates: '2017–2021 · Laurea triennale\nDal 2021 · Magistrale in corso' },
-  norvegia: { name: 'Norvegia', label: 'ERASMUS', coordinates: [12,65], mapLabel: [395,225], locationType: 'country', text: 'Periodo Erasmus presso UiT The Arctic University of Norway, con un anno di studio all’estero.', skills: ['Erasmus', 'Studio all’estero'], dates: 'Agosto 2021 – agosto 2022' },
-  svizzera: { name: 'Svizzera', label: 'LAVORO DA REMOTO', coordinates: [8.23,46.82], mapLabel: [120,525], locationType: 'remote', text: 'Broway SA è un’azienda svizzera per cui lavoro da remoto dall’ottobre 2024. Il punto sulla mappa indica il paese dell’azienda, non una sede di lavoro.', skills: ['Database', 'Monitoraggio', 'Recovery'], dates: 'Ottobre 2024 – oggi · da remoto' },
+  norvegia: { name: 'Tromsø', label: 'NORVEGIA · ERASMUS', coordinates: [18.9553,69.6492], mapLabel: [395,225], locationType: 'city', text: 'Ho svolto il periodo Erasmus a Tromsø, in Norvegia, presso UiT The Arctic University of Norway. Il punto indica la città, non il campus o un indirizzo preciso.', skills: ['Erasmus', 'Studio all’estero'], dates: 'Agosto 2021 – agosto 2022' },
+  svizzera: { name: 'Zugo', label: 'SVIZZERA · DA REMOTO', coordinates: [8.5155,47.1662], mapLabel: [120,525], locationType: 'remote', text: 'Zugo è il riferimento geografico dell’azienda svizzera Broway SA, con cui lavoro da remoto dall’ottobre 2024. Il punto non indica una mia sede di lavoro.', skills: ['Database', 'Monitoraggio', 'Recovery'], dates: 'Ottobre 2024 – oggi · da remoto' },
   stoccarda: { name: 'Stoccarda', label: 'SOGGIORNO IN GERMANIA', coordinates: [9.1829,48.7758], mapLabel: [420,455], locationType: 'stay', text: 'Vivo a Stoccarda da inizio ottobre 2026, con una permanenza prevista fino alla fine dell’anno. Questa tappa riguarda il soggiorno, non un nuovo impiego.', skills: ['Soggiorno', 'Germania'], dates: 'Ottobre 2026 – in corso\nFine soggiorno prevista: circa 31 dicembre 2026' },
 };
 export function parseRoute(hash = '') {

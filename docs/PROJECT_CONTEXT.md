@@ -31,7 +31,7 @@ Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'
 - Esperienze iniziali: LTA Advisory, stage in contabilità e supporto alla consulenza (2016); TaxiBlu, stage in contabilità, Zucchetti e manutenzione database (2015). Omettere il numero incluso nel nome esteso dell'azienda, per non pubblicare un telefono.
 - Diploma in Amministrazione, Finanza e Marketing, Istituto San Vincenzo / Regina Mundi, 2012–2017.
 - Milano-Bicocca: laurea in Statistica e Gestione delle Informazioni 2017–2021; magistrale Data Science dal 2021, in corso.
-- Erasmus UiT The Arctic University of Norway: agosto 2021 – agosto 2022. Campus esatto non confermato; non inventare coordinate puntuali.
+- Erasmus UiT The Arctic University of Norway a Tromsø: agosto 2021 – agosto 2022. Città confermata da Edoardo il 18 ottobre 2026; campus e indirizzo esatti non confermati.
 - EDB Postgres Essentials v17, 2025.
 - Italiano madrelingua; inglese C1; spagnolo B2.
 - Email: edoardorana@outlook.com. GitHub: https://github.com/edoardorana.
@@ -41,7 +41,7 @@ Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'
 
 Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
 
-Il vecchio sito alla radice è stato rimosso dal branch `feat/freelance-portfolio` su richiesta di Edoardo; il portfolio attivo resta in `proposal/` e la build in `dist/`. Prima di integrare il branch su una sorgente GitHub Pages basata sulla radice, configurare la pubblicazione di `dist/`. Non modificare `main` durante l'iterazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
+Il vecchio sito alla radice è stato rimosso dal branch `feat/freelance-portfolio` su richiesta di Edoardo. Per il lancio pubblico richiesto il 18 ottobre 2026, il workflow GitHub Actions esegue controlli, genera `dist/` da `proposal/` e pubblica l'artefatto su GitHub Pages dopo un push su `main`. Il branch di lavoro va integrato solo dopo aver configurato Pages per i workflow. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
 
 ## Lavorare da VS Code e con più assistenti
 
@@ -73,3 +73,8 @@ Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico domi
 - Preferire titoli descrittivi, fatti documentati e frasi dirette. Non ripetere il nome all'inizio della biografia, non usare slogan generici o inviti al contatto ridondanti.
 - Navigazione di fondo: `00 Mappa`, sezione precedente e successiva secondo l'ordine `01 Profilo`, `02 Approccio`, `03 Percorso`, `04 Progetti`, `05 Collaborazioni`. Alla prima e all'ultima sezione non duplicare la mappa come link precedente/successivo. Le schede progetto mantengono il contesto della sezione 04 e un ritorno all'elenco.
 - Il CV web deve distinguere Linux Administrator (da maggio 2025) da Database Administrator (ottobre 2024 – maggio 2025). La magistrale resta in corso. Non presentare la Svizzera come sede fisica né Stoccarda come nuovo impiego.
+
+## Chiarimenti geografici del 18 ottobre 2026
+
+- Norvegia: Tromsø è la città del periodo Erasmus. Il punto sulla mappa è rappresentativo della città, non del campus.
+- Svizzera: Zugo è il riferimento geografico dell'azienda con cui Edoardo lavora da remoto; non indica una sua sede di lavoro. Il punto sulla mappa è rappresentativo della città.

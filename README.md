@@ -35,10 +35,10 @@ Il contatto usa il programma di posta del visitatore. La mappa geografica è un 
 
 ## Versioni e pubblicazione
 
-Il portfolio è sul branch `feat/freelance-portfolio`, PR #1. Il vecchio sito alla radice e le sue immagini sono stati rimossi da questo branch; `main` non viene modificato da questa pulizia.
+Sito pubblico: https://edoardorana.github.io/ . I sorgenti sono in `proposal/`; il workflow [Portfolio checks and Pages](.github/workflows/portfolio-checks.yml) esegue i controlli, genera `dist/` e pubblica la build su GitHub Pages quando il codice viene integrato in `main`. La vecchia pagina alla radice non è più la sorgente del sito.
 
 Anteprima privata: https://edo-data-studio.loyalsage32.chatgpt.site
 
-Il push al branch aggiorna il codice e i controlli GitHub, non la preview Sites. La sincronizzazione con Sites è esplicita. Prima di integrare questo branch in una pubblicazione GitHub Pages dalla radice, configurare il deploy di `dist/`: il branch non contiene più un `index.html` alla radice.
+Il push al branch di lavoro aggiorna il codice e i controlli GitHub; il deploy pubblico avviene solo da `main`. La preview Sites non viene sincronizzata automaticamente e va aggiornata separatamente.
 
-Il sito è una versione di lavoro: prima del lancio pubblico verificare la checklist browser in `docs/SETUP_VSCODE.md` e rimuovere `noindex` quando la pubblicazione pubblica è intenzionale.
+Il sito è pubblicato come versione in evoluzione. La [revisione critica](docs/FREELANCE_REVIEW.md) raccoglie le priorità di miglioramento; continuare a verificare le route e la resa sui dispositivi prima delle modifiche future.
