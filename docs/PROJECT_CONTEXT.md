@@ -104,3 +104,4 @@ Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico domi
 - Con mouse a riposo ogni colonna mostra soltanto il titolo; non ci sono sottotitoli né l'etichetta `Esplora`.
 - Al passaggio del mouse o con focus da tastiera compare una sessione terminale allineata a sinistra: `~/area > cat readme.md`, una breve descrizione e un nuovo `~/area >` con il solo cursore finale lampeggiante.
 - Sui dispositivi senza hover tutte le sessioni sono visibili, con cursore finale statico: il primo tocco apre la sezione. Le descrizioni restano dentro le rispettive colonne anche a 320 px.
+- Le intestazioni usano un percorso terminale sopra il titolo (`~/home`, `~/profilo` e così via), con la descrizione introduttiva sotto il titolo. Le schede progetto mostrano il percorso completo della route.
