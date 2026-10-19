@@ -98,26 +98,20 @@ h3 { font-size: 21px; letter-spacing: -.3px; }
 .prose h2 { font-size: 30px; }
 .prose p { margin-bottom: 17px; color: var(--muted); }
 .prose .button { margin-top: 3px; }
-.skills-terminal { margin-top: 48px; overflow: hidden; background: #171b18; border: 1px solid #303733; box-shadow: 0 18px 45px #22272416; color: #dce5dd; }
-.terminal-bar { position: relative; display: flex; align-items: center; justify-content: center; min-height: 38px; padding: 8px 82px; background: #2b302d; border-bottom: 1px solid #3a423d; color: #b8c0ba; font: 10px/1.4 var(--mono); }
-.terminal-controls { position: absolute; left: 13px; display: flex; gap: 7px; }
-.terminal-controls i { display: block; width: 10px; height: 10px; border-radius: 50%; background: #6d766f; }
-.terminal-controls i:first-child { background: #a75b65; }
-.terminal-controls i:nth-child(2) { background: #ad8950; }
-.terminal-controls i:last-child { background: #668b6e; }
-.terminal-screen { padding: 23px 25px 20px; font-family: var(--mono); }
-.terminal-command { margin: 0; color: #e7ece8; font: 12px/1.55 var(--mono); }
-.terminal-command span { color: #8fc49d; }
-.terminal-command b { color: #82a9c8; font-weight: 500; }
+.skills-terminal { margin-top: 48px; background: var(--soft); border: 1px solid var(--line); color: var(--ink); }
+.terminal-screen { padding: 25px 26px 22px; }
+.terminal-command { margin: 0; color: var(--ink); font: 12px/1.55 var(--mono); }
+.terminal-command span { color: var(--accent); }
+.terminal-command b { color: var(--wine); font-weight: 500; }
 .terminal-command-final { margin-top: 24px; }
-.terminal-command-final i { display: inline-block; width: 7px; height: 1.15em; margin-left: 2px; vertical-align: -.2em; background: #dce5dd; animation: prompt-blink 1.05s steps(1, end) infinite; }
+.terminal-command-final i { display: inline-block; width: 7px; height: 1.15em; margin-left: 2px; vertical-align: -.2em; background: var(--ink); animation: prompt-blink 1.05s steps(1, end) infinite; }
 .skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.skills-grid article { min-width: 0; margin-top: 22px; padding: 0 18px; border-left: 1px solid #3a423d; }
+.skills-grid article { min-width: 0; margin-top: 22px; padding: 0 18px; border-left: 1px solid var(--line); }
 .skills-grid article:first-child { padding-left: 0; border-left: 0; }
 .skills-grid article:last-child { padding-right: 0; }
-.skills-grid .terminal-path { margin-bottom: 10px; color: #8fc49d; font: 10px/1.5 var(--mono); overflow-wrap: anywhere; }
-.skills-grid h3 { margin: 0 0 9px; color: #f4f6f4; font: 600 15px/1.35 var(--mono); letter-spacing: 0; }
-.skills-grid article > p:last-child { margin: 0; color: #aeb8b0; font: 11px/1.65 var(--mono); }
+.skills-grid .terminal-path { margin-bottom: 10px; color: var(--accent); font: 10px/1.5 var(--mono); overflow-wrap: anywhere; }
+.skills-grid h3 { margin: 0 0 9px; color: var(--ink); font: 600 15px/1.35 var(--mono); letter-spacing: 0; }
+.skills-grid article > p:last-child { margin: 0; color: var(--muted); font: 11px/1.65 var(--mono); }
 .human-note { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 45px; padding: 24px 0; border-top: 1px solid var(--line); }
 .human-note h2 { margin-bottom: 0; }
 .human-note > p { align-self: center; margin: 0; color: var(--muted); }
@@ -308,7 +302,7 @@ textarea { display: block; width: 100%; min-height: 120px; padding: 11px; border
   .portrait-type { min-height: 220px; }
   .skills-grid, .principles, .project-story { grid-template-columns: 1fr; }
   .principles, .project-story { gap: 20px; }
-  .skills-grid article, .skills-grid article:nth-child(3) { padding: 0 0 18px; border-left: 0; border-bottom: 1px solid #3a423d; }
+  .skills-grid article, .skills-grid article:nth-child(3) { padding: 0 0 18px; border-left: 0; border-bottom: 1px solid var(--line); }
   .skills-grid article:last-child { padding-bottom: 0; border-bottom: 0; }
   .lab-filter-grid, .lab-kpis, .lab-charts, .lab-zone-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lab-chart { grid-column: 1 / -1; }

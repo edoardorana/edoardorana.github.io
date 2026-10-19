@@ -17,7 +17,7 @@ export function resolveAsset(requestPath, root = defaultRoot) {
   if (!resolved.startsWith(path.resolve(root) + path.sep)) return null;
   return { file: resolved, type: mime[path.extname(filename)] };
 }
-export function createPortfolioServer(root = defaultRoot) {
+function createPortfolioServer(root = defaultRoot) {
   return createServer(async (request, response) => {
     if (!['GET', 'HEAD'].includes(request.method)) { response.writeHead(405, { Allow: 'GET, HEAD' }); response.end(); return; }
     const asset = resolveAsset(request.url, root);

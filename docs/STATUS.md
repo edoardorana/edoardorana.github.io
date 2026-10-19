@@ -2,12 +2,13 @@
 
 Aggiornato il 19 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
-## Terminale competenze e navigazione — 19 ottobre 2026
+## Pulizia del progetto e terminale competenze — 19 ottobre 2026
 
 - Rimossa dalla testata la ripetizione visibile di `Edoardo Rana`: la firma mostra `Edo.` e la sola descrizione `SISTEMI E DATI`.
-- La sintesi delle competenze nel Profilo è ora una sessione terminale completa: barra, comando `skills --overview`, output monospaziato in quattro gruppi e prompt finale lampeggiante. Su mobile i gruppi scorrono in una sola colonna; con movimento ridotto il cursore resta statico.
+- La sintesi delle competenze nel Profilo mantiene comando `skills --overview`, output monospaziato in quattro gruppi e prompt finale lampeggiante, ma non simula più la barra di una finestra. Lo sfondo usa il grigio chiaro del sito e le linee della stessa palette; su mobile i gruppi scorrono in una sola colonna e con movimento ridotto il cursore resta statico.
 - La navigazione inferiore usa percorsi terminale (`~/profilo`, `~/home`, `~/progetti` e così via) mantenendo frecce direzionali e nomi completi accessibili. Lo stesso componente è presente nel Laboratorio e nelle schede progetto.
-- Verifica browser locale a 1280, 390 e 320 px: terminale e navigazione senza overflow orizzontale; percorsi controllati su Profilo, Approccio, Progetti, una scheda, Laboratorio e Collaborazioni. Verificata anche l'apertura da tastiera della sezione successiva.
+- Controllati tutti i file tracciati, riferimenti agli asset, moduli esportati, variabili e classi CSS. Plotly Basic, dataset sintetico, generatore, mappa, CV e documentazione sono tutti referenziati o necessari al flusso di sviluppo; non sono stati eliminati. Rimossi il markup e sei regole CSS della barra del terminale; resa interna una funzione del server locale che non costituisce API pubblica.
+- Browser locale a 1280, 390 e 320 px: tutte le route, alias, tre schede progetto, Laboratorio, pagina 404 e CV senza overflow o errori JavaScript. Verificata anche la navigazione inferiore da tastiera. `npm.cmd run check` superato (11 test), `npm.cmd run build` superato e `git diff --check` senza errori.
 
 ## Percorsi nelle intestazioni — 19 ottobre 2026
 
