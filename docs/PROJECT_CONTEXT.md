@@ -101,6 +101,6 @@ Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico domi
 
 ## Contenuto progressivo della Home del 19 ottobre 2026
 
-- A riposo ogni colonna mostra soltanto il titolo; non ci sono sottotitoli né l'etichetta `Esplora`.
+- Con mouse a riposo ogni colonna mostra soltanto il titolo; non ci sono sottotitoli né l'etichetta `Esplora`.
 - Al passaggio del mouse o con focus da tastiera compare una sessione terminale allineata a sinistra: `~/area > cat readme.md`, una breve descrizione e un nuovo `~/area >` con il solo cursore finale lampeggiante.
-- Il contenuto rivelato resta dentro la colonna anche nella griglia mobile; il verde tenue segnala chiaramente lo stato attivo.
+- Sui dispositivi senza hover tutte le sessioni sono visibili, con cursore finale statico: il primo tocco apre la sezione. Le descrizioni restano dentro le rispettive colonne anche a 320 px.

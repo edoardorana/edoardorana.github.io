@@ -30,7 +30,7 @@ function sectionNav(id) {
   return `<nav class="section-nav" aria-label="Navigazione tra le sezioni"><div class="section-nav-prev">${previous ? link(previous, 'Precedente', '←') : ''}</div><a class="section-nav-home" href="#/">Home</a><div class="section-nav-next">${next ? link(next, 'Successiva', '→') : ''}</div></nav>`;
 }
 function home() {
-  return `<section class="home"><div class="home-intro"><div><p class="eyebrow">EDOARDO RANA / PORTFOLIO</p><h1>Sistemi e dati, con metodo.</h1></div><p>Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.</p></div>
+  return `<section class="home"><div class="home-intro"><div><p class="eyebrow">EDOARDO RANA / PORTFOLIO</p><h1>Sistemi Linux, database e analisi.</h1></div><p>Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.</p></div>
   <div class="atlas" aria-label="Le quattro aree del portfolio">
   ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><strong class="area-title">${area.title}</strong><span class="area-details"><span class="area-terminal"><span class="area-command-line" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-static">&gt;</span> <span class="area-command-name">cat readme.md</span></span><span class="area-command-copy">${area.preview}</span><span class="area-command-line area-command-wait" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-cursor">&gt;</span></span></span></span></a>`).join('')}</div></section>`;
 }
