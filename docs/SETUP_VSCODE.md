@@ -21,24 +21,24 @@ code --version
 
 Se `code` non viene riconosciuto, usa File → Apri cartella in VS Code. Non serve modificare l'ExecutionPolicy di PowerShell: se `npm` viene bloccato, usa `npm.cmd`.
 
-## 2. Clona il branch di lavoro
+## 2. Clona il repository
 
 Esegui i comandi dalla cartella in cui tieni i progetti. Se hai già un clone, passa alla sezione successiva.
 
 ```powershell
-git clone --branch feat/freelance-portfolio https://github.com/edoardorana/edoardorana.github.io.git
+git clone https://github.com/edoardorana/edoardorana.github.io.git
 cd edoardorana.github.io
 code portfolio.code-workspace
 ```
 
-Alternativa visuale: `Ctrl+Shift+P` → `Git: Clone`, inserisci l'URL, apri la cartella e seleziona il branch `feat/freelance-portfolio` dalla barra inferiore. Apri quindi `portfolio.code-workspace`.
+Alternativa visuale: `Ctrl+Shift+P` → `Git: Clone`, inserisci l'URL, apri la cartella e poi `portfolio.code-workspace`.
 
 Se il repository è già sul computer, aprilo e controlla prima eventuali modifiche locali:
 
 ```powershell
 git status
 git fetch origin
-git switch feat/freelance-portfolio
+git switch main
 git pull --ff-only
 ```
 
@@ -93,9 +93,9 @@ npm.cmd run build
 git diff
 ```
 
-Usa il pannello Controllo codice sorgente per selezionare esattamente i file da includere e poi crea un commit. Non usare stage indiscriminato se nel progetto hai aggiunto documenti privati. Infine fai Push. La PR #1 si aggiorna col branch; non viene unita automaticamente.
+Usa il pannello Controllo codice sorgente per selezionare esattamente i file da includere e poi crea un commit. Non usare stage indiscriminato se nel progetto hai aggiunto documenti privati. Fai push del branch di lavoro, apri una pull request verso `main` e integra solo dopo i controlli. Il workflow pubblica GitHub Pages dai push su `main`.
 
-La preview Sites si aggiorna separatamente, su richiesta dalla conversazione. Il solo push GitHub non aggiorna quella preview. Il workflow aggiunto esegue controlli e build, non pubblica.
+La preview Sites si aggiorna separatamente, su richiesta dalla conversazione. Il push GitHub non aggiorna quella preview.
 
 ## Verifica manuale consigliata
 
@@ -103,7 +103,7 @@ La preview Sites si aggiorna separatamente, su richiesta dalla conversazione. Il
 - Verifica 320, 390, 768 e 1440 px; nessun testo tagliato o scorrimento orizzontale.
 - Usa Tab/Invio; prova le frecce nelle fasi dell'approccio e Escape nell'indice.
 - Prova movimento ridotto e JavaScript disattivato (rimangono CV e email).
-- Carica OpenStreetMap e cambia luogo; se il servizio esterno non risponde, i testi del percorso restano disponibili.
+- Cambia luogo nella mappa europea locale e verifica che testo, punto e selezione restino sincronizzati.
 - Prepara una email senza inviarla; verifica indirizzo e testo nel client.
 
 ## Riferimenti ufficiali verificati l'11 ottobre 2026

@@ -3,7 +3,7 @@ import { readFile, realpath } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 const defaultRoot = fileURLToPath(new URL('../proposal/', import.meta.url));
-const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml' };
+const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.json': 'application/json; charset=utf-8', '.txt': 'text/plain; charset=utf-8' };
 export function resolveAsset(requestPath, root = defaultRoot) {
   let pathname;
   try { pathname = decodeURIComponent(requestPath.split('?')[0]); } catch { return null; }
@@ -11,6 +11,7 @@ export function resolveAsset(requestPath, root = defaultRoot) {
   const segments = pathname.split('/').filter(Boolean);
   if (segments.some(segment => segment.startsWith('.'))) return null;
   const filename = pathname === '/' ? 'index.html' : segments.join('/');
+  if (path.extname(filename) === '.txt' && filename !== 'lab/vendor/PLOTLY-LICENSE.txt') return null;
   if (!mime[path.extname(filename)]) return null;
   const resolved = path.resolve(root, filename);
   if (!resolved.startsWith(path.resolve(root) + path.sep)) return null;

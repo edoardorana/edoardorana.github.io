@@ -8,9 +8,9 @@ Portfolio personale di Edoardo Rana per presentarsi, proporre collaborazioni e s
 
 La prima landing page è stata valutata circa 6–6,5/10: messaggio e struttura dei contenuti corretti, forma troppo standard. Il concept interattivo successivo è stato apprezzato. La direzione scelta è **una mappa con aree da esplorare**, sobria e minimale, con sezioni in cui entrare e collegamenti significativi.
 
-- Cinque aree: Profilo, Approccio, Percorso, Progetti, Collaboriamo.
-- La rete di navigazione è distinta dalla mappa geografica nel Percorso.
-- Ogni sezione ha un URL condivisibile e un ritorno alla mappa.
+- Quattro aree visibili: Profilo, Approccio, Progetti, Collaborazioni. Profilo comprende anche luoghi, formazione e cronologia prima raccolti in Percorso.
+- La griglia di navigazione è distinta dalla mappa geografica inclusa nel Profilo.
+- Ogni sezione ha un URL condivisibile e un ritorno alla Home.
 - Tono personale in prima persona, comprensibile a potenziali clienti non tecnici.
 - Riferimento editoriale: https://www.michelesaba.dev/ — chiarezza, sobrietà e presenza della persona. Non copiarne testi, identità o promesse.
 - Evitare reti instabili con molti pallini in movimento, ambienti 3D pesanti e animazioni decorative continue.
@@ -39,7 +39,7 @@ Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'
 
 ## Architettura
 
-Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
+Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. Il laboratorio in `proposal/lab/` usa dati sintetici e una copia locale di Plotly per i grafici, senza dipendenze npm. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
 
 Il vecchio sito alla radice è stato rimosso su richiesta di Edoardo. Il portfolio a mappa è online su https://edoardorana.github.io/ dal 18 ottobre 2026: la PR #1 è stata integrata in `main` e la sorgente Pages è GitHub Actions. Il workflow esegue controlli, genera `dist/` da `proposal/` e pubblica l'artefatto dopo i push pertinenti su `main`. Per le prossime migliorie usare branch e revisione prima dell'integrazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
 
@@ -64,8 +64,8 @@ Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico domi
 
 - La versione a card colorate e slogan è stata scartata. Riferimento attuale: sobrietà tipografica del CV web, palette quasi monocromatica, bordi leggeri e spazi ben distribuiti.
 - Firma in testata: `Edo.`; nome completo e descrizione sintetica `Sistemi e dati`. Menu con linee, senza pulsante di contatto separato.
-- La quinta area è `Collaborazioni` (route tecnica invariata: `#/contatti`). Tono di contatto neutro, niente inviti commerciali forzati. Email accessibile anche dal footer.
-- Home con cinque nodi e anteprima della sezione al passaggio del mouse o con focus da tastiera. Su mobile la mappa diventa una griglia leggibile. Evitare di ripristinare slogan, grafiche decorative o istruzioni ridondanti sulla mappa senza confronto con Edoardo.
+- L'area `Collaborazioni` usa la route tecnica `#/contatti`. Tono di contatto neutro, niente inviti commerciali forzati. Email accessibile anche dal footer.
+- Home con quattro colonne affiancate su desktop e griglia 2 × 2 su mobile. Nessuna anteprima centrale o linea di collegamento. Evitare di ripristinare slogan, grafiche decorative o istruzioni ridondanti senza confronto con Edoardo.
 
 ## Revisione editoriale del 16 ottobre 2026
 
@@ -78,3 +78,29 @@ Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico domi
 
 - Norvegia: Tromsø è la città del periodo Erasmus. Il punto sulla mappa è rappresentativo della città, non del campus.
 - Svizzera: Zugo è il riferimento geografico dell'azienda con cui Edoardo lavora da remoto; non indica una sua sede di lavoro. Il punto sulla mappa è rappresentativo della città.
+
+## Revisione della navigazione del 18 ottobre 2026
+
+- La pagina iniziale si chiama `Home` nell'interfaccia; la route tecnica interna può restare `mappa`.
+- I quattro box della Home non mostrano numeri né frecce diagonali. La navigazione in fondo alle sezioni usa solo Home, precedente e successiva con il nome del capitolo, senza numerazione.
+- Le pagine interne non mostrano più la barra `Sezione XX/05`: il titolo principale coincide con il nome del capitolo.
+- In Approccio i cinque tab restano invariati e il pannello aggiunge frecce laterali cliccabili per rendere più evidente la sequenza.
+
+## Accorpamento Profilo e Percorso del 18 ottobre 2026
+
+- Percorso non è più una sezione visibile: mappa geografica, selettore dei luoghi e cronologia sono inclusi in Profilo.
+- La Home e il menu espongono quattro sezioni. La vecchia route `#/percorso` resta disponibile come alias di Profilo per non interrompere link già condivisi.
+- Home usa quattro colonne su desktop e una griglia 2 × 2 sotto gli 820 px, senza box centrale né rami.
+- Nella navigazione a fondo pagina frecce, etichette e nomi delle sezioni usano la stessa famiglia e dimensione tipografica.
+
+## Colonne della Home del 18 ottobre 2026
+
+- Le quattro aree formano un'unica fascia editoriale: colonne senza spazio tra loro, separate da linee verticali sottili.
+- Hover e focus usano il verde tenue già presente nel progetto e una linea superiore verde. Nessun numero o freccia diagonale.
+- Sotto gli 820 px le colonne diventano una griglia 2 × 2 per preservare la leggibilità.
+
+## Contenuto progressivo della Home del 19 ottobre 2026
+
+- A riposo ogni colonna mostra soltanto il titolo; non ci sono sottotitoli né l'etichetta `Esplora`.
+- Al passaggio del mouse o con focus da tastiera compare una sessione terminale allineata a sinistra: `~/area > cat readme.md`, una breve descrizione e un nuovo `~/area >` con il solo cursore finale lampeggiante.
+- Il contenuto rivelato resta dentro la colonna anche nella griglia mobile; il verde tenue segnala chiaramente lo stato attivo.

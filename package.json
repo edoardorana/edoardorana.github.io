@@ -3,12 +3,12 @@
   "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Portfolio personale a mappa — Edoardo Rana",
+  "description": "Portfolio personale — Edoardo Rana",
   "engines": { "node": ">=22" },
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check proposal/script.js && node --check proposal/data.mjs && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --test tests/*.test.mjs"
+    "check": "node --check proposal/script.js && node --check proposal/data.mjs && node --check proposal/lab/data.mjs && node --check proposal/lab/metrics.mjs && node --check proposal/lab/charts.mjs && node --check proposal/lab/page.mjs && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --test tests/*.test.mjs"
   }
 }
