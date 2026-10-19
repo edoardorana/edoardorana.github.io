@@ -7,7 +7,7 @@ const euro = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'
 const decimal = new Intl.NumberFormat('it-IT', { maximumFractionDigits: 1 });
 const readableDate = value => new Intl.DateTimeFormat('it-IT', { timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
 
-const template = (backHref, backText) => `
+const template = (backHref, backText, navigationHTML) => `
   <section class="page lab-page">
     <a class="back-link" href="${backHref}"><span aria-hidden="true">←</span> ${backText}</a>
     <header class="page-heading lab-heading">
@@ -61,6 +61,7 @@ const template = (backHref, backText) => `
       <details class="lab-methodology"><summary>Come leggere questa demo</summary><div class="lab-method-copy"></div></details>
       <p class="lab-attribution">Grafici interattivi: <a href="https://plotly.com/javascript/" target="_blank" rel="noopener noreferrer">Plotly.js</a> (MIT).</p>
     </div>
+    ${navigationHTML}
   </section>`;
 
 function fillOptions(select, values) {
@@ -78,8 +79,8 @@ function tableCell(value) {
   return cell;
 }
 
-export function mountLab(container, { backHref = '#/progetti', backText = 'Torna ai progetti', signal, isCurrent = () => true, fetcher = fetch } = {}) {
-  container.innerHTML = template(backHref, backText);
+export function mountLab(container, { backHref = '#/progetti', backText = 'Torna ai progetti', navigationHTML = '', signal, isCurrent = () => true, fetcher = fetch } = {}) {
+  container.innerHTML = template(backHref, backText, navigationHTML);
   const section = container.querySelector('.lab-page');
   const content = section.querySelector('.lab-content');
   const form = section.querySelector('.lab-filters');
