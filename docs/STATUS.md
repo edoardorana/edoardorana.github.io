@@ -8,6 +8,7 @@ Aggiornato il 19 ottobre 2026. Le note precedenti sono state condensate; i commi
 - La descrizione introduttiva rimane sotto il titolo. I percorsi condividono colore, carattere e spaziatura delle altre etichette in stile terminale.
 - Browser locale a 1280, 390 e 320 px: percorsi e disposizione verificati su tutte le route, comprese le schede e la pagina non trovata; nessun overflow orizzontale o errore JavaScript.
 - Verificati apertura con Tab/Invio, Indietro e tocco singolo su Progetti. `npm.cmd run check` superato (11 test), `npm.cmd run build` superato e `git diff --check` senza errori.
+- La PR #4 è stata integrata in `main` (commit `185d0f5`); nel run GitHub Actions `39266696646` i job `check` e `deploy` sono riusciti. Sul sito pubblico verificati i percorsi di Home, sezioni, scheda progetto e Laboratorio a larghezza mobile.
 
 ## Revisione Home e testi introduttivi — 19 ottobre 2026
 
