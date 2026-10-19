@@ -9,6 +9,7 @@ Aggiornato il 19 ottobre 2026. Le note precedenti sono state condensate; i commi
 - La navigazione inferiore usa percorsi terminale (`~/profilo`, `~/home`, `~/progetti` e così via) mantenendo frecce direzionali e nomi completi accessibili. Lo stesso componente è presente nel Laboratorio e nelle schede progetto.
 - Controllati tutti i file tracciati, riferimenti agli asset, moduli esportati, variabili e classi CSS. Plotly Basic, dataset sintetico, generatore, mappa, CV e documentazione sono tutti referenziati o necessari al flusso di sviluppo; non sono stati eliminati. Rimossi il markup e sei regole CSS della barra del terminale; resa interna una funzione del server locale che non costituisce API pubblica.
 - Browser locale a 1280, 390 e 320 px: tutte le route, alias, tre schede progetto, Laboratorio, pagina 404 e CV senza overflow o errori JavaScript. Verificata anche la navigazione inferiore da tastiera. `npm.cmd run check` superato (11 test), `npm.cmd run build` superato e `git diff --check` senza errori.
+- La PR #6 è stata integrata in `main` (commit `3473377`); nel run GitHub Actions `39286786908` i job `check` e `deploy` sono riusciti. Sugli asset pubblici verificati assenza della barra e uso dello sfondo chiaro; una scheda già aperta può mostrare temporaneamente gli asset precedenti finché la cache non viene aggiornata.
 
 ## Percorsi nelle intestazioni — 19 ottobre 2026
 
