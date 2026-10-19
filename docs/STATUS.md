@@ -2,6 +2,13 @@
 
 Aggiornato il 19 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Terminale competenze e navigazione — 19 ottobre 2026
+
+- Rimossa dalla testata la ripetizione visibile di `Edoardo Rana`: la firma mostra `Edo.` e la sola descrizione `SISTEMI E DATI`.
+- La sintesi delle competenze nel Profilo è ora una sessione terminale completa: barra, comando `skills --overview`, output monospaziato in quattro gruppi e prompt finale lampeggiante. Su mobile i gruppi scorrono in una sola colonna; con movimento ridotto il cursore resta statico.
+- La navigazione inferiore usa percorsi terminale (`~/profilo`, `~/home`, `~/progetti` e così via) mantenendo frecce direzionali e nomi completi accessibili. Lo stesso componente è presente nel Laboratorio e nelle schede progetto.
+- Verifica browser locale a 1280, 390 e 320 px: terminale e navigazione senza overflow orizzontale; percorsi controllati su Profilo, Approccio, Progetti, una scheda, Laboratorio e Collaborazioni. Verificata anche l'apertura da tastiera della sezione successiva.
+
 ## Percorsi nelle intestazioni — 19 ottobre 2026
 
 - Sostituita l'etichetta della Home con `~/home`; le pagine interne mostrano `~/profilo`, `~/approccio`, `~/progetti`, `~/contatti` e `~/laboratorio` sopra il titolo. Le schede progetto usano il percorso completo; l'alias `#/percorso` mostra `~/profilo`.
