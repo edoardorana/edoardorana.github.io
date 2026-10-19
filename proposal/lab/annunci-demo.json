@@ -1,0 +1,5770 @@
+{
+  "schema_version": "1.0",
+  "origin": "Generatore sintetico WEB-CV; nessuna fonte immobiliare reale",
+  "synthetic": true,
+  "transaction": "sale",
+  "generated_at": "2026-10-18T15:14:51Z",
+  "seed": 20261018,
+  "records": [
+    {
+      "id": "DEMO-0001",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 295000,
+      "listed_at": "2026-06-12"
+    },
+    {
+      "id": "DEMO-0002",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 130000,
+      "listed_at": "2026-10-04"
+    },
+    {
+      "id": "DEMO-0003",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 88,
+      "asking_price_eur": 227000,
+      "listed_at": "2026-03-15"
+    },
+    {
+      "id": "DEMO-0004",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 120,
+      "asking_price_eur": 515000,
+      "listed_at": "2026-08-18"
+    },
+    {
+      "id": "DEMO-0005",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 30,
+      "asking_price_eur": 115000,
+      "listed_at": "2026-02-23"
+    },
+    {
+      "id": "DEMO-0006",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 82,
+      "asking_price_eur": 346000,
+      "listed_at": "2026-06-12"
+    },
+    {
+      "id": "DEMO-0007",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 248000,
+      "listed_at": "2026-06-16"
+    },
+    {
+      "id": "DEMO-0008",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 159000,
+      "listed_at": "2026-09-05"
+    },
+    {
+      "id": "DEMO-0009",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 60,
+      "asking_price_eur": 260000,
+      "listed_at": "2026-10-10"
+    },
+    {
+      "id": "DEMO-0010",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 69,
+      "asking_price_eur": 268000,
+      "listed_at": "2026-09-24"
+    },
+    {
+      "id": "DEMO-0011",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 30,
+      "asking_price_eur": 90000,
+      "listed_at": "2026-06-23"
+    },
+    {
+      "id": "DEMO-0012",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 202000,
+      "listed_at": "2026-03-17"
+    },
+    {
+      "id": "DEMO-0013",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 80,
+      "asking_price_eur": 188000,
+      "listed_at": "2026-04-18"
+    },
+    {
+      "id": "DEMO-0014",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 141,
+      "asking_price_eur": 479000,
+      "listed_at": "2026-08-29"
+    },
+    {
+      "id": "DEMO-0015",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 32,
+      "asking_price_eur": 78000,
+      "listed_at": "2026-08-01"
+    },
+    {
+      "id": "DEMO-0016",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 168000,
+      "listed_at": "2026-07-15"
+    },
+    {
+      "id": "DEMO-0017",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 131,
+      "asking_price_eur": 429000,
+      "listed_at": "2026-04-06"
+    },
+    {
+      "id": "DEMO-0018",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 47,
+      "asking_price_eur": 152000,
+      "listed_at": "2026-03-19"
+    },
+    {
+      "id": "DEMO-0019",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 80,
+      "asking_price_eur": 292000,
+      "listed_at": "2026-06-06"
+    },
+    {
+      "id": "DEMO-0020",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 108,
+      "asking_price_eur": 257000,
+      "listed_at": "2026-07-06"
+    },
+    {
+      "id": "DEMO-0021",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 127,
+      "asking_price_eur": 362000,
+      "listed_at": "2026-05-19"
+    },
+    {
+      "id": "DEMO-0022",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 129,
+      "asking_price_eur": 387000,
+      "listed_at": "2026-08-14"
+    },
+    {
+      "id": "DEMO-0023",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 165,
+      "asking_price_eur": 400000,
+      "listed_at": "2026-07-29"
+    },
+    {
+      "id": "DEMO-0024",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 35,
+      "asking_price_eur": 177000,
+      "listed_at": "2026-10-08"
+    },
+    {
+      "id": "DEMO-0025",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 125,
+      "asking_price_eur": 311000,
+      "listed_at": "2026-09-14"
+    },
+    {
+      "id": "DEMO-0026",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 110,
+      "asking_price_eur": 322000,
+      "listed_at": "2026-06-03"
+    },
+    {
+      "id": "DEMO-0027",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 107,
+      "asking_price_eur": 301000,
+      "listed_at": "2026-03-23"
+    },
+    {
+      "id": "DEMO-0028",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 267000,
+      "listed_at": "2026-08-22"
+    },
+    {
+      "id": "DEMO-0029",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 182000,
+      "listed_at": "2026-09-11"
+    },
+    {
+      "id": "DEMO-0030",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 59,
+      "asking_price_eur": 243000,
+      "listed_at": "2026-03-05"
+    },
+    {
+      "id": "DEMO-0031",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 47,
+      "asking_price_eur": 142000,
+      "listed_at": "2026-09-06"
+    },
+    {
+      "id": "DEMO-0032",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 133,
+      "asking_price_eur": 390000,
+      "listed_at": "2026-07-13"
+    },
+    {
+      "id": "DEMO-0033",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 148,
+      "asking_price_eur": 482000,
+      "listed_at": "2026-05-24"
+    },
+    {
+      "id": "DEMO-0034",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 51,
+      "asking_price_eur": 151000,
+      "listed_at": "2026-05-27"
+    },
+    {
+      "id": "DEMO-0035",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 95,
+      "asking_price_eur": 238000,
+      "listed_at": "2026-08-04"
+    },
+    {
+      "id": "DEMO-0036",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 96,
+      "asking_price_eur": 445000,
+      "listed_at": "2026-10-05"
+    },
+    {
+      "id": "DEMO-0037",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 61,
+      "asking_price_eur": 200000,
+      "listed_at": "2026-08-20"
+    },
+    {
+      "id": "DEMO-0038",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 100,
+      "asking_price_eur": 253000,
+      "listed_at": "2026-10-05"
+    },
+    {
+      "id": "DEMO-0039",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 89,
+      "asking_price_eur": 274000,
+      "listed_at": "2026-06-26"
+    },
+    {
+      "id": "DEMO-0040",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 107,
+      "asking_price_eur": 425000,
+      "listed_at": "2026-03-24"
+    },
+    {
+      "id": "DEMO-0041",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 80,
+      "asking_price_eur": 319000,
+      "listed_at": "2026-04-29"
+    },
+    {
+      "id": "DEMO-0042",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 257000,
+      "listed_at": "2026-09-26"
+    },
+    {
+      "id": "DEMO-0043",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 121,
+      "asking_price_eur": 563000,
+      "listed_at": "2026-08-10"
+    },
+    {
+      "id": "DEMO-0044",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 80,
+      "asking_price_eur": 145000,
+      "listed_at": "2026-03-05"
+    },
+    {
+      "id": "DEMO-0045",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 156,
+      "asking_price_eur": 394000,
+      "listed_at": "2026-02-20"
+    },
+    {
+      "id": "DEMO-0046",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 61,
+      "asking_price_eur": 168000,
+      "listed_at": "2026-07-11"
+    },
+    {
+      "id": "DEMO-0047",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 83,
+      "asking_price_eur": 214000,
+      "listed_at": "2026-04-18"
+    },
+    {
+      "id": "DEMO-0048",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 72,
+      "asking_price_eur": 289000,
+      "listed_at": "2026-04-08"
+    },
+    {
+      "id": "DEMO-0049",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 42,
+      "asking_price_eur": 84000,
+      "listed_at": "2026-06-16"
+    },
+    {
+      "id": "DEMO-0050",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 195000,
+      "listed_at": "2026-06-12"
+    },
+    {
+      "id": "DEMO-0051",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 173000,
+      "listed_at": "2026-07-31"
+    },
+    {
+      "id": "DEMO-0052",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 126000,
+      "listed_at": "2026-09-23"
+    },
+    {
+      "id": "DEMO-0053",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 160,
+      "asking_price_eur": 397000,
+      "listed_at": "2026-02-25"
+    },
+    {
+      "id": "DEMO-0054",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 139,
+      "asking_price_eur": 482000,
+      "listed_at": "2026-04-26"
+    },
+    {
+      "id": "DEMO-0055",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 275000,
+      "listed_at": "2026-08-05"
+    },
+    {
+      "id": "DEMO-0056",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 62,
+      "asking_price_eur": 174000,
+      "listed_at": "2026-10-17"
+    },
+    {
+      "id": "DEMO-0057",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 110,
+      "asking_price_eur": 351000,
+      "listed_at": "2026-09-10"
+    },
+    {
+      "id": "DEMO-0058",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 117,
+      "asking_price_eur": 306000,
+      "listed_at": "2026-09-01"
+    },
+    {
+      "id": "DEMO-0059",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 118,
+      "asking_price_eur": 299000,
+      "listed_at": "2026-07-16"
+    },
+    {
+      "id": "DEMO-0060",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 51,
+      "asking_price_eur": 149000,
+      "listed_at": "2026-06-28"
+    },
+    {
+      "id": "DEMO-0061",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 111,
+      "asking_price_eur": 500000,
+      "listed_at": "2026-10-16"
+    },
+    {
+      "id": "DEMO-0062",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 113,
+      "asking_price_eur": 381000,
+      "listed_at": "2026-09-08"
+    },
+    {
+      "id": "DEMO-0063",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 114000,
+      "listed_at": "2026-10-08"
+    },
+    {
+      "id": "DEMO-0064",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 213000,
+      "listed_at": "2026-04-24"
+    },
+    {
+      "id": "DEMO-0065",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 144,
+      "asking_price_eur": 364000,
+      "listed_at": "2026-07-06"
+    },
+    {
+      "id": "DEMO-0066",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 102,
+      "asking_price_eur": 327000,
+      "listed_at": "2026-10-18"
+    },
+    {
+      "id": "DEMO-0067",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 81,
+      "asking_price_eur": 215000,
+      "listed_at": "2026-03-30"
+    },
+    {
+      "id": "DEMO-0068",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 81,
+      "asking_price_eur": 215000,
+      "listed_at": "2026-02-27"
+    },
+    {
+      "id": "DEMO-0069",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 83,
+      "asking_price_eur": 187000,
+      "listed_at": "2026-05-25"
+    },
+    {
+      "id": "DEMO-0070",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 86,
+      "asking_price_eur": 191000,
+      "listed_at": "2026-09-30"
+    },
+    {
+      "id": "DEMO-0071",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 126,
+      "asking_price_eur": 355000,
+      "listed_at": "2026-08-22"
+    },
+    {
+      "id": "DEMO-0072",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 141,
+      "asking_price_eur": 314000,
+      "listed_at": "2026-06-12"
+    },
+    {
+      "id": "DEMO-0073",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 245000,
+      "listed_at": "2026-07-17"
+    },
+    {
+      "id": "DEMO-0074",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 125000,
+      "listed_at": "2026-03-12"
+    },
+    {
+      "id": "DEMO-0075",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 73,
+      "asking_price_eur": 206000,
+      "listed_at": "2026-09-01"
+    },
+    {
+      "id": "DEMO-0076",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 104,
+      "asking_price_eur": 383000,
+      "listed_at": "2026-10-18"
+    },
+    {
+      "id": "DEMO-0077",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 61,
+      "asking_price_eur": 147000,
+      "listed_at": "2026-08-14"
+    },
+    {
+      "id": "DEMO-0078",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 53,
+      "asking_price_eur": 188000,
+      "listed_at": "2026-06-11"
+    },
+    {
+      "id": "DEMO-0079",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 73000,
+      "listed_at": "2026-07-26"
+    },
+    {
+      "id": "DEMO-0080",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 86,
+      "asking_price_eur": 205000,
+      "listed_at": "2026-10-16"
+    },
+    {
+      "id": "DEMO-0081",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 35,
+      "asking_price_eur": 118000,
+      "listed_at": "2026-09-14"
+    },
+    {
+      "id": "DEMO-0082",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 97,
+      "asking_price_eur": 267000,
+      "listed_at": "2026-07-28"
+    },
+    {
+      "id": "DEMO-0083",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 87,
+      "asking_price_eur": 198000,
+      "listed_at": "2026-06-28"
+    },
+    {
+      "id": "DEMO-0084",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 81,
+      "asking_price_eur": 222000,
+      "listed_at": "2026-04-26"
+    },
+    {
+      "id": "DEMO-0085",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 129,
+      "asking_price_eur": 456000,
+      "listed_at": "2026-06-13"
+    },
+    {
+      "id": "DEMO-0086",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 104,
+      "asking_price_eur": 262000,
+      "listed_at": "2026-06-11"
+    },
+    {
+      "id": "DEMO-0087",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 168000,
+      "listed_at": "2026-03-11"
+    },
+    {
+      "id": "DEMO-0088",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 72,
+      "asking_price_eur": 155000,
+      "listed_at": "2026-10-17"
+    },
+    {
+      "id": "DEMO-0089",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 35,
+      "asking_price_eur": 174000,
+      "listed_at": "2026-07-02"
+    },
+    {
+      "id": "DEMO-0090",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 138000,
+      "listed_at": "2026-03-09"
+    },
+    {
+      "id": "DEMO-0091",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 138000,
+      "listed_at": "2026-09-07"
+    },
+    {
+      "id": "DEMO-0092",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 124,
+      "asking_price_eur": 354000,
+      "listed_at": "2026-05-03"
+    },
+    {
+      "id": "DEMO-0093",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 177000,
+      "listed_at": "2026-04-03"
+    },
+    {
+      "id": "DEMO-0094",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 198000,
+      "listed_at": "2026-06-22"
+    },
+    {
+      "id": "DEMO-0095",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 146,
+      "asking_price_eur": 394000,
+      "listed_at": "2026-07-29"
+    },
+    {
+      "id": "DEMO-0096",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 35,
+      "asking_price_eur": 154000,
+      "listed_at": "2026-04-08"
+    },
+    {
+      "id": "DEMO-0097",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 139,
+      "asking_price_eur": 371000,
+      "listed_at": "2026-03-24"
+    },
+    {
+      "id": "DEMO-0098",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 137,
+      "asking_price_eur": 380000,
+      "listed_at": "2026-07-12"
+    },
+    {
+      "id": "DEMO-0099",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 152,
+      "asking_price_eur": 383000,
+      "listed_at": "2026-09-21"
+    },
+    {
+      "id": "DEMO-0100",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 118,
+      "asking_price_eur": 308000,
+      "listed_at": "2026-04-26"
+    },
+    {
+      "id": "DEMO-0101",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 28,
+      "asking_price_eur": 66000,
+      "listed_at": "2026-03-28"
+    },
+    {
+      "id": "DEMO-0102",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 60,
+      "asking_price_eur": 267000,
+      "listed_at": "2026-07-17"
+    },
+    {
+      "id": "DEMO-0103",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 142,
+      "asking_price_eur": 435000,
+      "listed_at": "2026-03-21"
+    },
+    {
+      "id": "DEMO-0104",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 309000,
+      "listed_at": "2026-04-25"
+    },
+    {
+      "id": "DEMO-0105",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 149000,
+      "listed_at": "2026-09-18"
+    },
+    {
+      "id": "DEMO-0106",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 104,
+      "asking_price_eur": 302000,
+      "listed_at": "2026-04-28"
+    },
+    {
+      "id": "DEMO-0107",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 244000,
+      "listed_at": "2026-03-09"
+    },
+    {
+      "id": "DEMO-0108",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 258000,
+      "listed_at": "2026-04-30"
+    },
+    {
+      "id": "DEMO-0109",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 105,
+      "asking_price_eur": 394000,
+      "listed_at": "2026-07-02"
+    },
+    {
+      "id": "DEMO-0110",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 153,
+      "asking_price_eur": 622000,
+      "listed_at": "2026-08-22"
+    },
+    {
+      "id": "DEMO-0111",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 113,
+      "asking_price_eur": 318000,
+      "listed_at": "2026-05-21"
+    },
+    {
+      "id": "DEMO-0112",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 64,
+      "asking_price_eur": 246000,
+      "listed_at": "2026-07-08"
+    },
+    {
+      "id": "DEMO-0113",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 71,
+      "asking_price_eur": 255000,
+      "listed_at": "2026-09-02"
+    },
+    {
+      "id": "DEMO-0114",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 180000,
+      "listed_at": "2026-04-04"
+    },
+    {
+      "id": "DEMO-0115",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 34,
+      "asking_price_eur": 167000,
+      "listed_at": "2026-09-09"
+    },
+    {
+      "id": "DEMO-0116",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 159000,
+      "listed_at": "2026-03-18"
+    },
+    {
+      "id": "DEMO-0117",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 41,
+      "asking_price_eur": 143000,
+      "listed_at": "2026-03-15"
+    },
+    {
+      "id": "DEMO-0118",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 155,
+      "asking_price_eur": 355000,
+      "listed_at": "2026-09-25"
+    },
+    {
+      "id": "DEMO-0119",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 143,
+      "asking_price_eur": 291000,
+      "listed_at": "2026-05-28"
+    },
+    {
+      "id": "DEMO-0120",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 37,
+      "asking_price_eur": 153000,
+      "listed_at": "2026-10-09"
+    },
+    {
+      "id": "DEMO-0121",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 111,
+      "asking_price_eur": 357000,
+      "listed_at": "2026-04-18"
+    },
+    {
+      "id": "DEMO-0122",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 120,
+      "asking_price_eur": 381000,
+      "listed_at": "2026-08-03"
+    },
+    {
+      "id": "DEMO-0123",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 160000,
+      "listed_at": "2026-04-26"
+    },
+    {
+      "id": "DEMO-0124",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 79,
+      "asking_price_eur": 136000,
+      "listed_at": "2026-10-04"
+    },
+    {
+      "id": "DEMO-0125",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 158,
+      "asking_price_eur": 493000,
+      "listed_at": "2026-07-13"
+    },
+    {
+      "id": "DEMO-0126",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 57,
+      "asking_price_eur": 152000,
+      "listed_at": "2026-09-17"
+    },
+    {
+      "id": "DEMO-0127",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 135,
+      "asking_price_eur": 290000,
+      "listed_at": "2026-08-02"
+    },
+    {
+      "id": "DEMO-0128",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 69,
+      "asking_price_eur": 295000,
+      "listed_at": "2026-10-14"
+    },
+    {
+      "id": "DEMO-0129",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 87,
+      "asking_price_eur": 293000,
+      "listed_at": "2026-10-18"
+    },
+    {
+      "id": "DEMO-0130",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 233000,
+      "listed_at": "2026-05-19"
+    },
+    {
+      "id": "DEMO-0131",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 107,
+      "asking_price_eur": 242000,
+      "listed_at": "2026-06-22"
+    },
+    {
+      "id": "DEMO-0132",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 62,
+      "asking_price_eur": 119000,
+      "listed_at": "2026-03-01"
+    },
+    {
+      "id": "DEMO-0133",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 126,
+      "asking_price_eur": 387000,
+      "listed_at": "2026-03-10"
+    },
+    {
+      "id": "DEMO-0134",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 69,
+      "asking_price_eur": 181000,
+      "listed_at": "2026-04-15"
+    },
+    {
+      "id": "DEMO-0135",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 60,
+      "asking_price_eur": 193000,
+      "listed_at": "2026-04-11"
+    },
+    {
+      "id": "DEMO-0136",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 30,
+      "asking_price_eur": 127000,
+      "listed_at": "2026-06-13"
+    },
+    {
+      "id": "DEMO-0137",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 102,
+      "asking_price_eur": 274000,
+      "listed_at": "2026-05-13"
+    },
+    {
+      "id": "DEMO-0138",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 118,
+      "asking_price_eur": 246000,
+      "listed_at": "2026-08-07"
+    },
+    {
+      "id": "DEMO-0139",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 99,
+      "asking_price_eur": 342000,
+      "listed_at": "2026-09-23"
+    },
+    {
+      "id": "DEMO-0140",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 132000,
+      "listed_at": "2026-07-07"
+    },
+    {
+      "id": "DEMO-0141",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 151000,
+      "listed_at": "2026-04-26"
+    },
+    {
+      "id": "DEMO-0142",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 270000,
+      "listed_at": "2026-05-01"
+    },
+    {
+      "id": "DEMO-0143",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 66,
+      "asking_price_eur": 219000,
+      "listed_at": "2026-07-26"
+    },
+    {
+      "id": "DEMO-0144",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 81,
+      "asking_price_eur": 190000,
+      "listed_at": "2026-04-15"
+    },
+    {
+      "id": "DEMO-0145",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 71,
+      "asking_price_eur": 190000,
+      "listed_at": "2026-09-25"
+    },
+    {
+      "id": "DEMO-0146",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 120,
+      "asking_price_eur": 322000,
+      "listed_at": "2026-06-08"
+    },
+    {
+      "id": "DEMO-0147",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 28,
+      "asking_price_eur": 95000,
+      "listed_at": "2026-04-08"
+    },
+    {
+      "id": "DEMO-0148",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 134000,
+      "listed_at": "2026-08-01"
+    },
+    {
+      "id": "DEMO-0149",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 106,
+      "asking_price_eur": 359000,
+      "listed_at": "2026-08-29"
+    },
+    {
+      "id": "DEMO-0150",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 59,
+      "asking_price_eur": 191000,
+      "listed_at": "2026-08-16"
+    },
+    {
+      "id": "DEMO-0151",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 63,
+      "asking_price_eur": 143000,
+      "listed_at": "2026-05-12"
+    },
+    {
+      "id": "DEMO-0152",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 53,
+      "asking_price_eur": 248000,
+      "listed_at": "2026-08-25"
+    },
+    {
+      "id": "DEMO-0153",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 141000,
+      "listed_at": "2026-04-21"
+    },
+    {
+      "id": "DEMO-0154",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 127,
+      "asking_price_eur": 447000,
+      "listed_at": "2026-06-17"
+    },
+    {
+      "id": "DEMO-0155",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 127,
+      "asking_price_eur": 381000,
+      "listed_at": "2026-07-20"
+    },
+    {
+      "id": "DEMO-0156",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 165,
+      "asking_price_eur": 534000,
+      "listed_at": "2026-09-06"
+    },
+    {
+      "id": "DEMO-0157",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 118,
+      "asking_price_eur": 294000,
+      "listed_at": "2026-07-08"
+    },
+    {
+      "id": "DEMO-0158",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 118,
+      "asking_price_eur": 505000,
+      "listed_at": "2026-06-11"
+    },
+    {
+      "id": "DEMO-0159",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 105,
+      "asking_price_eur": 347000,
+      "listed_at": "2026-06-04"
+    },
+    {
+      "id": "DEMO-0160",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 122,
+      "asking_price_eur": 285000,
+      "listed_at": "2026-03-06"
+    },
+    {
+      "id": "DEMO-0161",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 29,
+      "asking_price_eur": 68000,
+      "listed_at": "2026-07-24"
+    },
+    {
+      "id": "DEMO-0162",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 158,
+      "asking_price_eur": 428000,
+      "listed_at": "2026-06-25"
+    },
+    {
+      "id": "DEMO-0163",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 136,
+      "asking_price_eur": 425000,
+      "listed_at": "2026-10-11"
+    },
+    {
+      "id": "DEMO-0164",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 29,
+      "asking_price_eur": 66000,
+      "listed_at": "2026-09-17"
+    },
+    {
+      "id": "DEMO-0165",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 144,
+      "asking_price_eur": 454000,
+      "listed_at": "2026-07-06"
+    },
+    {
+      "id": "DEMO-0166",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 239000,
+      "listed_at": "2026-03-18"
+    },
+    {
+      "id": "DEMO-0167",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 63,
+      "asking_price_eur": 207000,
+      "listed_at": "2026-08-10"
+    },
+    {
+      "id": "DEMO-0168",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 40,
+      "asking_price_eur": 123000,
+      "listed_at": "2026-04-24"
+    },
+    {
+      "id": "DEMO-0169",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 106,
+      "asking_price_eur": 427000,
+      "listed_at": "2026-05-25"
+    },
+    {
+      "id": "DEMO-0170",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 142,
+      "asking_price_eur": 471000,
+      "listed_at": "2026-03-21"
+    },
+    {
+      "id": "DEMO-0171",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 88,
+      "asking_price_eur": 325000,
+      "listed_at": "2026-06-24"
+    },
+    {
+      "id": "DEMO-0172",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 37,
+      "asking_price_eur": 98000,
+      "listed_at": "2026-04-30"
+    },
+    {
+      "id": "DEMO-0173",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 176000,
+      "listed_at": "2026-09-17"
+    },
+    {
+      "id": "DEMO-0174",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 66,
+      "asking_price_eur": 252000,
+      "listed_at": "2026-04-13"
+    },
+    {
+      "id": "DEMO-0175",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 28,
+      "asking_price_eur": 73000,
+      "listed_at": "2026-09-06"
+    },
+    {
+      "id": "DEMO-0176",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 278000,
+      "listed_at": "2026-04-17"
+    },
+    {
+      "id": "DEMO-0177",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 125,
+      "asking_price_eur": 236000,
+      "listed_at": "2026-08-27"
+    },
+    {
+      "id": "DEMO-0178",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 115,
+      "asking_price_eur": 344000,
+      "listed_at": "2026-07-07"
+    },
+    {
+      "id": "DEMO-0179",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 117000,
+      "listed_at": "2026-08-12"
+    },
+    {
+      "id": "DEMO-0180",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 107,
+      "asking_price_eur": 314000,
+      "listed_at": "2026-03-24"
+    },
+    {
+      "id": "DEMO-0181",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 152000,
+      "listed_at": "2026-05-23"
+    },
+    {
+      "id": "DEMO-0182",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 126,
+      "asking_price_eur": 380000,
+      "listed_at": "2026-10-05"
+    },
+    {
+      "id": "DEMO-0183",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 67,
+      "asking_price_eur": 203000,
+      "listed_at": "2026-03-05"
+    },
+    {
+      "id": "DEMO-0184",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 93,
+      "asking_price_eur": 178000,
+      "listed_at": "2026-09-05"
+    },
+    {
+      "id": "DEMO-0185",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 97,
+      "asking_price_eur": 345000,
+      "listed_at": "2026-10-14"
+    },
+    {
+      "id": "DEMO-0186",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 110,
+      "asking_price_eur": 227000,
+      "listed_at": "2026-08-10"
+    },
+    {
+      "id": "DEMO-0187",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 74,
+      "asking_price_eur": 298000,
+      "listed_at": "2026-05-17"
+    },
+    {
+      "id": "DEMO-0188",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 181000,
+      "listed_at": "2026-05-18"
+    },
+    {
+      "id": "DEMO-0189",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 73,
+      "asking_price_eur": 185000,
+      "listed_at": "2026-02-26"
+    },
+    {
+      "id": "DEMO-0190",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 46,
+      "asking_price_eur": 125000,
+      "listed_at": "2026-09-08"
+    },
+    {
+      "id": "DEMO-0191",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 164000,
+      "listed_at": "2026-07-08"
+    },
+    {
+      "id": "DEMO-0192",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 138,
+      "asking_price_eur": 408000,
+      "listed_at": "2026-04-19"
+    },
+    {
+      "id": "DEMO-0193",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 166000,
+      "listed_at": "2026-03-29"
+    },
+    {
+      "id": "DEMO-0194",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 32,
+      "asking_price_eur": 127000,
+      "listed_at": "2026-10-15"
+    },
+    {
+      "id": "DEMO-0195",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 59,
+      "asking_price_eur": 227000,
+      "listed_at": "2026-06-13"
+    },
+    {
+      "id": "DEMO-0196",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 61,
+      "asking_price_eur": 187000,
+      "listed_at": "2026-06-30"
+    },
+    {
+      "id": "DEMO-0197",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 105,
+      "asking_price_eur": 410000,
+      "listed_at": "2026-06-25"
+    },
+    {
+      "id": "DEMO-0198",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 161000,
+      "listed_at": "2026-07-03"
+    },
+    {
+      "id": "DEMO-0199",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 124,
+      "asking_price_eur": 513000,
+      "listed_at": "2026-08-28"
+    },
+    {
+      "id": "DEMO-0200",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 185000,
+      "listed_at": "2026-03-22"
+    },
+    {
+      "id": "DEMO-0201",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 36,
+      "asking_price_eur": 87000,
+      "listed_at": "2026-10-12"
+    },
+    {
+      "id": "DEMO-0202",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 29,
+      "asking_price_eur": 110000,
+      "listed_at": "2026-03-21"
+    },
+    {
+      "id": "DEMO-0203",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 51,
+      "asking_price_eur": 223000,
+      "listed_at": "2026-06-03"
+    },
+    {
+      "id": "DEMO-0204",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 94,
+      "asking_price_eur": 356000,
+      "listed_at": "2026-09-30"
+    },
+    {
+      "id": "DEMO-0205",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 119000,
+      "listed_at": "2026-07-06"
+    },
+    {
+      "id": "DEMO-0206",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 85,
+      "asking_price_eur": 292000,
+      "listed_at": "2026-08-21"
+    },
+    {
+      "id": "DEMO-0207",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 105,
+      "asking_price_eur": 358000,
+      "listed_at": "2026-02-28"
+    },
+    {
+      "id": "DEMO-0208",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 139000,
+      "listed_at": "2026-07-26"
+    },
+    {
+      "id": "DEMO-0209",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 59,
+      "asking_price_eur": 178000,
+      "listed_at": "2026-04-08"
+    },
+    {
+      "id": "DEMO-0210",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 88,
+      "asking_price_eur": 291000,
+      "listed_at": "2026-03-28"
+    },
+    {
+      "id": "DEMO-0211",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 63,
+      "asking_price_eur": 119000,
+      "listed_at": "2026-07-28"
+    },
+    {
+      "id": "DEMO-0212",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 137,
+      "asking_price_eur": 630000,
+      "listed_at": "2026-02-26"
+    },
+    {
+      "id": "DEMO-0213",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 76,
+      "asking_price_eur": 202000,
+      "listed_at": "2026-09-26"
+    },
+    {
+      "id": "DEMO-0214",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 87,
+      "asking_price_eur": 309000,
+      "listed_at": "2026-06-11"
+    },
+    {
+      "id": "DEMO-0215",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 57,
+      "asking_price_eur": 178000,
+      "listed_at": "2026-03-22"
+    },
+    {
+      "id": "DEMO-0216",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 134,
+      "asking_price_eur": 291000,
+      "listed_at": "2026-07-22"
+    },
+    {
+      "id": "DEMO-0217",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 41,
+      "asking_price_eur": 115000,
+      "listed_at": "2026-09-23"
+    },
+    {
+      "id": "DEMO-0218",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 205000,
+      "listed_at": "2026-05-21"
+    },
+    {
+      "id": "DEMO-0219",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 246000,
+      "listed_at": "2026-04-18"
+    },
+    {
+      "id": "DEMO-0220",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 107,
+      "asking_price_eur": 288000,
+      "listed_at": "2026-02-23"
+    },
+    {
+      "id": "DEMO-0221",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 120000,
+      "listed_at": "2026-05-18"
+    },
+    {
+      "id": "DEMO-0222",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 86,
+      "asking_price_eur": 219000,
+      "listed_at": "2026-06-19"
+    },
+    {
+      "id": "DEMO-0223",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 81,
+      "asking_price_eur": 190000,
+      "listed_at": "2026-07-28"
+    },
+    {
+      "id": "DEMO-0224",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 42,
+      "asking_price_eur": 191000,
+      "listed_at": "2026-08-05"
+    },
+    {
+      "id": "DEMO-0225",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 53,
+      "asking_price_eur": 196000,
+      "listed_at": "2026-07-05"
+    },
+    {
+      "id": "DEMO-0226",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 85,
+      "asking_price_eur": 213000,
+      "listed_at": "2026-09-05"
+    },
+    {
+      "id": "DEMO-0227",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 140,
+      "asking_price_eur": 336000,
+      "listed_at": "2026-05-15"
+    },
+    {
+      "id": "DEMO-0228",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 64,
+      "asking_price_eur": 264000,
+      "listed_at": "2026-07-12"
+    },
+    {
+      "id": "DEMO-0229",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 51,
+      "asking_price_eur": 173000,
+      "listed_at": "2026-07-16"
+    },
+    {
+      "id": "DEMO-0230",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 219000,
+      "listed_at": "2026-05-23"
+    },
+    {
+      "id": "DEMO-0231",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 80000,
+      "listed_at": "2026-04-22"
+    },
+    {
+      "id": "DEMO-0232",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 57,
+      "asking_price_eur": 130000,
+      "listed_at": "2026-03-05"
+    },
+    {
+      "id": "DEMO-0233",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 113000,
+      "listed_at": "2026-06-21"
+    },
+    {
+      "id": "DEMO-0234",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 275000,
+      "listed_at": "2026-05-29"
+    },
+    {
+      "id": "DEMO-0235",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 101,
+      "asking_price_eur": 324000,
+      "listed_at": "2026-06-02"
+    },
+    {
+      "id": "DEMO-0236",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 116,
+      "asking_price_eur": 289000,
+      "listed_at": "2026-06-16"
+    },
+    {
+      "id": "DEMO-0237",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 218000,
+      "listed_at": "2026-04-28"
+    },
+    {
+      "id": "DEMO-0238",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 29,
+      "asking_price_eur": 77000,
+      "listed_at": "2026-05-18"
+    },
+    {
+      "id": "DEMO-0239",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 110,
+      "asking_price_eur": 257000,
+      "listed_at": "2026-07-19"
+    },
+    {
+      "id": "DEMO-0240",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 129,
+      "asking_price_eur": 265000,
+      "listed_at": "2026-03-15"
+    },
+    {
+      "id": "DEMO-0241",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 166000,
+      "listed_at": "2026-10-13"
+    },
+    {
+      "id": "DEMO-0242",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 91,
+      "asking_price_eur": 346000,
+      "listed_at": "2026-07-25"
+    },
+    {
+      "id": "DEMO-0243",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 43,
+      "asking_price_eur": 220000,
+      "listed_at": "2026-07-21"
+    },
+    {
+      "id": "DEMO-0244",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 56,
+      "asking_price_eur": 179000,
+      "listed_at": "2026-07-23"
+    },
+    {
+      "id": "DEMO-0245",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 84,
+      "asking_price_eur": 325000,
+      "listed_at": "2026-09-05"
+    },
+    {
+      "id": "DEMO-0246",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 261000,
+      "listed_at": "2026-03-26"
+    },
+    {
+      "id": "DEMO-0247",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 168,
+      "asking_price_eur": 439000,
+      "listed_at": "2026-07-12"
+    },
+    {
+      "id": "DEMO-0248",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 128,
+      "asking_price_eur": 467000,
+      "listed_at": "2026-02-20"
+    },
+    {
+      "id": "DEMO-0249",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 198000,
+      "listed_at": "2026-06-21"
+    },
+    {
+      "id": "DEMO-0250",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 111,
+      "asking_price_eur": 496000,
+      "listed_at": "2026-02-26"
+    },
+    {
+      "id": "DEMO-0251",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 150,
+      "asking_price_eur": 528000,
+      "listed_at": "2026-05-02"
+    },
+    {
+      "id": "DEMO-0252",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 294000,
+      "listed_at": "2026-09-13"
+    },
+    {
+      "id": "DEMO-0253",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 62,
+      "asking_price_eur": 235000,
+      "listed_at": "2026-08-27"
+    },
+    {
+      "id": "DEMO-0254",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 75,
+      "asking_price_eur": 354000,
+      "listed_at": "2026-07-17"
+    },
+    {
+      "id": "DEMO-0255",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 208000,
+      "listed_at": "2026-09-14"
+    },
+    {
+      "id": "DEMO-0256",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 70,
+      "asking_price_eur": 159000,
+      "listed_at": "2026-04-19"
+    },
+    {
+      "id": "DEMO-0257",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 101,
+      "asking_price_eur": 357000,
+      "listed_at": "2026-09-13"
+    },
+    {
+      "id": "DEMO-0258",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 404000,
+      "listed_at": "2026-02-20"
+    },
+    {
+      "id": "DEMO-0259",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 242000,
+      "listed_at": "2026-08-11"
+    },
+    {
+      "id": "DEMO-0260",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 253000,
+      "listed_at": "2026-04-04"
+    },
+    {
+      "id": "DEMO-0261",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 413000,
+      "listed_at": "2026-05-05"
+    },
+    {
+      "id": "DEMO-0262",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 100000,
+      "listed_at": "2026-10-14"
+    },
+    {
+      "id": "DEMO-0263",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 107,
+      "asking_price_eur": 264000,
+      "listed_at": "2026-05-30"
+    },
+    {
+      "id": "DEMO-0264",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 100,
+      "asking_price_eur": 198000,
+      "listed_at": "2026-04-03"
+    },
+    {
+      "id": "DEMO-0265",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 88,
+      "asking_price_eur": 333000,
+      "listed_at": "2026-05-27"
+    },
+    {
+      "id": "DEMO-0266",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 176000,
+      "listed_at": "2026-04-06"
+    },
+    {
+      "id": "DEMO-0267",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 102,
+      "asking_price_eur": 322000,
+      "listed_at": "2026-03-17"
+    },
+    {
+      "id": "DEMO-0268",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 79,
+      "asking_price_eur": 208000,
+      "listed_at": "2026-09-09"
+    },
+    {
+      "id": "DEMO-0269",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 89,
+      "asking_price_eur": 318000,
+      "listed_at": "2026-08-28"
+    },
+    {
+      "id": "DEMO-0270",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 90,
+      "asking_price_eur": 327000,
+      "listed_at": "2026-10-09"
+    },
+    {
+      "id": "DEMO-0271",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 115,
+      "asking_price_eur": 285000,
+      "listed_at": "2026-06-24"
+    },
+    {
+      "id": "DEMO-0272",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 53,
+      "asking_price_eur": 176000,
+      "listed_at": "2026-10-11"
+    },
+    {
+      "id": "DEMO-0273",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 322000,
+      "listed_at": "2026-05-11"
+    },
+    {
+      "id": "DEMO-0274",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 28,
+      "asking_price_eur": 85000,
+      "listed_at": "2026-06-02"
+    },
+    {
+      "id": "DEMO-0275",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 40,
+      "asking_price_eur": 121000,
+      "listed_at": "2026-06-01"
+    },
+    {
+      "id": "DEMO-0276",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 108000,
+      "listed_at": "2026-10-16"
+    },
+    {
+      "id": "DEMO-0277",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 42,
+      "asking_price_eur": 133000,
+      "listed_at": "2026-08-03"
+    },
+    {
+      "id": "DEMO-0278",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 56,
+      "asking_price_eur": 148000,
+      "listed_at": "2026-07-12"
+    },
+    {
+      "id": "DEMO-0279",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 149,
+      "asking_price_eur": 311000,
+      "listed_at": "2026-03-21"
+    },
+    {
+      "id": "DEMO-0280",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 102,
+      "asking_price_eur": 323000,
+      "listed_at": "2026-07-13"
+    },
+    {
+      "id": "DEMO-0281",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 61,
+      "asking_price_eur": 222000,
+      "listed_at": "2026-06-15"
+    },
+    {
+      "id": "DEMO-0282",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 171000,
+      "listed_at": "2026-09-20"
+    },
+    {
+      "id": "DEMO-0283",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 446000,
+      "listed_at": "2026-07-24"
+    },
+    {
+      "id": "DEMO-0284",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 90,
+      "asking_price_eur": 249000,
+      "listed_at": "2026-05-23"
+    },
+    {
+      "id": "DEMO-0285",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 132,
+      "asking_price_eur": 408000,
+      "listed_at": "2026-05-18"
+    },
+    {
+      "id": "DEMO-0286",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 44,
+      "asking_price_eur": 97000,
+      "listed_at": "2026-07-19"
+    },
+    {
+      "id": "DEMO-0287",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 166,
+      "asking_price_eur": 394000,
+      "listed_at": "2026-08-07"
+    },
+    {
+      "id": "DEMO-0288",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 116,
+      "asking_price_eur": 222000,
+      "listed_at": "2026-05-18"
+    },
+    {
+      "id": "DEMO-0289",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 123000,
+      "listed_at": "2026-04-28"
+    },
+    {
+      "id": "DEMO-0290",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 35,
+      "asking_price_eur": 173000,
+      "listed_at": "2026-05-08"
+    },
+    {
+      "id": "DEMO-0291",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 304000,
+      "listed_at": "2026-10-06"
+    },
+    {
+      "id": "DEMO-0292",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 40,
+      "asking_price_eur": 112000,
+      "listed_at": "2026-06-11"
+    },
+    {
+      "id": "DEMO-0293",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 131,
+      "asking_price_eur": 329000,
+      "listed_at": "2026-07-20"
+    },
+    {
+      "id": "DEMO-0294",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 243000,
+      "listed_at": "2026-05-16"
+    },
+    {
+      "id": "DEMO-0295",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 138,
+      "asking_price_eur": 326000,
+      "listed_at": "2026-08-29"
+    },
+    {
+      "id": "DEMO-0296",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 105,
+      "asking_price_eur": 323000,
+      "listed_at": "2026-10-07"
+    },
+    {
+      "id": "DEMO-0297",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 107,
+      "asking_price_eur": 371000,
+      "listed_at": "2026-03-19"
+    },
+    {
+      "id": "DEMO-0298",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 348000,
+      "listed_at": "2026-05-13"
+    },
+    {
+      "id": "DEMO-0299",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 214000,
+      "listed_at": "2026-08-27"
+    },
+    {
+      "id": "DEMO-0300",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 169,
+      "asking_price_eur": 411000,
+      "listed_at": "2026-07-01"
+    },
+    {
+      "id": "DEMO-0301",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 124,
+      "asking_price_eur": 253000,
+      "listed_at": "2026-06-25"
+    },
+    {
+      "id": "DEMO-0302",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 51,
+      "asking_price_eur": 132000,
+      "listed_at": "2026-09-06"
+    },
+    {
+      "id": "DEMO-0303",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 118,
+      "asking_price_eur": 487000,
+      "listed_at": "2026-06-27"
+    },
+    {
+      "id": "DEMO-0304",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 215000,
+      "listed_at": "2026-05-17"
+    },
+    {
+      "id": "DEMO-0305",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 170,
+      "asking_price_eur": 464000,
+      "listed_at": "2026-03-15"
+    },
+    {
+      "id": "DEMO-0306",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 136,
+      "asking_price_eur": 433000,
+      "listed_at": "2026-04-30"
+    },
+    {
+      "id": "DEMO-0307",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 148,
+      "asking_price_eur": 500000,
+      "listed_at": "2026-07-16"
+    },
+    {
+      "id": "DEMO-0308",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 66,
+      "asking_price_eur": 172000,
+      "listed_at": "2026-05-16"
+    },
+    {
+      "id": "DEMO-0309",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 111,
+      "asking_price_eur": 351000,
+      "listed_at": "2026-05-22"
+    },
+    {
+      "id": "DEMO-0310",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 136,
+      "asking_price_eur": 439000,
+      "listed_at": "2026-05-22"
+    },
+    {
+      "id": "DEMO-0311",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 74,
+      "asking_price_eur": 186000,
+      "listed_at": "2026-04-30"
+    },
+    {
+      "id": "DEMO-0312",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 177000,
+      "listed_at": "2026-03-22"
+    },
+    {
+      "id": "DEMO-0313",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 181000,
+      "listed_at": "2026-10-07"
+    },
+    {
+      "id": "DEMO-0314",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 31,
+      "asking_price_eur": 84000,
+      "listed_at": "2026-10-06"
+    },
+    {
+      "id": "DEMO-0315",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 59,
+      "asking_price_eur": 147000,
+      "listed_at": "2026-04-18"
+    },
+    {
+      "id": "DEMO-0316",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 38,
+      "asking_price_eur": 151000,
+      "listed_at": "2026-03-04"
+    },
+    {
+      "id": "DEMO-0317",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 91,
+      "asking_price_eur": 282000,
+      "listed_at": "2026-09-30"
+    },
+    {
+      "id": "DEMO-0318",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 135,
+      "asking_price_eur": 300000,
+      "listed_at": "2026-07-26"
+    },
+    {
+      "id": "DEMO-0319",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 131,
+      "asking_price_eur": 327000,
+      "listed_at": "2026-04-26"
+    },
+    {
+      "id": "DEMO-0320",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 140,
+      "asking_price_eur": 457000,
+      "listed_at": "2026-06-20"
+    },
+    {
+      "id": "DEMO-0321",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 95,
+      "asking_price_eur": 244000,
+      "listed_at": "2026-08-26"
+    },
+    {
+      "id": "DEMO-0322",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 239000,
+      "listed_at": "2026-03-14"
+    },
+    {
+      "id": "DEMO-0323",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 107,
+      "asking_price_eur": 215000,
+      "listed_at": "2026-09-21"
+    },
+    {
+      "id": "DEMO-0324",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 115,
+      "asking_price_eur": 283000,
+      "listed_at": "2026-03-03"
+    },
+    {
+      "id": "DEMO-0325",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 134000,
+      "listed_at": "2026-03-08"
+    },
+    {
+      "id": "DEMO-0326",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 181000,
+      "listed_at": "2026-08-15"
+    },
+    {
+      "id": "DEMO-0327",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 106,
+      "asking_price_eur": 279000,
+      "listed_at": "2026-06-15"
+    },
+    {
+      "id": "DEMO-0328",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 32,
+      "asking_price_eur": 84000,
+      "listed_at": "2026-10-08"
+    },
+    {
+      "id": "DEMO-0329",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 117,
+      "asking_price_eur": 305000,
+      "listed_at": "2026-09-05"
+    },
+    {
+      "id": "DEMO-0330",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 57,
+      "asking_price_eur": 165000,
+      "listed_at": "2026-06-14"
+    },
+    {
+      "id": "DEMO-0331",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 137,
+      "asking_price_eur": 302000,
+      "listed_at": "2026-05-23"
+    },
+    {
+      "id": "DEMO-0332",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 127,
+      "asking_price_eur": 425000,
+      "listed_at": "2026-06-12"
+    },
+    {
+      "id": "DEMO-0333",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 42,
+      "asking_price_eur": 208000,
+      "listed_at": "2026-05-25"
+    },
+    {
+      "id": "DEMO-0334",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 77,
+      "asking_price_eur": 163000,
+      "listed_at": "2026-10-14"
+    },
+    {
+      "id": "DEMO-0335",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 143,
+      "asking_price_eur": 423000,
+      "listed_at": "2026-06-01"
+    },
+    {
+      "id": "DEMO-0336",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 56,
+      "asking_price_eur": 169000,
+      "listed_at": "2026-06-22"
+    },
+    {
+      "id": "DEMO-0337",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 71,
+      "asking_price_eur": 154000,
+      "listed_at": "2026-09-29"
+    },
+    {
+      "id": "DEMO-0338",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 155,
+      "asking_price_eur": 370000,
+      "listed_at": "2026-03-31"
+    },
+    {
+      "id": "DEMO-0339",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 62,
+      "asking_price_eur": 216000,
+      "listed_at": "2026-07-25"
+    },
+    {
+      "id": "DEMO-0340",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 69,
+      "asking_price_eur": 205000,
+      "listed_at": "2026-04-28"
+    },
+    {
+      "id": "DEMO-0341",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 270000,
+      "listed_at": "2026-09-13"
+    },
+    {
+      "id": "DEMO-0342",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 100,
+      "asking_price_eur": 320000,
+      "listed_at": "2026-07-31"
+    },
+    {
+      "id": "DEMO-0343",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 117,
+      "asking_price_eur": 337000,
+      "listed_at": "2026-07-15"
+    },
+    {
+      "id": "DEMO-0344",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 89,
+      "asking_price_eur": 199000,
+      "listed_at": "2026-08-31"
+    },
+    {
+      "id": "DEMO-0345",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 126000,
+      "listed_at": "2026-06-08"
+    },
+    {
+      "id": "DEMO-0346",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 145000,
+      "listed_at": "2026-04-04"
+    },
+    {
+      "id": "DEMO-0347",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 156,
+      "asking_price_eur": 257000,
+      "listed_at": "2026-05-08"
+    },
+    {
+      "id": "DEMO-0348",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 219000,
+      "listed_at": "2026-03-30"
+    },
+    {
+      "id": "DEMO-0349",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 28,
+      "asking_price_eur": 61000,
+      "listed_at": "2026-03-28"
+    },
+    {
+      "id": "DEMO-0350",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 102000,
+      "listed_at": "2026-04-04"
+    },
+    {
+      "id": "DEMO-0351",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 95,
+      "asking_price_eur": 253000,
+      "listed_at": "2026-03-31"
+    },
+    {
+      "id": "DEMO-0352",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 57,
+      "asking_price_eur": 190000,
+      "listed_at": "2026-07-24"
+    },
+    {
+      "id": "DEMO-0353",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 135000,
+      "listed_at": "2026-06-17"
+    },
+    {
+      "id": "DEMO-0354",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 241000,
+      "listed_at": "2026-04-02"
+    },
+    {
+      "id": "DEMO-0355",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 83,
+      "asking_price_eur": 217000,
+      "listed_at": "2026-07-23"
+    },
+    {
+      "id": "DEMO-0356",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 29,
+      "asking_price_eur": 77000,
+      "listed_at": "2026-09-29"
+    },
+    {
+      "id": "DEMO-0357",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 86,
+      "asking_price_eur": 317000,
+      "listed_at": "2026-03-29"
+    },
+    {
+      "id": "DEMO-0358",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 118,
+      "asking_price_eur": 530000,
+      "listed_at": "2026-02-27"
+    },
+    {
+      "id": "DEMO-0359",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 134,
+      "asking_price_eur": 514000,
+      "listed_at": "2026-04-23"
+    },
+    {
+      "id": "DEMO-0360",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 59,
+      "asking_price_eur": 179000,
+      "listed_at": "2026-06-06"
+    },
+    {
+      "id": "DEMO-0361",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 77,
+      "asking_price_eur": 168000,
+      "listed_at": "2026-09-24"
+    },
+    {
+      "id": "DEMO-0362",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 47,
+      "asking_price_eur": 175000,
+      "listed_at": "2026-07-08"
+    },
+    {
+      "id": "DEMO-0363",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 61,
+      "asking_price_eur": 242000,
+      "listed_at": "2026-06-27"
+    },
+    {
+      "id": "DEMO-0364",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 193000,
+      "listed_at": "2026-10-13"
+    },
+    {
+      "id": "DEMO-0365",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 93,
+      "asking_price_eur": 223000,
+      "listed_at": "2026-09-06"
+    },
+    {
+      "id": "DEMO-0366",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 146,
+      "asking_price_eur": 350000,
+      "listed_at": "2026-03-22"
+    },
+    {
+      "id": "DEMO-0367",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 159000,
+      "listed_at": "2026-03-04"
+    },
+    {
+      "id": "DEMO-0368",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 131,
+      "asking_price_eur": 309000,
+      "listed_at": "2026-03-10"
+    },
+    {
+      "id": "DEMO-0369",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 249000,
+      "listed_at": "2026-05-26"
+    },
+    {
+      "id": "DEMO-0370",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 100,
+      "asking_price_eur": 238000,
+      "listed_at": "2026-07-10"
+    },
+    {
+      "id": "DEMO-0371",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 184000,
+      "listed_at": "2026-08-16"
+    },
+    {
+      "id": "DEMO-0372",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 29,
+      "asking_price_eur": 115000,
+      "listed_at": "2026-04-03"
+    },
+    {
+      "id": "DEMO-0373",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 147,
+      "asking_price_eur": 360000,
+      "listed_at": "2026-10-11"
+    },
+    {
+      "id": "DEMO-0374",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 44,
+      "asking_price_eur": 114000,
+      "listed_at": "2026-05-20"
+    },
+    {
+      "id": "DEMO-0375",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 235000,
+      "listed_at": "2026-08-30"
+    },
+    {
+      "id": "DEMO-0376",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 115,
+      "asking_price_eur": 420000,
+      "listed_at": "2026-10-11"
+    },
+    {
+      "id": "DEMO-0377",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 74,
+      "asking_price_eur": 277000,
+      "listed_at": "2026-04-07"
+    },
+    {
+      "id": "DEMO-0378",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 64,
+      "asking_price_eur": 164000,
+      "listed_at": "2026-02-24"
+    },
+    {
+      "id": "DEMO-0379",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 105,
+      "asking_price_eur": 387000,
+      "listed_at": "2026-10-07"
+    },
+    {
+      "id": "DEMO-0380",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 63,
+      "asking_price_eur": 167000,
+      "listed_at": "2026-05-13"
+    },
+    {
+      "id": "DEMO-0381",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 94,
+      "asking_price_eur": 273000,
+      "listed_at": "2026-10-06"
+    },
+    {
+      "id": "DEMO-0382",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 158,
+      "asking_price_eur": 414000,
+      "listed_at": "2026-05-05"
+    },
+    {
+      "id": "DEMO-0383",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 105,
+      "asking_price_eur": 329000,
+      "listed_at": "2026-09-24"
+    },
+    {
+      "id": "DEMO-0384",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 85,
+      "asking_price_eur": 227000,
+      "listed_at": "2026-08-31"
+    },
+    {
+      "id": "DEMO-0385",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 102,
+      "asking_price_eur": 308000,
+      "listed_at": "2026-05-29"
+    },
+    {
+      "id": "DEMO-0386",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 223000,
+      "listed_at": "2026-08-27"
+    },
+    {
+      "id": "DEMO-0387",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 164000,
+      "listed_at": "2026-07-19"
+    },
+    {
+      "id": "DEMO-0388",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 108,
+      "asking_price_eur": 355000,
+      "listed_at": "2026-08-23"
+    },
+    {
+      "id": "DEMO-0389",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 122,
+      "asking_price_eur": 552000,
+      "listed_at": "2026-09-20"
+    },
+    {
+      "id": "DEMO-0390",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 176000,
+      "listed_at": "2026-10-11"
+    },
+    {
+      "id": "DEMO-0391",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 105,
+      "asking_price_eur": 369000,
+      "listed_at": "2026-07-27"
+    },
+    {
+      "id": "DEMO-0392",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 261000,
+      "listed_at": "2026-05-31"
+    },
+    {
+      "id": "DEMO-0393",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 60,
+      "asking_price_eur": 153000,
+      "listed_at": "2026-09-17"
+    },
+    {
+      "id": "DEMO-0394",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 153000,
+      "listed_at": "2026-03-08"
+    },
+    {
+      "id": "DEMO-0395",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 91,
+      "asking_price_eur": 309000,
+      "listed_at": "2026-08-26"
+    },
+    {
+      "id": "DEMO-0396",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 34,
+      "asking_price_eur": 83000,
+      "listed_at": "2026-10-14"
+    },
+    {
+      "id": "DEMO-0397",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 118,
+      "asking_price_eur": 430000,
+      "listed_at": "2026-08-13"
+    },
+    {
+      "id": "DEMO-0398",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 101,
+      "asking_price_eur": 200000,
+      "listed_at": "2026-02-20"
+    },
+    {
+      "id": "DEMO-0399",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 77,
+      "asking_price_eur": 265000,
+      "listed_at": "2026-09-30"
+    },
+    {
+      "id": "DEMO-0400",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 74,
+      "asking_price_eur": 256000,
+      "listed_at": "2026-04-30"
+    },
+    {
+      "id": "DEMO-0401",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 148000,
+      "listed_at": "2026-08-16"
+    },
+    {
+      "id": "DEMO-0402",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 40,
+      "asking_price_eur": 104000,
+      "listed_at": "2026-10-03"
+    },
+    {
+      "id": "DEMO-0403",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 81,
+      "asking_price_eur": 213000,
+      "listed_at": "2026-09-15"
+    },
+    {
+      "id": "DEMO-0404",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 95,
+      "asking_price_eur": 293000,
+      "listed_at": "2026-03-13"
+    },
+    {
+      "id": "DEMO-0405",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 95,
+      "asking_price_eur": 240000,
+      "listed_at": "2026-03-14"
+    },
+    {
+      "id": "DEMO-0406",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 99,
+      "asking_price_eur": 252000,
+      "listed_at": "2026-04-20"
+    },
+    {
+      "id": "DEMO-0407",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 140,
+      "asking_price_eur": 462000,
+      "listed_at": "2026-02-25"
+    },
+    {
+      "id": "DEMO-0408",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 165,
+      "asking_price_eur": 385000,
+      "listed_at": "2026-04-08"
+    },
+    {
+      "id": "DEMO-0409",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 179000,
+      "listed_at": "2026-10-05"
+    },
+    {
+      "id": "DEMO-0410",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 173000,
+      "listed_at": "2026-03-23"
+    },
+    {
+      "id": "DEMO-0411",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 145,
+      "asking_price_eur": 584000,
+      "listed_at": "2026-07-20"
+    },
+    {
+      "id": "DEMO-0412",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 97,
+      "asking_price_eur": 463000,
+      "listed_at": "2026-05-16"
+    },
+    {
+      "id": "DEMO-0413",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 164,
+      "asking_price_eur": 416000,
+      "listed_at": "2026-05-27"
+    },
+    {
+      "id": "DEMO-0414",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 44,
+      "asking_price_eur": 131000,
+      "listed_at": "2026-05-07"
+    },
+    {
+      "id": "DEMO-0415",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 76,
+      "asking_price_eur": 264000,
+      "listed_at": "2026-08-08"
+    },
+    {
+      "id": "DEMO-0416",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 125000,
+      "listed_at": "2026-07-24"
+    },
+    {
+      "id": "DEMO-0417",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 70,
+      "asking_price_eur": 229000,
+      "listed_at": "2026-04-18"
+    },
+    {
+      "id": "DEMO-0418",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 119,
+      "asking_price_eur": 471000,
+      "listed_at": "2026-04-01"
+    },
+    {
+      "id": "DEMO-0419",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 118000,
+      "listed_at": "2026-08-18"
+    },
+    {
+      "id": "DEMO-0420",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 90,
+      "asking_price_eur": 176000,
+      "listed_at": "2026-08-21"
+    },
+    {
+      "id": "DEMO-0421",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 114000,
+      "listed_at": "2026-02-24"
+    },
+    {
+      "id": "DEMO-0422",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 253000,
+      "listed_at": "2026-04-06"
+    },
+    {
+      "id": "DEMO-0423",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 134,
+      "asking_price_eur": 367000,
+      "listed_at": "2026-10-07"
+    },
+    {
+      "id": "DEMO-0424",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 79,
+      "asking_price_eur": 245000,
+      "listed_at": "2026-04-20"
+    },
+    {
+      "id": "DEMO-0425",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 85,
+      "asking_price_eur": 330000,
+      "listed_at": "2026-02-28"
+    },
+    {
+      "id": "DEMO-0426",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 67,
+      "asking_price_eur": 130000,
+      "listed_at": "2026-10-08"
+    },
+    {
+      "id": "DEMO-0427",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 91,
+      "asking_price_eur": 311000,
+      "listed_at": "2026-06-14"
+    },
+    {
+      "id": "DEMO-0428",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 58,
+      "asking_price_eur": 149000,
+      "listed_at": "2026-04-09"
+    },
+    {
+      "id": "DEMO-0429",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 44,
+      "asking_price_eur": 134000,
+      "listed_at": "2026-05-19"
+    },
+    {
+      "id": "DEMO-0430",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 85,
+      "asking_price_eur": 184000,
+      "listed_at": "2026-06-09"
+    },
+    {
+      "id": "DEMO-0431",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 83,
+      "asking_price_eur": 292000,
+      "listed_at": "2026-07-17"
+    },
+    {
+      "id": "DEMO-0432",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 126000,
+      "listed_at": "2026-04-11"
+    },
+    {
+      "id": "DEMO-0433",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 108,
+      "asking_price_eur": 308000,
+      "listed_at": "2026-05-30"
+    },
+    {
+      "id": "DEMO-0434",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 105000,
+      "listed_at": "2026-03-20"
+    },
+    {
+      "id": "DEMO-0435",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 117,
+      "asking_price_eur": 374000,
+      "listed_at": "2026-09-15"
+    },
+    {
+      "id": "DEMO-0436",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 55,
+      "asking_price_eur": 163000,
+      "listed_at": "2026-08-01"
+    },
+    {
+      "id": "DEMO-0437",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 214000,
+      "listed_at": "2026-06-20"
+    },
+    {
+      "id": "DEMO-0438",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 102,
+      "asking_price_eur": 377000,
+      "listed_at": "2026-09-14"
+    },
+    {
+      "id": "DEMO-0439",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 239000,
+      "listed_at": "2026-08-13"
+    },
+    {
+      "id": "DEMO-0440",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 138,
+      "asking_price_eur": 261000,
+      "listed_at": "2026-03-28"
+    },
+    {
+      "id": "DEMO-0441",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 159000,
+      "listed_at": "2026-05-08"
+    },
+    {
+      "id": "DEMO-0442",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 115,
+      "asking_price_eur": 338000,
+      "listed_at": "2026-03-01"
+    },
+    {
+      "id": "DEMO-0443",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 80,
+      "asking_price_eur": 275000,
+      "listed_at": "2026-05-17"
+    },
+    {
+      "id": "DEMO-0444",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 165000,
+      "listed_at": "2026-06-21"
+    },
+    {
+      "id": "DEMO-0445",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 140,
+      "asking_price_eur": 406000,
+      "listed_at": "2026-10-02"
+    },
+    {
+      "id": "DEMO-0446",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 167,
+      "asking_price_eur": 357000,
+      "listed_at": "2026-07-30"
+    },
+    {
+      "id": "DEMO-0447",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 83,
+      "asking_price_eur": 337000,
+      "listed_at": "2026-03-15"
+    },
+    {
+      "id": "DEMO-0448",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 86,
+      "asking_price_eur": 392000,
+      "listed_at": "2026-09-26"
+    },
+    {
+      "id": "DEMO-0449",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 125,
+      "asking_price_eur": 279000,
+      "listed_at": "2026-09-20"
+    },
+    {
+      "id": "DEMO-0450",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 66,
+      "asking_price_eur": 172000,
+      "listed_at": "2026-09-14"
+    },
+    {
+      "id": "DEMO-0451",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 116,
+      "asking_price_eur": 390000,
+      "listed_at": "2026-06-29"
+    },
+    {
+      "id": "DEMO-0452",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 87,
+      "asking_price_eur": 266000,
+      "listed_at": "2026-04-16"
+    },
+    {
+      "id": "DEMO-0453",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 74,
+      "asking_price_eur": 218000,
+      "listed_at": "2026-05-16"
+    },
+    {
+      "id": "DEMO-0454",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 134,
+      "asking_price_eur": 364000,
+      "listed_at": "2026-06-30"
+    },
+    {
+      "id": "DEMO-0455",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 34,
+      "asking_price_eur": 93000,
+      "listed_at": "2026-07-12"
+    },
+    {
+      "id": "DEMO-0456",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 53,
+      "asking_price_eur": 148000,
+      "listed_at": "2026-03-31"
+    },
+    {
+      "id": "DEMO-0457",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 269000,
+      "listed_at": "2026-04-19"
+    },
+    {
+      "id": "DEMO-0458",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 178000,
+      "listed_at": "2026-03-03"
+    },
+    {
+      "id": "DEMO-0459",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 57,
+      "asking_price_eur": 176000,
+      "listed_at": "2026-02-21"
+    },
+    {
+      "id": "DEMO-0460",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 125,
+      "asking_price_eur": 366000,
+      "listed_at": "2026-05-28"
+    },
+    {
+      "id": "DEMO-0461",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 41,
+      "asking_price_eur": 138000,
+      "listed_at": "2026-09-21"
+    },
+    {
+      "id": "DEMO-0462",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 95000,
+      "listed_at": "2026-04-07"
+    },
+    {
+      "id": "DEMO-0463",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 237000,
+      "listed_at": "2026-06-23"
+    },
+    {
+      "id": "DEMO-0464",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 123,
+      "asking_price_eur": 539000,
+      "listed_at": "2026-05-26"
+    },
+    {
+      "id": "DEMO-0465",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 72,
+      "asking_price_eur": 167000,
+      "listed_at": "2026-05-07"
+    },
+    {
+      "id": "DEMO-0466",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 144,
+      "asking_price_eur": 328000,
+      "listed_at": "2026-05-21"
+    },
+    {
+      "id": "DEMO-0467",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 43,
+      "asking_price_eur": 142000,
+      "listed_at": "2026-05-29"
+    },
+    {
+      "id": "DEMO-0468",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 262000,
+      "listed_at": "2026-04-09"
+    },
+    {
+      "id": "DEMO-0469",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 241000,
+      "listed_at": "2026-09-19"
+    },
+    {
+      "id": "DEMO-0470",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 77,
+      "asking_price_eur": 284000,
+      "listed_at": "2026-08-18"
+    },
+    {
+      "id": "DEMO-0471",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 66,
+      "asking_price_eur": 148000,
+      "listed_at": "2026-03-25"
+    },
+    {
+      "id": "DEMO-0472",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 145,
+      "asking_price_eur": 267000,
+      "listed_at": "2026-03-15"
+    },
+    {
+      "id": "DEMO-0473",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 65,
+      "asking_price_eur": 296000,
+      "listed_at": "2026-03-05"
+    },
+    {
+      "id": "DEMO-0474",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 130,
+      "asking_price_eur": 502000,
+      "listed_at": "2026-06-27"
+    },
+    {
+      "id": "DEMO-0475",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 74,
+      "asking_price_eur": 322000,
+      "listed_at": "2026-04-18"
+    },
+    {
+      "id": "DEMO-0476",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 43,
+      "asking_price_eur": 121000,
+      "listed_at": "2026-02-20"
+    },
+    {
+      "id": "DEMO-0477",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 234000,
+      "listed_at": "2026-07-21"
+    },
+    {
+      "id": "DEMO-0478",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 133,
+      "asking_price_eur": 601000,
+      "listed_at": "2026-06-14"
+    },
+    {
+      "id": "DEMO-0479",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 115,
+      "asking_price_eur": 262000,
+      "listed_at": "2026-07-02"
+    },
+    {
+      "id": "DEMO-0480",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 43,
+      "asking_price_eur": 95000,
+      "listed_at": "2026-05-23"
+    },
+    {
+      "id": "DEMO-0481",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 64,
+      "asking_price_eur": 285000,
+      "listed_at": "2026-02-25"
+    },
+    {
+      "id": "DEMO-0482",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 145,
+      "asking_price_eur": 268000,
+      "listed_at": "2026-08-31"
+    },
+    {
+      "id": "DEMO-0483",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 217000,
+      "listed_at": "2026-02-28"
+    },
+    {
+      "id": "DEMO-0484",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 116,
+      "asking_price_eur": 431000,
+      "listed_at": "2026-06-15"
+    },
+    {
+      "id": "DEMO-0485",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 150000,
+      "listed_at": "2026-05-05"
+    },
+    {
+      "id": "DEMO-0486",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 202000,
+      "listed_at": "2026-09-05"
+    },
+    {
+      "id": "DEMO-0487",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 71,
+      "asking_price_eur": 240000,
+      "listed_at": "2026-08-13"
+    },
+    {
+      "id": "DEMO-0488",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 36,
+      "asking_price_eur": 142000,
+      "listed_at": "2026-05-05"
+    },
+    {
+      "id": "DEMO-0489",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 122,
+      "asking_price_eur": 433000,
+      "listed_at": "2026-04-22"
+    },
+    {
+      "id": "DEMO-0490",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 34,
+      "asking_price_eur": 83000,
+      "listed_at": "2026-07-03"
+    },
+    {
+      "id": "DEMO-0491",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 46,
+      "asking_price_eur": 140000,
+      "listed_at": "2026-08-12"
+    },
+    {
+      "id": "DEMO-0492",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 147,
+      "asking_price_eur": 553000,
+      "listed_at": "2026-05-10"
+    },
+    {
+      "id": "DEMO-0493",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 34,
+      "asking_price_eur": 131000,
+      "listed_at": "2026-03-20"
+    },
+    {
+      "id": "DEMO-0494",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 189000,
+      "listed_at": "2026-02-24"
+    },
+    {
+      "id": "DEMO-0495",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 44,
+      "asking_price_eur": 116000,
+      "listed_at": "2026-03-05"
+    },
+    {
+      "id": "DEMO-0496",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 158,
+      "asking_price_eur": 486000,
+      "listed_at": "2026-05-19"
+    },
+    {
+      "id": "DEMO-0497",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 58,
+      "asking_price_eur": 179000,
+      "listed_at": "2026-05-01"
+    },
+    {
+      "id": "DEMO-0498",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 79,
+      "asking_price_eur": 185000,
+      "listed_at": "2026-08-27"
+    },
+    {
+      "id": "DEMO-0499",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 57,
+      "asking_price_eur": 159000,
+      "listed_at": "2026-07-10"
+    },
+    {
+      "id": "DEMO-0500",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 35,
+      "asking_price_eur": 102000,
+      "listed_at": "2026-04-27"
+    },
+    {
+      "id": "DEMO-0501",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 81,
+      "asking_price_eur": 324000,
+      "listed_at": "2026-03-02"
+    },
+    {
+      "id": "DEMO-0502",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 116,
+      "asking_price_eur": 515000,
+      "listed_at": "2026-06-28"
+    },
+    {
+      "id": "DEMO-0503",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 116,
+      "asking_price_eur": 304000,
+      "listed_at": "2026-08-24"
+    },
+    {
+      "id": "DEMO-0504",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 98,
+      "asking_price_eur": 320000,
+      "listed_at": "2026-09-23"
+    },
+    {
+      "id": "DEMO-0505",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 79,
+      "asking_price_eur": 229000,
+      "listed_at": "2026-07-23"
+    },
+    {
+      "id": "DEMO-0506",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 106,
+      "asking_price_eur": 297000,
+      "listed_at": "2026-09-17"
+    },
+    {
+      "id": "DEMO-0507",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 94,
+      "asking_price_eur": 264000,
+      "listed_at": "2026-04-12"
+    },
+    {
+      "id": "DEMO-0508",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 263000,
+      "listed_at": "2026-03-31"
+    },
+    {
+      "id": "DEMO-0509",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 127,
+      "asking_price_eur": 310000,
+      "listed_at": "2026-05-09"
+    },
+    {
+      "id": "DEMO-0510",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 135,
+      "asking_price_eur": 308000,
+      "listed_at": "2026-04-13"
+    },
+    {
+      "id": "DEMO-0511",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 30,
+      "asking_price_eur": 139000,
+      "listed_at": "2026-03-23"
+    },
+    {
+      "id": "DEMO-0512",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 95,
+      "asking_price_eur": 233000,
+      "listed_at": "2026-03-26"
+    },
+    {
+      "id": "DEMO-0513",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 145,
+      "asking_price_eur": 252000,
+      "listed_at": "2026-05-25"
+    },
+    {
+      "id": "DEMO-0514",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 46,
+      "asking_price_eur": 154000,
+      "listed_at": "2026-08-13"
+    },
+    {
+      "id": "DEMO-0515",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 95,
+      "asking_price_eur": 234000,
+      "listed_at": "2026-07-05"
+    },
+    {
+      "id": "DEMO-0516",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 143000,
+      "listed_at": "2026-03-20"
+    },
+    {
+      "id": "DEMO-0517",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 89,
+      "asking_price_eur": 338000,
+      "listed_at": "2026-06-05"
+    },
+    {
+      "id": "DEMO-0518",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 166000,
+      "listed_at": "2026-07-09"
+    },
+    {
+      "id": "DEMO-0519",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 179000,
+      "listed_at": "2026-09-29"
+    },
+    {
+      "id": "DEMO-0520",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 70,
+      "asking_price_eur": 170000,
+      "listed_at": "2026-05-11"
+    },
+    {
+      "id": "DEMO-0521",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 95,
+      "asking_price_eur": 271000,
+      "listed_at": "2026-09-19"
+    },
+    {
+      "id": "DEMO-0522",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 197000,
+      "listed_at": "2026-05-13"
+    },
+    {
+      "id": "DEMO-0523",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 87000,
+      "listed_at": "2026-03-19"
+    },
+    {
+      "id": "DEMO-0524",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 38,
+      "asking_price_eur": 146000,
+      "listed_at": "2026-07-27"
+    },
+    {
+      "id": "DEMO-0525",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 93,
+      "asking_price_eur": 352000,
+      "listed_at": "2026-03-02"
+    },
+    {
+      "id": "DEMO-0526",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 103000,
+      "listed_at": "2026-07-30"
+    },
+    {
+      "id": "DEMO-0527",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 161,
+      "asking_price_eur": 572000,
+      "listed_at": "2026-04-29"
+    },
+    {
+      "id": "DEMO-0528",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 111,
+      "asking_price_eur": 260000,
+      "listed_at": "2026-04-12"
+    },
+    {
+      "id": "DEMO-0529",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 148000,
+      "listed_at": "2026-06-18"
+    },
+    {
+      "id": "DEMO-0530",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 148,
+      "asking_price_eur": 399000,
+      "listed_at": "2026-07-15"
+    },
+    {
+      "id": "DEMO-0531",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 107,
+      "asking_price_eur": 403000,
+      "listed_at": "2026-08-23"
+    },
+    {
+      "id": "DEMO-0532",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 161,
+      "asking_price_eur": 411000,
+      "listed_at": "2026-06-11"
+    },
+    {
+      "id": "DEMO-0533",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 137,
+      "asking_price_eur": 510000,
+      "listed_at": "2026-07-24"
+    },
+    {
+      "id": "DEMO-0534",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 72,
+      "asking_price_eur": 130000,
+      "listed_at": "2026-04-30"
+    },
+    {
+      "id": "DEMO-0535",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 306000,
+      "listed_at": "2026-06-16"
+    },
+    {
+      "id": "DEMO-0536",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 169,
+      "asking_price_eur": 283000,
+      "listed_at": "2026-07-13"
+    },
+    {
+      "id": "DEMO-0537",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 116,
+      "asking_price_eur": 549000,
+      "listed_at": "2026-09-18"
+    },
+    {
+      "id": "DEMO-0538",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 90,
+      "asking_price_eur": 280000,
+      "listed_at": "2026-09-27"
+    },
+    {
+      "id": "DEMO-0539",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 144000,
+      "listed_at": "2026-08-01"
+    },
+    {
+      "id": "DEMO-0540",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 56,
+      "asking_price_eur": 160000,
+      "listed_at": "2026-07-04"
+    },
+    {
+      "id": "DEMO-0541",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 56,
+      "asking_price_eur": 200000,
+      "listed_at": "2026-03-15"
+    },
+    {
+      "id": "DEMO-0542",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 119,
+      "asking_price_eur": 409000,
+      "listed_at": "2026-09-30"
+    },
+    {
+      "id": "DEMO-0543",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 155,
+      "asking_price_eur": 480000,
+      "listed_at": "2026-06-10"
+    },
+    {
+      "id": "DEMO-0544",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 30,
+      "asking_price_eur": 98000,
+      "listed_at": "2026-02-25"
+    },
+    {
+      "id": "DEMO-0545",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 156,
+      "asking_price_eur": 412000,
+      "listed_at": "2026-08-05"
+    },
+    {
+      "id": "DEMO-0546",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 55,
+      "asking_price_eur": 104000,
+      "listed_at": "2026-06-29"
+    },
+    {
+      "id": "DEMO-0547",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 152000,
+      "listed_at": "2026-10-13"
+    },
+    {
+      "id": "DEMO-0548",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 94,
+      "asking_price_eur": 274000,
+      "listed_at": "2026-06-28"
+    },
+    {
+      "id": "DEMO-0549",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 116,
+      "asking_price_eur": 414000,
+      "listed_at": "2026-09-02"
+    },
+    {
+      "id": "DEMO-0550",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 120,
+      "asking_price_eur": 337000,
+      "listed_at": "2026-07-29"
+    },
+    {
+      "id": "DEMO-0551",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 28,
+      "asking_price_eur": 73000,
+      "listed_at": "2026-06-18"
+    },
+    {
+      "id": "DEMO-0552",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 151,
+      "asking_price_eur": 567000,
+      "listed_at": "2026-07-20"
+    },
+    {
+      "id": "DEMO-0553",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 151,
+      "asking_price_eur": 545000,
+      "listed_at": "2026-06-20"
+    },
+    {
+      "id": "DEMO-0554",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 116,
+      "asking_price_eur": 359000,
+      "listed_at": "2026-07-30"
+    },
+    {
+      "id": "DEMO-0555",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 40,
+      "asking_price_eur": 115000,
+      "listed_at": "2026-04-14"
+    },
+    {
+      "id": "DEMO-0556",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 39,
+      "asking_price_eur": 94000,
+      "listed_at": "2026-04-07"
+    },
+    {
+      "id": "DEMO-0557",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 49,
+      "asking_price_eur": 135000,
+      "listed_at": "2026-06-13"
+    },
+    {
+      "id": "DEMO-0558",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 158,
+      "asking_price_eur": 595000,
+      "listed_at": "2026-03-26"
+    },
+    {
+      "id": "DEMO-0559",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 145,
+      "asking_price_eur": 713000,
+      "listed_at": "2026-06-29"
+    },
+    {
+      "id": "DEMO-0560",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 106,
+      "asking_price_eur": 411000,
+      "listed_at": "2026-05-30"
+    },
+    {
+      "id": "DEMO-0561",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 126,
+      "asking_price_eur": 361000,
+      "listed_at": "2026-05-28"
+    },
+    {
+      "id": "DEMO-0562",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 91,
+      "asking_price_eur": 328000,
+      "listed_at": "2026-07-14"
+    },
+    {
+      "id": "DEMO-0563",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 57,
+      "asking_price_eur": 185000,
+      "listed_at": "2026-09-12"
+    },
+    {
+      "id": "DEMO-0564",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 88,
+      "asking_price_eur": 293000,
+      "listed_at": "2026-08-14"
+    },
+    {
+      "id": "DEMO-0565",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 147,
+      "asking_price_eur": 331000,
+      "listed_at": "2026-03-24"
+    },
+    {
+      "id": "DEMO-0566",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 106,
+      "asking_price_eur": 202000,
+      "listed_at": "2026-04-11"
+    },
+    {
+      "id": "DEMO-0567",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 65,
+      "asking_price_eur": 219000,
+      "listed_at": "2026-06-24"
+    },
+    {
+      "id": "DEMO-0568",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 32,
+      "asking_price_eur": 111000,
+      "listed_at": "2026-06-15"
+    },
+    {
+      "id": "DEMO-0569",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 124,
+      "asking_price_eur": 264000,
+      "listed_at": "2026-07-27"
+    },
+    {
+      "id": "DEMO-0570",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 157,
+      "asking_price_eur": 397000,
+      "listed_at": "2026-08-06"
+    },
+    {
+      "id": "DEMO-0571",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 139000,
+      "listed_at": "2026-08-06"
+    },
+    {
+      "id": "DEMO-0572",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 118000,
+      "listed_at": "2026-03-21"
+    },
+    {
+      "id": "DEMO-0573",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 101,
+      "asking_price_eur": 338000,
+      "listed_at": "2026-08-21"
+    },
+    {
+      "id": "DEMO-0574",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 168,
+      "asking_price_eur": 552000,
+      "listed_at": "2026-06-16"
+    },
+    {
+      "id": "DEMO-0575",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 77,
+      "asking_price_eur": 175000,
+      "listed_at": "2026-04-11"
+    },
+    {
+      "id": "DEMO-0576",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 118,
+      "asking_price_eur": 406000,
+      "listed_at": "2026-05-02"
+    },
+    {
+      "id": "DEMO-0577",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 88,
+      "asking_price_eur": 212000,
+      "listed_at": "2026-10-13"
+    },
+    {
+      "id": "DEMO-0578",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 229000,
+      "listed_at": "2026-06-07"
+    },
+    {
+      "id": "DEMO-0579",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 94,
+      "asking_price_eur": 240000,
+      "listed_at": "2026-02-23"
+    },
+    {
+      "id": "DEMO-0580",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 86,
+      "asking_price_eur": 181000,
+      "listed_at": "2026-06-13"
+    },
+    {
+      "id": "DEMO-0581",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 33,
+      "asking_price_eur": 118000,
+      "listed_at": "2026-10-02"
+    },
+    {
+      "id": "DEMO-0582",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 106,
+      "asking_price_eur": 263000,
+      "listed_at": "2026-09-07"
+    },
+    {
+      "id": "DEMO-0583",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 120000,
+      "listed_at": "2026-08-25"
+    },
+    {
+      "id": "DEMO-0584",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 72,
+      "asking_price_eur": 244000,
+      "listed_at": "2026-03-12"
+    },
+    {
+      "id": "DEMO-0585",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 101,
+      "asking_price_eur": 423000,
+      "listed_at": "2026-05-12"
+    },
+    {
+      "id": "DEMO-0586",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 66,
+      "asking_price_eur": 134000,
+      "listed_at": "2026-07-25"
+    },
+    {
+      "id": "DEMO-0587",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 68,
+      "asking_price_eur": 323000,
+      "listed_at": "2026-04-29"
+    },
+    {
+      "id": "DEMO-0588",
+      "zone": "Zona C",
+      "type": "Monolocale",
+      "surface_sqm": 45,
+      "asking_price_eur": 118000,
+      "listed_at": "2026-08-17"
+    },
+    {
+      "id": "DEMO-0589",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 162,
+      "asking_price_eur": 357000,
+      "listed_at": "2026-04-15"
+    },
+    {
+      "id": "DEMO-0590",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 156,
+      "asking_price_eur": 460000,
+      "listed_at": "2026-08-07"
+    },
+    {
+      "id": "DEMO-0591",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 165,
+      "asking_price_eur": 320000,
+      "listed_at": "2026-08-12"
+    },
+    {
+      "id": "DEMO-0592",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 114,
+      "asking_price_eur": 392000,
+      "listed_at": "2026-07-24"
+    },
+    {
+      "id": "DEMO-0593",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 64,
+      "asking_price_eur": 179000,
+      "listed_at": "2026-07-13"
+    },
+    {
+      "id": "DEMO-0594",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 62,
+      "asking_price_eur": 165000,
+      "listed_at": "2026-06-26"
+    },
+    {
+      "id": "DEMO-0595",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 121,
+      "asking_price_eur": 402000,
+      "listed_at": "2026-07-21"
+    },
+    {
+      "id": "DEMO-0596",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 306000,
+      "listed_at": "2026-09-20"
+    },
+    {
+      "id": "DEMO-0597",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 83,
+      "asking_price_eur": 312000,
+      "listed_at": "2026-05-07"
+    },
+    {
+      "id": "DEMO-0598",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 79,
+      "asking_price_eur": 309000,
+      "listed_at": "2026-04-16"
+    },
+    {
+      "id": "DEMO-0599",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 230000,
+      "listed_at": "2026-08-19"
+    },
+    {
+      "id": "DEMO-0600",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 83,
+      "asking_price_eur": 259000,
+      "listed_at": "2026-06-01"
+    },
+    {
+      "id": "DEMO-0601",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 97,
+      "asking_price_eur": 247000,
+      "listed_at": "2026-06-27"
+    },
+    {
+      "id": "DEMO-0602",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 83,
+      "asking_price_eur": 240000,
+      "listed_at": "2026-07-11"
+    },
+    {
+      "id": "DEMO-0603",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 68,
+      "asking_price_eur": 199000,
+      "listed_at": "2026-03-10"
+    },
+    {
+      "id": "DEMO-0604",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 96,
+      "asking_price_eur": 363000,
+      "listed_at": "2026-06-15"
+    },
+    {
+      "id": "DEMO-0605",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 197000,
+      "listed_at": "2026-08-14"
+    },
+    {
+      "id": "DEMO-0606",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 140,
+      "asking_price_eur": 450000,
+      "listed_at": "2026-08-04"
+    },
+    {
+      "id": "DEMO-0607",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 346000,
+      "listed_at": "2026-03-16"
+    },
+    {
+      "id": "DEMO-0608",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 73,
+      "asking_price_eur": 263000,
+      "listed_at": "2026-04-13"
+    },
+    {
+      "id": "DEMO-0609",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 128,
+      "asking_price_eur": 461000,
+      "listed_at": "2026-06-15"
+    },
+    {
+      "id": "DEMO-0610",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 115,
+      "asking_price_eur": 273000,
+      "listed_at": "2026-06-20"
+    },
+    {
+      "id": "DEMO-0611",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 103,
+      "asking_price_eur": 306000,
+      "listed_at": "2026-07-07"
+    },
+    {
+      "id": "DEMO-0612",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 64,
+      "asking_price_eur": 146000,
+      "listed_at": "2026-02-26"
+    },
+    {
+      "id": "DEMO-0613",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 48,
+      "asking_price_eur": 120000,
+      "listed_at": "2026-08-01"
+    },
+    {
+      "id": "DEMO-0614",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 310000,
+      "listed_at": "2026-05-02"
+    },
+    {
+      "id": "DEMO-0615",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 79,
+      "asking_price_eur": 216000,
+      "listed_at": "2026-05-12"
+    },
+    {
+      "id": "DEMO-0616",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 202000,
+      "listed_at": "2026-07-17"
+    },
+    {
+      "id": "DEMO-0617",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 94,
+      "asking_price_eur": 363000,
+      "listed_at": "2026-06-14"
+    },
+    {
+      "id": "DEMO-0618",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 81,
+      "asking_price_eur": 248000,
+      "listed_at": "2026-04-11"
+    },
+    {
+      "id": "DEMO-0619",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 161,
+      "asking_price_eur": 392000,
+      "listed_at": "2026-05-22"
+    },
+    {
+      "id": "DEMO-0620",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 137,
+      "asking_price_eur": 374000,
+      "listed_at": "2026-06-03"
+    },
+    {
+      "id": "DEMO-0621",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 57,
+      "asking_price_eur": 209000,
+      "listed_at": "2026-03-21"
+    },
+    {
+      "id": "DEMO-0622",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 83,
+      "asking_price_eur": 223000,
+      "listed_at": "2026-08-09"
+    },
+    {
+      "id": "DEMO-0623",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 163,
+      "asking_price_eur": 452000,
+      "listed_at": "2026-07-30"
+    },
+    {
+      "id": "DEMO-0624",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 38,
+      "asking_price_eur": 112000,
+      "listed_at": "2026-08-21"
+    },
+    {
+      "id": "DEMO-0625",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 135,
+      "asking_price_eur": 500000,
+      "listed_at": "2026-05-31"
+    },
+    {
+      "id": "DEMO-0626",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 135,
+      "asking_price_eur": 548000,
+      "listed_at": "2026-10-01"
+    },
+    {
+      "id": "DEMO-0627",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 177000,
+      "listed_at": "2026-09-24"
+    },
+    {
+      "id": "DEMO-0628",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 63,
+      "asking_price_eur": 178000,
+      "listed_at": "2026-09-05"
+    },
+    {
+      "id": "DEMO-0629",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 156,
+      "asking_price_eur": 392000,
+      "listed_at": "2026-06-06"
+    },
+    {
+      "id": "DEMO-0630",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 129,
+      "asking_price_eur": 316000,
+      "listed_at": "2026-08-04"
+    },
+    {
+      "id": "DEMO-0631",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 94,
+      "asking_price_eur": 304000,
+      "listed_at": "2026-09-21"
+    },
+    {
+      "id": "DEMO-0632",
+      "zone": "Zona C",
+      "type": "Bilocale",
+      "surface_sqm": 55,
+      "asking_price_eur": 146000,
+      "listed_at": "2026-07-23"
+    },
+    {
+      "id": "DEMO-0633",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 101,
+      "asking_price_eur": 391000,
+      "listed_at": "2026-07-11"
+    },
+    {
+      "id": "DEMO-0634",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 77,
+      "asking_price_eur": 232000,
+      "listed_at": "2026-08-18"
+    },
+    {
+      "id": "DEMO-0635",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 133,
+      "asking_price_eur": 384000,
+      "listed_at": "2026-06-16"
+    },
+    {
+      "id": "DEMO-0636",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 36,
+      "asking_price_eur": 126000,
+      "listed_at": "2026-04-14"
+    },
+    {
+      "id": "DEMO-0637",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 344000,
+      "listed_at": "2026-09-24"
+    },
+    {
+      "id": "DEMO-0638",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 136,
+      "asking_price_eur": 287000,
+      "listed_at": "2026-09-22"
+    },
+    {
+      "id": "DEMO-0639",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 75,
+      "asking_price_eur": 183000,
+      "listed_at": "2026-02-23"
+    },
+    {
+      "id": "DEMO-0640",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 137,
+      "asking_price_eur": 331000,
+      "listed_at": "2026-06-28"
+    },
+    {
+      "id": "DEMO-0641",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 128,
+      "asking_price_eur": 333000,
+      "listed_at": "2026-08-02"
+    },
+    {
+      "id": "DEMO-0642",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 149,
+      "asking_price_eur": 326000,
+      "listed_at": "2026-07-11"
+    },
+    {
+      "id": "DEMO-0643",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 184000,
+      "listed_at": "2026-06-09"
+    },
+    {
+      "id": "DEMO-0644",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 113,
+      "asking_price_eur": 244000,
+      "listed_at": "2026-04-16"
+    },
+    {
+      "id": "DEMO-0645",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 100,
+      "asking_price_eur": 226000,
+      "listed_at": "2026-09-21"
+    },
+    {
+      "id": "DEMO-0646",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 97,
+      "asking_price_eur": 209000,
+      "listed_at": "2026-09-12"
+    },
+    {
+      "id": "DEMO-0647",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 144,
+      "asking_price_eur": 432000,
+      "listed_at": "2026-03-11"
+    },
+    {
+      "id": "DEMO-0648",
+      "zone": "Zona C",
+      "type": "Loft",
+      "surface_sqm": 72,
+      "asking_price_eur": 287000,
+      "listed_at": "2026-06-30"
+    },
+    {
+      "id": "DEMO-0649",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 69,
+      "asking_price_eur": 231000,
+      "listed_at": "2026-07-11"
+    },
+    {
+      "id": "DEMO-0650",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 93,
+      "asking_price_eur": 225000,
+      "listed_at": "2026-08-27"
+    },
+    {
+      "id": "DEMO-0651",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 46,
+      "asking_price_eur": 99000,
+      "listed_at": "2026-08-08"
+    },
+    {
+      "id": "DEMO-0652",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 58,
+      "asking_price_eur": 173000,
+      "listed_at": "2026-09-12"
+    },
+    {
+      "id": "DEMO-0653",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 167,
+      "asking_price_eur": 593000,
+      "listed_at": "2026-08-25"
+    },
+    {
+      "id": "DEMO-0654",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 157000,
+      "listed_at": "2026-07-09"
+    },
+    {
+      "id": "DEMO-0655",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 152,
+      "asking_price_eur": 428000,
+      "listed_at": "2026-04-04"
+    },
+    {
+      "id": "DEMO-0656",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 146,
+      "asking_price_eur": 391000,
+      "listed_at": "2026-07-12"
+    },
+    {
+      "id": "DEMO-0657",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 85,
+      "asking_price_eur": 347000,
+      "listed_at": "2026-08-03"
+    },
+    {
+      "id": "DEMO-0658",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 139000,
+      "listed_at": "2026-03-24"
+    },
+    {
+      "id": "DEMO-0659",
+      "zone": "Zona C",
+      "type": "Quadrilocale",
+      "surface_sqm": 136,
+      "asking_price_eur": 331000,
+      "listed_at": "2026-04-16"
+    },
+    {
+      "id": "DEMO-0660",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 30,
+      "asking_price_eur": 90000,
+      "listed_at": "2026-06-13"
+    },
+    {
+      "id": "DEMO-0661",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 136,
+      "asking_price_eur": 403000,
+      "listed_at": "2026-03-26"
+    },
+    {
+      "id": "DEMO-0662",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 76,
+      "asking_price_eur": 208000,
+      "listed_at": "2026-09-14"
+    },
+    {
+      "id": "DEMO-0663",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 46,
+      "asking_price_eur": 119000,
+      "listed_at": "2026-08-14"
+    },
+    {
+      "id": "DEMO-0664",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 102,
+      "asking_price_eur": 375000,
+      "listed_at": "2026-07-02"
+    },
+    {
+      "id": "DEMO-0665",
+      "zone": "Zona B",
+      "type": "Trilocale",
+      "surface_sqm": 79,
+      "asking_price_eur": 278000,
+      "listed_at": "2026-08-10"
+    },
+    {
+      "id": "DEMO-0666",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 62,
+      "asking_price_eur": 147000,
+      "listed_at": "2026-09-28"
+    },
+    {
+      "id": "DEMO-0667",
+      "zone": "Zona A",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 187000,
+      "listed_at": "2026-07-30"
+    },
+    {
+      "id": "DEMO-0668",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 93,
+      "asking_price_eur": 424000,
+      "listed_at": "2026-02-25"
+    },
+    {
+      "id": "DEMO-0669",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 66,
+      "asking_price_eur": 146000,
+      "listed_at": "2026-05-29"
+    },
+    {
+      "id": "DEMO-0670",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 66,
+      "asking_price_eur": 200000,
+      "listed_at": "2026-09-17"
+    },
+    {
+      "id": "DEMO-0671",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 179000,
+      "listed_at": "2026-07-14"
+    },
+    {
+      "id": "DEMO-0672",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 234000,
+      "listed_at": "2026-08-16"
+    },
+    {
+      "id": "DEMO-0673",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 142,
+      "asking_price_eur": 501000,
+      "listed_at": "2026-07-21"
+    },
+    {
+      "id": "DEMO-0674",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 76,
+      "asking_price_eur": 278000,
+      "listed_at": "2026-09-08"
+    },
+    {
+      "id": "DEMO-0675",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 77,
+      "asking_price_eur": 215000,
+      "listed_at": "2026-03-17"
+    },
+    {
+      "id": "DEMO-0676",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 99,
+      "asking_price_eur": 325000,
+      "listed_at": "2026-04-11"
+    },
+    {
+      "id": "DEMO-0677",
+      "zone": "Zona A",
+      "type": "Bilocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 192000,
+      "listed_at": "2026-02-25"
+    },
+    {
+      "id": "DEMO-0678",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 68,
+      "asking_price_eur": 222000,
+      "listed_at": "2026-03-20"
+    },
+    {
+      "id": "DEMO-0679",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 62,
+      "asking_price_eur": 270000,
+      "listed_at": "2026-06-07"
+    },
+    {
+      "id": "DEMO-0680",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 154000,
+      "listed_at": "2026-03-18"
+    },
+    {
+      "id": "DEMO-0681",
+      "zone": "Zona C",
+      "type": "Trilocale",
+      "surface_sqm": 95,
+      "asking_price_eur": 318000,
+      "listed_at": "2026-09-07"
+    },
+    {
+      "id": "DEMO-0682",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 167,
+      "asking_price_eur": 563000,
+      "listed_at": "2026-06-12"
+    },
+    {
+      "id": "DEMO-0683",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 112,
+      "asking_price_eur": 413000,
+      "listed_at": "2026-08-24"
+    },
+    {
+      "id": "DEMO-0684",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 37,
+      "asking_price_eur": 108000,
+      "listed_at": "2026-05-04"
+    },
+    {
+      "id": "DEMO-0685",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 170,
+      "asking_price_eur": 614000,
+      "listed_at": "2026-03-05"
+    },
+    {
+      "id": "DEMO-0686",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 166,
+      "asking_price_eur": 527000,
+      "listed_at": "2026-02-22"
+    },
+    {
+      "id": "DEMO-0687",
+      "zone": "Zona E",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 214000,
+      "listed_at": "2026-02-27"
+    },
+    {
+      "id": "DEMO-0688",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 64,
+      "asking_price_eur": 156000,
+      "listed_at": "2026-09-16"
+    },
+    {
+      "id": "DEMO-0689",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 110,
+      "asking_price_eur": 419000,
+      "listed_at": "2026-06-12"
+    },
+    {
+      "id": "DEMO-0690",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 29,
+      "asking_price_eur": 89000,
+      "listed_at": "2026-04-25"
+    },
+    {
+      "id": "DEMO-0691",
+      "zone": "Zona D",
+      "type": "Loft",
+      "surface_sqm": 100,
+      "asking_price_eur": 254000,
+      "listed_at": "2026-07-03"
+    },
+    {
+      "id": "DEMO-0692",
+      "zone": "Zona A",
+      "type": "Loft",
+      "surface_sqm": 84,
+      "asking_price_eur": 377000,
+      "listed_at": "2026-05-17"
+    },
+    {
+      "id": "DEMO-0693",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 80,
+      "asking_price_eur": 262000,
+      "listed_at": "2026-07-09"
+    },
+    {
+      "id": "DEMO-0694",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 158,
+      "asking_price_eur": 569000,
+      "listed_at": "2026-05-09"
+    },
+    {
+      "id": "DEMO-0695",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 74,
+      "asking_price_eur": 195000,
+      "listed_at": "2026-09-14"
+    },
+    {
+      "id": "DEMO-0696",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 91,
+      "asking_price_eur": 216000,
+      "listed_at": "2026-05-26"
+    },
+    {
+      "id": "DEMO-0697",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 130000,
+      "listed_at": "2026-06-24"
+    },
+    {
+      "id": "DEMO-0698",
+      "zone": "Zona B",
+      "type": "Bilocale",
+      "surface_sqm": 68,
+      "asking_price_eur": 233000,
+      "listed_at": "2026-03-13"
+    },
+    {
+      "id": "DEMO-0699",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 154000,
+      "listed_at": "2026-04-10"
+    },
+    {
+      "id": "DEMO-0700",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 170,
+      "asking_price_eur": 472000,
+      "listed_at": "2026-09-01"
+    },
+    {
+      "id": "DEMO-0701",
+      "zone": "Zona B",
+      "type": "Loft",
+      "surface_sqm": 116,
+      "asking_price_eur": 407000,
+      "listed_at": "2026-07-04"
+    },
+    {
+      "id": "DEMO-0702",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 58,
+      "asking_price_eur": 121000,
+      "listed_at": "2026-04-12"
+    },
+    {
+      "id": "DEMO-0703",
+      "zone": "Zona D",
+      "type": "Trilocale",
+      "surface_sqm": 109,
+      "asking_price_eur": 294000,
+      "listed_at": "2026-02-27"
+    },
+    {
+      "id": "DEMO-0704",
+      "zone": "Zona F",
+      "type": "Loft",
+      "surface_sqm": 141,
+      "asking_price_eur": 372000,
+      "listed_at": "2026-03-24"
+    },
+    {
+      "id": "DEMO-0705",
+      "zone": "Zona F",
+      "type": "Bilocale",
+      "surface_sqm": 78,
+      "asking_price_eur": 148000,
+      "listed_at": "2026-02-22"
+    },
+    {
+      "id": "DEMO-0706",
+      "zone": "Zona D",
+      "type": "Quadrilocale",
+      "surface_sqm": 165,
+      "asking_price_eur": 477000,
+      "listed_at": "2026-04-11"
+    },
+    {
+      "id": "DEMO-0707",
+      "zone": "Zona D",
+      "type": "Monolocale",
+      "surface_sqm": 51,
+      "asking_price_eur": 148000,
+      "listed_at": "2026-10-11"
+    },
+    {
+      "id": "DEMO-0708",
+      "zone": "Zona F",
+      "type": "Trilocale",
+      "surface_sqm": 84,
+      "asking_price_eur": 156000,
+      "listed_at": "2026-05-06"
+    },
+    {
+      "id": "DEMO-0709",
+      "zone": "Zona E",
+      "type": "Monolocale",
+      "surface_sqm": 50,
+      "asking_price_eur": 133000,
+      "listed_at": "2026-06-22"
+    },
+    {
+      "id": "DEMO-0710",
+      "zone": "Zona E",
+      "type": "Quadrilocale",
+      "surface_sqm": 160,
+      "asking_price_eur": 398000,
+      "listed_at": "2026-09-13"
+    },
+    {
+      "id": "DEMO-0711",
+      "zone": "Zona B",
+      "type": "Quadrilocale",
+      "surface_sqm": 132,
+      "asking_price_eur": 474000,
+      "listed_at": "2026-05-15"
+    },
+    {
+      "id": "DEMO-0712",
+      "zone": "Zona A",
+      "type": "Trilocale",
+      "surface_sqm": 96,
+      "asking_price_eur": 447000,
+      "listed_at": "2026-03-07"
+    },
+    {
+      "id": "DEMO-0713",
+      "zone": "Zona B",
+      "type": "Monolocale",
+      "surface_sqm": 52,
+      "asking_price_eur": 156000,
+      "listed_at": "2026-02-26"
+    },
+    {
+      "id": "DEMO-0714",
+      "zone": "Zona E",
+      "type": "Loft",
+      "surface_sqm": 139,
+      "asking_price_eur": 306000,
+      "listed_at": "2026-04-15"
+    },
+    {
+      "id": "DEMO-0715",
+      "zone": "Zona E",
+      "type": "Bilocale",
+      "surface_sqm": 60,
+      "asking_price_eur": 143000,
+      "listed_at": "2026-06-23"
+    },
+    {
+      "id": "DEMO-0716",
+      "zone": "Zona D",
+      "type": "Bilocale",
+      "surface_sqm": 82,
+      "asking_price_eur": 245000,
+      "listed_at": "2026-05-02"
+    },
+    {
+      "id": "DEMO-0717",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 153,
+      "asking_price_eur": 477000,
+      "listed_at": "2026-06-10"
+    },
+    {
+      "id": "DEMO-0718",
+      "zone": "Zona F",
+      "type": "Quadrilocale",
+      "surface_sqm": 152,
+      "asking_price_eur": 361000,
+      "listed_at": "2026-04-20"
+    },
+    {
+      "id": "DEMO-0719",
+      "zone": "Zona F",
+      "type": "Monolocale",
+      "surface_sqm": 54,
+      "asking_price_eur": 110000,
+      "listed_at": "2026-03-04"
+    },
+    {
+      "id": "DEMO-0720",
+      "zone": "Zona A",
+      "type": "Quadrilocale",
+      "surface_sqm": 107,
+      "asking_price_eur": 320000,
+      "listed_at": "2026-09-10"
+    }
+  ]
+}

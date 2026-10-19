@@ -3,7 +3,7 @@ on:
   pull_request:
     paths: ['proposal/**', 'scripts/**', 'tests/**', 'package.json', '.github/workflows/portfolio-checks.yml']
   push:
-    branches: ['main', 'feat/freelance-portfolio']
+    branches: ['main']
     paths: ['proposal/**', 'scripts/**', 'tests/**', 'package.json', '.github/workflows/portfolio-checks.yml']
   workflow_dispatch:
 permissions:

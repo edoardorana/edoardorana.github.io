@@ -1,6 +1,6 @@
-# Edoardo Rana — portfolio a mappa
+# Edoardo Rana — portfolio
 
-Sito personale per raccontare profilo, percorso, approccio e progetti, e aprire nuove collaborazioni.
+Sito personale per raccontare profilo, approccio e progetti, e aprire nuove collaborazioni. Profilo comprende anche luoghi, formazione e cronologia professionale.
 
 **Per iniziare su Windows / Visual Studio Code:** [guida passo passo](docs/SETUP_VSCODE.md).
 
@@ -18,7 +18,7 @@ Apri http://127.0.0.1:4173. In PowerShell puoi usare `npm.cmd` se `npm.ps1` è b
 
 ## Struttura
 
-- `proposal/`: sorgenti della nuova versione (HTML, CSS, JavaScript).
+- `proposal/`: sorgenti del sito (HTML, CSS, JavaScript).
 - `dist/`: output generato per la pubblicazione, escluso da Git.
 - `scripts/`: server locale e build senza dipendenze.
 - `tests/`: controlli essenziali con il test runner di Node.
@@ -29,7 +29,7 @@ Apri http://127.0.0.1:4173. In PowerShell puoi usare `npm.cmd` se `npm.ps1` è b
 
 ## Navigazione
 
-La mappa collega cinque aree con URL dedicati: `#/profilo`, `#/approccio`, `#/percorso`, `#/progetti` e `#/contatti`. I progetti hanno un ulteriore livello `#/progetti/<id>`. Le route hash funzionano su hosting statico senza rewrite.
+La Home collega quattro aree con URL dedicati: `#/profilo`, `#/approccio`, `#/progetti` e `#/contatti`. La vecchia route `#/percorso` resta un alias compatibile di Profilo. I progetti hanno un ulteriore livello `#/progetti/<id>`. Le route hash funzionano su hosting statico senza rewrite.
 
 Il contatto usa il programma di posta del visitatore. La mappa geografica è un SVG locale, senza servizi cartografici caricati a runtime. Il portfolio non contiene API AI, analytics o un backend.
 

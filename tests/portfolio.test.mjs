@@ -8,8 +8,11 @@ test('all areas and project deep links resolve; missing content gets a not-found
   assert.deepEqual(parseRoute(''), { page: 'mappa' });
   assert.deepEqual(parseRoute('#/'), { page: 'mappa' });
   for (const area of areas) assert.deepEqual(parseRoute('#/' + area.id), { page: area.id });
+  assert.equal(areas.length, 4);
+  assert.deepEqual(parseRoute('#/percorso'), { page: 'percorso' });
+  assert.deepEqual(parseRoute('#/laboratorio'), { page: 'laboratorio' });
   for (const project of projects) assert.deepEqual(parseRoute('#/progetti/' + project.id), { page: 'progetti', item: project.id });
-  for (const invalid of ['#/profilo/extra', '#/progetti/missing', '#/missing', '#/progetti/market-data/extra', '#/%3Cscript%3E']) assert.deepEqual(parseRoute(invalid), { page: 'not-found' });
+  for (const invalid of ['#/profilo/extra', '#/laboratorio/extra', '#/progetti/missing', '#/missing', '#/progetti/market-data/extra', '#/%3Cscript%3E']) assert.deepEqual(parseRoute(invalid), { page: 'not-found' });
 });
 test('email content remains encoded, including special characters and new lines', () => {
   const url = new URL(mailto('Dati & AI?', 'Ciao\nParliamo di A+B e costi 10%?'));
@@ -34,6 +37,7 @@ test('Europe markers stay inside the map and distinguish stays from remote work'
 test('local preview limits assets to public files and rejects path escape attempts', () => {
   assert.match(resolveAsset('/').file, /index\.html$/);
   assert.match(resolveAsset('/data.mjs').type, /javascript/);
+  assert.match(resolveAsset('/lab/vendor/PLOTLY-LICENSE.txt').type, /text\/plain/);
   for (const path of ['/../README.md','/%2e%2e/private.html','/.env','/file.txt','/%00.html','/..%5csecret.html','/%zz','/.git/config','/folder/.secret.html']) assert.equal(resolveAsset(path), null, path);
 });
 test('entry and CV use local assets and contain no duplicate HTML ids', async () => {
