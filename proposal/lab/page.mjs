@@ -11,7 +11,7 @@ const template = (backHref, backText) => `
   <section class="page lab-page">
     <a class="back-link" href="${backHref}"><span aria-hidden="true">←</span> ${backText}</a>
     <header class="page-heading lab-heading">
-      <p class="eyebrow">ESPLORAZIONE INTERATTIVA</p>
+      <p class="eyebrow">~/laboratorio</p>
       <h1>Laboratorio dati</h1>
       <p class="page-intro">Esplora annunci di vendita simulati: filtri, indicatori, grafici e tabella si aggiornano insieme.</p>
     </header>

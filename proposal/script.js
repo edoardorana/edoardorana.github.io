@@ -20,7 +20,7 @@ function backLink(href = '#/', text = 'Torna alla Home') {
 }
 function pageHeader(id, text) {
   const area = areas.find(area => area.id === id);
-  return `<header class="page-heading"><h1>${area.title}</h1><p class="page-intro">${text}</p></header>`;
+  return `<header class="page-heading"><p class="eyebrow">~/${id}</p><h1>${area.title}</h1><p class="page-intro">${text}</p></header>`;
 }
 function sectionNav(id) {
   const position = areas.findIndex(area => area.id === id);
@@ -30,7 +30,7 @@ function sectionNav(id) {
   return `<nav class="section-nav" aria-label="Navigazione tra le sezioni"><div class="section-nav-prev">${previous ? link(previous, 'Precedente', '←') : ''}</div><a class="section-nav-home" href="#/">Home</a><div class="section-nav-next">${next ? link(next, 'Successiva', '→') : ''}</div></nav>`;
 }
 function home() {
-  return `<section class="home"><div class="home-intro"><div><p class="eyebrow">EDOARDO RANA / PORTFOLIO</p><h1>Sistemi Linux, database e analisi.</h1></div><p>Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.</p></div>
+  return `<section class="home"><div class="home-intro"><div><p class="eyebrow">~/home</p><h1>Sistemi Linux, database e analisi.</h1></div><p>Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.</p></div>
   <div class="atlas" aria-label="Le quattro aree del portfolio">
   ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><strong class="area-title">${area.title}</strong><span class="area-details"><span class="area-terminal"><span class="area-command-line" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-static">&gt;</span> <span class="area-command-name">cat readme.md</span></span><span class="area-command-copy">${area.preview}</span><span class="area-command-line area-command-wait" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-cursor">&gt;</span></span></span></span></a>`).join('')}</div></section>`;
 }
@@ -52,7 +52,7 @@ function projectList() {
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}<header class="page-heading"><p class="eyebrow">${p.kind}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><span>01</span><h2>Contesto</h2><p>${p.context}</p></section><section><span>02</span><h2>Attività svolte</h2><p>${p.contribution}</p></section><section><span>03</span><h2>Materiali disponibili</h2><p>${p.output}</p></section></div>${sectionNav('progetti')}</article>`;
+  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}<header class="page-heading"><p class="eyebrow">~/progetti/${p.id}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><span>01</span><h2>Contesto</h2><p>${p.context}</p></section><section><span>02</span><h2>Attività svolte</h2><p>${p.contribution}</p></section><section><span>03</span><h2>Materiali disponibili</h2><p>${p.output}</p></section></div>${sectionNav('progetti')}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -135,7 +135,7 @@ function render() {
       main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}<h1>Laboratorio non disponibile</h1><p>Non riesco a caricare la pagina. Riprova tra poco.</p></section>`;
     });
   }else{
-    const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}<h1>Pagina non trovata</h1><p>Controlla l’indirizzo oppure torna alla Home.</p></section>`};
+    const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}<header class="page-heading"><p class="eyebrow">~/404</p><h1>Pagina non trovata</h1><p class="page-intro">Controlla l’indirizzo oppure torna alla Home.</p></header></section>`};
     main.innerHTML=renderers[route.page]();
     bindPage(route);
   }
