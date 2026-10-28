@@ -11,7 +11,7 @@ Aggiornato il 28 ottobre 2026. Le note precedenti sono state condensate; i commi
 - Menu in stile `ls -l`, cartelle annidate, CV sotto Profilo, progetti sotto Progetti. Su mobile le colonne decorative dei permessi sono nascoste. Chiusura con Escape e ritorno del focus al pulsante; selezionare una voce chiude il menu.
 - Footer delle tre schede limitato a Progetti e Home. Eliminata la demo sintetica con dataset, generatore, moduli, sei test esclusivi e CSS inutilizzato. Plotly/licenza spostati nel modulo condiviso `proposal/charts/`.
 - Verifiche: `npm.cmd run check` (14 test), `npm.cmd run build`, diagnostica editor e `git diff --check` riusciti. Edge headless a 1280/390/320 px: nuove route, vecchi alias, cinque grafici per dashboard, menu e footer senza overflow o errori JavaScript nel run finale; verificati Escape e ripristino focus. Nessun test su telefoni fisici.
-- Pubblicazione in preparazione. Prossimi contenuti: documentazione tecnica di NetBox quando disponibile; laboratorio Proxmox da progettare.
+- Pubblicata tramite [PR #8](https://github.com/edoardorana/edoardorana.github.io/pull/8), merge `c6cef8d`. [Run 40711368841](https://github.com/edoardorana/edoardorana.github.io/actions/runs/40711368841): `check` e `deploy` riusciti. Verificati Progetti e menu sul sito pubblico, corrispondenza dei sette asset principali con i sorgenti e risposta 404 del dataset sintetico eliminato. Prossimi contenuti: documentazione tecnica di NetBox quando disponibile; laboratorio Proxmox da progettare.
 
 ## Dashboard tesi e CSV Explorer — 28 ottobre 2026
 
