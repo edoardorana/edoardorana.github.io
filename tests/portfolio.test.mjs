@@ -10,6 +10,7 @@ test('all areas and project deep links resolve; missing content gets a not-found
   assert.deepEqual(parseRoute('#/'), { page: 'mappa' });
   for (const area of areas) assert.deepEqual(parseRoute('#/' + area.id), { page: area.id });
   assert.equal(areas.length, 4);
+  assert.deepEqual(areas.map(area => area.id), ['profilo', 'progetti', 'approccio', 'contatti']);
   assert.deepEqual(parseRoute('#/percorso'), { page: 'percorso' });
   assert.deepEqual(parseRoute('#/laboratorio'), { page: 'progetti' });
   assert.deepEqual(parseRoute('#/home'), { page: 'mappa' });
@@ -53,17 +54,21 @@ test('entry and CV use local assets and contain no duplicate HTML ids', async ()
     for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))(?:\?[^\"]*)?"/g)) await readFile(new URL('../proposal/' + asset, import.meta.url));
   }
 });
-test('terminal headings keep the title semantic and expose a collapsed readme command', () => {
-  const html = terminalHeader({ path: '~/progetti/demo', title: 'Titolo <demo>', summary: 'Sintesi & dettagli' });
+test('terminal headings keep the title semantic and the readme always visible', () => {
+  const html = terminalHeader({ path: '~/progetti/demo', title: 'Titolo <demo>', summary: 'Sintesi & dettagli', sections: [{ label: 'voce/', text: 'Contenuto ordinato' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV' } });
   assert.match(html, /<h1 class="visually-hidden">Titolo &lt;demo&gt;<\/h1>/);
   assert.match(html, /edo@debian/);
   assert.match(html, /~\/progetti\/demo/);
   assert.match(html, /cat readme\.md/);
-  assert.match(html, /aria-expanded="false"/);
-  assert.match(html, /<p class="readme-output"[^>]* hidden>Sintesi &amp; dettagli<\/p>/);
+  assert.doesNotMatch(html, /\shidden(?:\s|>)|aria-expanded/);
+  assert.match(html, /Sintesi &amp; dettagli/);
+  assert.match(html, /voce\//);
+  assert.match(html, /xdg-open cv\.html/);
+  assert.match(html, /href="cv\.html"/);
 });
 test('site menu lists only complete terminal paths without file modes', async () => {
   const html = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
   assert.doesNotMatch(html, /drwx|rw-r|directory-mode/);
   for (const path of ['~/home/', '~/profilo/', '~/progetti/dashboard-generator/', '~/progetti/immobiliare-data/']) assert.match(html, new RegExp(path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.ok(html.indexOf('aria-label="Progetti"') < html.indexOf('aria-label="Approccio"'));
 });

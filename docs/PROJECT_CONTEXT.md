@@ -8,7 +8,7 @@ Portfolio personale di Edoardo Rana per presentarsi, proporre collaborazioni e s
 
 La prima landing page è stata valutata circa 6–6,5/10: messaggio e struttura dei contenuti corretti, forma troppo standard. Il concept interattivo successivo è stato apprezzato. La direzione scelta è **una mappa con aree da esplorare**, sobria e minimale, con sezioni in cui entrare e collegamenti significativi.
 
-- Quattro aree visibili: Profilo, Approccio, Progetti, Collaborazioni. Profilo comprende anche luoghi, formazione e cronologia prima raccolti in Percorso.
+- Quattro aree visibili: Profilo, Progetti, Approccio, Collaborazioni. Profilo comprende anche luoghi, formazione e cronologia prima raccolti in Percorso.
 - La griglia di navigazione è distinta dalla mappa geografica inclusa nel Profilo.
 - Ogni sezione ha un URL condivisibile e un ritorno alla Home.
 - Tono personale in prima persona, comprensibile a potenziali clienti non tecnici.
@@ -53,8 +53,10 @@ Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.m
 ## Intestazioni terminale — revisione del 28 ottobre 2026
 
 - Il menu conserva la struttura annidata ma mostra soltanto i percorsi completi (`~/home/`, `~/profilo/`, `~/progetti/.../`), senza permessi o indicatori di tipo file.
-- Le pagine non ripetono più il percorso con un grande titolo visibile. L’intestazione è il comando `edo@debian:~/percorso$ cat readme.md`; clic o Invio mostrano e nascondono la frase riepilogativa.
-- Il titolo resta semanticamente presente per browser e tecnologie assistive. Il comando è un pulsante nativo con stato espanso dichiarato; non simula la barra o i controlli di una finestra.
+- Le pagine non ripetono più il percorso con un grande titolo visibile. L’intestazione occupa tutta la larghezza utile e mostra sempre il comando `edo@debian:~/percorso$ cat readme.md` con il relativo contenuto.
+- Il titolo resta semanticamente presente per browser e tecnologie assistive. Il README non simula la barra o i controlli di una finestra.
+- Nel Profilo il README raccoglie attività e percorso e include il comando cliccabile `xdg-open cv.html`. Il terminale delle competenze espone inoltre `languages --list` e `interests --list`, senza numerazione delle cartelle.
+- Home, menu e navigazione di sezione seguono l’ordine Profilo, Progetti, Approccio, Collaborazioni.
 
 Il vecchio sito alla radice è stato rimosso su richiesta di Edoardo. Il portfolio a mappa è online su https://edoardorana.github.io/ dal 18 ottobre 2026: la PR #1 è stata integrata in `main` e la sorgente Pages è GitHub Actions. Il workflow esegue controlli, genera `dist/` da `proposal/` e pubblica l'artefatto dopo i push pertinenti su `main`. Per le prossime migliorie usare branch e revisione prima dell'integrazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
 

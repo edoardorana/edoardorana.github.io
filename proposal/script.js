@@ -1,5 +1,5 @@
 import { person, areas, steps, projects, places, parseRoute, mailto, mapPoint } from './data.mjs';
-import { terminalHeader, bindTerminalHeaders } from './terminal-header.mjs';
+import { terminalHeader } from './terminal-header.mjs';
 
 const main = document.querySelector('#main');
 const index = document.querySelector('#site-index');
@@ -38,11 +38,10 @@ function home() {
   ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><strong class="area-title">${area.title}</strong><span class="area-details"><span class="area-terminal"><span class="area-command-line" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-static">&gt;</span> <span class="area-command-name">cat readme.md</span></span><span class="area-command-copy">${area.preview}</span><span class="area-command-line area-command-wait" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-cursor">&gt;</span></span></span></span></a>`).join('')}</div></section>`;
 }
 function profile() {
-  return `<section class="page">${pageHeader('profilo', 'Lavoro su infrastrutture Linux e database. La formazione in statistica e le esperienze operative mi aiutano a leggere i problemi tecnici nel loro contesto.')}
-  <div class="profile-layout"><div class="portrait-type" aria-label="Edoardo Rana"><span>Edoardo<br>Rana</span><small>INFRASTRUTTURE · DATI · PROCESSI</small></div><div class="prose"><h2>Esperienza operativa</h2><p>In Broway SA ho lavorato prima sui database e ora sulle infrastrutture Linux. Esamino log e anomalie, condivido le evidenze con gli altri referenti tecnici e documento gli interventi.</p><p>Lo stage in Business Intelligence e la formazione in statistica mi hanno insegnato a verificare l’origine dei dati e la domanda a cui devono rispondere. L’esperienza iniziale in amministrazione mi aiuta a considerare anche i vincoli operativi.</p><a class="button" href="cv.html" target="_blank" rel="noopener">CV sintetico ${arrow}</a></div></div>
+  return `<section class="page">${terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Lavoro su infrastrutture Linux, database e automazione, collegando i problemi tecnici al contesto in cui vengono usati i sistemi.', sections: [{ label: 'attività/', text: 'Esamino log e anomalie, condivido le evidenze con gli altri referenti tecnici e documento gli interventi.' }, { label: 'percorso/', text: 'La formazione in statistica e le esperienze in Business Intelligence, amministrazione, database e sistemi mi aiutano a verificare origine, significato e vincoli dei dati.' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV sintetico' } })}
   ${journeyContent()}
-  <section class="skills-terminal" aria-labelledby="skills-title"><h2 class="visually-hidden" id="skills-title">Competenze, in sintesi</h2><div class="terminal-screen"><p class="terminal-command"><span>edo@debian</span>:<b>~/profilo</b>$ skills --overview</p><div class="skills-grid"><article><p class="terminal-path">[01] consulenza/</p><h3>Supporto e metodo</h3><p>Requisiti · Diagnosi delle cause · Documentazione · Processi</p></article><article><p class="terminal-path">[02] infrastruttura/</p><h3>Sistemi Linux</h3><p>Debian · Proxmox VE / PBS · checkmk · Storage S3 · Backup</p></article><article><p class="terminal-path">[03] database_automazione/</p><h3>Dati e automazione</h3><p>Oracle · PostgreSQL · MariaDB / MySQL · SQL · Bash · Python</p></article><article><p class="terminal-path">[04] analisi_bi/</p><h3>Business Intelligence</h3><p>KPI · Power BI · Qlik Sense · Tableau · R · KNIME · Orange</p></article></div><p class="terminal-command terminal-command-final" aria-hidden="true"><span>edo@debian</span>:<b>~/profilo</b>$ <i></i></p></div></section>
-  <div class="human-note"><div><p class="eyebrow">ALTRE INFORMAZIONI</p><h2>Lingue e interessi</h2></div><p>Italiano madrelingua, inglese C1 e spagnolo B2. Tra i miei interessi ci sono judo e arti marziali, skateboard, moto e auto.</p></div>${sectionNav('profilo')}</section>`;
+  <section class="skills-terminal" aria-labelledby="skills-title"><h2 class="visually-hidden" id="skills-title">Competenze, lingue e interessi</h2><div class="terminal-screen"><p class="terminal-command"><span>edo@debian</span>:<b>~/profilo</b>$ skills --overview</p><div class="skills-grid"><article><p class="terminal-path">consulenza/</p><h3>Supporto e metodo</h3><p>Requisiti · Diagnosi delle cause · Documentazione · Processi</p></article><article><p class="terminal-path">infrastruttura/</p><h3>Sistemi Linux</h3><p>Debian · Proxmox VE / PBS · checkmk · Storage S3 · Backup</p></article><article><p class="terminal-path">database_automazione/</p><h3>Dati e automazione</h3><p>Oracle · PostgreSQL · MariaDB / MySQL · SQL · Bash · Python</p></article><article><p class="terminal-path">analisi_bi/</p><h3>Business Intelligence</h3><p>KPI · Power BI · Qlik Sense · Tableau · R · KNIME · Orange</p></article></div><div class="terminal-extra"><p class="terminal-command"><span>edo@debian</span>:<b>~/profilo</b>$ languages --list</p><p>Italiano madrelingua · Inglese C1 · Spagnolo B2</p><p class="terminal-command"><span>edo@debian</span>:<b>~/profilo</b>$ interests --list</p><p>Judo · Ju jitsu · Arti marziali · Skateboard · Moto · Auto</p></div><p class="terminal-command terminal-command-final" aria-hidden="true"><span>edo@debian</span>:<b>~/profilo</b>$ <i></i></p></div></section>
+  ${sectionNav('profilo')}</section>`;
 }
 function approach() {
   return `<section class="page">${pageHeader('approccio','Parto dal problema e dai vincoli prima degli strumenti. Gli esempi qui sotto mostrano un possibile percorso, non incarichi già consegnati.')}
@@ -94,7 +93,6 @@ function setPlace(key) {
   document.querySelectorAll('[data-map-place]').forEach(group => group.classList.toggle('is-selected',group.dataset.mapPlace===key));
 }
 function bindPage(route) {
-  bindTerminalHeaders(main);
   if(route.page==='approccio'){
     setStep(selectedStep);
     document.querySelectorAll('[data-step]').forEach((b,i)=>{b.addEventListener('click',()=>setStep(i));b.addEventListener('keydown',e=>{let next=i;if(['ArrowRight','ArrowDown'].includes(e.key))next=(i+1)%steps.length;else if(['ArrowLeft','ArrowUp'].includes(e.key))next=(i+steps.length-1)%steps.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=steps.length-1;else return;e.preventDefault();setStep(next,true);});});
@@ -134,7 +132,6 @@ function render() {
     }).catch(()=>{
       if(version!==renderVersion||controller.signal.aborted)return;
       main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}${terminalHeader({ path: `~/progetti/${route.item}`, title: 'Progetto non disponibile', summary: 'Ricarica la pagina per riprovare.' })}</section>`;
-      bindTerminalHeaders(main);
     });
   }else{
     const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}${terminalHeader({ path: '~/404', title: 'Pagina non trovata', summary: 'Controlla l’indirizzo oppure torna alla Home.' })}</section>`};

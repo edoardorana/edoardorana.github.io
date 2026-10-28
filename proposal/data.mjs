@@ -5,8 +5,8 @@ export const person = {
 };
 export const areas = [
   { id: 'profilo', title: 'Profilo', preview: 'Dalla statistica al lavoro su database e infrastrutture Linux: il mio percorso professionale.' },
-  { id: 'approccio', title: 'Approccio', preview: 'Parto dal problema, verifico le informazioni e scelgo strumenti adatti al contesto.' },
   { id: 'progetti', title: 'Progetti', preview: 'Esperienze selezionate, dati della tesi e strumenti per esplorare le tue tabelle.' },
+  { id: 'approccio', title: 'Approccio', preview: 'Parto dal problema, verifico le informazioni e scelgo strumenti adatti al contesto.' },
   { id: 'contatti', title: 'Collaborazioni', preview: 'Dove scrivermi per parlare di un problema tecnico o di una possibile collaborazione.' },
 ];
 export const steps = [
