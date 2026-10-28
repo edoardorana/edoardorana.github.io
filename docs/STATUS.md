@@ -2,6 +2,11 @@
 
 Aggiornato il 28 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Piano della prossima iterazione — 28 ottobre 2026
+
+- Raccolte e ordinate le decisioni per semplificazione dei prompt, Home, riscrittura Profilo, documenti operativi dell’Approccio, cross-filter immobiliare, ricostruzione Dashboard generator e compositore email in stile terminale.
+- Nessuna modifica al sito o ai dati in questa fase. Mappa tecnica, sequenza, criteri di accettazione e decisione ancora aperta su `05 Evolvere` sono in [NEXT_ITERATION_PLAN.md](NEXT_ITERATION_PLAN.md).
+
 ## Intestazioni `cat readme.md` — 28 ottobre 2026
 
 - Semplificato il menu in un albero `~$ tree`: le voci figlie mostrano solo il nome relativo (`cv.html`, `dashboard-generator`, `immobiliare-data`, `netbox-ipam`), senza percorsi ripetuti né slash finali. Il pulsante usa lo stesso linguaggio visivo dei prompt del sito.
