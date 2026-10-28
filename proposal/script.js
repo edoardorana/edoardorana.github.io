@@ -119,7 +119,7 @@ function render() {
   const visiblePage=route.page==='percorso'?'profilo':route.page;
   const area=areas.find(a=>a.id===visiblePage);
   document.title=`${route.item?projects.find(p=>p.id===route.item).title:area?.title||'Sistemi, database e analisi'} — Edoardo Rana`;
-  index.hidden=true;indexToggle.setAttribute('aria-expanded','false');
+  setIndexOpen(false);
   document.querySelectorAll('#site-index a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash===(route.page==='mappa'?'#/':`#/${visiblePage}${route.item?`/${route.item}`:''}`))a.setAttribute('aria-current','page');});
   if(route.page==='progetti'&&['immobiliare-data','dashboard-generator'].includes(route.item)){
     const controller=new AbortController();pageController=controller;
@@ -146,9 +146,14 @@ function navigate() {
   render();
   window.scrollTo(0,0);
 }
-indexToggle.addEventListener('click',()=>{index.hidden=!index.hidden;indexToggle.setAttribute('aria-expanded',String(!index.hidden));});
-index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;index.hidden=true;indexToggle.setAttribute('aria-expanded','false');if(link.hash===location.hash)main.focus({preventScroll:true});});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!index.hidden){index.hidden=true;indexToggle.setAttribute('aria-expanded','false');indexToggle.focus();}});
+function setIndexOpen(open) {
+  index.hidden=!open;
+  indexToggle.setAttribute('aria-expanded',String(open));
+  indexToggle.setAttribute('aria-label',open?'Chiudi indice del sito':'Apri indice del sito');
+}
+indexToggle.addEventListener('click',()=>setIndexOpen(index.hidden));
+index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;setIndexOpen(false);if(link.hash===location.hash)main.focus({preventScroll:true});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!index.hidden){setIndexOpen(false);indexToggle.focus();}});
 document.querySelector('.skip').addEventListener('click',e=>{e.preventDefault();main.focus();});
 window.addEventListener('hashchange',()=>{if(location.hash==='#main'){main.focus();return;}navigate();});
 render();

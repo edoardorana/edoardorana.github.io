@@ -66,9 +66,11 @@ test('terminal headings keep the title semantic and the readme always visible', 
   assert.match(html, /xdg-open cv\.html/);
   assert.match(html, /href="cv\.html"/);
 });
-test('site menu lists only complete terminal paths without file modes', async () => {
+test('site menu uses a compact terminal tree without repeated paths or file modes', async () => {
   const html = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
   assert.doesNotMatch(html, /drwx|rw-r|directory-mode/);
-  for (const path of ['~/home/', '~/profilo/', '~/progetti/dashboard-generator/', '~/progetti/immobiliare-data/']) assert.match(html, new RegExp(path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(html, /<span class="menu-prompt"[^>]*>.*<strong>tree<\/strong>/);
+  for (const label of ['home', 'profilo', 'cv.html', 'progetti', 'dashboard-generator', 'immobiliare-data', 'netbox-ipam', 'approccio', 'contatti']) assert.match(html, new RegExp(`>${label.replace('.', '\\.')}<`));
+  assert.doesNotMatch(html, />\s*~\/(?:home|profilo|progetti|approccio|contatti)|>\s*progetti\/(?:dashboard-generator|immobiliare-data)/);
   assert.ok(html.indexOf('aria-label="Progetti"') < html.indexOf('aria-label="Approccio"'));
 });
