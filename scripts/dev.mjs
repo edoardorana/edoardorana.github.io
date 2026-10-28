@@ -11,7 +11,7 @@ export function resolveAsset(requestPath, root = defaultRoot) {
   const segments = pathname.split('/').filter(Boolean);
   if (segments.some(segment => segment.startsWith('.'))) return null;
   const filename = pathname === '/' ? 'index.html' : segments.join('/');
-  if (path.extname(filename) === '.txt' && filename !== 'lab/vendor/PLOTLY-LICENSE.txt') return null;
+  if (path.extname(filename) === '.txt' && filename !== 'charts/vendor/PLOTLY-LICENSE.txt') return null;
   if (!mime[path.extname(filename)]) return null;
   const resolved = path.resolve(root, filename);
   if (!resolved.startsWith(path.resolve(root) + path.sep)) return null;

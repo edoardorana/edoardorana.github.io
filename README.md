@@ -35,7 +35,7 @@ Il contatto usa il programma di posta del visitatore. La mappa geografica è un 
 
 ## Progetti dati
 
-La [documentazione dei progetti dati](docs/DATA_PROJECTS.md) descrive la dashboard degli annunci di Milano del 2021 e CSV Explorer. Entrambi funzionano su hosting statico. Python serve soltanto per rigenerare offline il dataset storico; i CSV dei visitatori restano nel browser.
+La [documentazione dei progetti dati](docs/DATA_PROJECTS.md) descrive la dashboard degli annunci di Milano del 2021 e Dashboard generator. Entrambi funzionano su hosting statico. Python serve soltanto per rigenerare offline il dataset storico; i CSV dei visitatori restano nel browser.
 
 ## Versioni e pubblicazione
 
