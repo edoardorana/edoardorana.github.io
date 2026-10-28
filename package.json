@@ -9,6 +9,6 @@
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check proposal/script.js && node --check proposal/data.mjs && node --check proposal/lab/data.mjs && node --check proposal/lab/metrics.mjs && node --check proposal/lab/charts.mjs && node --check proposal/lab/page.mjs && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --test tests/*.test.mjs"
+    "check": "node --check proposal/script.js && node --check proposal/data.mjs && node --check proposal/lab/data.mjs && node --check proposal/lab/metrics.mjs && node --check proposal/lab/charts.mjs && node --check proposal/lab/page.mjs && node --check proposal/explorer/core.mjs && node --check proposal/explorer/charts.mjs && node --check proposal/explorer/page.mjs && node --check proposal/housing/metrics.mjs && node --check proposal/housing/page.mjs && node --check scripts/dev.mjs && node --check scripts/build.mjs && node --test tests/*.test.mjs"
   }
 }

@@ -47,8 +47,8 @@ function approach() {
   <div class="principles"><article><span>01</span><h3>Ambito definito</h3><p>Un intervento circoscritto permette di verificare presto se la soluzione risponde al problema.</p></article><article><span>02</span><h3>Strumenti proporzionati</h3><p>Uno script può bastare; in altri casi servono un database o una dashboard. La scelta dipende dal contesto.</p></article><article><span>03</span><h3>Continuità operativa</h3><p>Controlli, documentazione e trasferimento delle informazioni rendono il lavoro gestibile anche dopo il rilascio.</p></article></div>${sectionNav('approccio')}</section>`;
 }
 function projectList() {
-  return `<section class="page">${pageHeader('progetti','Tre schede tratte dalla tesi, dallo stage in Business Intelligence e dal lavoro su database e infrastrutture. I materiali non pubblici sono indicati nelle singole schede.')}
-  <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div class="project-number">${p.number}</div><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div><a class="lab-entry" href="#/laboratorio"><span class="lab-entry-index">LAB / 01</span><div><p class="eyebrow">DEMO · DATI SINTETICI</p><h2>Laboratorio: annunci da esplorare</h2><p>Filtri, indicatori, grafici e tabella su annunci simulati. Non sono i dati della mia tesi né statistiche del mercato reale.</p></div><span aria-hidden="true">↗</span></a>${sectionNav('progetti')}</section>`;
+  return `<section class="page">${pageHeader('progetti','Dalla raccolta dei dati alla loro lettura: esplora l’archivio della tesi, prova CSV Explorer o leggi le esperienze su BI e infrastrutture.')}
+  <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div class="project-number">${p.number}</div><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div><p class="lab-attribution">È disponibile anche il <a href="#/laboratorio">laboratorio originale su annunci sintetici</a>, distinto dai dati storici della tesi.</p>${sectionNav('progetti')}</section>`;
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
@@ -119,7 +119,19 @@ function render() {
   document.title=`${route.page==='laboratorio'?'Laboratorio dati':route.item?projects.find(p=>p.id===route.item).subtitle:area?.title||'Sistemi, database e analisi'} — Edoardo Rana`;
   index.hidden=true;indexToggle.setAttribute('aria-expanded','false');
   document.querySelectorAll('#site-index a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash===location.hash||(route.page==='percorso'&&a.hash==='#/profilo'))a.setAttribute('aria-current','page');});
-  if(route.page==='laboratorio'){
+  if(route.page==='progetti'&&['market-data','csv-explorer'].includes(route.item)){
+    const controller=new AbortController();labController=controller;
+    main.innerHTML='<section class="page"><p role="status">Caricamento del progetto…</p></section>';
+    const module=route.item==='market-data'?import('./housing/page.mjs'):import('./explorer/page.mjs');
+    module.then(exports=>{
+      if(version!==renderVersion||controller.signal.aborted)return;
+      const mount=exports.mountHousing||exports.mountExplorer;
+      labCleanup=mount(main,{signal:controller.signal,isCurrent:()=>version===renderVersion,navigationHTML:sectionNav('progetti')});
+    }).catch(()=>{
+      if(version!==renderVersion||controller.signal.aborted)return;
+      main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}<h1>Progetto non disponibile</h1><p>Ricarica la pagina per riprovare.</p></section>`;
+    });
+  }else if(route.page==='laboratorio'){
     const origin=visitedRoute&&previousRoute.page!=='laboratorio'&&previousRoute.page!=='not-found'?previousRoute:{page:'progetti'};
     const backHref=origin.page==='mappa'?'#/':`#/${origin.page}${origin.item?`/${origin.item}`:''}`;
     const returnLabels={profilo:'Torna al Profilo',approccio:'Torna all’Approccio',percorso:'Torna al Profilo',progetti:'Torna ai Progetti',contatti:'Torna alle Collaborazioni'};

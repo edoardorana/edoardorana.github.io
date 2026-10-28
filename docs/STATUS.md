@@ -1,6 +1,16 @@
 # Stato del progetto
 
-Aggiornato il 19 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
+Aggiornato il 28 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
+
+## Dashboard tesi e CSV Explorer — 28 ottobre 2026
+
+- Aggiunte due pagine lazy ai Progetti: `#/progetti/market-data` e `#/progetti/csv-explorer`. Conservata la demo sintetica originale a `#/laboratorio`, con collegamento secondario e distinzione esplicita.
+- Confrontati i due RData locali: 15.308 × 213 e 13.139 × 24; solo 8.757 identificativi comuni. Nuova preparazione Python dall'archivio iniziale: 14.731 righe pubbliche, 501 aste e 76 tipologie escluse, 11 anomalie selezionabili. Archivi originali, indirizzi, titoli, contatti e link non pubblicati.
+- Dashboard storica: sette dimensioni di filtro (zona, tipologia, stato, locali, energia, superficie e prezzo), quattro indicatori con denominatori, cinque grafici, tabella paginata ed export CSV filtrato. Filtri in un pannello richiudibile per dare spazio ai risultati anche su mobile.
+- Explorer: importazione locale con separatore/codifica/decimali, anteprima, tipi modificabili, sette operazioni di preparazione, annulla/ripristino, cinque grafici configurabili, export protetto da formule. File fino a 10 MB / 30.000 righe / 100 colonne. Nessuna richiesta di rete osservata durante l'importazione e la pulizia del CSV di prova.
+- Verificati 20 test Node e 2 test Python, build e sintassi. Edge headless a 1280, 390 e 320 px: nuove dashboard, Home, Profilo, Approccio, Progetti, Contatti e vecchio Laboratorio senza overflow orizzontale o eccezioni JavaScript. Browser integrato: filtri storici, selezione vuota, anomalie, importazione multilinea, duplicati, annulla/ripristino, protezione formule e HTML in celle.
+- Dettagli, schema, riproducibilità, soglie e limiti: [DATA_PROJECTS.md](DATA_PROJECTS.md); conteggi verificabili: [housing-quality.json](housing-quality.json).
+- Pubblicazione: in preparazione; aggiornare questo punto con esito del deploy. Prossimo passo dopo il rilascio: prova dell'Explorer con CSV reali dell'utente. Excel, nuove raccolte e modelli predittivi restano fuori da questa versione.
 
 ## Pulizia del progetto e terminale competenze — 19 ottobre 2026
 

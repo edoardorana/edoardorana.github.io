@@ -35,11 +35,11 @@ Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'
 - EDB Postgres Essentials v17, 2025.
 - Italiano madrelingua; inglese C1; spagnolo B2.
 - Email: edoardorana@outlook.com. GitHub: https://github.com/edoardorana.
-- La tesi riguarda web scraping di annunci immobiliari per analisi di mercato. Metriche, codice e dataset del progetto non sono disponibili.
+- La tesi riguarda web scraping di annunci immobiliari per analisi di mercato. Dal 28 ottobre 2026 sono disponibili gli archivi R originali del 2021: il sito ne espone una selezione ripulita di 14.731 annunci di Milano, con dashboard e limiti espliciti. Gli originali restano privati; non si pubblicano i vecchi modelli di classificazione. Decisioni e riproducibilità: [progetti dati](DATA_PROJECTS.md).
 
 ## Architettura
 
-Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. Il laboratorio in `proposal/lab/` usa dati sintetici e una copia locale di Plotly per i grafici, senza dipendenze npm. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
+Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. Il laboratorio in `proposal/lab/` usa dati sintetici e una copia locale di Plotly, condivisa dai nuovi moduli lazy `housing/` (tesi storica) ed `explorer/` (CSV locali). Nessuna dipendenza npm. La preparazione offline dei dati R usa Python; non è richiesta per la build o nel browser. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
 
 Il vecchio sito alla radice è stato rimosso su richiesta di Edoardo. Il portfolio a mappa è online su https://edoardorana.github.io/ dal 18 ottobre 2026: la PR #1 è stata integrata in `main` e la sorgente Pages è GitHub Actions. Il workflow esegue controlli, genera `dist/` da `proposal/` e pubblica l'artefatto dopo i push pertinenti su `main`. Per le prossime migliorie usare branch e revisione prima dell'integrazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
 
