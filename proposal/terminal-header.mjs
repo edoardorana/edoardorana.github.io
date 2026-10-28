@@ -6,20 +6,10 @@ const escapeHTML = value => String(value).replace(/[&<>"']/g, character => ({
   "'": '&#39;'
 }[character]));
 
-const outputId = path => `readme-${path.replace(/^~\//, '').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'home'}`;
+const prompt = (path, command, className = 'readme-command') => `<span class="${className}"><span>edo@debian</span>:<b>${escapeHTML(path)}</b>$ <strong>${escapeHTML(command)}</strong></span>`;
 
-export function terminalHeader({ path, title, summary }) {
-  const id = outputId(path);
-  return `<header class="terminal-heading"><h1 class="visually-hidden">${escapeHTML(title)}</h1><button class="readme-command" type="button" aria-expanded="false" aria-controls="${id}"><span>edo@debian</span>:<b>${escapeHTML(path)}</b>$ <strong>cat readme.md</strong></button><p class="readme-output" id="${id}" hidden>${escapeHTML(summary)}</p></header>`;
-}
-
-export function bindTerminalHeaders(container) {
-  for (const button of container.querySelectorAll('.readme-command')) {
-    button.addEventListener('click', () => {
-      const output = container.querySelector(`#${button.getAttribute('aria-controls')}`);
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', String(!expanded));
-      output.hidden = expanded;
-    });
-  }
+export function terminalHeader({ path, title, summary, sections = [], action }) {
+  const sectionList = sections.length ? `<dl class="readme-sections">${sections.map(section => `<div><dt>${escapeHTML(section.label)}</dt><dd>${escapeHTML(section.text)}</dd></div>`).join('')}</dl>` : '';
+  const actionLine = action ? `<a class="readme-action" href="${escapeHTML(action.href)}" target="_blank" rel="noopener" aria-label="${escapeHTML(action.label)}">${prompt(path, action.command, 'readme-action-command')}<small>${escapeHTML(action.label)}</small></a>` : '';
+  return `<header class="terminal-heading"><h1 class="visually-hidden">${escapeHTML(title)}</h1><p class="readme-command"><span>edo@debian</span>:<b>${escapeHTML(path)}</b>$ <strong>cat readme.md</strong></p><div class="readme-output"><p>${escapeHTML(summary)}</p>${sectionList}${actionLine}</div></header>`;
 }

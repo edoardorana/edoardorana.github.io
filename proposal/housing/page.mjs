@@ -2,7 +2,7 @@ import { loadPlotly } from '../charts/plotly.mjs';
 import { histogram, escapeHTML as esc } from '../explorer/core.mjs';
 import { downloadCSV } from '../explorer/download.mjs';
 import { selectRecords, summarize, zonesSummary, pricePerSqm, validateDataset } from './metrics.mjs';
-import { terminalHeader, bindTerminalHeaders } from '../terminal-header.mjs';
+import { terminalHeader } from '../terminal-header.mjs';
 
 const fmt=(n,digits=0)=>n===null?'—':new Intl.NumberFormat('it-IT',{maximumFractionDigits:digits}).format(n);
 const labels={zone:'Zona',type:'Tipologia',condition:'Stato',rooms:'Locali',energy:'Classe energetica',price:'Prezzo richiesto (€)',area:'Superficie (m²)'};
@@ -11,7 +11,6 @@ export function mountHousing(container,{signal,isCurrent=()=>true,navigationHTML
   <details class="data-panel housing-filter-panel"><summary>Filtra gli annunci</summary><form id="housing-filters"><div class="data-controls">${['zone','type','condition','rooms','energy'].map(k=>`<label>${labels[k]}<select name="${k}"><option value="">Tutti</option></select></label>`).join('')}${[['minArea','Superficie minima (m²)'],['maxArea','Superficie massima (m²)'],['minPrice','Prezzo minimo (€)'],['maxPrice','Prezzo massimo (€)']].map(([k,l])=>`<label>${l}<input type="number" name="${k}" min="0" step="any" placeholder="Nessun limite"></label>`).join('')}</div><label class="data-checkbox"><input type="checkbox" name="includeFlagged"> Includi valori segnalati come anomali</label><p id="housing-flags"></p><button type="reset">Azzera filtri</button></form></details><p id="housing-status" role="status" aria-live="polite"></p><div id="housing-kpis" class="lab-kpis"></div><div class="lab-charts">${[['distribution','Distribuzione dei prezzi al m²'],['zones','Prezzo mediano al m² per zona'],['scatter','Superficie e prezzo richiesto'],['types','Tipologie nel campione'],['missing','Completezza delle informazioni']].map(([id,title])=>`<figure class="lab-chart"><figcaption><h2>${title}</h2><p data-note="${id}"></p></figcaption><div class="lab-plot" id="housing-${id}" aria-label="${title}"></div></figure>`).join('')}</div><p id="housing-chart-status" role="status"></p>
   <section class="data-panel"><div class="lab-records-heading"><h2>Dati della selezione</h2><button id="housing-export" type="button">Scarica CSV filtrato</button></div><p>Identificativi nuovi, senza collegamenti agli annunci, titoli o indirizzi. I valori mancanti restano vuoti. La tabella mostra 20 righe per pagina.</p><div class="lab-table-scroll" id="housing-table"></div><div class="lab-pagination"><button id="housing-prev" type="button">← Precedente</button><span id="housing-page"></span><button id="housing-next" type="button">Successiva →</button></div></section>
   <details class="lab-methodology" open><summary>Fonte, pulizia e limiti</summary><div id="housing-method"></div></details><p class="lab-attribution">Grafici: Plotly.js (MIT). <a href="#/progetti/dashboard-generator">Apri Dashboard generator per analizzare una tua tabella →</a></p></div>${navigationHTML}</section>`;
-  bindTerminalHeaders(container);
   const $=s=>container.querySelector(s), form=$('#housing-filters');
   let records=[],selected=[],page=0,disposed=false,generation=0;
   const chartIds=['distribution','zones','scatter','types','missing'];

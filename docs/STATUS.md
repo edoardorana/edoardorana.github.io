@@ -6,9 +6,12 @@ Aggiornato il 28 ottobre 2026. Le note precedenti sono state condensate; i commi
 
 - Semplificato il menu: rimossi permessi Unix e distinzione grafica tra file e cartelle; restano soltanto percorsi terminale completi e gerarchici.
 - Rimossi i grandi titoli visibili da Home, sezioni, schede progetto, dashboard e pagina 404. Ogni vista usa un banner chiaro in stile CLI con `edo@debian:~/percorso$ cat readme.md`.
-- Il banner è un pulsante accessibile: clic, Invio o Barra spaziatrice mostrano e nascondono la sola frase riepilogativa. I titoli `h1` restano disponibili ai lettori di schermo e alla struttura del documento.
+- Il README è statico, sempre visibile e largo quanto il contenuto della pagina. I titoli `h1` restano disponibili ai lettori di schermo e alla struttura del documento.
+- Nel Profilo il banner riordina attività e percorso e offre `xdg-open cv.html` come collegamento da tastiera al CV. Rimossi il vecchio riquadro con il nome e il pulsante CV separato.
+- Il terminale del Profilo usa cartelle senza numeri e aggiunge `languages --list` e `interests --list`; tra gli interessi compare anche Ju jitsu. Rimosso il blocco separato “Lingue e interessi”.
+- Invertiti Progetti e Approccio in Home, menu e navigazione tra sezioni: l’ordine è Profilo, Progetti, Approccio, Collaborazioni.
 - Creato un componente condiviso anche dalle dashboard caricate in modo differito; i percorsi lunghi possono andare a capo sui telefoni senza produrre scorrimento orizzontale.
-- Verifiche: `npm.cmd run check` (16 test) e `npm.cmd run build` riusciti. Browser locale su tutte le route a 1280 e 390 px: un solo comando per vista, nessun grande `h1` visibile, nessun overflow orizzontale; menu e percorsi lunghi controllati. Clic e Invio aprono e chiudono il riepilogo. Nessun test su telefono fisico.
+- Verifiche: `npm.cmd run check` (16 test) e `npm.cmd run build` riusciti. Browser locale su tutte le route a 1280 e 390 px: README visibile e a tutta larghezza, nessun overflow orizzontale; verificati ordine di Home/menu, comando CV, lingue, interessi e rimozione dei numeri. Nessun test su telefono fisico.
 
 ## Progetti essenziali e menu a cartelle — 28 ottobre 2026
 
