@@ -1,4 +1,5 @@
 import { person, areas, steps, projects, places, parseRoute, mailto, mapPoint } from './data.mjs';
+import { terminalHeader, bindTerminalHeaders } from './terminal-header.mjs';
 
 const main = document.querySelector('#main');
 const index = document.querySelector('#site-index');
@@ -19,7 +20,7 @@ function backLink(href = '#/', text = 'Torna alla Home') {
 }
 function pageHeader(id, text) {
   const area = areas.find(area => area.id === id);
-  return `<header class="page-heading"><p class="eyebrow">~/${id}</p><h1>${area.title}</h1><p class="page-intro">${text}</p></header>`;
+  return terminalHeader({ path: `~/${id}`, title: area.title, summary: text });
 }
 function sectionNav(id) {
   const position = areas.findIndex(area => area.id === id);
@@ -32,7 +33,7 @@ function projectNav() {
   return '<nav class="section-nav project-nav" aria-label="Navigazione del progetto"><a href="#/progetti"><span aria-hidden="true">←</span><code>~/progetti</code></a><a href="#/" aria-label="Home"><code>~/home</code></a></nav>';
 }
 function home() {
-  return `<section class="home"><div class="home-intro"><div><p class="eyebrow">~/home</p><h1>Sistemi Linux, database e analisi.</h1></div><p>Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.</p></div>
+  return `<section class="home">${terminalHeader({ path: '~/home', title: 'Sistemi Linux, database e analisi.', summary: 'Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.' })}
   <div class="atlas" aria-label="Le quattro aree del portfolio">
   ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><strong class="area-title">${area.title}</strong><span class="area-details"><span class="area-terminal"><span class="area-command-line" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-static">&gt;</span> <span class="area-command-name">cat readme.md</span></span><span class="area-command-copy">${area.preview}</span><span class="area-command-line area-command-wait" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-cursor">&gt;</span></span></span></span></a>`).join('')}</div></section>`;
 }
@@ -54,7 +55,7 @@ function projectList() {
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}<header class="page-heading"><p class="eyebrow">~/progetti/${p.id}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
+  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: p.subtitle })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -93,6 +94,7 @@ function setPlace(key) {
   document.querySelectorAll('[data-map-place]').forEach(group => group.classList.toggle('is-selected',group.dataset.mapPlace===key));
 }
 function bindPage(route) {
+  bindTerminalHeaders(main);
   if(route.page==='approccio'){
     setStep(selectedStep);
     document.querySelectorAll('[data-step]').forEach((b,i)=>{b.addEventListener('click',()=>setStep(i));b.addEventListener('keydown',e=>{let next=i;if(['ArrowRight','ArrowDown'].includes(e.key))next=(i+1)%steps.length;else if(['ArrowLeft','ArrowUp'].includes(e.key))next=(i+steps.length-1)%steps.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=steps.length-1;else return;e.preventDefault();setStep(next,true);});});
@@ -131,10 +133,11 @@ function render() {
       pageCleanup=mount(main,{signal:controller.signal,isCurrent:()=>version===renderVersion,navigationHTML:projectNav()});
     }).catch(()=>{
       if(version!==renderVersion||controller.signal.aborted)return;
-      main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}<h1>Progetto non disponibile</h1><p>Ricarica la pagina per riprovare.</p></section>`;
+      main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}${terminalHeader({ path: `~/progetti/${route.item}`, title: 'Progetto non disponibile', summary: 'Ricarica la pagina per riprovare.' })}</section>`;
+      bindTerminalHeaders(main);
     });
   }else{
-    const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}<header class="page-heading"><p class="eyebrow">~/404</p><h1>Pagina non trovata</h1><p class="page-intro">Controlla l’indirizzo oppure torna alla Home.</p></header></section>`};
+    const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}${terminalHeader({ path: '~/404', title: 'Pagina non trovata', summary: 'Controlla l’indirizzo oppure torna alla Home.' })}</section>`};
     main.innerHTML=renderers[route.page]();
     bindPage(route);
   }
