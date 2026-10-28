@@ -2,6 +2,14 @@
 
 Aggiornato il 28 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Intestazioni `cat readme.md` — 28 ottobre 2026
+
+- Semplificato il menu: rimossi permessi Unix e distinzione grafica tra file e cartelle; restano soltanto percorsi terminale completi e gerarchici.
+- Rimossi i grandi titoli visibili da Home, sezioni, schede progetto, dashboard e pagina 404. Ogni vista usa un banner chiaro in stile CLI con `edo@debian:~/percorso$ cat readme.md`.
+- Il banner è un pulsante accessibile: clic, Invio o Barra spaziatrice mostrano e nascondono la sola frase riepilogativa. I titoli `h1` restano disponibili ai lettori di schermo e alla struttura del documento.
+- Creato un componente condiviso anche dalle dashboard caricate in modo differito; i percorsi lunghi possono andare a capo sui telefoni senza produrre scorrimento orizzontale.
+- Verifiche: `npm.cmd run check` (16 test) e `npm.cmd run build` riusciti. Browser locale su tutte le route a 1280 e 390 px: un solo comando per vista, nessun grande `h1` visibile, nessun overflow orizzontale; menu e percorsi lunghi controllati. Clic e Invio aprono e chiudono il riepilogo. Nessun test su telefono fisico.
+
 ## Progetti essenziali e menu a cartelle — 28 ottobre 2026
 
 - Introduzione abbreviata in “Esplora alcuni dei miei progetti.”; eliminati numeri nell'elenco e nelle sezioni della scheda progetto.

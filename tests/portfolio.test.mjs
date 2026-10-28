@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { areas, projects, parseRoute, mailto, mapPoint, places } from '../proposal/data.mjs';
 import { resolveAsset } from '../scripts/dev.mjs';
+import { terminalHeader } from '../proposal/terminal-header.mjs';
 
 test('all areas and project deep links resolve; missing content gets a not-found route', () => {
   assert.deepEqual(parseRoute(''), { page: 'mappa' });
@@ -51,4 +52,18 @@ test('entry and CV use local assets and contain no duplicate HTML ids', async ()
     assert.equal(new Set(ids).size, ids.length);
     for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))(?:\?[^\"]*)?"/g)) await readFile(new URL('../proposal/' + asset, import.meta.url));
   }
+});
+test('terminal headings keep the title semantic and expose a collapsed readme command', () => {
+  const html = terminalHeader({ path: '~/progetti/demo', title: 'Titolo <demo>', summary: 'Sintesi & dettagli' });
+  assert.match(html, /<h1 class="visually-hidden">Titolo &lt;demo&gt;<\/h1>/);
+  assert.match(html, /edo@debian/);
+  assert.match(html, /~\/progetti\/demo/);
+  assert.match(html, /cat readme\.md/);
+  assert.match(html, /aria-expanded="false"/);
+  assert.match(html, /<p class="readme-output"[^>]* hidden>Sintesi &amp; dettagli<\/p>/);
+});
+test('site menu lists only complete terminal paths without file modes', async () => {
+  const html = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
+  assert.doesNotMatch(html, /drwx|rw-r|directory-mode/);
+  for (const path of ['~/home/', '~/profilo/', '~/progetti/dashboard-generator/', '~/progetti/immobiliare-data/']) assert.match(html, new RegExp(path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 });
