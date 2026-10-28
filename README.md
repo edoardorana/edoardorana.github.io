@@ -6,7 +6,7 @@ Sito personale per raccontare profilo, approccio e progetti, e aprire nuove coll
 
 ## Avvio rapido
 
-Node.js 22 o superiore. Nessuna dipendenza da installare.
+Node.js 22 o superiore. Nessuna dipendenza da installare per sito e build.
 
 ```sh
 npm run dev
@@ -32,6 +32,10 @@ Apri http://127.0.0.1:4173. In PowerShell puoi usare `npm.cmd` se `npm.ps1` è b
 La Home collega quattro aree con URL dedicati: `#/profilo`, `#/approccio`, `#/progetti` e `#/contatti`. La vecchia route `#/percorso` resta un alias compatibile di Profilo. I progetti hanno un ulteriore livello `#/progetti/<id>`. Le route hash funzionano su hosting statico senza rewrite.
 
 Il contatto usa il programma di posta del visitatore. La mappa geografica è un SVG locale, senza servizi cartografici caricati a runtime. Il portfolio non contiene API AI, analytics o un backend.
+
+## Progetti dati
+
+La [documentazione dei progetti dati](docs/DATA_PROJECTS.md) descrive la dashboard degli annunci di Milano del 2021 e CSV Explorer. Entrambi funzionano su hosting statico. Python serve soltanto per rigenerare offline il dataset storico; i CSV dei visitatori restano nel browser.
 
 ## Versioni e pubblicazione
 

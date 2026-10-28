@@ -6,7 +6,7 @@ export const person = {
 export const areas = [
   { id: 'profilo', title: 'Profilo', preview: 'Dalla statistica al lavoro su database e infrastrutture Linux: il mio percorso professionale.' },
   { id: 'approccio', title: 'Approccio', preview: 'Parto dal problema, verifico le informazioni e scelgo strumenti adatti al contesto.' },
-  { id: 'progetti', title: 'Progetti', preview: 'Esperienze selezionate e un laboratorio interattivo per esplorare dati sintetici.' },
+  { id: 'progetti', title: 'Progetti', preview: 'Esperienze selezionate, dati della tesi e strumenti per esplorare le tue tabelle.' },
   { id: 'contatti', title: 'Collaborazioni', preview: 'Dove scrivermi per parlare di un problema tecnico o di una possibile collaborazione.' },
 ];
 export const steps = [
@@ -17,9 +17,10 @@ export const steps = [
   { title: 'Evolvere', short: 'Provare solo se serve.', text: 'Un modello predittivo o un’integrazione AI sarebbero da valutare solo dopo una soluzione di base verificabile. Questa fase è una possibilità, non un progetto già consegnato.', result: 'Confronto documentato con la soluzione di base, se la prova è utile.', tags: ['Machine learning', 'AI', 'Valutazione'] },
 ];
 export const projects = [
-  { id: 'market-data', kind: 'TESI · RACCOLTA DATI', title: 'Tesi sugli annunci immobiliari', subtitle: 'Web scraping per analisi di mercato', context: 'La tesi di laurea in Statistica e Gestione delle Informazioni ha riguardato la raccolta di annunci immobiliari per un’analisi di mercato.', contribution: 'Sviluppo di un programma di web scraping per la raccolta degli annunci nell’ambito della tesi di laurea.', output: 'Dataset, codice e risultati quantitativi della tesi non sono attualmente pubblicati sul sito.', tags: ['Tesi', 'Web scraping'], number: '01' },
+  { id: 'market-data', kind: 'TESI · ARCHIVIO 2021', title: 'Annunci immobiliari · Milano, 2021', subtitle: 'Dati storici, filtri e dashboard della tesi', tags: ['R', 'Python', 'Dati reali'], number: '01' },
   { id: 'business-intelligence', kind: 'SB ITALIA · 2023', title: 'Analisi e dashboard BI', subtitle: 'Business Intelligence e classificazione', context: 'Durante lo stage in SB Italia, da gennaio a novembre 2023, ho lavorato su dataset aziendali e metodi di classificazione.', contribution: 'Analisi dei dati e sviluppo di report e dashboard con Qlik, Power BI e Tableau.', output: 'I dettagli dei progetti aziendali e i relativi dati non sono pubblicati.', tags: ['Qlik', 'Power BI', 'Tableau'], number: '02' },
   { id: 'production-databases', kind: 'BROWAY SA · DAL 2024', title: 'Database e infrastrutture in produzione', subtitle: 'Oracle, PostgreSQL e sistemi Linux', context: 'Da ottobre 2024 a maggio 2025 ho lavorato come Database Administrator su Oracle e PostgreSQL. Da maggio 2025 lavoro come Linux Administrator su infrastrutture e servizi di produzione.', contribution: 'Monitoraggio con checkmk e OEM, diagnosi di anomalie SQL e processi batch, backup e ripristino, gestione degli schemi e supporto ai rilasci. Nel ruolo attuale seguo anche Proxmox VE e Backup Server, script SQL e shell, documentazione tecnica e attività di hardening.', output: 'Configurazioni e dati dei clienti non sono pubblici.', tags: ['Oracle', 'PostgreSQL', 'Proxmox'], number: '03' },
+  { id: 'csv-explorer', kind: 'STRUMENTO · DATI LOCALI', title: 'CSV Explorer', subtitle: 'Prepara una tabella e costruisci cinque viste interattive', tags: ['CSV', 'JavaScript', 'Dashboard'], number: '04' },
 ];
 export const places = {
   milano: { name: 'Milano', label: 'FORMAZIONE', coordinates: [9.19,45.4642], mapLabel: [420,590], locationType: 'city', text: 'Laurea in Statistica e Gestione delle Informazioni a Milano-Bicocca. Il percorso magistrale in Data Science è in corso.', skills: ['Statistica', 'Python / R', 'Analisi'], dates: '2017–2021 · Laurea triennale\nDal 2021 · Magistrale in corso' },

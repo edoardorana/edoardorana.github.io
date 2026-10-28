@@ -1,4 +1,8 @@
 node_modules/
+.venv/
+__pycache__/
+*.RData
+*.Rdata
 dist/
 .env
 .env.*
