@@ -39,7 +39,16 @@ Fonte prioritaria dal 16 ottobre 2026: `Edoardo_Rana_CV_2026.pdf`, fornito dall'
 
 ## Architettura
 
-Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. Il laboratorio in `proposal/lab/` usa dati sintetici e una copia locale di Plotly, condivisa dai nuovi moduli lazy `housing/` (tesi storica) ed `explorer/` (CSV locali). Nessuna dipendenza npm. La preparazione offline dei dati R usa Python; non è richiesta per la build o nel browser. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
+Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.mjs` contiene contenuti, parsing route, email e coordinate della mappa. `script.js` gestisce viste e interazioni; `style.css` definisce responsive e movimento ridotto. I moduli lazy `housing/` (tesi storica) ed `explorer/` (Dashboard generator) condividono Plotly locale in `charts/`. La demo sintetica è stata rimossa. Nessuna dipendenza npm. La preparazione offline dei dati R usa Python; non è richiesta per la build o nel browser. `cv.html` è una sintesi stampabile. Il server in `scripts/dev.mjs` serve solo file pubblici da `proposal/`, su localhost. `scripts/build.mjs` genera `dist/`.
+
+## Progetti e menu — revisione del 28 ottobre 2026
+
+- Elenco senza numeri, introduzione breve: “Esplora alcuni dei miei progetti.”
+- Percorsi canonici: `#/progetti/immobiliare-data` e `#/progetti/dashboard-generator`; i vecchi `market-data` e `csv-explorer` restano alias.
+- Scheda BI rimossa: esperienza e dashboard Qlik, Power BI e Tableau restano nella cronologia SB Italia del Profilo. Il vecchio link rimanda al Profilo.
+- La scheda `production-databases` descrive il lavoro in corso su IPAM/NetBox confermato dall'utente; il laboratorio locale Proxmox è soltanto uno sviluppo futuro. Nessuna implementazione completata o risultato inventato.
+- Menu a cartelle annidate, ispirato a `ls -l`, con CV sotto Profilo e le tre schede sotto Progetti. La navigazione delle schede torna solo a Progetti o Home.
+- Eliminati moduli, dataset, generatore, test e CSS esclusivi della demo sintetica. Il vecchio `#/laboratorio` rimanda a Progetti. Plotly e licenza restano perché usati dalle dashboard reali.
 
 Il vecchio sito alla radice è stato rimosso su richiesta di Edoardo. Il portfolio a mappa è online su https://edoardorana.github.io/ dal 18 ottobre 2026: la PR #1 è stata integrata in `main` e la sorgente Pages è GitHub Actions. Il workflow esegue controlli, genera `dist/` da `proposal/` e pubblica l'artefatto dopo i push pertinenti su `main`. Per le prossime migliorie usare branch e revisione prima dell'integrazione. La preview privata Sites è un secondo ambiente di pubblicazione, aggiornato esplicitamente: non esiste una sincronizzazione automatica GitHub → Sites configurata in questo repository.
 

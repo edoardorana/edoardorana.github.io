@@ -17,10 +17,9 @@ export const steps = [
   { title: 'Evolvere', short: 'Provare solo se serve.', text: 'Un modello predittivo o un’integrazione AI sarebbero da valutare solo dopo una soluzione di base verificabile. Questa fase è una possibilità, non un progetto già consegnato.', result: 'Confronto documentato con la soluzione di base, se la prova è utile.', tags: ['Machine learning', 'AI', 'Valutazione'] },
 ];
 export const projects = [
-  { id: 'market-data', kind: 'TESI · ARCHIVIO 2021', title: 'Annunci immobiliari · Milano, 2021', subtitle: 'Dati storici, filtri e dashboard della tesi', tags: ['R', 'Python', 'Dati reali'], number: '01' },
-  { id: 'business-intelligence', kind: 'SB ITALIA · 2023', title: 'Analisi e dashboard BI', subtitle: 'Business Intelligence e classificazione', context: 'Durante lo stage in SB Italia, da gennaio a novembre 2023, ho lavorato su dataset aziendali e metodi di classificazione.', contribution: 'Analisi dei dati e sviluppo di report e dashboard con Qlik, Power BI e Tableau.', output: 'I dettagli dei progetti aziendali e i relativi dati non sono pubblicati.', tags: ['Qlik', 'Power BI', 'Tableau'], number: '02' },
-  { id: 'production-databases', kind: 'BROWAY SA · DAL 2024', title: 'Database e infrastrutture in produzione', subtitle: 'Oracle, PostgreSQL e sistemi Linux', context: 'Da ottobre 2024 a maggio 2025 ho lavorato come Database Administrator su Oracle e PostgreSQL. Da maggio 2025 lavoro come Linux Administrator su infrastrutture e servizi di produzione.', contribution: 'Monitoraggio con checkmk e OEM, diagnosi di anomalie SQL e processi batch, backup e ripristino, gestione degli schemi e supporto ai rilasci. Nel ruolo attuale seguo anche Proxmox VE e Backup Server, script SQL e shell, documentazione tecnica e attività di hardening.', output: 'Configurazioni e dati dei clienti non sono pubblici.', tags: ['Oracle', 'PostgreSQL', 'Proxmox'], number: '03' },
-  { id: 'csv-explorer', kind: 'STRUMENTO · DATI LOCALI', title: 'CSV Explorer', subtitle: 'Prepara una tabella e costruisci cinque viste interattive', tags: ['CSV', 'JavaScript', 'Dashboard'], number: '04' },
+  { id: 'immobiliare-data', kind: 'ANNUNCI IMMOBILIARI · MILANO, 2021', title: 'Dashboard interattiva su dati immobiliari', subtitle: 'Dati raccolti tramite script di scraping e utilizzati per la mia tesi di laurea.', tags: ['R', 'Python', 'Dati reali'] },
+  { id: 'dashboard-generator', kind: 'STRUMENTO · DATI LOCALI', title: 'Dashboard generator', subtitle: 'Carica un CSV e genera viste interattive, scegliendo colonne e grafici adatti ai tuoi dati.', tags: ['CSV', 'JavaScript', 'Dashboard'] },
+  { id: 'production-databases', kind: 'IN CORSO · NETBOX / IPAM', title: 'Gestione degli indirizzi IP con NetBox', subtitle: 'Sto lavorando alla configurazione di NetBox per implementare un IPAM.', context: 'Sto lavorando all’implementazione di un IPAM con NetBox, per organizzare la gestione degli indirizzi IP.', contribution: 'La configurazione è in corso. Documenterò qui i passaggi verificati e le scelte tecniche, usando esempi privi di dati operativi riservati.', output: 'Il prossimo sviluppo che vorrei affrontare è un’infrastruttura locale con Proxmox, come laboratorio personale. È un progetto futuro: al momento non sono disponibili configurazioni o risultati da consultare.', tags: ['NetBox', 'IPAM', 'In corso'] },
 ];
 export const places = {
   milano: { name: 'Milano', label: 'FORMAZIONE', coordinates: [9.19,45.4642], mapLabel: [420,590], locationType: 'city', text: 'Laurea in Statistica e Gestione delle Informazioni a Milano-Bicocca. Il percorso magistrale in Data Science è in corso.', skills: ['Statistica', 'Python / R', 'Analisi'], dates: '2017–2021 · Laurea triennale\nDal 2021 · Magistrale in corso' },
@@ -32,7 +31,11 @@ export function parseRoute(hash = '') {
   const path = hash.replace(/^#\/?/, '').replace(/\/$/, '');
   if (!path || path === 'mappa') return { page: 'mappa' };
   if (path === 'percorso') return { page: 'percorso' };
-  if (path === 'laboratorio') return { page: 'laboratorio' };
+  if (path === 'home') return { page: 'mappa' };
+  if (path === 'laboratorio') return { page: 'progetti' };
+  if (path === 'progetti/business-intelligence' || path === 'progetti/sb-italia') return { page: 'profilo' };
+  const aliases = { 'progetti/market-data': 'immobiliare-data', 'progetti/csv-explorer': 'dashboard-generator' };
+  if (aliases[path]) return { page: 'progetti', item: aliases[path] };
   const [page, item, ...rest] = path.split('/');
   if (rest.length || !areas.some(area => area.id === page)) return { page: 'not-found' };
   if (item && (page !== 'progetti' || !projects.some(project => project.id === item))) return { page: 'not-found' };

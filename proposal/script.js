@@ -11,9 +11,8 @@ let selectedStep = 0;
 let selectedPlace = 'milano';
 let contactDraft = '';
 let renderVersion = 0;
-let labController;
-let labCleanup;
-let visitedRoute = false;
+let pageController;
+let pageCleanup;
 
 function backLink(href = '#/', text = 'Torna alla Home') {
   return `<a class="back-link" href="${href}"><span aria-hidden="true">←</span> ${text}</a>`;
@@ -28,6 +27,9 @@ function sectionNav(id) {
   const next = areas[position + 1];
   const link = (area, direction, symbol) => `<a href="#/${area.id}" aria-label="${direction}: ${area.title}"><span aria-hidden="true">${symbol}</span><code>~/${area.id}</code></a>`;
   return `<nav class="section-nav" aria-label="Navigazione tra le sezioni"><div class="section-nav-prev">${previous ? link(previous, 'Sezione precedente', '←') : ''}</div><a class="section-nav-home" href="#/" aria-label="Home"><code>~/home</code></a><div class="section-nav-next">${next ? link(next, 'Sezione successiva', '→') : ''}</div></nav>`;
+}
+function projectNav() {
+  return '<nav class="section-nav project-nav" aria-label="Navigazione del progetto"><a href="#/progetti"><span aria-hidden="true">←</span><code>~/progetti</code></a><a href="#/" aria-label="Home"><code>~/home</code></a></nav>';
 }
 function home() {
   return `<section class="home"><div class="home-intro"><div><p class="eyebrow">~/home</p><h1>Sistemi Linux, database e analisi.</h1></div><p>Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.</p></div>
@@ -47,12 +49,12 @@ function approach() {
   <div class="principles"><article><span>01</span><h3>Ambito definito</h3><p>Un intervento circoscritto permette di verificare presto se la soluzione risponde al problema.</p></article><article><span>02</span><h3>Strumenti proporzionati</h3><p>Uno script può bastare; in altri casi servono un database o una dashboard. La scelta dipende dal contesto.</p></article><article><span>03</span><h3>Continuità operativa</h3><p>Controlli, documentazione e trasferimento delle informazioni rendono il lavoro gestibile anche dopo il rilascio.</p></article></div>${sectionNav('approccio')}</section>`;
 }
 function projectList() {
-  return `<section class="page">${pageHeader('progetti','Dalla raccolta dei dati alla loro lettura: esplora l’archivio della tesi, prova CSV Explorer o leggi le esperienze su BI e infrastrutture.')}
-  <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div class="project-number">${p.number}</div><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div><p class="lab-attribution">È disponibile anche il <a href="#/laboratorio">laboratorio originale su annunci sintetici</a>, distinto dai dati storici della tesi.</p>${sectionNav('progetti')}</section>`;
+  return `<section class="page">${pageHeader('progetti','Esplora alcuni dei miei progetti.')}
+  <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>${sectionNav('progetti')}</section>`;
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}<header class="page-heading"><p class="eyebrow">~/progetti/${p.id}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><span>01</span><h2>Contesto</h2><p>${p.context}</p></section><section><span>02</span><h2>Attività svolte</h2><p>${p.contribution}</p></section><section><span>03</span><h2>Materiali disponibili</h2><p>${p.output}</p></section></div>${sectionNav('progetti')}</article>`;
+  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}<header class="page-heading"><p class="eyebrow">~/progetti/${p.id}</p><h1>${p.title}</h1><p class="page-intro">${p.subtitle}</p>${chips(p.tags)}</header><div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -67,7 +69,7 @@ function europeMap() {
 function journeyContent() {
   return `<section class="profile-journey" aria-labelledby="journey-title"><header><p class="eyebrow">LUOGHI E CRONOLOGIA</p><h2 id="journey-title">Formazione ed esperienze</h2><p>Quattro tappe: Milano, Tromsø, Zugo e Stoccarda. Gli studi in Norvegia, il lavoro da remoto con un’azienda svizzera e il soggiorno in Germania sono esperienze distinte.</p></header>
   <div class="journey-layout"><div><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto, non a una mia sede. Cartografia: Natural Earth.</span></div></div>
-  <div class="timeline"><h2>Cronologia</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi dei log, script SQL e shell. Attività su Debian, MariaDB, storage S3-compatibile, documentazione tecnica e sicurezza operativa.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore operativo · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Coordinamento di attività per progetti sociali e culturali, eventi e amministrazione di Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Analisi di dataset aziendali, metodi di classificazione e dashboard con Qlik, Power BI e Tableau.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · UiT The Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di studio a Tromsø, in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>In corso. Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Statistica, sistemi informativi e programmazione; tesi sul web scraping di annunci immobiliari.</p></div></li><li><span>2015 — 2016</span><div><h3>Prime esperienze in amministrazione</h3><p>Stage in contabilità e supporto alla consulenza presso LTA Advisory (2016). Stage in contabilità presso TaxiBlu (2015), con Zucchetti e manutenzione di database.</p></div></li><li><span>2012 — 2017</span><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Materie economico-aziendali, contabilità e marketing.</p></div></li></ol></div></section>`;
+  <div class="timeline"><h2>Cronologia</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi dei log, script SQL e shell. Attività su Debian, MariaDB, storage S3-compatibile, documentazione tecnica e sicurezza operativa.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore operativo · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Coordinamento di attività per progetti sociali e culturali, eventi e amministrazione di Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Ho analizzato dataset aziendali e lavorato su metodi di classificazione. Ho inoltre creato report e dashboard con Qlik, Power BI e Tableau.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · UiT The Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di studio a Tromsø, in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>In corso. Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Statistica, sistemi informativi e programmazione; tesi sul web scraping di annunci immobiliari.</p></div></li><li><span>2015 — 2016</span><div><h3>Prime esperienze in amministrazione</h3><p>Stage in contabilità e supporto alla consulenza presso LTA Advisory (2016). Stage in contabilità presso TaxiBlu (2015), con Zucchetti e manutenzione di database.</p></div></li><li><span>2012 — 2017</span><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Materie economico-aziendali, contabilità e marketing.</p></div></li></ol></div></section>`;
 }
 function contact() {
   return `<section class="page contact-page">${pageHeader('contatti','Per informazioni sul mio lavoro o proposte di collaborazione, puoi scrivermi via email.')}
@@ -109,42 +111,27 @@ function bindPage(route) {
 function render() {
   const route=parseRoute(location.hash);
   const version=++renderVersion;
-  labController?.abort();
-  labCleanup?.();
-  labController=undefined;
-  labCleanup=undefined;
+  pageController?.abort();
+  pageCleanup?.();
+  pageController=undefined;
+  pageCleanup=undefined;
   document.body.dataset.page=route.page;
   const visiblePage=route.page==='percorso'?'profilo':route.page;
   const area=areas.find(a=>a.id===visiblePage);
-  document.title=`${route.page==='laboratorio'?'Laboratorio dati':route.item?projects.find(p=>p.id===route.item).subtitle:area?.title||'Sistemi, database e analisi'} — Edoardo Rana`;
+  document.title=`${route.item?projects.find(p=>p.id===route.item).title:area?.title||'Sistemi, database e analisi'} — Edoardo Rana`;
   index.hidden=true;indexToggle.setAttribute('aria-expanded','false');
-  document.querySelectorAll('#site-index a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash===location.hash||(route.page==='percorso'&&a.hash==='#/profilo'))a.setAttribute('aria-current','page');});
-  if(route.page==='progetti'&&['market-data','csv-explorer'].includes(route.item)){
-    const controller=new AbortController();labController=controller;
+  document.querySelectorAll('#site-index a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash===(route.page==='mappa'?'#/':`#/${visiblePage}${route.item?`/${route.item}`:''}`))a.setAttribute('aria-current','page');});
+  if(route.page==='progetti'&&['immobiliare-data','dashboard-generator'].includes(route.item)){
+    const controller=new AbortController();pageController=controller;
     main.innerHTML='<section class="page"><p role="status">Caricamento del progetto…</p></section>';
-    const module=route.item==='market-data'?import('./housing/page.mjs'):import('./explorer/page.mjs');
+    const module=route.item==='immobiliare-data'?import('./housing/page.mjs'):import('./explorer/page.mjs');
     module.then(exports=>{
       if(version!==renderVersion||controller.signal.aborted)return;
       const mount=exports.mountHousing||exports.mountExplorer;
-      labCleanup=mount(main,{signal:controller.signal,isCurrent:()=>version===renderVersion,navigationHTML:sectionNav('progetti')});
+      pageCleanup=mount(main,{signal:controller.signal,isCurrent:()=>version===renderVersion,navigationHTML:projectNav()});
     }).catch(()=>{
       if(version!==renderVersion||controller.signal.aborted)return;
       main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}<h1>Progetto non disponibile</h1><p>Ricarica la pagina per riprovare.</p></section>`;
-    });
-  }else if(route.page==='laboratorio'){
-    const origin=visitedRoute&&previousRoute.page!=='laboratorio'&&previousRoute.page!=='not-found'?previousRoute:{page:'progetti'};
-    const backHref=origin.page==='mappa'?'#/':`#/${origin.page}${origin.item?`/${origin.item}`:''}`;
-    const returnLabels={profilo:'Torna al Profilo',approccio:'Torna all’Approccio',percorso:'Torna al Profilo',progetti:'Torna ai Progetti',contatti:'Torna alle Collaborazioni'};
-    const backText=origin.page==='mappa'?'Torna alla Home':origin.item?'Torna alla scheda':returnLabels[origin.page]||'Torna ai Progetti';
-    main.innerHTML='<section class="page"><h1>Laboratorio dati</h1><p role="status">Caricamento del Laboratorio…</p></section>';
-    const controller=new AbortController();
-    labController=controller;
-    import('./lab/page.mjs').then(({mountLab})=>{
-      if(version!==renderVersion||controller.signal.aborted)return;
-      labCleanup=mountLab(main,{backHref,backText,navigationHTML:sectionNav('progetti'),signal:controller.signal,isCurrent:()=>version===renderVersion});
-    }).catch(()=>{
-      if(version!==renderVersion||controller.signal.aborted)return;
-      main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}<h1>Laboratorio non disponibile</h1><p>Non riesco a caricare la pagina. Riprova tra poco.</p></section>`;
     });
   }else{
     const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}<header class="page-heading"><p class="eyebrow">~/404</p><h1>Pagina non trovata</h1><p class="page-intro">Controlla l’indirizzo oppure torna alla Home.</p></header></section>`};
@@ -154,13 +141,13 @@ function render() {
   if(route.page==='mappa'&&previousRoute.page!=='mappa')document.querySelector(`[data-node="${previousRoute.page==='percorso'?'profilo':previousRoute.page}"]`)?.focus({preventScroll:true});
   else main.focus({preventScroll:true});
   previousRoute=route;
-  visitedRoute=true;
 }
 function navigate() {
   render();
   window.scrollTo(0,0);
 }
 indexToggle.addEventListener('click',()=>{index.hidden=!index.hidden;indexToggle.setAttribute('aria-expanded',String(!index.hidden));});
+index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;index.hidden=true;indexToggle.setAttribute('aria-expanded','false');if(link.hash===location.hash)main.focus({preventScroll:true});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!index.hidden){index.hidden=true;indexToggle.setAttribute('aria-expanded','false');indexToggle.focus();}});
 document.querySelector('.skip').addEventListener('click',e=>{e.preventDefault();main.focus();});
 window.addEventListener('hashchange',()=>{if(location.hash==='#main'){main.focus();return;}navigate();});

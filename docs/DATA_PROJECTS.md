@@ -2,9 +2,9 @@
 
 ## Due percorsi distinti
 
-- `#/progetti/market-data`: dashboard della tesi su annunci storici di Milano (archivio 2021).
-- `#/progetti/csv-explorer`: importazione e analisi locale di CSV generici.
-- `#/laboratorio`: demo sintetica precedente, conservata e chiaramente etichettata; non alimenta la tesi.
+- `#/progetti/immobiliare-data`: dashboard della tesi su annunci storici di Milano (archivio 2021); il vecchio `market-data` resta un alias.
+- `#/progetti/dashboard-generator`: importazione e analisi locale di CSV generici; il vecchio `csv-explorer` resta un alias.
+- La demo sintetica precedente è stata eliminata, insieme a dataset, generatore e moduli dedicati. `#/laboratorio` rimanda all'elenco Progetti.
 
 Il frontend resta statico, senza API, backend, analytics o dipendenze npm. Tutti i grafici usano la copia locale di Plotly Basic già presente. Gli istogrammi sono calcolati esplicitamente; i riquadri dei quartili sono tracciati con primitive scatter (baffi minimo/massimo, non Tukey). Nessun nuovo scraping, OMI o modello predittivo.
 
@@ -42,7 +42,7 @@ py -3.12 -m venv .venv
 
 La build pubblica soltanto `proposal/`; script Python, archivi privati e report di sviluppo non vengono copiati in `dist/`. Il JSON pubblico è scaricabile come ogni asset statico; il pulsante della dashboard esporta la selezione in CSV.
 
-## CSV Explorer
+## Dashboard generator
 
 - UTF-8 o Windows-1252; separatore rilevato dalla prima riga o scelto manualmente (virgola, punto e virgola, tab).
 - Virgolette, delimitatori nelle celle e celle multilinea; intestazioni obbligatorie/univoche, righe coerenti. Righe completamente vuote ignorate.

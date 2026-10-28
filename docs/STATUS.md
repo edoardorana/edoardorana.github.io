@@ -2,6 +2,17 @@
 
 Aggiornato il 28 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Progetti essenziali e menu a cartelle — 28 ottobre 2026
+
+- Introduzione abbreviata in “Esplora alcuni dei miei progetti.”; eliminati numeri nell'elenco e nelle sezioni della scheda progetto.
+- Nuovi titoli e percorsi: Dashboard interattiva su dati immobiliari (`immobiliare-data`) e Dashboard generator (`dashboard-generator`). Vecchi URL mantenuti come alias.
+- Rimossa la scheda BI: nel Profilo, alla voce SB Italia, esplicitata la creazione di report e dashboard Qlik, Power BI e Tableau. Il vecchio link BI apre il Profilo.
+- Sostituita la scheda generica sulle infrastrutture con IPAM/NetBox in corso, come confermato dall'utente; Proxmox locale indicato soltanto come progetto futuro.
+- Menu in stile `ls -l`, cartelle annidate, CV sotto Profilo, progetti sotto Progetti. Su mobile le colonne decorative dei permessi sono nascoste. Chiusura con Escape e ritorno del focus al pulsante; selezionare una voce chiude il menu.
+- Footer delle tre schede limitato a Progetti e Home. Eliminata la demo sintetica con dataset, generatore, moduli, sei test esclusivi e CSS inutilizzato. Plotly/licenza spostati nel modulo condiviso `proposal/charts/`.
+- Verifiche: `npm.cmd run check` (14 test), `npm.cmd run build`, diagnostica editor e `git diff --check` riusciti. Edge headless a 1280/390/320 px: nuove route, vecchi alias, cinque grafici per dashboard, menu e footer senza overflow o errori JavaScript nel run finale; verificati Escape e ripristino focus. Nessun test su telefoni fisici.
+- Pubblicazione in preparazione. Prossimi contenuti: documentazione tecnica di NetBox quando disponibile; laboratorio Proxmox da progettare.
+
 ## Dashboard tesi e CSV Explorer — 28 ottobre 2026
 
 - Aggiunte due pagine lazy ai Progetti: `#/progetti/market-data` e `#/progetti/csv-explorer`. Conservata la demo sintetica originale a `#/laboratorio`, con collegamento secondario e distinzione esplicita.
