@@ -23,3 +23,13 @@ test('historical filtering excludes anomalies by default and preserves missing v
   assert.equal(pricePerSqm(rows[1]),null);assert.equal(zonesSummary(rows)[0].median,10);
   assert.equal(summarize([]).sqm.value,null);
 });
+
+test('cross filters share exact range, category, presence and record selection semantics',()=>{
+  const rows=[{id:'a',zone:'A',area:10,price:100,energy:null,flagged:false},{id:'b',zone:'A',area:20,price:400,energy:'C',flagged:false},{id:'c',zone:'B',area:null,price:100,energy:'D',flagged:false}];
+  assert.deepEqual(selectRecords(rows,{minSqm:10,maxSqm:20}).map(r=>r.id),['a','b']);
+  assert.deepEqual(selectRecords(rows,{zone:'A',minSqm:11}).map(r=>r.id),['b']);
+  assert.deepEqual(selectRecords(rows,{range:{field:'sqm',min:10,max:20,includeMax:false}}).map(r=>r.id),['a']);
+  assert.deepEqual(selectRecords(rows,{ids:['a','b'],present:'energy'}).map(r=>r.id),['b']);
+  assert.equal(selectRecords(rows,{minSqm:21}).length,0);
+  assert.equal(selectRecords(rows,{}).length,3);
+});

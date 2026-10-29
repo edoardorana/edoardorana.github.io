@@ -3,6 +3,17 @@ export const pricePerSqm = r => r.price !== null && r.area !== null && r.area > 
 export function selectRecords(records, filters) {
   return records.filter(r => {
     if (!filters.includeFlagged && r.flagged) return false;
+    if (filters.ids && !filters.ids.includes(r.id)) return false;
+    if (filters.present && r[filters.present] === null) return false;
+    const sqm = pricePerSqm(r);
+    for (const [key,compare] of [['minSqm',(a,b)=>a<b],['maxSqm',(a,b)=>a>b]]) {
+      if (filters[key] !== '' && filters[key] !== undefined && (sqm === null || compare(sqm,Number(filters[key])))) return false;
+    }
+    if (filters.range) {
+      const {field,min,max,includeMax=true}=filters.range;
+      const value=field==='sqm'?sqm:r[field];
+      if(value===null||value<min||(includeMax?value>max:value>=max))return false;
+    }
     for (const field of ['zone','type','condition','rooms','energy']) if(filters[field] && (filters[field]==='__missing' ? r[field]!==null : r[field]!==filters[field]))return false;
     for (const [field, low, high] of [['area','minArea','maxArea'],['price','minPrice','maxPrice']]) {
       if(filters[low]!=='' && filters[low]!==undefined && (r[field]===null||r[field]<Number(filters[low])))return false;
