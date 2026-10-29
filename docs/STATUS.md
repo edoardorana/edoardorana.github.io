@@ -2,6 +2,14 @@
 
 Aggiornato il 29 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## README, tree e contatti — 29 ottobre 2026
+
+- I banner `cat readme.md` ora descrivono in modo conciso il contenuto della pagina e l’azione successiva: Home, Profilo, Approccio, Progetti e dashboard.
+- Il menu `tree` mantiene l’albero annidato e ora mostra i connettori `├──` e `└──` in stile Windows, senza permessi o percorsi ripetuti.
+- Le cinque schede dell’Approccio sono pagine autonome in stile CV, senza intestazione `cat readme.md`, con stampa/PDF, campi compilabili e collegamento di ritorno funzionante.
+- Collaborazioni: `mail --new` apre prompt coerenti per oggetto e messaggio (`~/contatti$ oggetto:` / `~/contatti$ messaggio:`), con bozza mailto e nessuna dichiarazione di invio.
+- Verifica locale: 20 test Node, build e diagnostica superati; cinque schede aperte direttamente a 390 px senza overflow. Prossimo passo: pubblicare questa iterazione dopo una revisione visiva finale.
+
 ## Iterazione guidata — 29 ottobre 2026
 
 - Implementato il [piano concordato](NEXT_ITERATION_PLAN.md): prompt senza host, Home con solo comando su hover/focus desktop e nessun comando touch; README Profilo e testi dei luoghi rivisti; eliminati badge sulla mappa e prompt finali decorativi.

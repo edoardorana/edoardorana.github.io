@@ -4,11 +4,10 @@ let subject = '', message = '';
 export function contactHTML() {
   return `<div class="terminal-heading"><h1 class="visually-hidden">Collaborazioni</h1>
   <p class="readme-command"><b>~/contatti</b>$ <strong>cat readme.md</strong></p>
-  <p>Per parlare di un problema tecnico o di una collaborazione, scrivimi.</p>
-  <dl class="contact-links"><dt>email</dt><dd><a href="mailto:${person.email}">${person.email}</a></dd><dt>github</dt><dd><a href="${person.github}" target="_blank" rel="noopener">github.com/edoardorana</a></dd></dl>
+  <div class="readme-output"><dl class="readme-sections"><div><dt>generale/</dt><dd>Scrivimi per parlare di un problema tecnico o di una collaborazione.</dd></div><div><dt>contatti/</dt><dd><a href="mailto:${person.email}">${person.email}</a> · <a href="${person.github}" target="_blank" rel="noopener">github.com/edoardorana</a></dd></div><div><dt>azione/</dt><dd>Avvia mail --new, compila oggetto e messaggio, poi prepara la bozza.</dd></div></dl></div>
   <button type="button" id="mail-start" class="terminal-start"><b>~/contatti</b>$ <strong>mail --new</strong> <span class="wait-cursor" aria-hidden="true">▋</span></button>
-  <form id="contact-form" hidden><label for="subject">oggetto: <span class="wait-cursor" aria-hidden="true">▋</span></label><input id="subject" maxlength="160" required placeholder=" " value="${escapeHTML(subject)}">
-  <div id="mail-body" hidden><label for="message">messaggio: <span class="wait-cursor" aria-hidden="true">▋</span></label><textarea id="message" rows="6" maxlength="4000" required placeholder=" ">${escapeHTML(message)}</textarea>
+  <form id="contact-form" hidden><label for="subject"><b>~/contatti</b>$ oggetto: <span class="wait-cursor" aria-hidden="true">▋</span></label><input id="subject" maxlength="160" required placeholder=" " value="${escapeHTML(subject)}">
+  <div id="mail-body" hidden><label for="message"><b>~/contatti</b>$ messaggio: <span class="wait-cursor" aria-hidden="true">▋</span></label><textarea id="message" rows="6" maxlength="4000" required placeholder=" ">${escapeHTML(message)}</textarea>
   <p class="form-note">Invio sull’oggetto apre il messaggio. Nel messaggio: Invio va a capo, Ctrl+Invio prepara la bozza.</p><button type="submit">Prepara bozza ↗</button></div></form>
   <p id="contact-status" role="status"></p><p class="form-note">Si apre il tuo programma di posta: l’invio avviene da lì. Se non si apre, copia l’indirizzo e il testo.</p><button id="copy-email" type="button">Copia email</button></div>`;
 }

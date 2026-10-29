@@ -66,6 +66,23 @@ test('terminal headings keep the title semantic and the readme always visible', 
   assert.match(html, /xdg-open cv\.html/);
   assert.match(html, /href="cv\.html"/);
 });
+test('README summaries explain the page and the next user action', async () => {
+  const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
+  assert.match(source, /Benvenuto nel mio sito/);
+  assert.match(source, /Seleziona un luogo, consulta la cronologia oppure apri il CV/);
+  assert.match(source, /Seleziona una fase e apri la scheda operativa/);
+  assert.match(source, /Seleziona una scheda per leggere il contesto/);
+  const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
+  assert.match(contact, /Avvia mail --new, compila oggetto e messaggio/);
+});
+test('Approach documents are direct CV-style pages without terminal headers', async () => {
+  for (const name of ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere']) {
+    const html = await readFile(new URL(`../proposal/approccio/${name}.html`, import.meta.url), 'utf8');
+    assert.doesNotMatch(html, /cat readme\.md/);
+    assert.match(html, /<main>/);
+    assert.match(html, /Stampa \/ salva PDF/);
+  }
+});
 test('site menu uses a compact terminal tree without repeated paths or file modes', async () => {
   const html = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
   assert.doesNotMatch(html, /drwx|rw-r|directory-mode/);

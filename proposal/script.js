@@ -32,28 +32,28 @@ function projectNav() {
   return '<nav class="section-nav project-nav" aria-label="Navigazione del progetto"><a href="#/progetti"><span aria-hidden="true">←</span><code>~/progetti</code></a><a href="#/" aria-label="Home"><code>~/home</code></a></nav>';
 }
 function home() {
-  return `<section class="home">${terminalHeader({ path: '~/home', title: 'Sistemi Linux, database e analisi.', summary: 'Lavoro su infrastrutture Linux e database. Analizzo problemi tecnici, dati e processi tenendo conto delle persone che usano i sistemi.' })}
+  return `<section class="home">${terminalHeader({ path: '~/home', title: 'Sistemi Linux, database e analisi.', summary: 'Benvenuto nel mio sito. Clicca un’area per approfondire profilo, progetti, approccio e collaborazioni.' })}
   <div class="atlas" aria-label="Le quattro aree del portfolio">
   ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><strong class="area-title">${area.title}</strong><span class="area-details"><span class="area-terminal"><span class="area-command-line" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-static">$</span> <span class="area-command-name">cat readme.md</span></span></span></span></a>`).join('')}</div></section>`;
 }
 function profile() {
-  return `<section class="page">${terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Lavoro su infrastrutture Linux, database e automazione. Affronto anomalie e cambiamenti partendo da log, dati e contesto operativo.', sections: [{ label: 'attività/', text: 'Trasformo l’analisi in interventi documentati e verificabili, condividendo le evidenze con i referenti tecnici.' }, { label: 'percorso/', text: 'La formazione statistica e le esperienze su dati e sistemi mi aiutano a distinguere segnali, cause e vincoli prima di scegliere strumenti e soluzioni.' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV sintetico' } })}
+  return `<section class="page">${terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Formazione, esperienze e luoghi che descrivono il mio percorso. Apri il CV o scorri la pagina per esplorarlo.', sections: [{ label: 'generale/', text: 'Infrastrutture Linux, database e automazione: lavoro partendo da log, dati e contesto operativo.' }, { label: 'azione/', text: 'Seleziona un luogo, consulta la cronologia oppure apri il CV sintetico.' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV sintetico' } })}
   ${journeyContent()}
   <section class="skills-terminal" aria-labelledby="skills-title"><h2 class="visually-hidden" id="skills-title">Competenze, lingue e interessi</h2><div class="terminal-screen"><p class="terminal-command"><b>~/profilo</b>$ skills --overview</p><div class="skills-grid"><article><p class="terminal-path">consulenza/</p><h3>Supporto e metodo</h3><p>Requisiti · Diagnosi delle cause · Documentazione · Processi</p></article><article><p class="terminal-path">infrastruttura/</p><h3>Sistemi Linux</h3><p>Debian · Proxmox VE / PBS · checkmk · Storage S3 · Backup</p></article><article><p class="terminal-path">database_automazione/</p><h3>Dati e automazione</h3><p>Oracle · PostgreSQL · MariaDB / MySQL · SQL · Bash · Python</p></article><article><p class="terminal-path">analisi_bi/</p><h3>Business Intelligence</h3><p>KPI · Power BI · Qlik Sense · Tableau · R · KNIME · Orange</p></article></div><div class="terminal-extra"><p class="terminal-command"><b>~/profilo</b>$ languages --list</p><p>Italiano madrelingua · Inglese C1 · Spagnolo B2</p><p class="terminal-command"><b>~/profilo</b>$ interests --list</p><p>Judo · Ju jitsu · Arti marziali · Skateboard · Moto · Auto</p></div></div></section>
   ${sectionNav('profilo')}</section>`;
 }
 function approach() {
-  return `<section class="page">${pageHeader('approccio','Definisco il problema, documento i flussi e verifico il risultato. Cinque fasi, accompagnate da schede operative da usare come base di lavoro.')}
+  return `<section class="page">${pageHeader('approccio','Cinque fasi per capire, raccogliere, custodire, leggere ed evolvere. Seleziona una fase e apri la scheda operativa.')}
   <div class="method"><div class="method-steps" role="tablist" aria-label="Il percorso del dato">${steps.map((s,i) => `<button role="tab" id="method-${i}" aria-controls="method-panel" aria-selected="${i === selectedStep}" tabindex="${i === selectedStep ? 0 : -1}" data-step="${i}"><span>0${i+1}</span>${s.title}</button>`).join('')}</div><article id="method-panel" role="tabpanel" aria-labelledby="method-${selectedStep}"></article></div>
   ${sectionNav('approccio')}</section>`;
 }
 function projectList() {
-  return `<section class="page">${pageHeader('progetti','Esplora alcuni dei miei progetti.')}
+  return `<section class="page">${pageHeader('progetti','Una raccolta di dashboard e progetti dati. Seleziona una scheda per leggere il contesto e provarne gli strumenti.')}
   <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>${sectionNav('progetti')}</section>`;
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: p.subtitle })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
+  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: `${p.subtitle} Leggi la scheda e prova lo strumento quando disponibile.` })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -79,7 +79,7 @@ function setStep(i, focus = false) {
   panel.setAttribute('aria-labelledby',`method-${i}`);
   const previous = i > 0 ? `<button class="method-arrow method-arrow-prev" type="button" data-method-target="${i-1}" aria-label="Fase precedente: ${steps[i-1].title}"><span aria-hidden="true">‹</span></button>` : '';
   const next = i < steps.length - 1 ? `<button class="method-arrow method-arrow-next" type="button" data-method-target="${i+1}" aria-label="Fase successiva: ${steps[i+1].title}"><span aria-hidden="true">›</span></button>` : '';
-  panel.innerHTML = `${previous}${next}<span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><h2>${s.short}</h2><p>${s.text}</p><div class="method-output"><span>DOCUMENTAZIONE</span><p>${s.result}</p></div>${chips(s.tags)}<a class="button method-document" href="approccio/${['capire','raccogliere','custodire','leggere','evolvere'][i]}.html">Apri la scheda operativa ↗</a>`;
+  panel.innerHTML = `${previous}${next}<span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><h2>${s.short}</h2><p>${s.text}</p><div class="method-output"><span>DOCUMENTAZIONE</span><p>${s.result}</p></div>${chips(s.tags)}<a class="button method-document" href="/approccio/${['capire','raccogliere','custodire','leggere','evolvere'][i]}.html">Apri la scheda operativa ↗</a>`;
 }
 function setPlace(key) {
   selectedPlace = key;
