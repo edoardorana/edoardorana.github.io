@@ -1,1 +1,48 @@
-*{box-sizing:border-box}body{margin:0;background:#f8f8f6;color:#222724;font:15px/1.65 Arial,Helvetica,sans-serif}main,nav{max-width:900px;margin:auto;padding:28px clamp(20px,5vw,55px)}nav{display:flex;justify-content:space-between;gap:20px}a{color:#476753}button{font:inherit;padding:8px 14px;background:transparent;border:1px solid #b9c1ba;cursor:pointer}header{border-bottom:1px solid #d5dbd5;padding-bottom:25px}h1{font-size:clamp(24px,4vw,34px);line-height:1.2}h2{font-size:21px;margin-top:35px}.path{font:12px/1.6 monospace;color:#87515d;overflow-wrap:anywhere}small{color:#59665d}label{display:block;margin-top:22px}textarea{display:block;width:100%;padding:10px;margin-top:8px;font:inherit;background:#fff;border:1px solid #d5dbd5;resize:vertical;min-height:65px}textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid #476753;outline-offset:3px}aside{margin:30px 0;padding:20px;background:#edf0eb}.flow{padding:25px;border:1px dashed #67776b;margin-top:25px;font-family:monospace}.wireframe{border:2px solid #8b938b;margin:25px 0;padding:18px;transform:rotate(-.3deg);font:14px/1.7 monospace}.wireframe>div{border:1px dashed #9a9f99;padding:15px;margin:10px 0}.kpis,.plots{display:flex;gap:20px;justify-content:space-between}.wireframe span{flex:1;min-width:0}.plots span{min-height:100px}@media(max-width:500px){.kpis,.plots{flex-direction:column}}@media print{body{background:white;font-size:11pt}nav{display:none}main{padding:0;max-width:none}textarea{overflow:visible;resize:none;border:0;border-bottom:1px solid #ccc;min-height:40px}section{break-inside:auto}label{break-after:avoid}textarea{break-inside:avoid}header{padding:0 0 15px}.wireframe{transform:none}}
+:root {
+  color-scheme: light;
+  --paper: #f8f8f6;
+  --ink: #222724;
+  --muted: #626a64;
+  --line: #d6dbd5;
+  --accent: #365a45;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 14px/1.6 'Avenir Next', Avenir, 'Trebuchet MS', Ubuntu, system-ui, sans-serif; }
+main, nav { max-width: 850px; margin-inline: auto; padding: 25px; }
+nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 30px; padding-bottom: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+button { min-height: 44px; font: inherit; padding: 8px 14px; background: transparent; color: var(--ink); border: 1px solid var(--line); cursor: pointer; }
+button:hover { border-color: var(--accent); }
+header { border-bottom: 1px solid var(--line); padding-bottom: 25px; }
+header > p:first-child { color: var(--muted); font-size: 12px; }
+h1 { font-size: clamp(28px, 4vw, 38px); font-weight: 500; line-height: 1.2; letter-spacing: -.7px; }
+h2 { font-size: 26px; font-weight: 500; line-height: 1.3; margin-top: 35px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+small { display: block; color: var(--muted); font-size: 12px; }
+label { display: block; margin-top: 22px; }
+input[type=checkbox] { accent-color: var(--accent); width: 18px; height: 18px; vertical-align: middle; margin-right: 8px; }
+textarea { display: block; width: 100%; padding: 10px; margin-top: 8px; font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 0; resize: vertical; min-height: 65px; }
+textarea::placeholder { color: var(--muted); opacity: 1; }
+textarea:focus, button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+aside { margin: 30px 0; padding: 18px 20px; background: #eff1ed; border-left: 2px solid var(--accent); }
+.flow { padding: 25px; border: 1px dashed var(--muted); margin-top: 25px; font-family: ui-monospace, Consolas, monospace; }
+.wireframe { border: 1px solid var(--muted); margin: 25px 0; padding: 18px; font: 14px/1.7 ui-monospace, Consolas, monospace; }
+.wireframe > div { border: 1px dashed var(--line); padding: 15px; margin: 10px 0; }
+.kpis, .plots { display: flex; gap: 20px; justify-content: space-between; }
+.wireframe span { flex: 1; min-width: 0; }
+.plots span { min-height: 100px; }
+@media (max-width: 500px) {
+  main, nav { padding-inline: 20px; }
+  nav { margin-top: 12px; }
+  .kpis, .plots { flex-direction: column; }
+  textarea { font-size: 16px; }
+}
+@media print {
+  body { background: white; font-size: 11pt; }
+  nav { display: none; }
+  main { padding: 0; max-width: none; }
+  h1 { font-size: 28px; }
+  h2 { margin-top: 22px; font-size: 20px; break-after: avoid; }
+  textarea { overflow: visible; resize: none; border: 0; border-bottom: 1px solid #ccc; min-height: 40px; break-inside: avoid; }
+  label { break-after: avoid; }
+  header { padding: 0 0 15px; }
+}

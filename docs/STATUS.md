@@ -2,6 +2,15 @@
 
 Aggiornato il 29 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Armonia visiva e revisione tecnica — 29 ottobre 2026
+
+- Revisione di tutte le pagine e di tutti gli script applicativi/offline: [rapporto con problemi, interventi, copertura e limiti](REVIEW_2026-10-29.md).
+- Approccio mobile più leggibile, schede autonome allineate al CV, Contatti integrato nel banner con campi sempre aperti e senza prompt finale. README e istruzioni accorciati; menu compatto mantenuto, con chiusura anche all'esterno.
+- Dashboard: rimossi eventi persistenti dopo la navigazione; filtri invalidi segnalati e export bloccato; messaggi di selezione vuota rimossi al ripristino. Filtri immobiliari inizialmente chiusi, titoli grafici uniformati. Corretti istogrammi costanti e importazioni CSV superate da una nuova scelta.
+- Pulizia di CSS, stato e aggregazioni senza utilizzo; conversione numerica Python più rigorosa. Nessuna nuova dipendenza e dataset pubblico invariato.
+- Verifiche locali: 20 test Node, 2 test Python, build e diagnostica editor superati. Otto viste a 1280/390/320 px, CV e cinque documenti a 390 px; flussi dashboard, touch emulato, menu da tastiera e Indietro/Avanti verificati. Limiti e prossimi passi nel rapporto.
+- Lavoro sul branch `polish/coherence-review`; pubblicazione da registrare dopo i controlli remoti.
+
 ## README, tree e contatti — 29 ottobre 2026
 
 - I banner `cat readme.md` ora descrivono in modo conciso il contenuto della pagina e l’azione successiva: Home, Profilo, Approccio, Progetti e dashboard.

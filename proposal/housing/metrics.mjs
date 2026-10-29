@@ -30,11 +30,6 @@ export function summarize(records) {
   }
   return result;
 }
-export function zonesSummary(records) {
-  const groups=new Map();
-  for(const r of records)if(r.zone&&pricePerSqm(r)!==null){if(!groups.has(r.zone))groups.set(r.zone,[]);groups.get(r.zone).push(pricePerSqm(r));}
-  return [...groups].map(([zone,v])=>({zone,count:v.length,median:quantile(v,.5)})).sort((a,b)=>b.count-a.count||a.zone.localeCompare(b.zone));
-}
 export function validateDataset(data) {
   const fields=['id','zone','type','condition','area','price','rooms','energy','flagged'];
   if(!data?.metadata||!Array.isArray(data.records)||data.records.length!==data.metadata.published_rows)throw new Error('Dataset storico non valido.');

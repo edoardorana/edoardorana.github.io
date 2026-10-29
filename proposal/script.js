@@ -32,7 +32,7 @@ function projectNav() {
   return '<nav class="section-nav project-nav" aria-label="Navigazione del progetto"><a href="#/progetti"><span aria-hidden="true">←</span><code>~/progetti</code></a><a href="#/" aria-label="Home"><code>~/home</code></a></nav>';
 }
 function home() {
-  return `<section class="home">${terminalHeader({ path: '~/home', title: 'Sistemi Linux, database e analisi.', summary: 'Benvenuto nel mio sito. Clicca un’area per approfondire la tematica.' })}
+  return `<section class="home">${terminalHeader({ path: '~/home', title: 'Sistemi Linux, database e analisi.', summary: 'Benvenuto nel mio sito. Scegli un’area da esplorare.' })}
   <div class="atlas" aria-label="Le quattro aree del portfolio">
   ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><strong class="area-title">${area.title}</strong><span class="area-details"><span class="area-terminal"><span class="area-command-line" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-static">$</span> <span class="area-command-name">cat readme.md</span></span></span></span></a>`).join('')}</div></section>`;
 }
@@ -48,12 +48,12 @@ function approach() {
   ${sectionNav('approccio')}</section>`;
 }
 function projectList() {
-  return `<section class="page">${pageHeader('progetti','Una raccolta di dashboard e progetti dati. Seleziona una scheda per leggere il contesto e provarne gli strumenti.')}
+  return `<section class="page">${pageHeader('progetti','Dashboard da provare e un progetto in corso. Seleziona una scheda per leggere il contesto.')}
   <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>${sectionNav('progetti')}</section>`;
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${backLink('#/progetti','Tutti i progetti')}${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: `${p.subtitle} Leggi la scheda e prova lo strumento quando disponibile.` })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
+  return `<article class="page project-detail">${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: 'NetBox per organizzare gli indirizzi IP. Qui raccolgo il contesto del lavoro in corso e i prossimi sviluppi.' })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -66,7 +66,7 @@ function europeMap() {
   }).join('')}</div>`;
 }
 function journeyContent() {
-  return `<section class="profile-journey" aria-labelledby="journey-title"><header><h2 id="journey-title">Formazione ed esperienze</h2><p>Dalla formazione statistica a Milano all’Erasmus a Tromsø, fino al lavoro con un’azienda svizzera e al periodo a Stoccarda: studi, attività professionale ed esperienze personali.</p></header>
+  return `<section class="profile-journey" aria-labelledby="journey-title"><header><h2 id="journey-title">Formazione ed esperienze</h2><p>Seleziona una città per conoscerne il ruolo nel mio percorso. La cronologia riunisce studi ed esperienze professionali.</p></header>
   <div class="journey-layout"><div><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto, non a una mia sede. Cartografia: Natural Earth.</span></div></div>
   <div class="timeline"><h2>Cronologia</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi dei log, script SQL e shell. Attività su Debian, MariaDB, storage S3-compatibile, documentazione tecnica e sicurezza operativa.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore operativo · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Coordinamento di attività per progetti sociali e culturali, eventi e amministrazione di Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Ho analizzato dataset aziendali e lavorato su metodi di classificazione. Ho inoltre creato report e dashboard con Qlik, Power BI e Tableau.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · UiT The Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di studio a Tromsø, in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>In corso. Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Statistica, sistemi informativi e programmazione; tesi sul web scraping di annunci immobiliari.</p></div></li><li><span>2015 — 2016</span><div><h3>Prime esperienze in amministrazione</h3><p>Stage in contabilità e supporto alla consulenza presso LTA Advisory (2016). Stage in contabilità presso TaxiBlu (2015), con Zucchetti e manutenzione di database.</p></div></li><li><span>2012 — 2017</span><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Materie economico-aziendali, contabilità e marketing.</p></div></li></ol></div></section>`;
 }
@@ -144,6 +144,8 @@ function setIndexOpen(open) {
   indexToggle.setAttribute('aria-label',open?'Chiudi indice del sito':'Apri indice del sito');
 }
 indexToggle.addEventListener('click',()=>setIndexOpen(index.hidden));
+document.addEventListener('pointerdown',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
+document.addEventListener('focusin',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
 index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;setIndexOpen(false);if(link.hash===location.hash)main.focus({preventScroll:true});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!index.hidden){setIndexOpen(false);indexToggle.focus();}});
 document.querySelector('.skip').addEventListener('click',e=>{e.preventDefault();main.focus();});
