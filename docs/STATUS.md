@@ -8,7 +8,7 @@ Aggiornato il 29 ottobre 2026. Le note precedenti sono state condensate; i commi
 - Il menu `tree` mantiene l’albero annidato e ora mostra i connettori `├──` e `└──` in stile Windows, senza permessi o percorsi ripetuti.
 - Le cinque schede dell’Approccio sono pagine autonome in stile CV, senza intestazione `cat readme.md`, con stampa/PDF, campi compilabili e collegamento di ritorno funzionante.
 - Collaborazioni: `mail --new` apre prompt coerenti per oggetto e messaggio (`~/contatti$ oggetto:` / `~/contatti$ messaggio:`), con bozza mailto e nessuna dichiarazione di invio.
-- Verifica locale: 20 test Node, build e diagnostica superati; cinque schede aperte direttamente a 390 px senza overflow. Prossimo passo: pubblicare questa iterazione dopo una revisione visiva finale.
+- Verifica locale: 20 test Node, build e diagnostica superati; cinque schede aperte direttamente a 390 px senza overflow. Pubblicata su `main` con commit `b30bae4`; il workflow [40847668031](https://github.com/edoardorana/edoardorana.github.io/actions/runs/40847668031) ha completato check e deploy con successo. Verificati online banner Home/Contatti, tree e i cinque documenti.
 
 ## Iterazione guidata — 29 ottobre 2026
 
