@@ -10,7 +10,8 @@ const hints={histogram:'Una colonna numerica: come sono distribuiti i valori?',b
 const operations={trim:'Rimuovi spazi superflui',lowercase:'Uniforma in minuscolo',rename:'Rinomina colonna',fill:'Sostituisci celle vuote',missing:'Tratta un valore come mancante',dropMissing:'Elimina righe con cella vuota',filter:'Mantieni righe che contengono…',duplicates:'Elimina righe duplicate',dateDMY:'Converti date GG/MM/AAAA in ISO'};
 export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={}){
  const $=q=>container.querySelector(q);
- let file,original,data,columnTypes=[],history=[],specs=[],stage=0,disposed=false,generation=0,importVersion=0,pending;
+ const events=new AbortController();
+ let file,original,data,columnTypes=[],history=[],specs=[],disposed=false,generation=0,importVersion=0,pending;
  container.innerHTML='<section class="page data-workspace">'+terminalHeader({path:'~/progetti/dashboard-generator',title:'Dashboard generator',summary:'Carica un CSV, controlla i dati, prepara ciò che serve e scegli i grafici adatti alle tue domande.'})+
  '<p>Il CSV resta nel browser. Esporta i dati prima di chiudere la pagina.</p><nav class="workflow-nav" aria-label="Fasi del lavoro">'+stages.map((s,i)=>'<button type="button" data-stage="'+i+'" '+(i?'disabled':'')+'>'+String(i+1).padStart(2,'0')+' '+s+'</button>').join('')+'</nav><p id="csv-status" class="data-feedback" role="status"></p>'+
  '<section data-panel="0" class="data-panel"><h2>Carica una tabella</h2><div id="csv-drop" class="drop-zone"><label for="csv-file">Trascina qui un CSV oppure scegli un file</label><input id="csv-file" type="file" accept=".csv,text/csv"><p id="csv-filename">Nessun file selezionato</p></div><p>Prima riga con nomi delle colonne. Fino a 10 MB, 30.000 righe e 100 colonne.</p><details><summary>Impostazioni di lettura</summary><div class="data-controls"><label>Separatore<select id="csv-delimiter"><option value="">Rileva automaticamente</option><option value=";">Punto e virgola</option><option value=",">Virgola</option><option value="tab">Tabulazione</option></select></label><label>Codifica<select id="csv-encoding"><option value="utf-8">UTF-8</option><option value="windows-1252">Windows-1252 (Excel)</option></select></label><label>Numeri<select id="csv-decimal"><option value=",">Italiano: 1.234,56</option><option value=".">Punto decimale: 1234.56</option></select></label></div><p>Se un numero come 1.234 è ambiguo, scegli esplicitamente il formato della fonte.</p></details><div class="workflow-actions"><button id="csv-open">Leggi il CSV</button><button id="csv-example">Prova un esempio</button></div></section>'+
@@ -21,7 +22,7 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  const status=$('#csv-status'),decimal=()=>$('#csv-decimal').value;
  const options=(selected,predicate=()=>true,empty=false)=>(empty?'<option value="-1">Nessuna</option>':'')+data.headers.map((h,i)=>predicate(i)?'<option value="'+i+'" '+(i===selected?'selected':'')+'>'+esc(h)+'</option>':'').join('');
  function show(n){
- if(n&&!data)return;stage=n;for(const p of container.querySelectorAll('[data-panel]'))p.hidden=+p.dataset.panel!==n;
+ if(n&&!data)return;for(const p of container.querySelectorAll('[data-panel]'))p.hidden=+p.dataset.panel!==n;
  for(const b of container.querySelectorAll('[data-stage]')){b.disabled=+b.dataset.stage>0&&!data;b.toggleAttribute('aria-current',+b.dataset.stage===n);if(+b.dataset.stage===n)b.setAttribute('aria-current','step');}
  if(n===3)questions();if(n===4)drawControls();
  const heading=$('[data-panel="'+n+'"] h2');heading.tabIndex=-1;heading.focus({preventScroll:true});
@@ -41,7 +42,7 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  }
  function operationHelp(){const f=$('#csv-transform'),kind=f.elements.kind.value;const needs=['rename','fill','missing','filter'].includes(kind);$('#csv-value-label').hidden=!needs;f.elements.value.required=needs;f.elements.column.disabled=kind==='duplicates';$('#csv-operation-help').textContent=kind==='duplicates'?'Confronta l’intera riga: conserva la prima copia.':kind==='dateDMY'?'Conversione esplicita GG/MM/AAAA → AAAA-MM-GG. Una data non valida interrompe l’operazione senza modificare la tabella.':kind==='missing'?'Indica il testo da trattare come vuoto, per esempio NA. Nessuna sostituzione automatica.':'Controlla il numero di righe interessate prima di applicare.';pending=undefined;$('#csv-apply').hidden=true;$('#csv-effect').textContent='';}
  function supported(kind){const n=columnTypes.filter(t=>t==='number').length,c=columnTypes.includes('category'),d=columnTypes.includes('date');return kind==='histogram'?n>0:kind==='scatter'?n>=2:kind==='box'?c&&n>0:kind==='time'?d&&n>0:c;}
- function questions(){$('#csv-questions').innerHTML=Object.entries(names).map(([k,l])=>'<button data-kind="'+k+'" '+(!supported(k)||specs.length>=5?'disabled':'')+'><strong>'+l+'</strong><br>'+hints[k]+(!supported(k)?'<br><small>Servono colonne compatibili: rivedi i tipi.</small>':'')+'</button>').join('');$('#csv-choice-status').textContent=specs.length+' grafici nella dashboard (massimo 5).';}
+ function questions(){$('#csv-questions').innerHTML=Object.entries(names).map(([k,l])=>'<button data-kind="'+k+'" '+(!supported(k)||specs.length>=5?'disabled':'')+'><strong>'+l+'</strong><br>'+hints[k]+(!supported(k)?'<br><small>Servono colonne compatibili: rivedi i tipi.</small>':'')+'</button>').join('');$('#csv-choice-status').textContent='Grafici scelti: '+specs.length+' su 5.';}
  function drawControls(){
  for(const p of container.querySelectorAll('.explorer-plot'))window.Plotly?.purge(p);
  $('#csv-charts').innerHTML=specs.length?specs.map((s,i)=>{
@@ -52,7 +53,7 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  renderCharts();
  }
  async function renderCharts(){
- const version=++generation;let plotly;try{plotly=await loadPlotly();}catch{status.textContent='Grafici non disponibili. I dati restano esportabili.';return;}if(disposed||!isCurrent()||version!==generation)return;
+ const version=++generation;let plotly;try{plotly=await loadPlotly();}catch{if(!disposed&&version===generation)status.textContent='Grafici non disponibili. I dati restano esportabili.';return;}if(disposed||!isCurrent()||version!==generation)return;
  for(let i=0;i<specs.length;i++){
  const originalSpec=specs[i],s={...originalSpec,decimal:decimal()},card=$('[data-chart="'+i+'"]'),plot=card.querySelector('.explorer-plot'),msg=card.querySelector('.chart-message');
  if(s.kind==='composition'){s.kind='bar';s.aggregate='count';}
@@ -81,7 +82,7 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  accept(parseCSV(text,delimiter==='tab'?'\t':delimiter),file.name);
  }catch(e){status.textContent=(e instanceof TypeError?'La codifica non è UTF-8: apri le impostazioni di lettura e prova Windows-1252.':e.message)+' I dati già caricati restano disponibili.';}
  }
- const choose=f=>{file=f;$('#csv-filename').textContent=f?f.name+' · '+Math.ceil(f.size/1024)+' KB':'Nessun file selezionato';};
+ const choose=f=>{importVersion++;file=f;$('#csv-filename').textContent=f?f.name+' · '+Math.ceil(f.size/1024)+' KB':'Nessun file selezionato';};
  $('#csv-file').onchange=e=>choose(e.target.files[0]);const drop=$('#csv-drop');
  drop.ondragover=e=>{e.preventDefault();drop.classList.add('dragging');};drop.ondragleave=()=>drop.classList.remove('dragging');drop.ondrop=e=>{e.preventDefault();drop.classList.remove('dragging');choose(e.dataTransfer.files[0]);};
  $('#csv-open').onclick=readFile;
@@ -92,7 +93,7 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  $('#csv-transform').onsubmit=e=>{e.preventDefault();try{
  if(history.length>=30)throw Error('Hai raggiunto 30 modifiche. Esporta il risultato prima di continuare.');
  const f=e.target,action={kind:f.elements.kind.value,column:+f.elements.column.value,value:f.elements.value.value};
- const next=transform(data,action);pending={next,action};$('#csv-effect').textContent=next.affected+' righe interessate. Righe: '+data.rows.length+' · '+next.rows.length+'. Originale conservato fino al ripristino.';$('#csv-apply').hidden=false;
+ const next=transform(data,action);pending={next,action};$('#csv-effect').textContent='Righe interessate: '+next.affected+'. Totale prima: '+data.rows.length+'; dopo: '+next.rows.length+'. Puoi annullare la modifica dopo averla applicata.';$('#csv-apply').hidden=false;
  }catch(e){pending=undefined;$('#csv-apply').hidden=true;$('#csv-effect').textContent=e.message;}};
  $('#csv-apply').onclick=()=>{if(!pending)return;const {next,action}=pending;history.push({action,types:[...columnTypes],label:operations[action.kind]+' · '+next.affected+' righe'});data=next;if(action.kind==='dateDMY')columnTypes[action.column]='date';pending=undefined;refresh();status.textContent='Modifica applicata. Puoi annullarla.';};
  $('#csv-undo').onclick=()=>{const h=history.pop();if(!h)return;data=history.reduce((current,item)=>transform(current,item.action),original);columnTypes=h.types;refresh();status.textContent='Ultima modifica annullata.';};
@@ -103,8 +104,8 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  if(b.dataset.stage!==undefined)show(+b.dataset.stage);if(b.dataset.goto!==undefined)show(+b.dataset.goto);
  if(b.dataset.kind){const kind=b.dataset.kind;if(!supported(kind)||specs.length>=5)return;const n=columnTypes.map((t,i)=>t==='number'?i:-1).filter(i=>i>=0),c=columnTypes.indexOf('category'),d=columnTypes.indexOf('date');specs.push({kind,x:kind==='time'?d:['bar','box','composition'].includes(kind)?c:n[0],y:kind==='scatter'?n[1]:n[0],color:-1,aggregate:kind==='bar'?'count':'mean'});questions();status.textContent=names[kind]+' aggiunto.';}
  if(b.dataset.removeChart!==undefined){specs.splice(+b.dataset.removeChart,1);drawControls();}
- });
+ },{signal:events.signal});
  $('#csv-charts').onchange=e=>{if(!e.target.dataset.spec)return;const s=specs[+e.target.closest('[data-chart]').dataset.chart],k=e.target.dataset.spec;s[k]=k==='aggregate'?e.target.value:+e.target.value;drawControls();};
  show(0);
- return()=>{disposed=true;generation++;importVersion++;for(const p of container.querySelectorAll('.explorer-plot'))window.Plotly?.purge(p);};
+ return()=>{disposed=true;events.abort();generation++;importVersion++;for(const p of container.querySelectorAll('.explorer-plot'))window.Plotly?.purge(p);};
 }

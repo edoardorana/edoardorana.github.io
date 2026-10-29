@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { validateDataset, selectRecords, summarize, pricePerSqm, zonesSummary } from '../proposal/housing/metrics.mjs';
+import { validateDataset, selectRecords, summarize, pricePerSqm } from '../proposal/housing/metrics.mjs';
 const dataset=JSON.parse(await readFile(new URL('../proposal/housing/milano-2021.json',import.meta.url),'utf8'));
 test('historical public dataset has an allowlisted schema, reconciled exclusions and no raw identifiers',async()=>{
   validateDataset(dataset);
@@ -20,7 +20,7 @@ test('historical filtering excludes anomalies by default and preserves missing v
   assert.equal(selectRecords(rows,{minArea:'0'}).length,1);
   assert.equal(selectRecords(rows,{zone:'__missing',includeFlagged:true}).length,1);
   const result=summarize(rows);assert.equal(result.price.count,2);assert.equal(result.area.value,5.5);
-  assert.equal(pricePerSqm(rows[1]),null);assert.equal(zonesSummary(rows)[0].median,10);
+  assert.equal(pricePerSqm(rows[1]),null);assert.equal(pricePerSqm(rows[0]),10);
   assert.equal(summarize([]).sqm.value,null);
 });
 

@@ -15,6 +15,9 @@ class HousingPreparation(unittest.TestCase):
         for value in ['50 - 100 m²', '0 m²', 'unknown']:
             self.assertIsNone(module.scalar(value, 'area'))
         self.assertIsNone(module.scalar('Prezzo su richiesta', 'price'))
+        self.assertEqual(module.scalar('1234567,50', 'price'), 1234567.5)
+        self.assertIsNone(module.scalar('1234.567', 'price'))
+        self.assertIsNone(module.scalar('9' * 400, 'price'))
 
     def test_exclusions_privacy_and_missing(self):
         base = {'link_id':'private-id', 'contratto':'Vendita', 'tipologia':'Appartamento', 'zona':'via privata 1', 'superficie':'50 m²', 'prezzo':'€ 100.000', 'locali':'2 camere da letto', 'titolo':'Private title'}

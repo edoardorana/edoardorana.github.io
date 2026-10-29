@@ -122,5 +122,5 @@ export function histogram(values, bins = 15) {
   const min = Math.min(...data), max = Math.max(...data), width = max === min ? 1 : (max - min) / bins;
   const count = max === min ? 1 : bins, y = Array(count).fill(0);
   for (const n of data) y[Math.min(count - 1, Math.floor((n - min) / width))]++;
-  return { x: y.map((_, i) => min + (i + 0.5) * width), y, width };
+  return { x: y.map((_, i) => max === min ? min : min + (i + 0.5) * width), y, width };
 }

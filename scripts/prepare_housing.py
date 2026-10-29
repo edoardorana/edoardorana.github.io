@@ -6,6 +6,7 @@ Install dependencies from scripts/requirements-data.txt in a local virtual envir
 import argparse
 import hashlib
 import json
+import math
 import re
 from collections import Counter
 from pathlib import Path
@@ -25,12 +26,13 @@ def scalar(value, unit):
     value = text(value)
     if unit == 'area':
         value = re.sub(r'\s*-\s*Vedi dettaglio$', '', value)
-    pattern = r'(?:€\s*)?(\d+(?:\.\d{3})*(?:,\d+)?)' if unit == 'price' else r'(\d+(?:\.\d{3})*(?:,\d+)?)\s*m[²2]'
+    amount = r'(\d{1,3}(?:\.\d{3})+|\d+)(,\d+)?'
+    pattern = rf'(?:€\s*)?{amount}' if unit == 'price' else rf'{amount}\s*m[²2]'
     match = re.fullmatch(pattern, value)
     if not match:
         return None
-    result = float(match[1].replace('.', '').replace(',', '.'))
-    return result if result > 0 else None
+    result = float((match[1] + (match[2] or '')).replace('.', '').replace(',', '.'))
+    return result if math.isfinite(result) and result > 0 else None
 
 def extract(frame, zones):
     records, reasons, seen = [], Counter(), set()

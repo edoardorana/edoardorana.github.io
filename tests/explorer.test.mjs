@@ -45,6 +45,7 @@ test('CSV export quotes newlines and neutralizes spreadsheet formulas in headers
 test('histograms preserve observations and quartiles use linear interpolation',()=>{
   assert.equal(histogram([1,2,3,4,null]).y.reduce((a,b)=>a+b,0),4);
   assert.deepEqual(histogram([5,5]).y,[2]);assert.deepEqual(histogram([]).y,[]);
+  assert.deepEqual(histogram([5,5]).x,[5]);
   assert.equal(quantile([10,20,30,40],.25),17.5);assert.equal(quantile([], .5),null);
 });
 test('charts aggregate only compatible values and reject excessive categories',()=>{
