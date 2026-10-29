@@ -13,7 +13,7 @@ Aggiornato il 29 ottobre 2026. Le note precedenti sono state condensate; i commi
 - Verifiche locali: 18 test Node, sintassi, build, diagnostica editor. Browser integrato a 320/390/1280 px senza overflow sulle sei viste principali; touch emulato nasconde tutti i comandi Home, focus desktop li rivela, Escape richiude il menu e restituisce il focus.
 - Verificati clic reale sulla barra San Babila (45 annunci); selezione Città Studi + 3.000–6.000 €/m² (363 record, stesso conteggio in KPI/export); import CSV, errore di righe incoerenti con conservazione del dataset, duplicati/annulla, conversione date e gestione NA; cinque famiglie di grafici renderizzate. I cinque documenti aprono direttamente, senza overflow a 390 px; stampa nasconde i controlli e conserva le note.
 - Bozza email verificata fino all’URL mailto codificato: nessuna email inviata e client esterno non verificato. Nessun test su telefono fisico, Safari o Firefox. Prova con CSV reali dell’utente ancora utile per affinare il flusso.
-- Pubblicazione: in preparazione su branch feat/portfolio-guided-workspaces; aggiornare dopo verifica CI e Pages.
+- Pubblicata tramite [PR #12](https://github.com/edoardorana/edoardorana.github.io/pull/12), merge `65bffc3`. [Run Pages 40831164419](https://github.com/edoardorana/edoardorana.github.io/actions/runs/40831164419) completato con successo. Verificata corrispondenza tra sorgenti e 17 asset pubblici (moduli, stile e documenti), normalizzando CRLF/LF. Verificati anche refresh/Indietro/Avanti e font dei comandi Profilo in browser locale.
 
 ## Piano della prossima iterazione — 28 ottobre 2026
 

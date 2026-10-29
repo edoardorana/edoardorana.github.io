@@ -1,6 +1,6 @@
 # Piano di esecuzione — prossima iterazione
 
-Preparato il 28 ottobre 2026. Questo documento conserva le decisioni concordate. Implementazione completata e verificata in locale il 29 ottobre; stato di pubblicazione e limiti in [STATUS.md](STATUS.md).
+Preparato il 28 ottobre 2026. Questo documento conserva le decisioni concordate. Implementazione completata, verificata e pubblicata il 29 ottobre tramite PR #12; dettagli e limiti in [STATUS.md](STATUS.md).
 
 ## Obiettivo
 
