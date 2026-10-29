@@ -9,7 +9,8 @@ Aggiornato il 29 ottobre 2026. Le note precedenti sono state condensate; i commi
 - Dashboard: rimossi eventi persistenti dopo la navigazione; filtri invalidi segnalati e export bloccato; messaggi di selezione vuota rimossi al ripristino. Filtri immobiliari inizialmente chiusi, titoli grafici uniformati. Corretti istogrammi costanti e importazioni CSV superate da una nuova scelta.
 - Pulizia di CSS, stato e aggregazioni senza utilizzo; conversione numerica Python più rigorosa. Nessuna nuova dipendenza e dataset pubblico invariato.
 - Verifiche locali: 20 test Node, 2 test Python, build e diagnostica editor superati. Otto viste a 1280/390/320 px, CV e cinque documenti a 390 px; flussi dashboard, touch emulato, menu da tastiera e Indietro/Avanti verificati. Limiti e prossimi passi nel rapporto.
-- Lavoro sul branch `polish/coherence-review`; pubblicazione da registrare dopo i controlli remoti.
+- Integrata la [PR #13](https://github.com/edoardorana/edoardorana.github.io/pull/13) in `main`, merge `5ac365e`, dopo il successo dei controlli remoti. Pubblicazione Pages: [run 40876483516](https://github.com/edoardorana/edoardorana.github.io/actions/runs/40876483516).
+- Run Pages completato con successo. Verificata la corrispondenza di nove asset pubblici con i sorgenti e aperta Collaborazioni online a 390 px: campi visibili e nessun overflow.
 
 ## README, tree e contatti — 29 ottobre 2026
 
