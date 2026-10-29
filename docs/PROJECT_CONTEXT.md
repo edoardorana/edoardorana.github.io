@@ -53,7 +53,7 @@ Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.m
 ## Intestazioni terminale — revisione del 28 ottobre 2026
 
 - Il menu usa il riferimento `~$ tree` e conserva la struttura annidata con nomi relativi (`profilo` → `cv.html`, `progetti` → nomi dei progetti), senza permessi, slash finali o percorsi ripetuti.
-- Le pagine non ripetono più il percorso con un grande titolo visibile. L’intestazione occupa tutta la larghezza utile e mostra sempre il comando `edo@debian:~/percorso$ cat readme.md` con il relativo contenuto.
+- Le pagine non ripetono più il percorso con un grande titolo visibile. L’intestazione occupa tutta la larghezza utile e mostra sempre il comando `~/percorso$ cat readme.md` con il relativo contenuto.
 - Il titolo resta semanticamente presente per browser e tecnologie assistive. Il README non simula la barra o i controlli di una finestra.
 - Nel Profilo il README raccoglie attività e percorso e include il comando cliccabile `xdg-open cv.html`. Il terminale delle competenze espone inoltre `languages --list` e `interests --list`, senza numerazione delle cartelle e con i tre comandi alla stessa dimensione.
 - Home, menu e navigazione di sezione seguono l’ordine Profilo, Progetti, Approccio, Collaborazioni.
@@ -122,3 +122,11 @@ Cartografia locale `proposal/europe.svg`: geometrie Natural Earth (pubblico domi
 - Al passaggio del mouse o con focus da tastiera compare una sessione terminale allineata a sinistra: `~/area > cat readme.md`, una breve descrizione e un nuovo `~/area >` con il solo cursore finale lampeggiante.
 - Sui dispositivi senza hover tutte le sessioni sono visibili, con cursore finale statico: il primo tocco apre la sezione. Le descrizioni restano dentro le rispettive colonne anche a 320 px.
 - Le intestazioni usano un percorso terminale sopra il titolo (`~/home`, `~/profilo` e così via), con la descrizione introduttiva sotto il titolo. Le schede progetto mostrano il percorso completo della route.
+
+## Iterazione guidata — 28 ottobre 2026
+
+- Home: titolo e solo comando su hover/focus desktop; nessun comando su touch. Nessun output o prompt finale decorativo.
+- Profilo: README diretto, luoghi riscritti, distinzioni geografiche nella prosa senza badge sulla mappa.
+- Approccio: cinque schede HTML compilabili e stampabili in `proposal/approccio/`; Evolvere è una proposta da affinare. Le note non vengono salvate dal sito.
+- Collaborazioni: `mail --new` prepara una bozza tramite client email. Nessun servizio di invio e nessun LinkedIn.
+- Dashboard: filtri immobiliari coordinati e configurazione guidata; generator in cinque passaggi. Dettagli in [DATA_PROJECTS.md](DATA_PROJECTS.md).

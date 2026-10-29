@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accessi, backup e ripristino — Edoardo Rana</title>
+<link rel="stylesheet" href="document.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<nav>
+<a href="../index.html#/approccio">← Approccio</a>
+<button id="print" type="button">Stampa / salva PDF</button>
+</nav>
+<main>
+<header>
+<p class="path">~/approccio/custodire$ cat readme.md</p>
+<p>03 Custodire</p>
+<h1>Accessi, backup e ripristino</h1>
+<p>Concorda perdita di dati e fermo accettabili con i responsabili. Da questi obiettivi derivano frequenza delle copie, conservazione e prove.</p>
+<small>Modello operativo · le note restano in questa pagina fino alla chiusura. Salva il PDF per conservarle.</small>
+</header>
+<section>
+<h2>1. Responsabilità e accessi</h2>
+<label for="field-0-0">Servizio, proprietario, referente tecnico e contatto per gli incidenti.</label>
+<textarea id="field-0-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-1">Ruoli: lettura, modifica, amministrazione. Per ogni ruolo indica necessità e approvatore.</label>
+<textarea id="field-0-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-2">Account personali/di servizio, scadenza accessi temporanei e revisione periodica.</label>
+<textarea id="field-0-2" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-3">Gestione segreti, registrazione accessi e procedura di revoca.</label>
+<textarea id="field-0-3" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<section>
+<h2>2. Piano delle copie</h2>
+<label for="field-1-0">RPO: quante ore/minuti di dati si possono perdere? RTO: entro quanto ripristinare?</label>
+<textarea id="field-1-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-1">Cosa copiare: database, log necessari al recupero, configurazioni e dipendenze.</label>
+<textarea id="field-1-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-2">Tecnica di backup coerente con il database e verifica dello stato dei job.</label>
+<textarea id="field-1-2" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-3">Frequenza, finestra, retention e dimensionamento.</label>
+<textarea id="field-1-3" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-4">Destinazione: volume dedicato, sistema esterno e copia separata/offline o immutabile secondo il rischio.</label>
+<textarea id="field-1-4" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-5">Cifratura, custodia delle chiavi e account separati dal sistema protetto.</label>
+<textarea id="field-1-5" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<section>
+<h2>3. Prova di ripristino</h2>
+<p>Per ogni prova, completa i passaggi e annota le evidenze nei campi sotto.</p>
+<label><input type="checkbox"> Autorizzazione e ambiente di ripristino separato verificati</label>
+<label><input type="checkbox"> Copie e chiavi recuperabili anche senza il server originale</label>
+<label><input type="checkbox"> Database, configurazioni e dipendenze ripristinati</label>
+<label><input type="checkbox"> Integrità dei dati e funzioni applicative verificate</label>
+<label><input type="checkbox"> Durata e punto di recupero confrontati con gli obiettivi concordati</label>
+<label><input type="checkbox"> Esito, problemi e prossima prova registrati</label>
+<label for="field-2-0">Ambiente isolato, autorizzazione, punto di recupero e responsabile della prova.</label>
+<textarea id="field-2-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-1">Recuperare copie e chiavi, ripristinare database e configurazioni.</label>
+<textarea id="field-2-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-2">Verificare integrità, conteggi, accessi e funzioni applicative.</label>
+<textarea id="field-2-2" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-3">Registrare durata, punto dati recuperato e confronto con RPO/RTO.</label>
+<textarea id="field-2-3" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-4">Documentare problemi, azioni correttive, esito e data della prossima prova.</label>
+<textarea id="field-2-4" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<aside>Una copia sullo stesso disco o host non copre la perdita del sistema. Il successo del job non sostituisce una prova di ripristino documentata.</aside>
+</main>
+<script src="document.js">
+</script>
+</body>
+</html>

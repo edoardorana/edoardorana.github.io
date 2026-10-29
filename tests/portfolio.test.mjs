@@ -47,17 +47,17 @@ test('local preview limits assets to public files and rejects path escape attemp
   for (const path of ['/../README.md','/%2e%2e/private.html','/.env','/file.txt','/%00.html','/..%5csecret.html','/%zz','/.git/config','/folder/.secret.html']) assert.equal(resolveAsset(path), null, path);
 });
 test('entry and CV use local assets and contain no duplicate HTML ids', async () => {
-  for (const name of ['index.html', 'cv.html']) {
+  for (const name of ['index.html', 'cv.html', ...['capire','raccogliere','custodire','leggere','evolvere'].map(n=>'approccio/'+n+'.html')]) {
     const html = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
     assert.equal(new Set(ids).size, ids.length);
-    for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))(?:\?[^\"]*)?"/g)) await readFile(new URL('../proposal/' + asset, import.meta.url));
+    for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))(?:\?[^\"]*)?"/g)) await readFile(new URL(asset, new URL('../proposal/' + name, import.meta.url)));
   }
 });
 test('terminal headings keep the title semantic and the readme always visible', () => {
   const html = terminalHeader({ path: '~/progetti/demo', title: 'Titolo <demo>', summary: 'Sintesi & dettagli', sections: [{ label: 'voce/', text: 'Contenuto ordinato' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV' } });
   assert.match(html, /<h1 class="visually-hidden">Titolo &lt;demo&gt;<\/h1>/);
-  assert.match(html, /edo@debian/);
+  assert.doesNotMatch(html, /edo@debian/);
   assert.match(html, /~\/progetti\/demo/);
   assert.match(html, /cat readme\.md/);
   assert.doesNotMatch(html, /\shidden(?:\s|>)|aria-expanded/);

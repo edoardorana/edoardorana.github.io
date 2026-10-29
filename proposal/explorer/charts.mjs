@@ -37,10 +37,15 @@ export function chartData(rows, spec, decimal = '.') {
 }
 export function chartLayout(headers, rows, spec) {
   const layout = { paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)', font:{family:'inherit',size:12,color:'#3d4640'}, margin:{l:65,r:20,t:20,b:80}, showlegend:spec.color>=0, xaxis:{title:{text:escapeHTML(headers[spec.x])},automargin:true}, yaxis:{title:{text:spec.kind==='histogram'||spec.aggregate==='count'?'Frequenza':escapeHTML(headers[spec.y])},automargin:true} };
+  if(spec.kind==='bar')layout.xaxis.type='category';
   if(spec.kind==='box') {
     const keys=[...new Set(rows.filter(r=>numberValue(r[spec.y],spec.decimal)!==null).map(r=>r[spec.x]||'(mancante)'))].sort((a,b)=>a.localeCompare(b));
     layout.xaxis.tickvals=keys.map((_,i)=>i); layout.xaxis.ticktext=keys.map(escapeHTML); layout.xaxis.type='linear';
   }
-  if(spec.kind==='time') layout.xaxis.tickformat='%d/%m/%Y';
+  if(spec.kind==='time') {
+    layout.xaxis.type='date';layout.xaxis.tickformat='%d/%m/%Y';
+    const days=[...new Set(rows.map(r=>dateValue(r[spec.x])).filter(Boolean))];
+    if(days.length===1) { const center=Date.parse(days[0]+'T00:00:00Z'); layout.xaxis.range=[center-86400000,center+86400000];layout.xaxis.dtick=86400000; }
+  }
   return layout;
 }
