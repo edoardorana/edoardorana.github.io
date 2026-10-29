@@ -90,6 +90,13 @@ export function transform(data, action) {
       if (action.kind === 'trim') row[col] = before.trim().replace(/\s+/g, ' ');
       if (action.kind === 'lowercase') row[col] = before.trim().toLocaleLowerCase('it');
       if (action.kind === 'fill' && !before.trim()) row[col] = action.value;
+      if (action.kind === 'missing' && before.trim().toLowerCase() === action.value.trim().toLowerCase()) row[col] = '';
+      if (action.kind === 'dateDMY' && before.trim()) {
+        const parts=before.trim().match(/^(\d{2})[\/.-](\d{2})[\/.-](\d{4})$/);
+        const iso=parts ? `${parts[3]}-${parts[2]}-${parts[1]}` : before.trim();
+        if (!dateValue(iso)) throw new Error(`Data non valida: ${before}. Nessuna modifica applicata. Usa GG/MM/AAAA o correggi la cella nel CSV.`);
+        row[col]=iso;
+      }
       if (row[col] !== before) affected++;
     }
   }

@@ -56,3 +56,13 @@ test('charts aggregate only compatible values and reject excessive categories',(
   assert.throws(()=>chartData(Array.from({length:41},(_,i)=>[String(i),'1']),{kind:'bar',x:0,y:1,aggregate:'count'}));
   const box=chartData(rows,{kind:'box',x:0,y:1});assert.equal(box.length,6);
 });
+
+test('explicit date conversion and missing markers preserve the input and reject invalid dates',()=>{
+  const data={headers:['date','value'],rows:[['29/02/2024','NA'],['01/03/2024','0']]};
+  const normalized=transform(data,{kind:'dateDMY',column:0});
+  assert.deepEqual(normalized.rows.map(r=>r[0]),['2024-02-29','2024-03-01']);
+  assert.equal(data.rows[0][0],'29/02/2024');
+  const missing=transform(data,{kind:'missing',column:1,value:'NA'});
+  assert.deepEqual(missing.rows.map(r=>r[1]),['','0']);
+  assert.throws(()=>transform({headers:['date'],rows:[['31/02/2024']]},{kind:'dateDMY',column:0}),/Data non valida/);
+});
