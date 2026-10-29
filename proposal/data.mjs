@@ -4,17 +4,67 @@ export const person = {
   github: 'https://github.com/edoardorana',
 };
 export const areas = [
-  { id: 'profilo', title: 'Profilo', preview: 'Dalla statistica al lavoro su database e infrastrutture Linux: il mio percorso professionale.' },
-  { id: 'progetti', title: 'Progetti', preview: 'Esperienze selezionate, dati della tesi e strumenti per esplorare le tue tabelle.' },
-  { id: 'approccio', title: 'Approccio', preview: 'Parto dal problema, verifico le informazioni e scelgo strumenti adatti al contesto.' },
-  { id: 'contatti', title: 'Collaborazioni', preview: 'Dove scrivermi per parlare di un problema tecnico o di una possibile collaborazione.' },
+  { id: 'profilo', title: 'Profilo' },
+  { id: 'progetti', title: 'Progetti' },
+  { id: 'approccio', title: 'Approccio' },
+  { id: 'contatti', title: 'Collaborazioni' },
 ];
 export const steps = [
-  { title: 'Capire', short: 'Definire il problema.', text: 'Se una dashboard mostra numeri discordanti, partirei da chi li usa, da come sono definiti gli indicatori e dalle fonti. Prima degli strumenti serve una domanda precisa.', result: 'Una scheda breve con domanda, fonti disponibili e vincoli.', tags: ['Processi', 'Requisiti', 'Priorità'] },
-  { title: 'Raccogliere', short: 'Verificare le fonti.', text: 'Per dati da file o API, confronterei formati, valori mancanti e duplicati prima di automatizzare. Lo scraping è un’opzione solo quando consentita e pertinente.', result: 'Tracciato dei dati e controlli di qualità da ripetere.', tags: ['Python', 'SQL', 'Automazioni'] },
-  { title: 'Custodire', short: 'Preparare la continuità.', text: 'Per un database o un servizio da mantenere, valuterei permessi, monitoraggio e possibilità di ripristino insieme ai vincoli operativi di chi lo usa.', result: 'Checklist documentata di accessi, controlli e backup.', tags: ['PostgreSQL', 'Linux', 'Backup'] },
-  { title: 'Leggere', short: 'Rendere chiari i risultati.', text: 'In una dashboard partirei dalle decisioni da supportare, non dal numero di grafici. Ogni indicatore richiede una definizione e una nota sui limiti dei dati.', result: 'Una vista leggibile con definizioni e limiti annotati.', tags: ['Python / R', 'Dashboard', 'BI'] },
-  { title: 'Evolvere', short: 'Provare solo se serve.', text: 'Un modello predittivo o un’integrazione AI sarebbero da valutare solo dopo una soluzione di base verificabile. Questa fase è una possibilità, non un progetto già consegnato.', result: 'Confronto documentato con la soluzione di base, se la prova è utile.', tags: ['Machine learning', 'AI', 'Valutazione'] },
+  {
+    "title": "Capire",
+    "short": "Definire il problema.",
+    "text": "Chiarisco chi usa il sistema, quale decisione deve prendere e cosa impedisce di farlo. Concordo obiettivo, vincoli e criteri di verifica prima di scegliere gli strumenti.",
+    "result": "Questionario e scheda di avvio con obiettivo, responsabili e criteri di accettazione.",
+    "tags": [
+      "Requisiti",
+      "Processi",
+      "Priorità"
+    ]
+  },
+  {
+    "title": "Raccogliere",
+    "short": "Tracciare il percorso dei dati.",
+    "text": "Identifico fonti, formati e responsabili. Documento accessi, trasformazioni e destinazioni; verifico completezza, duplicati e frequenza di aggiornamento.",
+    "result": "Mappa del flusso dati e registro dei controlli.",
+    "tags": [
+      "Fonti",
+      "SQL",
+      "Automazione"
+    ]
+  },
+  {
+    "title": "Custodire",
+    "short": "Preparare il ripristino.",
+    "text": "Definisco accessi, monitoraggio e responsabilità. Pianifico copie separate dal sistema principale e verifico il ripristino rispetto ai tempi concordati.",
+    "result": "Matrice degli accessi, piano backup e verbale della prova di ripristino.",
+    "tags": [
+      "Accessi",
+      "Backup",
+      "Continuità"
+    ]
+  },
+  {
+    "title": "Leggere",
+    "short": "Collegare dati e decisioni.",
+    "text": "Scelgo indicatori e grafici a partire dalle domande degli utenti. Rendo leggibili unità, filtri e definizioni, verificando ogni numero rispetto alla fonte.",
+    "result": "Bozza di dashboard con indicatori, filtri e criteri di lettura.",
+    "tags": [
+      "Dashboard",
+      "Indicatori",
+      "BI"
+    ]
+  },
+  {
+    "title": "Evolvere",
+    "short": "Verificare il passo successivo.",
+    "text": "Raccolgo osservazioni dopo il rilascio e confronto le modifiche con una base misurabile. La scheda propone una traccia di revisione da affinare.",
+    "result": "Bozza di piano di revisione: priorità, verifica e ritorno alla versione precedente.",
+    "tags": [
+      "Revisione",
+      "Misure",
+      "Miglioramenti"
+    ]
+  }
 ];
 export const projects = [
   { id: 'immobiliare-data', kind: 'ANNUNCI IMMOBILIARI · MILANO, 2021', title: 'Dashboard interattiva su dati immobiliari', subtitle: 'Dati raccolti tramite script di scraping e utilizzati per la mia tesi di laurea.', tags: ['R', 'Python', 'Dati reali'] },
@@ -22,10 +72,10 @@ export const projects = [
   { id: 'production-databases', kind: 'IN CORSO · NETBOX / IPAM', title: 'Gestione degli indirizzi IP con NetBox', subtitle: 'Sto lavorando alla configurazione di NetBox per implementare un IPAM.', context: 'Sto lavorando all’implementazione di un IPAM con NetBox, per organizzare la gestione degli indirizzi IP.', contribution: 'La configurazione è in corso. Documenterò qui i passaggi verificati e le scelte tecniche, usando esempi privi di dati operativi riservati.', output: 'Il prossimo sviluppo che vorrei affrontare è un’infrastruttura locale con Proxmox, come laboratorio personale. È un progetto futuro: al momento non sono disponibili configurazioni o risultati da consultare.', tags: ['NetBox', 'IPAM', 'In corso'] },
 ];
 export const places = {
-  milano: { name: 'Milano', label: 'FORMAZIONE', coordinates: [9.19,45.4642], mapLabel: [420,590], locationType: 'city', text: 'Laurea in Statistica e Gestione delle Informazioni a Milano-Bicocca. Il percorso magistrale in Data Science è in corso.', skills: ['Statistica', 'Python / R', 'Analisi'], dates: '2017–2021 · Laurea triennale\nDal 2021 · Magistrale in corso' },
-  norvegia: { name: 'Tromsø', label: 'NORVEGIA · ERASMUS', coordinates: [18.9553,69.6492], mapLabel: [395,225], locationType: 'city', text: 'Ho svolto il periodo Erasmus a Tromsø, in Norvegia, presso UiT The Arctic University of Norway. Il punto indica la città, non il campus o un indirizzo preciso.', skills: ['Erasmus', 'Studio all’estero'], dates: 'Agosto 2021 – agosto 2022' },
-  svizzera: { name: 'Zugo', label: 'SVIZZERA · DA REMOTO', coordinates: [8.5155,47.1662], mapLabel: [120,525], locationType: 'remote', text: 'Zugo è il riferimento geografico dell’azienda svizzera Broway SA, con cui lavoro da remoto dall’ottobre 2024. Il punto non indica una mia sede di lavoro.', skills: ['Database', 'Monitoraggio', 'Recovery'], dates: 'Ottobre 2024 – oggi · da remoto' },
-  stoccarda: { name: 'Stoccarda', label: 'SOGGIORNO IN GERMANIA', coordinates: [9.1829,48.7758], mapLabel: [420,455], locationType: 'stay', text: 'Il soggiorno a Stoccarda è iniziato a ottobre 2026, con conclusione prevista alla fine dell’anno. Questa tappa non indica un nuovo impiego.', skills: ['Soggiorno', 'Germania'], dates: 'Da ottobre 2026\nFine soggiorno prevista: circa 31 dicembre 2026' },
+  milano: { name: 'Milano', label: 'FORMAZIONE', coordinates: [9.19,45.4642], mapLabel: [420,590], locationType: 'city', text: "A Milano-Bicocca ho costruito le basi di statistica, programmazione e analisi dei dati. Dopo la laurea triennale ho proseguito con il percorso magistrale in Data Science, tuttora in corso.", skills: ['Statistica', 'Python / R', 'Analisi'], dates: '2017–2021 · Laurea triennale\nDal 2021 · Magistrale in corso' },
+  norvegia: { name: 'Tromsø', label: 'NORVEGIA · ERASMUS', coordinates: [18.9553,69.6492], mapLabel: [395,225], locationType: 'city', text: "A Tromsø, in Norvegia, ho svolto un anno Erasmus presso UiT The Arctic University of Norway. Un periodo di studio in un contesto internazionale, parte del mio percorso universitario.", skills: ['Erasmus', 'Studio all’estero'], dates: 'Agosto 2021 – agosto 2022' },
+  svizzera: { name: 'Zugo', label: 'SVIZZERA', coordinates: [8.5155,47.1662], mapLabel: [120,525], locationType: 'remote', text: "Zugo è il riferimento di Broway SA, l’azienda svizzera con cui lavoro da remoto dall’ottobre 2024. Il percorso professionale è iniziato sui database ed è proseguito sulle infrastrutture Linux.", skills: ['Database', 'Monitoraggio', 'Recovery'], dates: 'Ottobre 2024 – oggi · da remoto' },
+  stoccarda: { name: 'Stoccarda', label: 'GERMANIA', coordinates: [9.1829,48.7758], mapLabel: [420,455], locationType: 'stay', text: "Da ottobre 2026 trascorro un periodo personale a Stoccarda, con rientro previsto alla fine dell’anno. Una tappa distinta dalle esperienze professionali e universitarie.", skills: ['Esperienza personale', 'Germania'], dates: 'Da ottobre 2026\nFine soggiorno prevista: circa 31 dicembre 2026' },
 };
 export function parseRoute(hash = '') {
   const path = hash.replace(/^#\/?/, '').replace(/\/$/, '');

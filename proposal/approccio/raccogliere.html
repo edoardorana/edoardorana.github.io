@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mappa del flusso dati — Edoardo Rana</title>
+<link rel="stylesheet" href="document.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<nav>
+<a href="../index.html#/approccio">← Approccio</a>
+<button id="print" type="button">Stampa / salva PDF</button>
+</nav>
+<main>
+<header>
+<p class="path">~/approccio/raccogliere$ cat readme.md</p>
+<p>02 Raccogliere</p>
+<h1>Mappa del flusso dati</h1>
+<p>Segui un dato dalla fonte alla destinazione. Compila una scheda per ogni flusso; usa riferimenti interni al posto di credenziali o dati riservati.</p>
+<small>Modello operativo · le note restano in questa pagina fino alla chiusura. Salva il PDF per conservarle.</small>
+</header>
+<div class="flow" aria-label="Flusso dati">Fonte → Estrazione → Controlli → Trasformazione → Destinazione</div>
+<section>
+<h2>1. Identificare la fonte</h2>
+<label for="field-0-0">Nome del flusso, processo supportato e responsabile.</label>
+<textarea id="field-0-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-1">Origine: file, database o API; host/IP di esempio, porta e protocollo.</label>
+<textarea id="field-0-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-2">Formato, schema, chiave del record, unità di misura e fuso orario.</label>
+<textarea id="field-0-2" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-3">Accesso autorizzato: ruolo e riferimento al gestore delle credenziali. Non scrivere password.</label>
+<textarea id="field-0-3" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<section>
+<h2>2. Descrivere il trasferimento</h2>
+<label for="field-1-0">Frequenza, volume previsto e modalità completa/incrementale.</label>
+<textarea id="field-1-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-1">Trasformazioni: conversioni, mapping, deduplicazione, regole sui mancanti.</label>
+<textarea id="field-1-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-2">Controlli: numero righe, schema, unicità, valori ammessi e riconciliazione.</label>
+<textarea id="field-1-2" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-3">Gestione errori: quarantena, tentativi, notifica e responsabile.</label>
+<textarea id="field-1-3" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<section>
+<h2>3. Definire la destinazione</h2>
+<label for="field-2-0">Host di destinazione, database/schema/tabella o percorso.</label>
+<textarea id="field-2-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-1">Regola di aggiornamento, conservazione e accessi.</label>
+<textarea id="field-2-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-2">Come evitare doppie importazioni quando un processo viene rieseguito?</label>
+<textarea id="field-2-2" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-3">Come confrontare record sorgente, scartati e caricati?</label>
+<textarea id="field-2-3" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<aside>Verifica il flusso con un campione autorizzato. Registra data, versione dello schema, conteggi di partenza e arrivo ed eventuali scarti.</aside>
+</main>
+<script src="document.js">
+</script>
+</body>
+</html>
