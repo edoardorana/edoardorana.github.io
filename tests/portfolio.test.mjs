@@ -69,11 +69,12 @@ test('terminal headings keep the title semantic and the readme always visible', 
 test('README summaries explain the page and the next user action', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
   assert.match(source, /Benvenuto nel mio sito/);
-  assert.match(source, /Seleziona un luogo, consulta la cronologia oppure apri il CV/);
+  assert.match(source, /Qui trovi formazione, esperienze e luoghi del mio percorso/);
   assert.match(source, /Seleziona una fase e apri la scheda operativa/);
   assert.match(source, /Seleziona una scheda per leggere il contesto/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
-  assert.match(contact, /Avvia mail --new, compila oggetto e messaggio/);
+  assert.match(contact, /mail --new/);
+  assert.doesNotMatch(contact, /mail-start|copy-email|wait-cursor|<form id="contact-form" hidden/);
 });
 test('Approach documents are direct CV-style pages without terminal headers', async () => {
   for (const name of ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere']) {

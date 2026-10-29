@@ -5,9 +5,9 @@ Aggiornato il 29 ottobre 2026. Le note precedenti sono state condensate; i commi
 ## README, tree e contatti — 29 ottobre 2026
 
 - I banner `cat readme.md` ora descrivono in modo conciso il contenuto della pagina e l’azione successiva: Home, Profilo, Approccio, Progetti e dashboard.
-- Il menu `tree` mantiene l’albero annidato e ora mostra i connettori `├──` e `└──` in stile Windows, senza permessi o percorsi ripetuti.
+- Il menu `tree` è tornato alla versione compatta precedente: annidamento con linea verticale, senza connettori testuali, permessi o percorsi ripetuti.
 - Le cinque schede dell’Approccio sono pagine autonome in stile CV, senza intestazione `cat readme.md`, con stampa/PDF, campi compilabili e collegamento di ritorno funzionante.
-- Collaborazioni: `mail --new` apre prompt coerenti per oggetto e messaggio (`~/contatti$ oggetto:` / `~/contatti$ messaggio:`), con bozza mailto e nessuna dichiarazione di invio.
+- Collaborazioni: `mail --new`, oggetto e messaggio sono sempre visibili nello stesso banner; rimossi cursore d’attesa e pulsante di copia. La bozza usa `mailto:` e non dichiara l’invio.
 - Verifica locale: 20 test Node, build e diagnostica superati; cinque schede aperte direttamente a 390 px senza overflow. Pubblicata su `main` con commit `b30bae4`; il workflow [40847668031](https://github.com/edoardorana/edoardorana.github.io/actions/runs/40847668031) ha completato check e deploy con successo. Verificati online banner Home/Contatti, tree e i cinque documenti.
 
 ## Iterazione guidata — 29 ottobre 2026
