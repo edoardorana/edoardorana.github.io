@@ -1,6 +1,6 @@
 # Piano di esecuzione — prossima iterazione
 
-Preparato il 28 ottobre 2026. Questo documento raccoglie decisioni e attività concordate; non descrive funzionalità già pubblicate.
+Preparato il 28 ottobre 2026. Questo documento conserva le decisioni concordate. Implementazione completata e verificata in locale il 29 ottobre; stato di pubblicazione e limiti in [STATUS.md](STATUS.md).
 
 ## Obiettivo
 

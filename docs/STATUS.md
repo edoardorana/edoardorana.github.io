@@ -1,6 +1,19 @@
 # Stato del progetto
 
-Aggiornato il 28 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
+Aggiornato il 29 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
+
+## Iterazione guidata — 29 ottobre 2026
+
+- Implementato il [piano concordato](NEXT_ITERATION_PLAN.md): prompt senza host, Home con solo comando su hover/focus desktop e nessun comando touch; README Profilo e testi dei luoghi rivisti; eliminati badge sulla mappa e prompt finali decorativi.
+- Approccio mantiene cinque fasi e collega cinque documenti HTML autonomi, compilabili e stampabili: questionario, flusso dati, accessi/backup/ripristino, progetto di dashboard e piano di revisione. Evolvere resta esplicitamente una bozza da affinare con Edoardo.
+- Collaborazioni integra email/GitHub e compositore terminale. Invio sull’oggetto passa al messaggio; Ctrl/Command+Invio prepara il mailto. Conferma “bozza preparata”, mai “inviato”; copia indirizzo e istruzioni di fallback.
+- Immobiliare: intervallo €/m², clic sui grafici e selezione punti coordinati con KPI, filtri, tabella ed export; campi/aggregazioni configurabili, filtri rimovibili e nota sul dataset abbreviata. Dataset originale pubblico invariato: 11 anomalie segnalate e inizialmente escluse, non eliminate.
+- Generator ricostruito in cinque passaggi, con drag and drop, schema, tipi, anteprima delle trasformazioni, annulla/ripristina, date GG/MM/AAAA e marcatori mancanti espliciti. Fino a cinque grafici scelti da sei famiglie compatibili. Elaborazione locale, cronologia delle operazioni senza copie integrali cumulative.
+- Ripuliti contenuti/CSS esclusivi dei blocchi rimossi. Nessuna dipendenza npm o servizio remoto aggiunto.
+- Verifiche locali: 18 test Node, sintassi, build, diagnostica editor. Browser integrato a 320/390/1280 px senza overflow sulle sei viste principali; touch emulato nasconde tutti i comandi Home, focus desktop li rivela, Escape richiude il menu e restituisce il focus.
+- Verificati clic reale sulla barra San Babila (45 annunci); selezione Città Studi + 3.000–6.000 €/m² (363 record, stesso conteggio in KPI/export); import CSV, errore di righe incoerenti con conservazione del dataset, duplicati/annulla, conversione date e gestione NA; cinque famiglie di grafici renderizzate. I cinque documenti aprono direttamente, senza overflow a 390 px; stampa nasconde i controlli e conserva le note.
+- Bozza email verificata fino all’URL mailto codificato: nessuna email inviata e client esterno non verificato. Nessun test su telefono fisico, Safari o Firefox. Prova con CSV reali dell’utente ancora utile per affinare il flusso.
+- Pubblicazione: in preparazione su branch feat/portfolio-guided-workspaces; aggiornare dopo verifica CI e Pages.
 
 ## Piano della prossima iterazione — 28 ottobre 2026
 
