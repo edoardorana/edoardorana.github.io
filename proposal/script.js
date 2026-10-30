@@ -1,5 +1,5 @@
 import { contactHTML, bindContact } from './contact.mjs';
-import { areas, steps, projects, places, mapPoint } from './data.mjs';
+import { areas, steps, projects, places, mapPoint, services } from './data.mjs';
 import { terminalHeader } from './terminal-header.mjs';
 import { resolveView } from './navigation.mjs';
 
@@ -44,23 +44,76 @@ function profile({ embedded = false } = {}) {
     <div class="profile-map"><div class="profile-map-copy"><p class="section-label">Luoghi</p><h3>Quattro tappe, un percorso.</h3><p>Milano, Tromsø, Zugo e Stoccarda raccontano studi, lavoro da remoto e periodi personali. Seleziona una città per leggere il contesto.</p><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto. Cartografia: Natural Earth.</span></div></div>
     ${embedded ? '' : sectionNav('profilo')}</section>`;
 }
+
+function renderServices({ embedded = false } = {}) {
+  const heading = embedded ? 'h2' : 'h1';
+  return `<section class="page services-section${embedded ? ' landing-section' : ''}"${embedded ? ' id="servizi" aria-labelledby="servizi-title"' : ''}>
+    <header class="section-heading"><p class="section-number">02 / Servizi</p><${heading} id="servizi-title">${services.title}</${heading}><p>${services.introduction}</p>
+    <div class="services-availability"><p><strong>Disponibilita:</strong> ${services.availability.status}</p><p><strong>Tempi di risposta:</strong> ${services.availability.responseTime}</p><p><strong>Location:</strong> ${services.availability.location}</p><p><strong>Tariffe:</strong> ${services.availability.rates}</p></div></header>
+    <div class="services-grid">${services.offerings.map((s, i) => `<article class="service-card">
+      <div class="service-header"><span class="service-index" aria-hidden="true">0${i + 1}</span><h3 id="service-${s.id}">${s.title}</h3></div>
+      <p>${s.description}</p>
+      <div class="service-tags">${chips(s.tags)}</div>
+      <div class="service-deliverables"><details><summary>Deliverable</summary><ul>${s.deliverables.map(d => `<li>${d}</li>`).join('')}</ul></details></div>
+    </article>`).join('')}</div>
+    <div class="services-process"><h2>${services.process.title}</h2>
+    <div class="process-steps">${services.process.steps.map((step, i) => `<div class="process-step"><span class="process-number">${step.step}</span><h3>${step.title}</h3><p>${step.text}</p></div>`).join('')}</div></div>
+    <div class="services-cta"><a class="button" href="#/contatti">${services.cta.primary} <span aria-hidden="true">-></span></a><a class="hero-link" href="#/progetti">${services.cta.secondary} <span aria-hidden="true">v</span></a></div>
+    ${embedded ? '' : sectionNav('servizi')}</section>`;
+}
+
 function approach({ embedded = false } = {}) {
   const documents = ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere'];
   const phaseHeading = embedded ? 'h3' : 'h2';
   const heading = embedded ? 'h2' : 'h1';
-  return `<section class="page approach-section${embedded ? ' landing-section' : ''}"${embedded ? ' id="approccio" aria-labelledby="approccio-title"' : ''}><header class="section-heading"><p class="section-number">03 / Approccio</p><${heading} id="approccio-title">Dal problema a una soluzione verificabile.</${heading}><p>Cinque fasi concrete per capire il contesto, organizzare i dati e lasciare documentazione utile.</p></header>
+  return `<section class="page approach-section${embedded ? ' landing-section' : ''}"${embedded ? ' id="approccio" aria-labelledby="approccio-title"' : ''}><header class="section-heading"><p class="section-number">04 / Approccio</p><${heading} id="approccio-title">Dal problema a una soluzione verificabile.</${heading}><p>Cinque fasi concrete per capire il contesto, organizzare i dati e lasciare documentazione utile.</p></header>
   <div class="method" aria-label="Il percorso del dato">${steps.map((s,i) => `<article class="method-step" aria-labelledby="method-${i}"><span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><${phaseHeading} id="method-${i}">${s.title}</${phaseHeading}><p class="method-short">${s.short}</p><p>${s.text}</p><div class="method-output"><span>DOCUMENTAZIONE</span><p>${s.result}</p></div>${chips(s.tags)}<a class="button method-document" href="/approccio/${documents[i]}.html">Apri la scheda operativa ↗</a></article>`).join('')}</div>
   ${embedded ? '' : sectionNav('approccio')}</section>`;
 }
 function projectList({ embedded = false } = {}) {
   const projectHeading = embedded ? 'h3' : 'h2';
   const heading = embedded ? 'h2' : 'h1';
-  return `<section class="page projects-section${embedded ? ' landing-section' : ''}"${embedded ? ' id="progetti" aria-labelledby="progetti-title"' : ''}><header class="section-heading"><p class="section-number">02 / Progetti</p><${heading} id="progetti-title">Dati da esplorare, strumenti da provare.</${heading}><p>Due dashboard interattive e un progetto infrastrutturale in corso. Ogni scheda resta una pagina autonoma.</p></header>
+  return `<section class="page projects-section${embedded ? ' landing-section' : ''}"${embedded ? ' id="progetti" aria-labelledby="progetti-title"' : ''}><header class="section-heading"><p class="section-number">03 / Progetti</p><${heading} id="progetti-title">Dati da esplorare, strumenti da provare.</${heading}><p>Tre progetti professionali con demo interattive e materiali verificabili.</p></header>
   <div class="project-list">${projects.map((p,index) => `<a class="project-row" href="#/progetti/${p.id}"><span class="project-index" aria-hidden="true">0${index + 1}</span><div><p class="eyebrow">${p.kind}</p><${projectHeading}>${p.title}</${projectHeading}><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>${embedded ? '' : sectionNav('progetti')}</section>`;
 }
 function projectDetail(id) {
   const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: 'NetBox per organizzare gli indirizzi IP. Qui raccolgo il contesto del lavoro in corso e i prossimi sviluppi.' })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
+  const hasCaseStudy = p.caseStudy && (p.caseStudy.problem || p.caseStudy.solution);
+  const summary = p.subtitle || 'NetBox per organizzare gli indirizzi IP. Qui raccolgo il contesto del lavoro in corso e i prossimi sviluppi.';
+  
+  let caseStudyHTML = '';
+  if (hasCaseStudy) {
+    caseStudyHTML = `
+      <section class="project-case-study">
+        <h2>Caso di studio</h2>
+        <div class="case-problem"><h3>Problema</h3><p>${p.caseStudy.problem}</p></div>
+        <div class="case-solution"><h3>Soluzione</h3><p>${p.caseStudy.solution}</p></div>
+        ${p.caseStudy.results ? `<div class="case-results"><h3>Risultati</h3><ul>${p.caseStudy.results.map(r => `<li>${r}</li>`).join('')}</ul></div>` : ''}
+        ${p.caseStudy.technologies ? `<div class="case-tech"><h3>Tecnologie</h3><p>${p.caseStudy.technologies.join(', ')}</p></div>` : ''}
+        ${p.caseStudy.verification && p.caseStudy.verification.available ? 
+          `<div class="case-verification"><h3>Verifica</h3><p>${p.caseStudy.verification.type}: <a href="${p.caseStudy.verification.link}">${p.caseStudy.verification.link.replace('#/', '')}</a> ${p.caseStudy.verification.note ? `<small>(${p.caseStudy.verification.note})</small>` : ''}</p></div>` : ''}
+      </section>
+    `;
+  }
+  
+  let linksHTML = '';
+  if (p.links && p.links.length > 0) {
+    linksHTML = `
+      <div class="project-links">
+        ${p.links.map(link => `<a class="button" href="${link.href}"${link.external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${link.text} <span aria-hidden="true">${link.external ? '->' : '>'}</span></a>`).join('')}
+      </div>
+    `;
+  }
+  
+  return `<article class="page project-detail">
+    ${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: summary })}
+    ${chips(p.tags)}
+    <p class="project-subtitle">${p.subtitle}</p>
+    ${p.description ? `<div class="project-description"><p>${p.description}</p></div>` : ''}
+    ${caseStudyHTML}
+    ${linksHTML}
+    ${projectNav()}
+  </article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -79,9 +132,9 @@ function journeyContent({ embedded = false } = {}) {
   <div class="journey-layout"><div><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto, non a una mia sede. Cartografia: Natural Earth.</span></div></div>
   <div class="timeline"><${subsectionHeading} class="timeline-title">Cronologia</${subsectionHeading}><ol><li><span>DAL 2025</span><div><${itemHeading}>Linux Administrator · Broway SA</${itemHeading}><p>Maggio 2025 – oggi. Infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi dei log, script SQL e shell. Attività su Debian, MariaDB, storage S3-compatibile, documentazione tecnica e sicurezza operativa.</p></div></li><li><span>2024 — 2025</span><div><${itemHeading}>Database Administrator · Broway SA</${itemHeading}><p>Ottobre 2024 – maggio 2025. Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci.</p></div></li><li><span>2024 — 2026</span><div><${itemHeading}>Collaboratore operativo · Hubita APS</${itemHeading}><p>Gennaio 2024 – gennaio 2026. Coordinamento di attività per progetti sociali e culturali, eventi e amministrazione di Google Workspace.</p></div></li><li><span>2023</span><div><${itemHeading}>Business Unit Intern · SB Italia</${itemHeading}><p>Gennaio – novembre 2023. Ho analizzato dataset aziendali e lavorato su metodi di classificazione. Ho inoltre creato report e dashboard con Qlik, Power BI e Tableau.</p></div></li><li><span>2021 — 2022</span><div><${itemHeading}>Erasmus · UiT The Arctic University of Norway</${itemHeading}><p>Agosto 2021 – agosto 2022. Un anno di studio a Tromsø, in Norvegia.</p></div></li><li><span>DAL 2021</span><div><${itemHeading}>Magistrale in Data Science · Milano-Bicocca</${itemHeading}><p>In corso. Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></li><li><span>2017 — 2021</span><div><${itemHeading}>Laurea in Statistica e Gestione delle Informazioni</${itemHeading}><p>Milano-Bicocca. Statistica, sistemi informativi e programmazione; tesi sul web scraping di annunci immobiliari.</p></div></li><li><span>2015 — 2016</span><div><${itemHeading}>Prime esperienze in amministrazione</${itemHeading}><p>Stage in contabilità e supporto alla consulenza presso LTA Advisory (2016). Stage in contabilità presso TaxiBlu (2015), con Zucchetti e manutenzione di database.</p></div></li><li><span>2012 — 2017</span><div><${itemHeading}>Diploma in Amministrazione, Finanza e Marketing</${itemHeading}><p>Istituto San Vincenzo / Regina Mundi. Materie economico-aziendali, contabilità e marketing.</p></div></li></ol></div></section>`;
 }
-function contact({ embedded = false } = {}) { const heading = embedded ? 'h2' : 'h1'; return `<section class="page contact-page${embedded ? ' landing-section' : ''}"${embedded ? ' id="contatti" aria-labelledby="contatti-title"' : ''}><header class="section-heading"><p class="section-number">04 / Collaborazioni</p><${heading} id="contatti-title">Parliamo del problema, prima degli strumenti.</${heading}><p>Raccontami il contesto, il vincolo o l’idea su cui vuoi lavorare.</p></header>${contactHTML({ headingLevel: embedded ? 2 : 1, titleId: embedded ? 'contact-form-title' : undefined, showReadme: !embedded })}${embedded ? '' : sectionNav('contatti')}</section>`; }
+function contact({ embedded = false } = {}) { const heading = embedded ? 'h2' : 'h1'; return `<section class="page contact-page${embedded ? ' landing-section' : ''}"${embedded ? ' id="contatti" aria-labelledby="contatti-title"' : ''}><header class="section-heading"><p class="section-number">05 / Collaborazioni</p><${heading} id="contatti-title">Parliamo del problema, prima degli strumenti.</${heading}><p>Raccontami il contesto, il vincolo o l’idea su cui vuoi lavorare.</p></header>${contactHTML({ headingLevel: embedded ? 2 : 1, titleId: embedded ? 'contact-form-title' : undefined, showReadme: !embedded })}${embedded ? '' : sectionNav('contatti')}</section>`; }
 function landing() {
-  return `${home({ embedded: true })}${profile({ embedded: true })}${projectList({ embedded: true })}${approach({ embedded: true })}${contact({ embedded: true })}`;
+  return `${home({ embedded: true })}${profile({ embedded: true })}${renderServices({ embedded: true })}${projectList({ embedded: true })}${approach({ embedded: true })}${contact({ embedded: true })}`;
 }
 function setPlace(root, key, { embedded = false } = {}) {
   selectedPlace = key;

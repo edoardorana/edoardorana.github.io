@@ -10,11 +10,12 @@ test('all areas and project deep links resolve; missing content gets a not-found
   assert.deepEqual(parseRoute(''), { page: 'mappa' });
   assert.deepEqual(parseRoute('#/'), { page: 'mappa' });
   for (const area of areas) assert.deepEqual(parseRoute('#/' + area.id), { page: area.id });
-  assert.equal(areas.length, 4);
-  assert.deepEqual(areas.map(area => area.id), ['profilo', 'progetti', 'approccio', 'contatti']);
+  assert.equal(areas.length, 5);
+  assert.deepEqual(areas.map(area => area.id), ['profilo', 'servizi', 'progetti', 'approccio', 'contatti']);
   assert.deepEqual(parseRoute('#/percorso'), { page: 'percorso' });
   assert.deepEqual(parseRoute('#/laboratorio'), { page: 'progetti' });
   assert.deepEqual(parseRoute('#/home'), { page: 'mappa' });
+  assert.deepEqual(parseRoute('#/servizi'), { page: 'servizi' });
   assert.deepEqual(parseRoute('#/progetti/market-data'), { page: 'progetti', item: 'immobiliare-data' });
   assert.deepEqual(parseRoute('#/progetti/csv-explorer'), { page: 'progetti', item: 'dashboard-generator' });
   assert.deepEqual(parseRoute('#/progetti/business-intelligence'), { page: 'profilo' });
