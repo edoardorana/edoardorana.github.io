@@ -1,6 +1,8 @@
 # Registro landing
 
-Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base salvata; nessuna implementazione della landing.
+Landing implementata sul branch di prova. Incarico 10 completato il 30 ottobre 2026; nessuna pubblicazione. Le note dei precedenti incarichi restano come cronologia.
+
+- Iterazione successiva: Home ricostruita, README rimossi dalla landing, Profilo ridotto a CV + mappa, cronologia e terminale competenze spostati nel CV, Progetti/Approccio/Contatti armonizzati. Verifiche e limiti correnti in `STATUS.md`.
 
 - Direzione: quattro sezioni nella landing; CV, dashboard, NetBox e documenti Approccio separati.
 - Base osservata durante la preparazione: `main`, `31bf4867902916fbf0f4137e12a38a77674cccca`.
@@ -23,7 +25,17 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 | 07 | Eseguito | Non eseguita | 26 test, build e diff superati; rapporto QA in docs/LANDING_QA.md; prove browser NON VERIFICATO (nessun browser) |
 | 08 | Eseguito | Approvata | revisione finale in sola lettura; diff confrontato con base; nessun cambiamento a fatti professionali, dataset o logiche dashboard; prove browser NON VERIFICATO |
 | 09 | Eseguito | Non eseguita | 26 test, build e diff superati; estetica: home, mappa, ritmo, intestazioni, fluidità, contatto; prove browser NON VERIFICATO |
-| 10 | Da iniziare | Non eseguita | — |
+| 10 | Eseguito | Autoverifica Codex; valutazione visiva di Edoardo in attesa | Redesign senza box, mappa desktop, cronologia e Approccio riordinati; 26 test, build, diagnostica; browser 1280/820/390/320 senza overflow. Limiti sotto. |
+
+## Consegna incarico 10
+
+- File: `proposal/script.js`, `proposal/style.css`, questo registro e `STATUS.md`. Preservati i file non tracciati lasciati dalle sessioni precedenti.
+- Prima: box da 240 px, margini laterali delle sezioni azzerati, cronologia con spazi/titoli poco coerenti e fasi molto estese. Dopo: indice testuale, margini uniformi, mappa a sinistra con dettaglio a destra, cronologia editoriale, metodo a colonne su desktop e sequenziale su mobile, form più arioso. Palette, font, contenuti e pagine separate conservati.
+- Corrette due regressioni osservate della navigazione: sezioni ora focalizzabili; clic tra hash diversi richiedono scorrimento fluido, con rispetto del movimento ridotto e DOM conservato. Nessuna modifica a dati o logiche delle dashboard.
+- Verifiche: 26 test, build, diagnostica e diff; DOM a 1280/820/390/320 px senza overflow, un h1, ID univoci. Tastiera Tab/Invio/Escape, tree sticky a fondo pagina, refresh e cronologia, stato del contatto e della mappa nei salti/ritorno da NetBox. Apertura delle due dashboard e caricamento differito verificati. Immagini del layout desktop/mobile ispezionate.
+- Limiti reali: browser integrato in scheda non visibile, smooth scroll temporale e touch fisico non certificati; click DOM usati dove il browser non permetteva azioni pointer stabili. Nessuna prova su telefono fisico, Safari/Firefox, screen reader o client email. Il vecchio rapporto QA non è stato riscritto retroattivamente.
+- Nessun incarico successivo automatico; pronta per valutazione visiva dell'utente.
+- Commit non creato: `git add`/`git commit` negati dall'ambiente (`.git/index.lock`: Permission denied). Modifiche conservate nel working tree; nessun push o deploy.
 
 ## Consegna più recente
 

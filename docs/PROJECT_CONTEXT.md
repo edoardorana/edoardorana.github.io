@@ -2,9 +2,11 @@
 
 ## Decisione corrente — 30 ottobre 2026
 
-Edoardo ha approvato la preparazione del piano per trasformare le quattro sezioni principali in una landing, mantenendo lo stile terminale e tutti i contenuti. Box compatte come indice; `tree` raggiungibile durante lo scorrimento. Profilo, Progetti, Approccio e Collaborazioni in sequenza; le cinque fasi del metodo tutte leggibili. CV, dashboard, scheda NetBox e documenti operativi restano separati e tornano alla sezione pertinente.
+Edoardo ha approvato una landing continua con Profilo, Progetti, Approccio e Collaborazioni, ma ha scartato box e intestazioni `cat readme.md` ripetute. La Home è un hero personale essenziale con accesso evidente al CV e ai progetti. Il terminale resta soltanto dove rappresenta un'azione o un contenuto coerente: menu `tree`, `mail --new` e riepilogo skills nel CV.
 
-Riferimento operativo: [piano per gli assistenti](LANDING_AI_PLAN.md). Stato effettivo: [registro](LANDING_PROGRESS.md). Alla preparazione del piano il sito non è stato ancora trasformato. Gli incarichi si eseguono uno alla volta su un branch di prova; la pubblicazione non è inclusa.
+Profilo non replica più la cronologia: mette in evidenza il CV e conserva soltanto la mappa interattiva in formato più compatto. Il CV raccoglie esperienze, formazione, skills, lingue, interessi e certificazione. Progetti e Approccio usano intestazioni editoriali normali e un unico fondo; le dashboard, NetBox e i documenti operativi restano pagine separate. Il riferimento `alessiop.cc` è stato usato esclusivamente per studiare omogeneità e personalità, senza copiarne identità, palette, testi o componenti.
+
+Riferimento operativo storico: [piano per gli assistenti](LANDING_AI_PLAN.md). Stato effettivo: [registro](LANDING_PROGRESS.md) e [STATUS](STATUS.md). La pubblicazione non è inclusa.
 
 Questa decisione sostituisce le precedenti indicazioni che imponevano la navigazione a pagine/mappa. Le sezioni datate sotto conservano contesto e cronologia; non ripristinare comportamenti superati. Restano validi i fatti professionali, i limiti di riservatezza e l'architettura statica. Il contatto corrente ha campi sempre aperti, senza cursore d'attesa né copia email.
 

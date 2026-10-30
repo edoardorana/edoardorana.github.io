@@ -80,8 +80,9 @@ test('terminal headings support safe section titles without changing the default
 test('contact headings support safe section titles and keep the open composer', () => {
   const defaults = contactHTML();
   const section = contactHTML({ headingLevel: 2, titleId: 'collaborazioni"><script>' });
-  assert.match(defaults, /<h1 class="visually-hidden">Collaborazioni<\/h1>/);
-  assert.match(section, /<h2 class="visually-hidden" id="collaborazioni&quot;&gt;&lt;script&gt;">Collaborazioni<\/h2>/);
+  const landing = contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false });
+  assert.match(defaults, /<h1 class="visually-hidden">Componi una email<\/h1>/);
+  assert.match(section, /<h2 class="visually-hidden" id="collaborazioni&quot;&gt;&lt;script&gt;">Componi una email<\/h2>/);
   for (const html of [defaults, section]) {
     assert.match(html, /mail --new/);
     assert.match(html, /<form id="contact-form">/);
@@ -89,13 +90,16 @@ test('contact headings support safe section titles and keep the open composer', 
     assert.match(html, /id="message"/);
     assert.doesNotMatch(html, /<form id="contact-form" hidden/);
   }
+  assert.doesNotMatch(landing, /cat readme\.md/);
+  assert.match(landing, /class="contact-links"/);
+  assert.match(landing, /mail --new/);
 });
-test('README summaries explain the page and the next user action', async () => {
+test('landing copy presents one narrative and keeps terminal language for actions', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
-  assert.match(source, /Lavoro su infrastrutture Linux, database e analisi dei dati/);
-  assert.match(source, /Qui trovi formazione, esperienze e luoghi del mio percorso/);
-  assert.match(source, /Cinque fasi da leggere in sequenza/);
-  assert.match(source, /Seleziona una scheda per leggere il contesto/);
+  assert.match(source, /Metto ordine nei problemi tecnici/);
+  assert.match(source, /Il percorso completo è nel CV/);
+  assert.match(source, /Dati da esplorare, strumenti da provare/);
+  assert.match(source, /Dal problema a una soluzione verificabile/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
   assert.match(contact, /mail --new/);
   assert.doesNotMatch(contact, /mail-start|copy-email|wait-cursor|<form id="contact-form" hidden/);

@@ -2,11 +2,31 @@
 
 Aggiornato il 30 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Landing omogenea e CV centrale — 30 ottobre 2026
+
+- Analizzato `https://www.alessiop.cc/` come riferimento di omogeneità: la qualità percepita deriva da una grammatica visiva costante, una Home con identità chiara e pochi elementi terminali usati con intenzione. Nessun testo, colore, componente o identità è stato copiato.
+- Home ricostruita: nome e posizionamento in primo piano, CTA al CV e ai progetti, indice lineare delle quattro sezioni. Rimossi tutti i `cat readme.md` dalla landing; restano `tree`, `mail --new` e skills nel CV perché descrivono azioni o contenuti reali.
+- Profilo ridotto a CV e mappa: eliminata la cronologia dalla landing, mappa limitata a 380 px desktop. CV riscritto come pagina editoriale completa con tutte le esperienze/formazione già presenti, riepilogo skills, lingue, interessi e certificazione. CTA al CV presente sia in Home sia nel Profilo.
+- Progetti ripaginati come elenco editoriale numerato. Approccio su fondo unico, senza alternanza bianco/panna, con cinque fasi leggibili. Contatto allineato allo stesso sistema e compositore invariato nella logica.
+- Verifiche: `npm.cmd run check` 26/26, build e `git diff --check`; browser a 1280/820/390/320 px senza overflow. Landing: un h1, ID univoci, nessuna timeline/skills duplicata e solo `mail --new` come comando visibile. CV verificato desktop/mobile, un h1, nessun overflow e blocchi skills/lingue/interessi presenti.
+- Navigazione browser verificata: salti interni con focus e offset, refresh diretto su Approccio, ritorno dalla scheda NetBox, conservazione di luogo e bozza nei salti interni, Dashboard generator con input CSV e immobiliare con cinque grafici. La landing non carica moduli dashboard o Plotly all'avvio. Il menu `tree` ora gestisce esplicitamente Invio/Spazio, porta il Tab al primo link con focus visibile e si chiude con Escape restituendo il focus.
+- Limiti: nessun telefono fisico, Safari/Firefox, screen reader o client email esterno. Nessun push, merge o deploy.
+
+## Incarico 10 — redesign implementato e verificato
+
+- Verificato il lavoro 05–09: landing e viste separate presenti, ma QA precedente solo automatico. Riscontrati margini laterali azzerati dal CSS 09, quattro box ancora dominanti, focus delle sezioni inefficace (contenitori non focalizzabili), smooth scroll limitato allo stesso hash.
+- Sostituite le box con quattro link testuali; introduzione compatta, palette e font conservati. Un unico sistema di margini per tutte le sezioni, README con accenti verde/vino, alternanza carta/bianco. Mappa a sinistra e dettaglio a destra su desktop, disposizione verticale su mobile. Cronologia con date allineate, titoli 18px e descrizioni 14px/interlinea 1.8. Approccio in righe editoriali a tre colonne desktop, due su tablet e sequenza verticale mobile; tutti i contenuti conservati. Contatto più arioso.
+- Correzioni circoscritte richieste dalla funzionalità: focus sulle sezioni, navigazione esplicita fluida anche verso hash diversi senza ricreare il DOM. Cronologia browser e movimento ridotto restano immediati. Animazioni leggere all'ingresso di progetti/fasi, contenuti sempre visibili e observer disconnesso all'uscita.
+- Browser integrato: misure DOM a 1280/820/390/320 px senza overflow, un h1 e nessun ID duplicato; mappa a sinistra su desktop confermata. Ispezione immagini desktop, mappa, Approccio e mobile. Tab/Invio, Escape e focus del tree in fondo alla pagina verificati; refresh, Indietro/Avanti, conservazione bozza e città nei salti e ritorno da NetBox. Dashboard separate: immobiliare con cinque grafici, generator con input CSV; nessun caricamento dei loro moduli/Plotly all'apertura della landing.
+- Limiti: browser condiviso non visibile (document.visibilityState = hidden), quindi animazione temporale dello smooth scroll e interazione fisica mouse/touch non certificabili; alcune attivazioni usano click DOM. Verificata tastiera e modalità movimento ridotto. Nessun telefono fisico, Safari/Firefox, screen reader, invio email o regressione completa dei filtri dashboard.
+- `npm.cmd run check`: 26 test; build, diagnostica e diff superati. Nessuna pubblicazione. Prossimo passo: valutazione visiva di Edoardo nella scheda aperta; nessun incarico successivo automatico.
+- Checkpoint Git tentato ma non creato: l'ambiente nega la scrittura di `.git/index.lock`. Le quattro modifiche restano nel working tree, pronte da revisionare e registrare; file estranei preservati.
+
 ## Piano per gli assistenti — 30 ottobre 2026
 
 - Direzione: landing con quattro sezioni (Profilo, Progetti, Approccio, Collaborazioni); CV, dashboard, NetBox e documenti Approccio restano separati. Piano: `LANDING_AI_PLAN.md`. Registro: `LANDING_PROGRESS.md`. Schede: `landing-tasks/`.
 - Base: `main` @ `31bf4867902916fbf0f4137e12a38a77674cccca`, tag `backup/pre-landing-2026-10-30`, branch `feat/landing-page`.
-- Stato: 00–09 eseguiti; 05/06/07 revisionati in sola lettura (prove browser NON VERIFICATO); 10 creato (non avviato). Rapporto QA: `LANDING_QA.md`.
+- Stato: 00–10 eseguiti; il rapporto `LANDING_QA.md` conserva il QA storico 07–08. Le verifiche correnti e i limiti dell'incarico 10 sono riportati sopra.
 - Verifiche: check (26 test), build, diff superati. Prove browser in attesa.
 - Modifiche: solo documentazione e sorgenti landing. Nessun push/merge/deploy. Un solo scrittore alla volta.
 - Modificate soltanto documentazione e istruzioni per gli assistenti. Sito invariato. Compito 00 eseguito sul branch `feat/landing-page` e revisionato da Codex: commit `538c1cb3d224b07d16345b19dadc53bdf326c2f6` approvato senza problemi bloccanti. Il tag `backup/pre-landing-2026-10-30` conserva la base `31bf4867902916fbf0f4137e12a38a77674cccca`. Prossimo passo autorizzato: incarico 01.
