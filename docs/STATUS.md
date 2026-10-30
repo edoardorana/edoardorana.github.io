@@ -17,6 +17,7 @@ Aggiornato il 30 ottobre 2026. Le note precedenti sono state condensate; i commi
 - Compito 04 eseguito e revisionato: `resolveView(hash)` traduce le route esistenti in destinazioni landing, progetto separato o not-found senza accedere al DOM. Coperti URL canonici, alias storici, input vuoto, percorsi sconosciuti, segmenti extra e input malformati; il router resta invariato fino al compito 05. Superati 26 test, diagnostica, controllo sintattico, build e `git diff --check`. Prossimo incarico autorizzato: 05.
 - Compito 05 eseguito: render riscritto con `resolveView`, montaggio unico della landing, scroll per sezione, clic sulla stessa voce del tree, ritorno da progetto, `body.dataset.page='landing'`. 26 test, build e diff superati. Prove browser in attesa (nessun browser disponibile nella sessione); non passare alla rifinitura senza verifica. Prossimo incarico autorizzato: 06 (dopo verifica browser).
 - Compito 06 eseguito: box compatte (min-height 240px), testata sticky, offset scroll-margin 84px, distanze uniformate, scorrimento fluido per clic volontari. 26 test, build e diff superati. Prove browser in attesa (nessun browser disponibile). Prossimo incarico autorizzato: 07 (dopo verifica browser).
+- Compito 07 eseguito: controlli automatici (check 26 test, build, diff) superati; rapporto QA in docs/LANDING_QA.md. Prove browser NON VERIFICATO (nessun browser). Prossimo incarico autorizzato: 08 (revisione finale).
 
 ## Armonia visiva e revisione tecnica — 29 ottobre 2026
 

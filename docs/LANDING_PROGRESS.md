@@ -6,7 +6,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 - Base osservata durante la preparazione: `main`, `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Branch della prova: `feat/landing-page`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Tag della base: `backup/pre-landing-2026-10-30`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
-- Incarico **06** eseguito. Box compatte (min-height 240px), testata sticky sulla landing, offset scroll-margin-top 84px per le sezioni, distanze uniformate, scorrimento fluido per clic volontari (smooth se non reduced motion), immediato per entrata iniziale. 26 test, build e diff superati. Prove browser in attesa (nessun browser disponibile). Prossimo incarico autorizzato: **07** (dopo verifica browser). Un solo scrittore alla volta.
+- Incarico **07** eseguito. Verifica automatica: check (26 test), build e diff superati. Rapporto QA in `docs/LANDING_QA.md`. Prove browser tutte NON VERIFICATO (nessun browser disponibile). Prossimo incarico autorizzato: **08** (revisione finale). Un solo scrittore alla volta.
 - I documenti di pianificazione e le istruzioni condivise sono modifiche locali preparatorie, da preservare e registrare nel compito 00. Nessuna modifica al sito è stata effettuata per scrivere il piano.
 
 | ID | Esecuzione | Revisione | Commit / evidenza |
@@ -18,7 +18,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 | 04 | Eseguito | Approvata da Codex · 30 ottobre 2026 | 26 test, build e diagnostica superati; resolver puro e tabella URL verificati |
 | 05 | Eseguito | Non eseguita | 26 test, build e diff superati; navigazione interna attivata (`resolveView`, montaggio unico, scroll per sezione, clic stessa voce); prove browser in attesa |
 | 06 | Eseguito | Non eseguita | 26 test, build e diff superati; box compatte, testata sticky, offset scroll, distanze uniformate, scorrimento fluido per clic; prove browser in attesa |
-| 07 | Da iniziare | Non eseguita | — |
+| 07 | Eseguito | Non eseguita | 26 test, build e diff superati; rapporto QA in docs/LANDING_QA.md; prove browser NON VERIFICATO (nessun browser) |
 | 08 | Da iniziare | Non eseguita | — |
 
 ## Consegna più recente
@@ -26,18 +26,18 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 Compilare dopo ogni incarico, sostituendo questo blocco con il resoconto corrente. Conservare in basso una breve cronologia degli incarichi conclusi.
 
 ```text
-Incarico: 06 — Rendere compatte le box e mantenere tree raggiungibile
+Incarico: 07 — Verificare l'integrazione completa
 Assistente / sessione, se noto: sessione corrente
-Branch e commit di partenza: feat/landing-page @ eac4f7b
-Modifiche preesistenti: nessuna (working tree pulito prima del compito)
-File modificati: proposal/style.css (box compatte min-height 240px, testata sticky, scroll-margin-top 84px, method-step ridotto, terminal-heading ridotto sulla landing); proposal/script.js (scorrimento fluido per clic volontari con prefers-reduced-motion); registro e STATUS
-Azioni: ridotte altezza/padding delle box; testata sticky con sfondo leggibile; offset condiviso per le sezioni; distanze uniformate; scorrimento fluido solo per clic (smooth se non reduced motion), immediato per entrata iniziale; regole limitate alla landing.
+Branch e commit di partenza: feat/landing-page @ c0b97a8
+Modifiche preesistenti: nessuna
+File modificati: docs/LANDING_QA.md (nuovo rapporto); registro e STATUS
 Comandi eseguiti ed esiti: npm.cmd run check (26 test, 0 fail); npm.cmd run build (Build ready: dist/); git diff --check superato
-Prove browser: non eseguite (nessun browser disponibile). Previste: viewport 1280×900, 820px, 390×844, 320px; griglia corretta, testo leggibile, nessun overflow; tocco singolo sulle box; Tab/Invio e focus visibile; tree in fondo, selezione sezione, Escape e ritorno focus; movimento ridotto.
-Verifiche mancanti: prove browser della landing (da eseguire dal revisore o in sessione con browser).
-Problemi / decisioni aperte: nessuno rilevato a check/build/diff; layout non verificato visivamente.
+Prove browser: NON VERIFICATO (nessun browser disponibile). Tutte le 16 prove della checklist browser annotate come NON VERIFICATO in docs/LANDING_QA.md.
+Difetti bloccanti: nessuno rilevato a livello automatico.
+Verifiche mancanti: tutte le prove browser (viewport, tastiera, touch, movimento ridotto, mailto, dashboard).
+Problemi / decisioni aperte: le prove browser restano in attesa per il revisore o per Edoardo.
 Esito della revisione e autore, se avvenuta: non eseguita
-Prossimo incarico, non avviato: 07
+Prossimo incarico, non avviato: 08 (revisione finale)
 ```
 
 ## Cronologia
@@ -53,4 +53,4 @@ Prossimo incarico, non avviato: 07
 - 30 ottobre 2026 (compito 03): preparati renderer incorporabili, gerarchia h1/h2/h3/h4, composizione `landing()` e binding condivisi senza attivare il router; 22 test, build e diff superati. La prova DOM della composizione resta assegnata al compito 05.
 - 30 ottobre 2026 (revisione compito 03): approvata da Codex dopo ispezione del diff, diagnostica e ripetizione di check/build; confermati quattro ID di sezione, titoli contestuali e assenza di navigazione precedente/successiva nel markup incorporato. Il router resta invariato come previsto.
 - 30 ottobre 2026 (compito 04): aggiunto il resolver puro delle destinazioni, con test espliciti per URL canonici, alias storici, progetti separati e percorsi non validi. Superati 26 test, build e controllo del diff; router e DOM invariati.
-- 30 ottobre 2026 (compito 06): rifinita la landing: box compatte (min-height 240px), testata sticky, offset scroll-margin 84px, distanze uniformate, scorrimento fluido per clic volontari (smooth se non reduced motion). 26 test, build e diff superati; prove browser in attesa (nessun browser disponibile).
+- 30 ottobre 2026 (compito 07): verificato con controlli automatici (check 26 test, build, diff); creato docs/LANDING_QA.md. Prove browser NON VERIFICATO (nessun browser disponibile). Nessun difetto bloccante rilevato a livello automatico.
