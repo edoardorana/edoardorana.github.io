@@ -94,7 +94,7 @@ test('README summaries explain the page and the next user action', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
   assert.match(source, /Benvenuto nel mio sito/);
   assert.match(source, /Qui trovi formazione, esperienze e luoghi del mio percorso/);
-  assert.match(source, /Seleziona una fase e apri la scheda operativa/);
+  assert.match(source, /Cinque fasi da leggere in sequenza/);
   assert.match(source, /Seleziona una scheda per leggere il contesto/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
   assert.match(contact, /mail --new/);

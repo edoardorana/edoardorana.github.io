@@ -8,7 +8,6 @@ const indexToggle = document.querySelector('.index-toggle');
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 const chips = tags => `<div class="chips">${tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join('')}</div>`;
 let previousRoute = { page: 'mappa' };
-let selectedStep = 0;
 let selectedPlace = 'milano';
 let renderVersion = 0;
 let pageController;
@@ -43,8 +42,9 @@ function profile() {
   ${sectionNav('profilo')}</section>`;
 }
 function approach() {
-  return `<section class="page">${pageHeader('approccio','Cinque fasi per capire, raccogliere, custodire, leggere ed evolvere. Seleziona una fase e apri la scheda operativa.')}
-  <div class="method"><div class="method-steps" role="tablist" aria-label="Il percorso del dato">${steps.map((s,i) => `<button role="tab" id="method-${i}" aria-controls="method-panel" aria-selected="${i === selectedStep}" tabindex="${i === selectedStep ? 0 : -1}" data-step="${i}"><span>0${i+1}</span>${s.title}</button>`).join('')}</div><article id="method-panel" role="tabpanel" aria-labelledby="method-${selectedStep}"></article></div>
+  const documents = ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere'];
+  return `<section class="page">${pageHeader('approccio','Cinque fasi da leggere in sequenza: capire, raccogliere, custodire, leggere ed evolvere. Ogni fase include una scheda operativa separata.')}
+  <div class="method" aria-label="Il percorso del dato">${steps.map((s,i) => `<article class="method-step" aria-labelledby="method-${i}"><span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><h2 id="method-${i}">${s.title}</h2><p class="method-short">${s.short}</p><p>${s.text}</p><div class="method-output"><span>DOCUMENTAZIONE</span><p>${s.result}</p></div>${chips(s.tags)}<a class="button method-document" href="/approccio/${documents[i]}.html">Apri la scheda operativa ↗</a></article>`).join('')}</div>
   ${sectionNav('approccio')}</section>`;
 }
 function projectList() {
@@ -71,16 +71,6 @@ function journeyContent() {
   <div class="timeline"><h2>Cronologia</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi dei log, script SQL e shell. Attività su Debian, MariaDB, storage S3-compatibile, documentazione tecnica e sicurezza operativa.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore operativo · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Coordinamento di attività per progetti sociali e culturali, eventi e amministrazione di Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Ho analizzato dataset aziendali e lavorato su metodi di classificazione. Ho inoltre creato report e dashboard con Qlik, Power BI e Tableau.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · UiT The Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di studio a Tromsø, in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>In corso. Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Statistica, sistemi informativi e programmazione; tesi sul web scraping di annunci immobiliari.</p></div></li><li><span>2015 — 2016</span><div><h3>Prime esperienze in amministrazione</h3><p>Stage in contabilità e supporto alla consulenza presso LTA Advisory (2016). Stage in contabilità presso TaxiBlu (2015), con Zucchetti e manutenzione di database.</p></div></li><li><span>2012 — 2017</span><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Materie economico-aziendali, contabilità e marketing.</p></div></li></ol></div></section>`;
 }
 function contact() { return `<section class="page contact-page">${contactHTML()}${sectionNav('contatti')}</section>`; }
-function setStep(i, focus = false) {
-  selectedStep = i;
-  const s = steps[i];
-  const panel = document.querySelector('#method-panel');
-  document.querySelectorAll('[data-step]').forEach((b,n)=>{b.setAttribute('aria-selected',String(i===n));b.tabIndex=i===n?0:-1;if(focus&&i===n)b.focus();});
-  panel.setAttribute('aria-labelledby',`method-${i}`);
-  const previous = i > 0 ? `<button class="method-arrow method-arrow-prev" type="button" data-method-target="${i-1}" aria-label="Fase precedente: ${steps[i-1].title}"><span aria-hidden="true">‹</span></button>` : '';
-  const next = i < steps.length - 1 ? `<button class="method-arrow method-arrow-next" type="button" data-method-target="${i+1}" aria-label="Fase successiva: ${steps[i+1].title}"><span aria-hidden="true">›</span></button>` : '';
-  panel.innerHTML = `${previous}${next}<span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><h2>${s.short}</h2><p>${s.text}</p><div class="method-output"><span>DOCUMENTAZIONE</span><p>${s.result}</p></div>${chips(s.tags)}<a class="button method-document" href="/approccio/${['capire','raccogliere','custodire','leggere','evolvere'][i]}.html">Apri la scheda operativa ↗</a>`;
-}
 function setPlace(key) {
   selectedPlace = key;
   const p = places[key];
@@ -89,11 +79,6 @@ function setPlace(key) {
   document.querySelectorAll('[data-map-place]').forEach(group => group.classList.toggle('is-selected',group.dataset.mapPlace===key));
 }
 function bindPage(route) {
-  if(route.page==='approccio'){
-    setStep(selectedStep);
-    document.querySelectorAll('[data-step]').forEach((b,i)=>{b.addEventListener('click',()=>setStep(i));b.addEventListener('keydown',e=>{let next=i;if(['ArrowRight','ArrowDown'].includes(e.key))next=(i+1)%steps.length;else if(['ArrowLeft','ArrowUp'].includes(e.key))next=(i+steps.length-1)%steps.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=steps.length-1;else return;e.preventDefault();setStep(next,true);});});
-    document.querySelector('.method').addEventListener('click',e=>{const control=e.target.closest('[data-method-target]');if(control)setStep(Number(control.dataset.methodTarget),true);});
-  }
   if(route.page==='profilo'||route.page==='percorso'){
     setPlace(selectedPlace);
     document.querySelectorAll('[data-place]').forEach(b=>b.addEventListener('click',()=>setPlace(b.dataset.place)));
