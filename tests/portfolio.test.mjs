@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { areas, projects, parseRoute, mailto, mapPoint, places } from '../proposal/data.mjs';
 import { resolveAsset } from '../scripts/dev.mjs';
 import { terminalHeader } from '../proposal/terminal-header.mjs';
+import { contactHTML } from '../proposal/contact.mjs';
 
 test('all areas and project deep links resolve; missing content gets a not-found route', () => {
   assert.deepEqual(parseRoute(''), { page: 'mappa' });
@@ -65,6 +66,29 @@ test('terminal headings keep the title semantic and the readme always visible', 
   assert.match(html, /voce\//);
   assert.match(html, /xdg-open cv\.html/);
   assert.match(html, /href="cv\.html"/);
+});
+test('terminal headings support safe section titles without changing the default level', () => {
+  const defaults = terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Sintesi' });
+  const section = terminalHeader({ path: '~/profilo', title: 'Profilo <dati>', summary: 'Sintesi', headingLevel: 2, titleId: 'profilo" onclick="alert(1)' });
+  const unsupported = terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Sintesi', headingLevel: 3 });
+  assert.match(defaults, /<h1 class="visually-hidden">Profilo<\/h1>/);
+  assert.match(section, /<h2 class="visually-hidden" id="profilo&quot; onclick=&quot;alert\(1\)">Profilo &lt;dati&gt;<\/h2>/);
+  assert.doesNotMatch(section, /<h1|onclick="alert/);
+  assert.match(unsupported, /<h1 class="visually-hidden">Profilo<\/h1>/);
+  assert.doesNotMatch(unsupported, /<h3/);
+});
+test('contact headings support safe section titles and keep the open composer', () => {
+  const defaults = contactHTML();
+  const section = contactHTML({ headingLevel: 2, titleId: 'collaborazioni"><script>' });
+  assert.match(defaults, /<h1 class="visually-hidden">Collaborazioni<\/h1>/);
+  assert.match(section, /<h2 class="visually-hidden" id="collaborazioni&quot;&gt;&lt;script&gt;">Collaborazioni<\/h2>/);
+  for (const html of [defaults, section]) {
+    assert.match(html, /mail --new/);
+    assert.match(html, /<form id="contact-form">/);
+    assert.match(html, /id="subject"/);
+    assert.match(html, /id="message"/);
+    assert.doesNotMatch(html, /<form id="contact-form" hidden/);
+  }
 });
 test('README summaries explain the page and the next user action', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');

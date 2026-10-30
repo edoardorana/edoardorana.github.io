@@ -1,8 +1,10 @@
 import { person, mailto } from './data.mjs';
 import { escapeHTML } from './explorer/core.mjs';
 let subject = '', message = '';
-export function contactHTML() {
-  return `<div class="terminal-heading"><h1 class="visually-hidden">Collaborazioni</h1>
+export function contactHTML({ headingLevel = 1, titleId } = {}) {
+  const headingTag = headingLevel === 2 ? 'h2' : 'h1';
+  const headingId = titleId == null ? '' : ` id="${escapeHTML(titleId)}"`;
+  return `<div class="terminal-heading"><${headingTag} class="visually-hidden"${headingId}>Collaborazioni</${headingTag}>
   <p class="readme-command"><b>~/contatti</b>$ <strong>cat readme.md</strong></p>
   <div class="readme-output"><dl class="readme-sections"><div><dt>generale/</dt><dd>Scrivimi per parlare di un problema tecnico o di una collaborazione.</dd></div><div><dt>contatti/</dt><dd><a href="mailto:${person.email}">${person.email}</a> · <a href="${person.github}" target="_blank" rel="noopener">github.com/edoardorana</a></dd></div></dl></div>
   <p class="readme-command mail-command"><b>~/contatti</b>$ <strong>mail --new</strong></p>
