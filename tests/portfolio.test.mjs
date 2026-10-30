@@ -97,12 +97,11 @@ test('contact headings support safe section titles and keep the open composer', 
 test('landing copy presents one narrative and keeps terminal language for actions', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
   const entry = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
-  assert.match(source, /aria-label="edo dot, Edoardo Rana"/);
   assert.match(entry, /edo<span>\.<\/span>dot/);
-  assert.match(source, /Metto ordine nei problemi tecnici/);
-  assert.match(source, /Il percorso completo è nel CV/);
-  assert.match(source, /Dati da esplorare, strumenti da provare/);
-  assert.match(source, /Dal problema a una soluzione verificabile/);
+  assert.doesNotMatch(entry, /brand-name|netbox-ipam/);
+  assert.match(source, /La complessità non scompare/);
+  assert.match(source, /<h2 id="profilo-title">CV<\/h2>/);
+  assert.doesNotMatch(source, /Esplora i progetti|Il percorso completo è nel CV|production-databases/);
   assert.doesNotMatch(source, /journeyContent|renderServices|sectionNav/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
   assert.match(contact, /mail --new/);
@@ -120,7 +119,7 @@ test('site menu uses a compact terminal tree without repeated paths or file mode
   const html = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
   assert.doesNotMatch(html, /drwx|rw-r|directory-mode/);
   assert.match(html, /<span class="menu-prompt"[^>]*>.*<strong>tree<\/strong>/);
-  for (const label of ['home', 'profilo', 'cv.html', 'progetti', 'dashboard-generator', 'immobiliare-data', 'netbox-ipam', 'approccio', 'contatti']) assert.match(html, new RegExp(`>${label.replace('.', '\\.')}<`));
+  for (const label of ['home', 'profilo', 'cv.html', 'progetti', 'dashboard-generator', 'immobiliare-data', 'approccio', 'contatti']) assert.match(html, new RegExp(`>${label.replace('.', '\\.')}<`));
   assert.doesNotMatch(html, />\s*~\/(?:home|profilo|progetti|approccio|contatti)|>\s*progetti\/(?:dashboard-generator|immobiliare-data)/);
   assert.ok(html.indexOf('aria-label="Progetti"') < html.indexOf('aria-label="Approccio"'));
 });

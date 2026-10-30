@@ -2,6 +2,14 @@
 
 Aggiornato il 30 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Landing compatta — 30 ottobre 2026
+
+- Testata ridotta al solo marchio `edo.dot`; rimosse entrambe le ripetizioni visibili di Edoardo Rana. La Home ora contiene soltanto `Sistemi e dati`, `infrastrutture / dati / automazione` e lo slogan `La complessità non scompare. Si mette in ordine.`. Rimossi CTA e indice duplicato: la navigazione resta nel menu `tree`.
+- Profilo ridotto a etichetta, titolo `CV` e collegamento compatto. La mappa resta nella landing; etichette città rese stabili e leggibili anche su hover/focus con ordine di sovrapposizione esplicito.
+- Progetti ridotti alle due dashboard, affiancate su desktop e impilate su mobile. NetBox rimosso da dati, menu e route canoniche: il vecchio URL restituisce pagina non trovata.
+- Approccio trasformato in una fascia orizzontale compatta e scorrevole con le cinque fasi; i testi completi restano nelle schede separate. Collaborazioni mantiene il compositore ma usa intestazione e caratteri più contenuti.
+- Verifiche finali: `npm.cmd run check` (26/26), build e `git diff --check` superati. Browser a 1280/390/320 px senza overflow della pagina; due progetti, cinque fasi, nessun indice duplicato o NetBox. Verificati hover della mappa (testo bianco su fondo scuro), scorrimento orizzontale del metodo, vecchia route NetBox in 404 e apertura delle due dashboard. Rimosso anche il doppio handler da tastiera del pulsante `tree`, lasciando il comportamento nativo del `button`; il browser condiviso non ha prodotto eventi fisici da tastiera in modo affidabile. Nessun telefono fisico, Safari/Firefox o screen reader. Nessun push o deploy.
+
 ## Identità `edo.dot` e pulizia — 30 ottobre 2026
 
 - Scelta una prima identità concreta: `edo.dot`. Il punto è usato come segno ricorrente nel marchio, nella numerazione della landing e nei piccoli elementi grafici; il nome completo resta visibile e il CV mantiene il tono formale.

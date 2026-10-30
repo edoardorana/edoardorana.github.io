@@ -27,7 +27,6 @@ test('section URLs and historical aliases resolve inside the landing', () => {
 
 test('canonical project URLs and historical aliases resolve to separate project views', () => {
   const cases = [
-    ['#/progetti/production-databases', 'production-databases'],
     ['#/progetti/immobiliare-data', 'immobiliare-data'],
     ['#/progetti/market-data', 'immobiliare-data'],
     ['#/progetti/dashboard-generator', 'dashboard-generator'],
@@ -45,6 +44,7 @@ test('unknown, extra and malformed paths resolve to not-found', () => {
     '#/profilo/extra',
     '#/laboratorio/extra',
     '#/progetti/missing',
+    '#/progetti/production-databases',
     '#/progetti/market-data/extra',
     '#/%3Cscript%3E',
     '#//profilo',

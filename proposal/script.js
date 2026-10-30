@@ -22,32 +22,26 @@ function projectNav() {
 }
 function home() {
   return `<section class="home hero" id="home" aria-labelledby="home-title">
-    <div class="hero-identity"><h1 id="home-title" aria-label="edo dot, Edoardo Rana"><span>edo</span><i aria-hidden="true">.</i><span>dot</span></h1><p>Edoardo Rana · sistemi e dati</p></div>
     <p class="hero-kicker"><span aria-hidden="true"></span> infrastrutture / dati / automazione</p>
-    <p class="hero-lead">Metto ordine nei problemi tecnici, collego sistemi e dati e lascio strumenti che si possono capire, verificare e continuare a usare.</p>
-    <div class="hero-actions"><a class="button hero-primary" href="cv.html">Apri il CV <span aria-hidden="true">↗</span></a><a class="hero-link" href="#/progetti">Esplora i progetti <span aria-hidden="true">↓</span></a></div>
-    <nav class="landing-index" aria-label="Sezioni della pagina">${areas.map((area, index) => `<a href="#/${area.id}"><span>.0${index + 1}</span>${area.title}</a>`).join('')}</nav>
+    <h1 id="home-title">Sistemi e dati.</h1>
+    <p class="hero-lead">La complessità non scompare.<br>Si mette in ordine.</p>
   </section>`;
 }
 function profile() {
   return `<section class="page profile-section landing-section" id="profilo" aria-labelledby="profilo-title">
-    <header class="section-heading"><p class="section-number">.01 Profilo</p><h2 id="profilo-title">Il percorso completo è nel CV.</h2><p>Esperienze, formazione, competenze e lingue sono raccolte in una pagina dedicata, leggibile online e pronta da stampare.</p><a class="cv-callout" href="cv.html"><span><strong>Curriculum vitae</strong><small>Esperienze · formazione · skills · lingue</small></span><span aria-hidden="true">Apri ↗</span></a></header>
+    <header class="section-heading compact-heading"><p class="section-number">.01 Profilo</p><h2 id="profilo-title">CV</h2><a class="cv-callout" href="cv.html"><span>Esperienze · formazione · skills · lingue</span><span aria-hidden="true">Apri ↗</span></a></header>
     <div class="profile-map"><div class="profile-map-copy"><p class="section-label">Luoghi</p><h3>Quattro tappe, un percorso.</h3><p>Milano, Tromsø, Zugo e Stoccarda raccontano studi, lavoro da remoto e periodi personali. Seleziona una città per leggere il contesto.</p><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto. Cartografia: Natural Earth.</span></div></div>
   </section>`;
 }
 function approach() {
   const documents = ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere'];
-  return `<section class="page approach-section landing-section" id="approccio" aria-labelledby="approccio-title"><header class="section-heading"><p class="section-number">.03 Approccio</p><h2 id="approccio-title">Dal problema a una soluzione verificabile.</h2><p>Cinque fasi concrete per capire il contesto, organizzare i dati e lasciare documentazione utile.</p></header>
-  <div class="method" aria-label="Il percorso del dato">${steps.map((s,i) => `<article class="method-step" aria-labelledby="method-${i}"><span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><h3 id="method-${i}">${s.title}</h3><p class="method-short">${s.short}</p><p>${s.text}</p><div class="method-output"><span>DOCUMENTAZIONE</span><p>${s.result}</p></div>${chips(s.tags)}<a class="button method-document" href="/approccio/${documents[i]}.html">Apri la scheda operativa ↗</a></article>`).join('')}</div>
+  return `<section class="page approach-section landing-section" id="approccio" aria-labelledby="approccio-title"><header class="section-heading compact-heading"><p class="section-number">.03</p><h2 id="approccio-title">Approccio</h2></header>
+  <div class="method" aria-label="Le cinque fasi del metodo">${steps.map((s,i) => `<article class="method-step" aria-labelledby="method-${i}"><p class="eyebrow">0${i+1} / 05</p><h3 id="method-${i}">${s.title}</h3><p class="method-short">${s.short}</p><a class="method-document" href="/approccio/${documents[i]}.html" aria-label="Apri la scheda ${s.title}">Apri ↗</a></article>`).join('')}</div>
   </section>`;
 }
 function projectList() {
-  return `<section class="page projects-section landing-section" id="progetti" aria-labelledby="progetti-title"><header class="section-heading"><p class="section-number">.02 Progetti</p><h2 id="progetti-title">Dati da esplorare, strumenti da provare.</h2><p>Due dashboard interattive e un progetto infrastrutturale in corso. Ogni scheda resta una pagina autonoma.</p></header>
+  return `<section class="page projects-section landing-section" id="progetti" aria-labelledby="progetti-title"><header class="section-heading compact-heading"><p class="section-number">.02</p><h2 id="progetti-title">Progetti</h2></header>
   <div class="project-list">${projects.map((p,index) => `<a class="project-row" href="#/progetti/${p.id}"><span class="project-index" aria-hidden="true">.0${index + 1}</span><div><p class="eyebrow">${p.kind}</p><h3>${p.title}</h3><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
-}
-function projectDetail(id) {
-  const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: 'NetBox per organizzare gli indirizzi IP. Qui raccolgo il contesto del lavoro in corso e i prossimi sviluppi.' })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -60,7 +54,7 @@ function europeMap() {
   }).join('')}</div>`;
 }
 function contact() {
-  return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading"><p class="section-number">.04 Collaborazioni</p><h2 id="contatti-title">Parliamo del problema, prima degli strumenti.</h2><p>Raccontami il contesto, il vincolo o l’idea su cui vuoi lavorare.</p></header>${contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false })}</section>`;
+  return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading compact-heading"><p class="section-number">.04</p><h2 id="contatti-title">Collaborazioni</h2><p>Parliamo del problema, prima degli strumenti.</p></header>${contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false })}</section>`;
 }
 function landing() {
   return `${home()}${profile()}${projectList()}${approach()}${contact()}`;
@@ -169,8 +163,6 @@ function render({ behavior = 'auto' } = {}) {
         if (version !== renderVersion || controller.signal.aborted) return;
         main.innerHTML = `<section class="page">${backLink('#/progetti', 'Torna ai progetti')}${terminalHeader({ path: `~/progetti/${view.item}`, title: 'Progetto non disponibile', summary: 'Ricarica la pagina per riprovare.' })}</section>`;
       });
-    } else {
-      main.innerHTML = projectDetail(view.item);
     }
     window.scrollTo(0, 0);
     main.focus({ preventScroll: true });
@@ -194,11 +186,6 @@ function setIndexOpen(open) {
   indexToggle.setAttribute('aria-label',open?'Chiudi indice del sito':'Apri indice del sito');
 }
 indexToggle.addEventListener('click',()=>setIndexOpen(index.hidden));
-indexToggle.addEventListener('keydown',event=>{
-  if(event.key!=='Enter'&&event.key!==' ')return;
-  event.preventDefault();
-  setIndexOpen(index.hidden);
-});
 document.addEventListener('pointerdown',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
 document.addEventListener('focusin',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
 index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;setIndexOpen(false);});
