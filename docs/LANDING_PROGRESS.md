@@ -6,7 +6,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 - Base osservata durante la preparazione: `main`, `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Branch della prova: `feat/landing-page`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Tag della base: `backup/pre-landing-2026-10-30`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
-- Incarico **05** eseguito. Navigazione interna attivata con `resolveView`: montaggio unico della landing, scroll per sezione, clic sulla stessa voce del tree, ritorno da progetto. Prove browser in attesa per il revisore. Prossimo incarico autorizzato: **06** (dopo verifica browser). Un solo scrittore alla volta.
+- Incarico **06** eseguito. Box compatte (min-height 240px), testata sticky sulla landing, offset scroll-margin-top 84px per le sezioni, distanze uniformate, scorrimento fluido per clic volontari (smooth se non reduced motion), immediato per entrata iniziale. 26 test, build e diff superati. Prove browser in attesa (nessun browser disponibile). Prossimo incarico autorizzato: **07** (dopo verifica browser). Un solo scrittore alla volta.
 - I documenti di pianificazione e le istruzioni condivise sono modifiche locali preparatorie, da preservare e registrare nel compito 00. Nessuna modifica al sito è stata effettuata per scrivere il piano.
 
 | ID | Esecuzione | Revisione | Commit / evidenza |
@@ -17,7 +17,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 | 03 | Eseguito | Approvata da Codex · 30 ottobre 2026 | 22 test, build e diagnostica superati; composizione e binding preparati, non ancora attivati |
 | 04 | Eseguito | Approvata da Codex · 30 ottobre 2026 | 26 test, build e diagnostica superati; resolver puro e tabella URL verificati |
 | 05 | Eseguito | Non eseguita | 26 test, build e diff superati; navigazione interna attivata (`resolveView`, montaggio unico, scroll per sezione, clic stessa voce); prove browser in attesa |
-| 06 | Da iniziare | Non eseguita | — |
+| 06 | Eseguito | Non eseguita | 26 test, build e diff superati; box compatte, testata sticky, offset scroll, distanze uniformate, scorrimento fluido per clic; prove browser in attesa |
 | 07 | Da iniziare | Non eseguita | — |
 | 08 | Da iniziare | Non eseguita | — |
 
@@ -26,18 +26,18 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 Compilare dopo ogni incarico, sostituendo questo blocco con il resoconto corrente. Conservare in basso una breve cronologia degli incarichi conclusi.
 
 ```text
-Incarico: 05 — Attivare la landing e la navigazione interna
+Incarico: 06 — Rendere compatte le box e mantenere tree raggiungibile
 Assistente / sessione, se noto: sessione corrente
-Branch e commit di partenza: feat/landing-page @ 9cfcf4e47af7ef339afe33b113aa443a7c1a63e2
+Branch e commit di partenza: feat/landing-page @ eac4f7b
 Modifiche preesistenti: nessuna (working tree pulito prima del compito)
-File modificati: proposal/script.js (render riscritto con resolveView, montaggio unico della landing, scroll per sezione, clic stessa voce, body.dataset.page='landing'); registro e STATUS
-Contratto introdotto: render() usa resolveView(location.hash); se la landing è già montata non re-renderizza main, aggiorna titolo/menu/aria-current e scrolla alla sezione; cambio vista (landing/progetto/404) aborta e pulisce la precedente, incrementa renderVersion e monta. Clic su link interno con hash già selezionato scrolla senza hashchange (esclusi Ctrl/Command, clic centrale, link esterni, CV/documenti HTML).
+File modificati: proposal/style.css (box compatte min-height 240px, testata sticky, scroll-margin-top 84px, method-step ridotto, terminal-heading ridotto sulla landing); proposal/script.js (scorrimento fluido per clic volontari con prefers-reduced-motion); registro e STATUS
+Azioni: ridotte altezza/padding delle box; testata sticky con sfondo leggibile; offset condiviso per le sezioni; distanze uniformate; scorrimento fluido solo per clic (smooth se non reduced motion), immediato per entrata iniziale; regole limitate alla landing.
 Comandi eseguiti ed esiti: npm.cmd run check (26 test, 0 fail); npm.cmd run build (Build ready: dist/); git diff --check superato
-Prove browser: non eseguite in questa sessione (nessun browser disponibile). Prove previste: apertura/refresh #/contatti, bozza+Tromsø conservati, clic stessa voce del tree, NetBox→Progetti, cambio rapido dashboard→landing, un solo h1, nessun dataset/Plotly al caricamento fresco.
+Prove browser: non eseguite (nessun browser disponibile). Previste: viewport 1280×900, 820px, 390×844, 320px; griglia corretta, testo leggibile, nessun overflow; tocco singolo sulle box; Tab/Invio e focus visibile; tree in fondo, selezione sezione, Escape e ritorno focus; movimento ridotto.
 Verifiche mancanti: prove browser della landing (da eseguire dal revisore o in sessione con browser).
-Problemi / decisioni aperte: nessuno rilevato a check/build/diff; la navigazione DOM non è stata verificata nel browser.
+Problemi / decisioni aperte: nessuno rilevato a check/build/diff; layout non verificato visivamente.
 Esito della revisione e autore, se avvenuta: non eseguita
-Prossimo incarico, non avviato: 06 (dopo verifica browser)
+Prossimo incarico, non avviato: 07
 ```
 
 ## Cronologia
@@ -53,4 +53,4 @@ Prossimo incarico, non avviato: 06 (dopo verifica browser)
 - 30 ottobre 2026 (compito 03): preparati renderer incorporabili, gerarchia h1/h2/h3/h4, composizione `landing()` e binding condivisi senza attivare il router; 22 test, build e diff superati. La prova DOM della composizione resta assegnata al compito 05.
 - 30 ottobre 2026 (revisione compito 03): approvata da Codex dopo ispezione del diff, diagnostica e ripetizione di check/build; confermati quattro ID di sezione, titoli contestuali e assenza di navigazione precedente/successiva nel markup incorporato. Il router resta invariato come previsto.
 - 30 ottobre 2026 (compito 04): aggiunto il resolver puro delle destinazioni, con test espliciti per URL canonici, alias storici, progetti separati e percorsi non validi. Superati 26 test, build e controllo del diff; router e DOM invariati.
-- 30 ottobre 2026 (compito 05): attivata la navigazione interna della landing con `resolveView`: montaggio unico, scroll per sezione, clic sulla stessa voce del tree, ritorno da progetto, `body.dataset.page='landing'`. 26 test, build e diff superati; prove browser in attesa (nessun browser disponibile nella sessione).
+- 30 ottobre 2026 (compito 06): rifinita la landing: box compatte (min-height 240px), testata sticky, offset scroll-margin 84px, distanze uniformate, scorrimento fluido per clic volontari (smooth se non reduced motion). 26 test, build e diff superati; prove browser in attesa (nessun browser disponibile).

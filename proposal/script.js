@@ -225,18 +225,20 @@ document.addEventListener('click',event=>{
   if(href.endsWith('.html'))return;
   if(href!==location.hash)return;
   event.preventDefault();
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const behavior=reduceMotion?'auto':'smooth';
   const view=resolveView(href);
   if(view.kind==='landing'){
     if(view.section&&view.section!=='home'){
       const target=document.getElementById(view.section);
-      if(target){target.scrollIntoView({behavior:'auto',block:'start'});target.focus({preventScroll:true});}
-      else window.scrollTo(0,0);
+      if(target){target.scrollIntoView({behavior,block:'start'});target.focus({preventScroll:true});}
+      else window.scrollTo({top:0,behavior});
     }else{
-      window.scrollTo(0,0);
+      window.scrollTo({top:0,behavior});
       main.focus({preventScroll:true});
     }
   }else{
-    window.scrollTo(0,0);
+    window.scrollTo({top:0,behavior});
     main.focus({preventScroll:true});
   }
   setIndexOpen(false);
