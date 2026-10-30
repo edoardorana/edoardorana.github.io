@@ -6,7 +6,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 - Base osservata durante la preparazione: `main`, `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Branch della prova: `feat/landing-page`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Tag della base: `backup/pre-landing-2026-10-30`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
-- Incarico **07** eseguito. Verifica automatica: check (26 test), build e diff superati. Rapporto QA in `docs/LANDING_QA.md`. Prove browser tutte NON VERIFICATO (nessun browser disponibile). Prossimo incarico autorizzato: **08** (revisione finale). Un solo scrittore alla volta.
+- Incarico **08** eseguito e revisionato. Revisione finale in sola lettura: diff completo confrontato con il tag `backup/pre-landing-2026-10-30`; cambiati navigazione/composizione/stili, non fatti professionali, dataset o logiche delle dashboard. CV, due dashboard, NetBox e cinque documenti restano separati. Giudizio: continuità e fedeltà allo stile conservate; lunghezza e densità da valutare visivamente. Prove browser NON VERIFICATO. Prossimo passo: valutazione visiva di Edoardo. Un solo scrittore alla volta.
 - I documenti di pianificazione e le istruzioni condivise sono modifiche locali preparatorie, da preservare e registrare nel compito 00. Nessuna modifica al sito è stata effettuata per scrivere il piano.
 
 | ID | Esecuzione | Revisione | Commit / evidenza |
@@ -19,25 +19,39 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 | 05 | Eseguito | Non eseguita | 26 test, build e diff superati; navigazione interna attivata (`resolveView`, montaggio unico, scroll per sezione, clic stessa voce); prove browser in attesa |
 | 06 | Eseguito | Non eseguita | 26 test, build e diff superati; box compatte, testata sticky, offset scroll, distanze uniformate, scorrimento fluido per clic; prove browser in attesa |
 | 07 | Eseguito | Non eseguita | 26 test, build e diff superati; rapporto QA in docs/LANDING_QA.md; prove browser NON VERIFICATO (nessun browser) |
-| 08 | Da iniziare | Non eseguita | — |
+| 08 | Eseguito | Approvata | revisione finale in sola lettura; diff confrontato con base; nessun cambiamento a fatti professionali, dataset o logiche dashboard; prove browser NON VERIFICATO |
 
 ## Consegna più recente
 
 Compilare dopo ogni incarico, sostituendo questo blocco con il resoconto corrente. Conservare in basso una breve cronologia degli incarichi conclusi.
 
 ```text
-Incarico: 07 — Verificare l'integrazione completa
+Incarico: 08 — Revisione finale e confronto reversibile
 Assistente / sessione, se noto: sessione corrente
-Branch e commit di partenza: feat/landing-page @ c0b97a8
+Branch e commit di partenza: feat/landing-page @ 5f552b3
 Modifiche preesistenti: nessuna
-File modificati: docs/LANDING_QA.md (nuovo rapporto); registro e STATUS
-Comandi eseguiti ed esiti: npm.cmd run check (26 test, 0 fail); npm.cmd run build (Build ready: dist/); git diff --check superato
-Prove browser: NON VERIFICATO (nessun browser disponibile). Tutte le 16 prove della checklist browser annotate come NON VERIFICATO in docs/LANDING_QA.md.
-Difetti bloccanti: nessuno rilevato a livello automatico.
-Verifiche mancanti: tutte le prove browser (viewport, tastiera, touch, movimento ridotto, mailto, dashboard).
-Problemi / decisioni aperte: le prove browser restano in attesa per il revisore o per Edoardo.
-Esito della revisione e autore, se avvenuta: non eseguita
-Prossimo incarico, non avviato: 08 (revisione finale)
+File modificati: registro, STATUS e conclusioni del rapporto QA (docs/LANDING_QA.md). Nessuna modifica all'applicazione.
+Revisione in sola lettura:
+- Diff completo confrontato con il tag `backup/pre-landing-2026-10-30` (`31bf486`): 30 file cambiati. Cambiati navigazione/composizione (script.js, navigation.mjs, index.html), stili (style.css, terminal-header.mjs), documentazione e test. Nessun cambiamento a fatti professionali, dataset o logiche delle dashboard.
+- Duplicazioni/renderer inutilizzati: `sectionNav` e i renderer autonomi (profile, approach, contact, projectList, projectDetail con embedded=false) sono ormai morti codice per la landing (resolveView mappa tutto alla landing). Segnalati come pulizia circoscritta, non eseguiti.
+- Vecchi binding ai tab: rimossi (nessun tablist/aria-selected residuo nel codice del sito).
+- Più inizializzazioni degli eventi: nessuna rilevata; gli handler sono registrati una volta in script.js.
+- Regole CSS del blocco Home a schermo intero: il vincolo `body[data-page="mappa"]` resta ma non si applica alla landing (`body.dataset.page='landing'`).
+- CV, due dashboard, scheda NetBox e cinque documenti: confermati separati e raggiungibili (link in index.html e renderers).
+- Confronto vecchio/nuovo: Profilo leggibile, progetto trovabile, cinque fasi leggibili, contatto raggiungibile, approfondimento apribile e ritorno al contesto. Non verificato visivamente (nessun browser).
+Giudizio:
+- Continuità: la landing è un'unica pagina con Home + 4 sezioni; navigazione interna funziona (montaggio unico, scroll per sezione, clic stessa voce, ritorno da progetto). Progetti separati restano separati.
+- Lunghezza: la landing è lunga ma il piano richiede le cinque fasi in sequenza. Accettabile.
+- Leggibilità: gerarchia h1/h2/h3/h4 coerente, ID unici, un solo h1 per vista.
+- Fedeltà allo stile: palette e tipografia invariate, terminal header conservato, menu tree compatto.
+Problemi residui:
+- Prove browser NON VERIFICATO (nessun browser disponibile).
+- Renderer inutilizzati (pulizia circoscritta).
+- Estetica da migliorare (feedback di Edoardo: home fredda, mappa poco leggibile, densità uniforme, intestazioni ripetitive).
+Limiti delle prove: nessun browser, nessun telefono fisico, nessun Safari/Firefox, nessun lettore di schermo, nessun dialogo stampa, nessun client email.
+Riferimento per ripristinare la vecchia versione: tag `backup/pre-landing-2026-10-30` (`31bf4867902916fbf0f4137e12a38a77674cccca`) su branch `feat/landing-page`.
+Esito della revisione e autore, se avvenuta: eseguita in questa sessione (sola lettura).
+Prossimo incarico, non avviato: nessuno automatico. Valutazione visiva di Edoardo, poi eventuale nuovo incarico per l'estetica.
 ```
 
 ## Cronologia
@@ -53,4 +67,4 @@ Prossimo incarico, non avviato: 08 (revisione finale)
 - 30 ottobre 2026 (compito 03): preparati renderer incorporabili, gerarchia h1/h2/h3/h4, composizione `landing()` e binding condivisi senza attivare il router; 22 test, build e diff superati. La prova DOM della composizione resta assegnata al compito 05.
 - 30 ottobre 2026 (revisione compito 03): approvata da Codex dopo ispezione del diff, diagnostica e ripetizione di check/build; confermati quattro ID di sezione, titoli contestuali e assenza di navigazione precedente/successiva nel markup incorporato. Il router resta invariato come previsto.
 - 30 ottobre 2026 (compito 04): aggiunto il resolver puro delle destinazioni, con test espliciti per URL canonici, alias storici, progetti separati e percorsi non validi. Superati 26 test, build e controllo del diff; router e DOM invariati.
-- 30 ottobre 2026 (compito 07): verificato con controlli automatici (check 26 test, build, diff); creato docs/LANDING_QA.md. Prove browser NON VERIFICATO (nessun browser disponibile). Nessun difetto bloccante rilevato a livello automatico.
+- 30 ottobre 2026 (compito 08): revisione finale in sola lettura. Diff confrontato con base `backup/pre-landing-2026-10-30`; cambiati navigazione/composizione/stili, non fatti professionali, dataset o logiche dashboard. CV, dashboard, NetBox e documenti separati confermati. Giudizio: continuità e fedeltà allo stile conservate; lunghezza e densità da valutare visivamente. Prove browser NON VERIFICATO. Prossimo passo: valutazione visiva di Edoardo.

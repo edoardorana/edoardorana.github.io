@@ -44,6 +44,18 @@ Nessun browser disponibile in questa sessione. Tutte le prove browser sono NON V
 
 Nessuno rilevato a livello automatico. I difetti visivi, se presenti, saranno individuati dal revisore o in una sessione con browser.
 
+## Conclusioni della revisione finale (compito 08)
+
+Revisione in sola lettura. Diff completo confrontato con il tag `backup/pre-landing-2026-10-30` (`31bf486`): 30 file cambiati. Cambiati navigazione/composizione (script.js, navigation.mjs, index.html), stili (style.css, terminal-header.mjs), documentazione e test. Nessun cambiamento a fatti professionali, dataset o logiche delle dashboard.
+
+Duplicazioni/renderer inutilizzati: `sectionNav` e i renderer autonomi (profile, approach, contact, projectList, projectDetail con embedded=false) sono ormai morti codice per la landing (resolveView mappa tutto alla landing). Segnalati come pulizia circoscritta, non eseguiti. Vecchi binding ai tab: rimossi. Più inizializzazioni degli eventi: nessuna rilevata. Regole CSS del blocco Home a schermo intero: il vincolo `body[data-page="mappa"]` resta ma non si applica alla landing.
+
+CV, due dashboard, scheda NetBox e cinque documenti: confermati separati e raggiungibili.
+
+Giudizio: continuità e fedeltà allo stile conservate; lunghezza e densità da valutare visivamente. Prove browser NON VERIFICATO.
+
+Riferimento per ripristinare la vecchia versione: tag `backup/pre-landing-2026-10-30` (`31bf4867902916fbf0f4137e12a38a77674cccca`).
+
 ## Prossimo passo
 
 Eseguire le prove browser (preferibilmente da Edoardo o dal revisore) prima di pubblicare. Il compito 08 può valutare la prova con i difetti bloccanti risolti e le verifiche essenziali completate.
