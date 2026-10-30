@@ -10,12 +10,11 @@ test('all areas and project deep links resolve; missing content gets a not-found
   assert.deepEqual(parseRoute(''), { page: 'mappa' });
   assert.deepEqual(parseRoute('#/'), { page: 'mappa' });
   for (const area of areas) assert.deepEqual(parseRoute('#/' + area.id), { page: area.id });
-  assert.equal(areas.length, 5);
-  assert.deepEqual(areas.map(area => area.id), ['profilo', 'servizi', 'progetti', 'approccio', 'contatti']);
+  assert.equal(areas.length, 4);
+  assert.deepEqual(areas.map(area => area.id), ['profilo', 'progetti', 'approccio', 'contatti']);
   assert.deepEqual(parseRoute('#/percorso'), { page: 'percorso' });
   assert.deepEqual(parseRoute('#/laboratorio'), { page: 'progetti' });
   assert.deepEqual(parseRoute('#/home'), { page: 'mappa' });
-  assert.deepEqual(parseRoute('#/servizi'), { page: 'servizi' });
   assert.deepEqual(parseRoute('#/progetti/market-data'), { page: 'progetti', item: 'immobiliare-data' });
   assert.deepEqual(parseRoute('#/progetti/csv-explorer'), { page: 'progetti', item: 'dashboard-generator' });
   assert.deepEqual(parseRoute('#/progetti/business-intelligence'), { page: 'profilo' });
@@ -97,10 +96,14 @@ test('contact headings support safe section titles and keep the open composer', 
 });
 test('landing copy presents one narrative and keeps terminal language for actions', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
+  const entry = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
+  assert.match(source, /aria-label="edo dot, Edoardo Rana"/);
+  assert.match(entry, /edo<span>\.<\/span>dot/);
   assert.match(source, /Metto ordine nei problemi tecnici/);
   assert.match(source, /Il percorso completo è nel CV/);
   assert.match(source, /Dati da esplorare, strumenti da provare/);
   assert.match(source, /Dal problema a una soluzione verificabile/);
+  assert.doesNotMatch(source, /journeyContent|renderServices|sectionNav/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
   assert.match(contact, /mail --new/);
   assert.doesNotMatch(contact, /mail-start|copy-email|wait-cursor|<form id="contact-form" hidden/);

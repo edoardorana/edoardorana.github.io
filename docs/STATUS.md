@@ -2,6 +2,15 @@
 
 Aggiornato il 30 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## Identità `edo.dot` e pulizia — 30 ottobre 2026
+
+- Scelta una prima identità concreta: `edo.dot`. Il punto è usato come segno ricorrente nel marchio, nella numerazione della landing e nei piccoli elementi grafici; il nome completo resta visibile e il CV mantiene il tono formale.
+- Rimossa la scritta gigante dalla Home. Il marchio ha dimensione contenuta, affiancato da `Edoardo Rana · sistemi e dati`; riscritta la frase introduttiva per esprimere metodo e continuità del lavoro senza formule commerciali.
+- Annullato integralmente il commit successivo alla landing che aveva introdotto una quinta sezione Servizi, tariffe e tempi non concordati, template email, casi studio e numeri non verificati. Ripristinate le quattro sezioni approvate e il compositore essenziale.
+- Ripulito `script.js`: eliminati cronologia non più renderizzata, navigazione precedente/successiva inutilizzata, parametri embedded ormai superflui, binding irraggiungibili e stato mai letto. Rimosso anche il vecchio blocco CSS della landing, ormai duplicato e sovrascritto.
+- Verifiche automatiche: 26 test superati dopo aver aggiunto controlli sull'identità e sull'assenza del codice morto. Browser a 1280/390/320 px: un solo h1, cinque sezioni previste (Home più quattro capitoli), nessun overflow, nessun ID duplicato, nessuna sezione Servizi; `mail --new` resta l'unico comando visibile nella landing.
+- Questa è una prima direzione visiva da valutare, non un'identità definitiva. Nessun push o deploy.
+
 ## Landing omogenea e CV centrale — 30 ottobre 2026
 
 - Analizzato `https://www.alessiop.cc/` come riferimento di omogeneità: la qualità percepita deriva da una grammatica visiva costante, una Home con identità chiara e pochi elementi terminali usati con intenzione. Nessun testo, colore, componente o identità è stato copiato.
