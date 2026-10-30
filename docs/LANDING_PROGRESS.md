@@ -7,6 +7,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 - Branch della prova: `feat/landing-page`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Tag della base: `backup/pre-landing-2026-10-30`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Incarico **08** eseguito e revisionato. Revisione finale in sola lettura: diff completo confrontato con il tag `backup/pre-landing-2026-10-30`; cambiati navigazione/composizione/stili, non fatti professionali, dataset o logiche delle dashboard. CV, due dashboard, NetBox e cinque documenti restano separati. Giudizio: continuità e fedeltà allo stile conservate; lunghezza e densità da valutare visivamente. Prove browser NON VERIFICATO. Prossimo passo: valutazione visiva di Edoardo. Un solo scrittore alla volta.
+- Incarico **09** creato (non avviato): miglioramento estetico della landing (home, mappa, ritmo, intestazioni, fluidità, contatto). File consentiti: style.css, script.js (solo animazioni/focus), index.html (solo classi/attributi), registro e STATUS.
 - I documenti di pianificazione e le istruzioni condivise sono modifiche locali preparatorie, da preservare e registrare nel compito 00. Nessuna modifica al sito è stata effettuata per scrivere il piano.
 
 | ID | Esecuzione | Revisione | Commit / evidenza |
@@ -20,6 +21,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 | 06 | Eseguito | Non eseguita | 26 test, build e diff superati; box compatte, testata sticky, offset scroll, distanze uniformate, scorrimento fluido per clic; prove browser in attesa |
 | 07 | Eseguito | Non eseguita | 26 test, build e diff superati; rapporto QA in docs/LANDING_QA.md; prove browser NON VERIFICATO (nessun browser) |
 | 08 | Eseguito | Approvata | revisione finale in sola lettura; diff confrontato con base; nessun cambiamento a fatti professionali, dataset o logiche dashboard; prove browser NON VERIFICATO |
+| 09 | Da iniziare | Non eseguita | — |
 
 ## Consegna più recente
 

@@ -19,6 +19,7 @@ Aggiornato il 30 ottobre 2026. Le note precedenti sono state condensate; i commi
 - Compito 06 eseguito: box compatte (min-height 240px), testata sticky, offset scroll-margin 84px, distanze uniformate, scorrimento fluido per clic volontari. 26 test, build e diff superati. Prove browser in attesa (nessun browser disponibile). Prossimo incarico autorizzato: 07 (dopo verifica browser).
 - Compito 07 eseguito: controlli automatici (check 26 test, build, diff) superati; rapporto QA in docs/LANDING_QA.md. Prove browser NON VERIFICATO (nessun browser). Prossimo incarico autorizzato: 08 (revisione finale).
 - Compito 08 eseguito: revisione finale in sola lettura. Diff confrontato con base. CV, dashboard, NetBox e documenti separati confermati. Giudizio: continuità e fedeltà conservate; lunghezza/densità da valutare visivamente. Prove browser NON VERIFICATO. Prossimo passo: valutazione visiva di Edoardo.
+- Compito 09 creato (non avviato): miglioramento estetico della landing. Scheda in `docs/landing-tasks/09-estetica.md`. File consentiti: style.css, script.js (solo animazioni/focus), index.html (solo classi/attributi), registro e STATUS. Prossimo passo autorizzato: 09 (dopo valutazione visiva di Edoardo).
 
 ## Armonia visiva e revisione tecnica — 29 ottobre 2026
 
