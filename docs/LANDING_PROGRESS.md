@@ -11,7 +11,7 @@ Preparazione del piano completata il 30 ottobre 2026. Compito 00 eseguito: base 
 
 | ID | Esecuzione | Revisione | Commit / evidenza |
 | --- | --- | --- | --- |
-| 00 | Eseguito | Non eseguita | base `31bf4867902916fbf0f4137e12a38a77674cccca`; branch `feat/landing-page`; tag `backup/pre-landing-2026-10-30`; checkpoint locale su `feat/landing-page` |
+| 00 | Eseguito | Approvata da Codex · 30 ottobre 2026 | commit `538c1cb3d224b07d16345b19dadc53bdf326c2f6`; base `31bf4867902916fbf0f4137e12a38a77674cccca`; tag `backup/pre-landing-2026-10-30` |
 | 01 | Da iniziare | Non eseguita | — |
 | 02 | Da iniziare | Non eseguita | — |
 | 03 | Da iniziare | Non eseguita | — |
@@ -35,7 +35,7 @@ Comandi eseguiti ed esiti: git status/branch/tag; npm.cmd run check (20 test, 0 
 Prove browser: non eseguite (compito documentale; nessuna modifica al sito)
 Verifiche mancanti: prove browser della base già documentate in STATUS; non ripetute in questa fase
 Problemi / decisioni aperte: warning git diff --check su line ending LF→CRLF di STATUS.md (preesistente, non bloccante)
-Esito della revisione e autore, se avvenuta: non eseguita
+Esito della revisione e autore, se avvenuta: approvata da Codex il 30 ottobre 2026; nessun problema bloccante. Verificati branch, tag, diff documentale, 20 test Node, build e 105 collegamenti locali. Il file `.gl.txt` resta un artefatto non tracciato dell'editor e non deve essere incluso nei commit.
 Prossimo incarico, non avviato: 01
 ```
 
@@ -44,3 +44,4 @@ Prossimo incarico, non avviato: 01
 - 30 ottobre 2026: preparato il pacchetto operativo. Il piano non equivale a implementazione o verifica della futura landing. Per la verifica del sito di partenza consultare [STATUS](STATUS.md) e [proposta](LANDING_PAGE_PROPOSAL.md).
 - Verifica della preparazione: 105 collegamenti locali in 21 documenti validi; sintassi, 20 test Node e build superati. Questi risultati non completano l'incarico 00: branch e tag della prova sono ancora da creare.
 - 30 ottobre 2026 (compito 00): base salvata sul commit `31bf4867902916fbf0f4137e12a38a77674cccca`; creati branch `feat/landing-page` e tag `backup/pre-landing-2026-10-30`; controlli npm check (20 test OK), build OK, git diff --check OK (solo warning line ending preesistente). Checkpoint locale dei documenti preparatori su `feat/landing-page`.
+- 30 ottobre 2026 (revisione compito 00): commit `538c1cb3d224b07d16345b19dadc53bdf326c2f6` approvato; nessuna modifica ai sorgenti del sito. Il file `.gl.txt`, generato dall'editor, resta fuori dal progetto e dai commit.
