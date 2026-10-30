@@ -363,6 +363,65 @@ body[data-page="landing"] .terminal-heading { margin: 24px 0 28px; }
 .data-controls label { min-width:0; }
 .chart-settings { margin-bottom:16px; }
 .chart-settings summary { cursor:pointer; margin-bottom:12px; }
+
+/* Estetica landing (compito 09) */
+body[data-page="landing"] .home { border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 8px; }
+body[data-page="landing"] .area { padding: 24px 18px; }
+body[data-page="landing"] .area-title { font-size: clamp(20px, 2vw, 26px); }
+body[data-page="landing"] .atlas { border-top: 2px solid var(--line); }
+
+/* Mappa più leggibile */
+body[data-page="landing"] .map-point { width: 28px; height: 28px; }
+body[data-page="landing"] .map-point:hover, body[data-page="landing"] .map-point[aria-pressed=true] { box-shadow: 0 0 0 3px #22272460; }
+body[data-page="landing"] .map-label { min-height: 36px; padding: 6px 10px; font-size: 11px; background: #fff; box-shadow: 0 2px 6px #22272412; }
+body[data-page="landing"] .europe-map { margin-bottom: 24px; }
+body[data-page="landing"] .europe-caption { font-size: 10px; letter-spacing: .5px; }
+
+/* Ritmo e respiro tra le sezioni */
+body[data-page="landing"] .landing-section { border-top: 1px solid var(--line); padding-top: 48px; margin-top: 0; }
+body[data-page="landing"] #profilo.landing-section { background: var(--card); padding: 48px 0 32px; }
+body[data-page="landing"] #progetti.landing-section { background: var(--paper); padding: 48px 0 32px; }
+body[data-page="landing"] #approccio.landing-section { background: var(--card); padding: 48px 0 32px; }
+body[data-page="landing"] #contatti.landing-section { background: var(--paper); padding: 48px 0 32px; }
+
+/* Intestazioni: varietà di colore prompt per sezione */
+body[data-page="landing"] #profilo .readme-command b,
+body[data-page="landing"] #profilo .readme-command strong { color: var(--accent); }
+body[data-page="landing"] #progetti .readme-command b,
+body[data-page="landing"] #progetti .readme-command strong { color: var(--accent); }
+body[data-page="landing"] #approccio .readme-command b,
+body[data-page="landing"] #approccio .readme-command strong { color: var(--accent); }
+body[data-page="landing"] #contatti .readme-command b,
+body[data-page="landing"] #contatti .readme-command strong { color: var(--wine); }
+body[data-page="landing"] .readme-output > p:first-child { font-size: 13px; color: var(--muted); }
+
+/* Fluidità: fade-in per le sezioni */
+@keyframes landingFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+body[data-page="landing"] .landing-section {
+  animation: landingFadeIn 0.45s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="landing"] .landing-section { animation: none; }
+}
+
+/* Focus outline più elegante */
+a:focus-visible, button:focus-visible, textarea:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Contatto: più invito e spazio */
+body[data-page="landing"] .contact-invite { margin: 0 0 20px; color: var(--ink); font-weight: 600; font-size: 15px; }
+body[data-page="landing"] #contact-form { display: grid; gap: 16px; }
+body[data-page="landing"] #contact-form .mail-subject { margin-bottom: 4px; }
+
+/* Transizione menu tree più fluida */
+#site-index { transition: opacity .18s ease, transform .18s ease; }
+body[data-page="landing"] #site-index[hidden] { opacity: 0; transform: translateY(-4px); }
+body[data-page="landing"] #site-index:not([hidden]) { opacity: 1; transform: translateY(0); }
 .question-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; }
 .question-list button { text-align:left; padding:18px; }
 .question-list button[aria-pressed=true] { border-color:var(--accent); background:var(--soft); }

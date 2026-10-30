@@ -92,7 +92,7 @@ test('contact headings support safe section titles and keep the open composer', 
 });
 test('README summaries explain the page and the next user action', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
-  assert.match(source, /Benvenuto nel mio sito/);
+  assert.match(source, /Lavoro su infrastrutture Linux, database e analisi dei dati/);
   assert.match(source, /Qui trovi formazione, esperienze e luoghi del mio percorso/);
   assert.match(source, /Cinque fasi da leggere in sequenza/);
   assert.match(source, /Seleziona una scheda per leggere il contesto/);
