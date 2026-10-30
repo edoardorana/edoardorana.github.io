@@ -4,12 +4,11 @@ Aggiornato il 30 ottobre 2026. Le note precedenti sono state condensate; i commi
 
 ## Piano per gli assistenti — 30 ottobre 2026
 
-- Edoardo ha confermato la struttura: box compatte come indice, lettura continua Profilo → Progetti → Approccio → Collaborazioni, cinque fasi del metodo in sequenza e menu `tree`. CV, due dashboard, scheda NetBox e cinque documenti operativi rimangono pagine separate.
-- Preparati il [piano operativo con prompt](LANDING_AI_PLAN.md), [nove incarichi sequenziali](landing-tasks/) e [registro di avanzamento](LANDING_PROGRESS.md). L'[analisi](LANDING_PAGE_PROPOSAL.md) riflette la decisione confermata; non restano alternative da scegliere sull'incorporamento delle dashboard.
-- Allineati AGENTS, istruzioni Claude/Gemini/Copilot, contesto, guida VS Code e rimandi dei README/piani. Le vecchie note sotto sono cronologia, non istruzioni che prevalgono sulla decisione corrente.
-- Base locale: `main` al commit `31bf4867902916fbf0f4137e12a38a77674cccca`, inizialmente senza modifiche. Sintassi e 20 test Node superati; build completata. Otto viste aperte nel browser a 1280/390 px senza overflow; verificati menu Invio/Escape e Indietro/Avanti/refresh fra Home e Profilo. Limiti dettagliati nella proposta. Compito 00: base salvata con tag `backup/pre-landing-2026-10-30` e branch `feat/landing-page` creati sul commit base; controlli npm check/build e git diff --check eseguiti.
-- Verifica del pacchetto operativo: 105 collegamenti locali controllati in 21 documenti, senza destinazioni mancanti; ripetuti con successo sintassi, 20 test Node e build. Nessun errore di whitespace nel diff. In questa fase solo documentale non sono state ripetute le prove browser della versione di partenza e non è stata testata una landing ancora inesistente.
-- Verifiche del compito 00: `npm.cmd run check` superato (20 test Node, 0 fail); `npm.cmd run build` superato (Build ready: dist/); `git diff --check` senza errori di whitespace (solo warning preesistente LF→CRLF su STATUS.md). Branch e tag verificabili con Git.
+- Direzione: landing con quattro sezioni (Profilo, Progetti, Approccio, Collaborazioni); CV, dashboard, NetBox e documenti Approccio restano separati. Piano: `LANDING_AI_PLAN.md`. Registro: `LANDING_PROGRESS.md`. Schede: `landing-tasks/`.
+- Base: `main` @ `31bf4867902916fbf0f4137e12a38a77674cccca`, tag `backup/pre-landing-2026-10-30`, branch `feat/landing-page`.
+- Stato: 00–09 eseguiti; 05/06/07 revisionati in sola lettura (prove browser NON VERIFICATO); 10 creato (non avviato). Rapporto QA: `LANDING_QA.md`.
+- Verifiche: check (26 test), build, diff superati. Prove browser in attesa.
+- Modifiche: solo documentazione e sorgenti landing. Nessun push/merge/deploy. Un solo scrittore alla volta.
 - Modificate soltanto documentazione e istruzioni per gli assistenti. Sito invariato. Compito 00 eseguito sul branch `feat/landing-page` e revisionato da Codex: commit `538c1cb3d224b07d16345b19dadc53bdf326c2f6` approvato senza problemi bloccanti. Il tag `backup/pre-landing-2026-10-30` conserva la base `31bf4867902916fbf0f4137e12a38a77674cccca`. Prossimo passo autorizzato: incarico 01.
 - Compito 01 eseguito e revisionato sul branch di prova: `terminalHeader` e il compositore Collaborazioni accettano un livello semantico `h1`/`h2` e un ID facoltativo codificato, conservando `h1` e il markup visivo esistente per tutte le chiamate correnti. Aggiunti test mirati per default, sezione, escaping e modulo sempre aperto: `npm.cmd run check` superato (22 test), build e diagnostica completate. Profilo e Collaborazioni verificati a 1280/390 px: nessun overflow, campi visibili e struttura preesistente invariata. Prossimo incarico autorizzato: 02.
 - Compito 02 eseguito e revisionato: Approccio mostra le cinque fasi in sequenza, con titolo, sintesi, testo, documentazione, tag e collegamento alla scheda separata; rimossi stato, binding e CSS dei tab e delle frecce. `npm.cmd run check` superato (22 test), build, diagnostica e `git diff --check` completati. Browser verificato a 1280 e 390 px: cinque articoli, un solo `h1`, nessun controllo residuo e nessun overflow orizzontale. Le cinque schede rispondono e tornano ad Approccio; Evolvere resta una bozza. Prossimo incarico autorizzato: 03.
@@ -24,15 +23,18 @@ Aggiornato il 30 ottobre 2026. Le note precedenti sono state condensate; i commi
 - Compito 10 creato (non avviato): redesign estetico della landing. Feedback di Edoardo: le box di navigazione (Profilo/Progetti/Approccio/Contatti) devono sparire; mappa da riposizionare in versione desktop; cronologia da migliorare (font, grandezza, spazi); tutto il resto poco armonioso. Trattare come graphic designer professionista. Scheda in `docs/landing-tasks/10-redesign.md`. Prossimo passo autorizzato: 10 (dopo valutazione visiva di Edoardo).
 - Compito 09 creato (non avviato): miglioramento estetico della landing. Scheda in `docs/landing-tasks/09-estetica.md`. File consentiti: style.css, script.js (solo animazioni/focus), index.html (solo classi/attributi), registro e STATUS. Prossimo passo autorizzato: 09 (dopo valutazione visiva di Edoardo).
 
-## Armonia visiva e revisione tecnica — 29 ottobre 2026
+## Sito e pubblicazione
 
-- Revisione di tutte le pagine e di tutti gli script applicativi/offline: [rapporto con problemi, interventi, copertura e limiti](REVIEW_2026-10-29.md).
-- Approccio mobile più leggibile, schede autonome allineate al CV, Contatti integrato nel banner con campi sempre aperti e senza prompt finale. README e istruzioni accorciati; menu compatto mantenuto, con chiusura anche all'esterno.
-- Dashboard: rimossi eventi persistenti dopo la navigazione; filtri invalidi segnalati e export bloccato; messaggi di selezione vuota rimossi al ripristino. Filtri immobiliari inizialmente chiusi, titoli grafici uniformati. Corretti istogrammi costanti e importazioni CSV superate da una nuova scelta.
-- Pulizia di CSS, stato e aggregazioni senza utilizzo; conversione numerica Python più rigorosa. Nessuna nuova dipendenza e dataset pubblico invariato.
-- Verifiche locali: 20 test Node, 2 test Python, build e diagnostica editor superati. Otto viste a 1280/390/320 px, CV e cinque documenti a 390 px; flussi dashboard, touch emulato, menu da tastiera e Indietro/Avanti verificati. Limiti e prossimi passi nel rapporto.
-- Integrata la [PR #13](https://github.com/edoardorana/edoardorana.github.io/pull/13) in `main`, merge `5ac365e`, dopo il successo dei controlli remoti. Pubblicazione Pages: [run 40876483516](https://github.com/edoardorana/edoardorana.github.io/actions/runs/40876483516).
-- Run Pages completato con successo. Verificata la corrispondenza di nove asset pubblici con i sorgenti e aperta Collaborazioni online a 390 px: campi visibili e nessun overflow.
+- Sorgenti attivi in `proposal/`; `npm run build` genera `dist/`, escluso da Git. Il sito legacy alla radice è stato rimosso.
+- Il workflow GitHub Actions esegue controlli e build sulle pull request; pubblica GitHub Pages dai push su `main` all'indirizzo https://edoardorana.github.io/.
+- La PR #2 è stata integrata in `main` il 19 ottobre 2026 (commit `c460e09`). Nel run GitHub Actions `39244002565`, i job `check` e `deploy` sono riusciti.
+- La preview Sites è separata e non si aggiorna con il push GitHub.
+## Sito e pubblicazione
+
+- Sorgenti attivi in `proposal/`; `npm run build` genera `dist/`, escluso da Git. Il sito legacy alla radice è stato rimosso.
+- Il workflow GitHub Actions esegue controlli e build sulle pull request; pubblica GitHub Pages dai push su `main` all'indirizzo https://edoardorana.github.io/.
+- La PR #2 è stata integrata in `main` il 19 ottobre 2026 (commit `c460e09`). Nel run GitHub Actions `39244002565`, i job `check` e `deploy` sono riusciti.
+- La preview Sites è separata e non si aggiorna con il push GitHub.
 
 ## README, tree e contatti — 29 ottobre 2026
 
