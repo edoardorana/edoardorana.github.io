@@ -1,5 +1,13 @@
 # WEB-CV — contesto condiviso
 
+## Decisione corrente — 30 ottobre 2026
+
+Edoardo ha approvato la preparazione del piano per trasformare le quattro sezioni principali in una landing, mantenendo lo stile terminale e tutti i contenuti. Box compatte come indice; `tree` raggiungibile durante lo scorrimento. Profilo, Progetti, Approccio e Collaborazioni in sequenza; le cinque fasi del metodo tutte leggibili. CV, dashboard, scheda NetBox e documenti operativi restano separati e tornano alla sezione pertinente.
+
+Riferimento operativo: [piano per gli assistenti](LANDING_AI_PLAN.md). Stato effettivo: [registro](LANDING_PROGRESS.md). Alla preparazione del piano il sito non è stato ancora trasformato. Gli incarichi si eseguono uno alla volta su un branch di prova; la pubblicazione non è inclusa.
+
+Questa decisione sostituisce le precedenti indicazioni che imponevano la navigazione a pagine/mappa. Le sezioni datate sotto conservano contesto e cronologia; non ripristinare comportamenti superati. Restano validi i fatti professionali, i limiti di riservatezza e l'architettura statica. Il contatto corrente ha campi sempre aperti, senza cursore d'attesa né copia email.
+
 ## Obiettivo
 
 Portfolio personale di Edoardo Rana per presentarsi, proporre collaborazioni e sviluppare un'attività freelance. In seguito: brochure da distribuire a Milano e in altre città europee, con QR verso un URL pubblico stabile.

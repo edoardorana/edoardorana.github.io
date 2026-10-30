@@ -1,5 +1,7 @@
 # Piano di esecuzione — prossima iterazione
 
+**Documento storico, iterazione già conclusa.** Il lavoro corrente è descritto dal [piano landing](LANDING_AI_PLAN.md); consultare il [registro](LANDING_PROGRESS.md) prima di eseguire nuovi incarichi.
+
 Preparato il 28 ottobre 2026. Questo documento conserva le decisioni concordate. Implementazione completata, verificata e pubblicata il 29 ottobre tramite PR #12; dettagli e limiti in [STATUS.md](STATUS.md).
 
 ## Obiettivo

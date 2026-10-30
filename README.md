@@ -4,6 +4,8 @@ Sito personale per raccontare profilo, approccio e progetti, e aprire nuove coll
 
 **Per iniziare su Windows / Visual Studio Code:** [guida passo passo](docs/SETUP_VSCODE.md).
 
+**Migrazione landing approvata, ancora da implementare:** [piano per gli assistenti](docs/LANDING_AI_PLAN.md) e [registro degli incarichi](docs/LANDING_PROGRESS.md). Quattro sezioni principali in una pagina; CV, dashboard e schede restano separati. Eseguire una scheda alla volta.
+
 ## Avvio rapido
 
 Node.js 22 o superiore. Nessuna dipendenza da installare per sito e build.
