@@ -1,6 +1,7 @@
 import { contactHTML, bindContact } from './contact.mjs';
 import { areas, steps, projects, places, parseRoute, mapPoint } from './data.mjs';
 import { terminalHeader } from './terminal-header.mjs';
+import { resolveView } from './navigation.mjs';
 
 const main = document.querySelector('#main');
 const index = document.querySelector('#site-index');
@@ -12,6 +13,8 @@ let selectedPlace = 'milano';
 let renderVersion = 0;
 let pageController;
 let pageCleanup;
+let mountedView = null;
+let mountedSection = null;
 
 function backLink(href = '#/', text = 'Torna alla Home') {
   return `<a class="back-link" href="${href}"><span aria-hidden="true">←</span> ${text}</a>`;
@@ -103,42 +106,101 @@ function bindPage(route) {
   if(route.page==='contatti') bindContact(main);
 }
 function render() {
-  const route=parseRoute(location.hash);
-  const version=++renderVersion;
-  pageController?.abort();
-  pageCleanup?.();
-  pageController=undefined;
-  pageCleanup=undefined;
-  document.body.dataset.page=route.page;
-  const visiblePage=route.page==='percorso'?'profilo':route.page;
-  const area=areas.find(a=>a.id===visiblePage);
-  document.title=`${route.item?projects.find(p=>p.id===route.item).title:area?.title||'Sistemi, database e analisi'} — Edoardo Rana`;
-  setIndexOpen(false);
-  document.querySelectorAll('#site-index a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash===(route.page==='mappa'?'#/':`#/${visiblePage}${route.item?`/${route.item}`:''}`))a.setAttribute('aria-current','page');});
-  if(route.page==='progetti'&&['immobiliare-data','dashboard-generator'].includes(route.item)){
-    const controller=new AbortController();pageController=controller;
-    main.innerHTML='<section class="page"><p role="status">Caricamento del progetto…</p></section>';
-    const module=route.item==='immobiliare-data'?import('./housing/page.mjs'):import('./explorer/page.mjs');
-    module.then(exports=>{
-      if(version!==renderVersion||controller.signal.aborted)return;
-      const mount=exports.mountHousing||exports.mountExplorer;
-      pageCleanup=mount(main,{signal:controller.signal,isCurrent:()=>version===renderVersion,navigationHTML:projectNav()});
-    }).catch(()=>{
-      if(version!==renderVersion||controller.signal.aborted)return;
-      main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}${terminalHeader({ path: `~/progetti/${route.item}`, title: 'Progetto non disponibile', summary: 'Ricarica la pagina per riprovare.' })}</section>`;
-    });
-  }else{
-    const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}${terminalHeader({ path: '~/404', title: 'Pagina non trovata', summary: 'Controlla l’indirizzo oppure torna alla Home.' })}</section>`};
-    main.innerHTML=renderers[route.page]();
-    bindPage(route);
+  const view = resolveView(location.hash);
+  const isLanding = view.kind === 'landing';
+  const section = isLanding ? view.section : null;
+  const sameLanding = isLanding && mountedView === 'landing';
+
+  if (!sameLanding) {
+    pageController?.abort();
+    pageController = undefined;
+    pageCleanup?.();
+    pageCleanup = undefined;
+    renderVersion++;
   }
-  if(route.page==='mappa'&&previousRoute.page!=='mappa')document.querySelector(`[data-node="${previousRoute.page==='percorso'?'profilo':previousRoute.page}"]`)?.focus({preventScroll:true});
-  else main.focus({preventScroll:true});
-  previousRoute=route;
+  const version = renderVersion;
+
+  let title = 'Sistemi, database e analisi';
+  if (view.kind === 'project') {
+    const project = projects.find(p => p.id === view.item);
+    title = project ? project.title : title;
+  } else if (isLanding && section && section !== 'home') {
+    const area = areas.find(a => a.id === section);
+    title = area ? area.title : title;
+  } else if (view.kind === 'not-found') {
+    title = 'Pagina non trovata';
+  }
+  document.title = `${title} — Edoardo Rana`;
+
+  setIndexOpen(false);
+  document.querySelectorAll('#site-index a').forEach(a => {
+    a.removeAttribute('aria-current');
+    let targetHash = '#/';
+    if (view.kind === 'project') targetHash = `#/progetti/${view.item}`;
+    else if (isLanding && section && section !== 'home') targetHash = `#/${section}`;
+    if (a.hash === targetHash) a.setAttribute('aria-current', 'page');
+  });
+
+  if (isLanding) {
+    document.body.dataset.page = 'landing';
+    if (!sameLanding) {
+      main.innerHTML = landing();
+      bindLanding(main);
+      mountedView = 'landing';
+    }
+    mountedSection = section;
+    if (section && section !== 'home') {
+      const target = document.getElementById(section);
+      if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
+    } else {
+      window.scrollTo(0, 0);
+    }
+    if (section && section !== 'home') {
+      const target = document.getElementById(section);
+      if (target) target.focus({ preventScroll: true });
+    } else {
+      main.focus({ preventScroll: true });
+    }
+  } else if (view.kind === 'project') {
+    if (mountedView === 'landing') {
+      mountedView = null;
+      mountedSection = null;
+    }
+    document.body.dataset.page = 'progetto';
+    if (['immobiliare-data', 'dashboard-generator'].includes(view.item)) {
+      const controller = new AbortController();
+      pageController = controller;
+      main.innerHTML = '<section class="page"><p role="status">Caricamento del progetto…</p></section>';
+      const module = view.item === 'immobiliare-data' ? import('./housing/page.mjs') : import('./explorer/page.mjs');
+      module.then(exports => {
+        if (version !== renderVersion || controller.signal.aborted) return;
+        const mount = exports.mountHousing || exports.mountExplorer;
+        pageCleanup = mount(main, { signal: controller.signal, isCurrent: () => version === renderVersion, navigationHTML: projectNav() });
+      }).catch(() => {
+        if (version !== renderVersion || controller.signal.aborted) return;
+        main.innerHTML = `<section class="page">${backLink('#/progetti', 'Torna ai progetti')}${terminalHeader({ path: `~/progetti/${view.item}`, title: 'Progetto non disponibile', summary: 'Ricarica la pagina per riprovare.' })}</section>`;
+      });
+    } else {
+      main.innerHTML = view.item ? projectDetail(view.item) : projectList();
+      bindPage({ page: 'progetti', item: view.item });
+    }
+    window.scrollTo(0, 0);
+    main.focus({ preventScroll: true });
+  } else {
+    if (mountedView === 'landing') {
+      mountedView = null;
+      mountedSection = null;
+    }
+    document.body.dataset.page = 'not-found';
+    main.innerHTML = `<section class="page">${backLink()}${terminalHeader({ path: '~/404', title: 'Pagina non trovata', summary: 'Controlla l’indirizzo oppure torna alla Home.' })}</section>`;
+    window.scrollTo(0, 0);
+    main.focus({ preventScroll: true });
+  }
+
+  previousRoute = { page: isLanding ? (section || 'mappa') : (view.kind === 'project' ? 'progetti' : 'not-found'), item: view.item };
 }
 function navigate() {
   render();
-  window.scrollTo(0,0);
 }
 function setIndexOpen(open) {
   index.hidden=!open;
@@ -148,8 +210,35 @@ function setIndexOpen(open) {
 indexToggle.addEventListener('click',()=>setIndexOpen(index.hidden));
 document.addEventListener('pointerdown',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
 document.addEventListener('focusin',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
-index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;setIndexOpen(false);if(link.hash===location.hash)main.focus({preventScroll:true});});
+index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;setIndexOpen(false);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!index.hidden){setIndexOpen(false);indexToggle.focus();}});
 document.querySelector('.skip').addEventListener('click',e=>{e.preventDefault();main.focus();});
 window.addEventListener('hashchange',()=>{if(location.hash==='#main'){main.focus();return;}navigate();});
+document.addEventListener('click',event=>{
+  if(event.defaultPrevented)return;
+  if(event.button!==0)return;
+  if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+  const link=event.target.closest('a');
+  if(!link)return;
+  const href=link.getAttribute('href');
+  if(!href||!href.startsWith('#'))return;
+  if(href.endsWith('.html'))return;
+  if(href!==location.hash)return;
+  event.preventDefault();
+  const view=resolveView(href);
+  if(view.kind==='landing'){
+    if(view.section&&view.section!=='home'){
+      const target=document.getElementById(view.section);
+      if(target){target.scrollIntoView({behavior:'auto',block:'start'});target.focus({preventScroll:true});}
+      else window.scrollTo(0,0);
+    }else{
+      window.scrollTo(0,0);
+      main.focus({preventScroll:true});
+    }
+  }else{
+    window.scrollTo(0,0);
+    main.focus({preventScroll:true});
+  }
+  setIndexOpen(false);
+});
 render();
