@@ -5,6 +5,7 @@
 - Le rifiniture dell’utente a CV e Luoghi sono state pubblicate separatamente nel commit `218bce9`; il titolo `competenze/` resta disponibile alle tecnologie assistive senza tornare visibile.
 - Tutte le nove pagine HTML sorgente usano esclusivamente `<footer class="site-footer"><span>© 2026 edo.dot</span></footer>`; landing, dashboard e 404 condividono il footer di `index.html`.
 - Il README di Immobiliare-data non ha più linee sopra e sotto: usa un fondo leggero e tre voci più narrative (`dataset/`, `lettura/`, `attenzione/`).
+- Rimosso il pallino decorativo davanti a `~/progetti/immobiliare-data$ cat readme.md`; il prompt resta allineato al contenuto come nella pagina Collaborazioni.
 - Il pannello filtri è diventato un controllo monospaziato compatto da 36 px; i campi restano espandibili, accessibili e funzionalmente invariati.
 - Le cinque viste coordinate sono ora: distribuzione con mediana e taglio visivo al 99° percentile, classifica lollipop, densità bidimensionale a celle, composizione radiale e heatmap zona × tipologia. Clic, selezioni, filtri, tabella ed export restano coordinati.
 - Plotly completo 4.1.2 sostituisce il bundle basic, resta servito localmente e conserva la licenza MIT. Nessuna risorsa grafica esterna viene caricata a runtime.
@@ -16,7 +17,7 @@
 - Sorgente autorevole in `proposal/`; `dist/` resta un artefatto generato. Il tag `v2.6` identifica la release di base e `v2.6.1-backup` è soltanto un punto di recupero precedente alle ultime rifiniture.
 - Landing: indice unico e compatto con Profilo, Progetti, Approccio e Collaborazioni. Nessun menu duplicato o collegamento testuale di ritorno: il marchio `edo.dot` è il collegamento comune alla Home.
 - Profilo: CV e Luoghi restano pagine separate. Il CV usa tutta la larghezza utile e i capitoli `profilo/`, `esperienze/`, `formazione/`, `competenze/`; non espone un controllo dedicato per la stampa.
-- Progetti: le due dashboard restano separate. Immobiliare-data apre con `cat readme.md`, organizzato in `contenuto/`, `strumenti/` e `limiti/`; il vecchio blocco “Il dataset in breve” non esiste più.
+- Progetti: le due dashboard restano separate. Immobiliare-data apre con `cat readme.md`, organizzato in `dataset/`, `lettura/` e `attenzione/`; il vecchio blocco “Il dataset in breve” non esiste più.
 - Approccio: i cinque documenti condividono lo stepper orizzontale e mantengono `Salva PDF` in fondo alla pagina.
 - Collaborazioni: Contatti usa i comandi `~/collaborazioni$ contatti --list` e `~/collaborazioni$ mail --new`; oggetto e messaggio sono subito disponibili.
 - Restano verifiche migliorative non bloccanti su telefono fisico, Safari/Firefox e screen reader.

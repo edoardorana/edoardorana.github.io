@@ -207,6 +207,9 @@ body[data-page="landing"] .terminal-heading { margin: 24px 0 28px; }
 .data-workspace { min-width: 0; }
 .data-workspace > .terminal-heading { margin: 22px 0 24px; padding: 5px 8px 9px; border: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--soft) 82%, transparent), transparent 78%); }
 .data-workspace > .terminal-heading::before { top: 24px; }
+.housing-workspace > .terminal-heading::before { content: none; }
+.housing-workspace > .terminal-heading .readme-command,
+.housing-workspace > .terminal-heading .readme-output { padding-left: 18px; }
 .data-panel { margin: 28px 0; padding: clamp(16px, 3vw, 28px); border: 1px solid var(--line); background: var(--soft); }
 .data-panel h2 { margin-top: 0; }
 .housing-filter-panel { margin: 14px 0 22px; padding: 0; border: 0; background: transparent; }

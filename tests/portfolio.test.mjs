@@ -162,11 +162,14 @@ test('separate pages use the brand as Home link and share the minimal footer', a
   const housing = await readFile(new URL('../proposal/housing/page.mjs', import.meta.url), 'utf8');
   for (const label of ['dataset/', 'lettura/', 'attenzione/']) assert.match(housing, new RegExp(label.replace('/', '\\/')));
   assert.match(housing, /14\.731 annunci/);
+  assert.match(housing, /class="page data-workspace housing-workspace"/);
   for (const trace of ["kind:'lollipop'", "kind:'density'", "kind:'radial'", "kind:'heatmap'"]) assert.match(housing, new RegExp(trace));
   assert.doesNotMatch(housing, /Il dataset in breve|housing-method|lab-methodology/);
   const plotlyLoader = await readFile(new URL('../proposal/charts/plotly.mjs', import.meta.url), 'utf8');
   assert.match(plotlyLoader, /vendor\/plotly-4\.1\.2\.min\.js/);
   assert.doesNotMatch(plotlyLoader, /plotly-basic/);
+  const styles = await readFile(new URL('../proposal/style.css', import.meta.url), 'utf8');
+  assert.match(styles, /\.housing-workspace > \.terminal-heading::before \{ content: none; \}/);
 });
 
 
