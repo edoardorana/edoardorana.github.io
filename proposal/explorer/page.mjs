@@ -12,7 +12,7 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  const $=q=>container.querySelector(q);
  const events=new AbortController();
  let file,original,data,columnTypes=[],history=[],specs=[],disposed=false,generation=0,importVersion=0,pending;
- container.innerHTML='<section class="page data-workspace">'+terminalHeader({path:'~/progetti/dashboard-generator',title:'Dashboard generator',summary:'Carica un CSV, controlla i dati, prepara ciò che serve e scegli i grafici adatti alle tue domande.'})+
+ container.innerHTML='<section class="page data-workspace"><nav class="project-top-nav" aria-label="Navigazione del progetto"><a class="back-link" href="#/"><span aria-hidden="true">←</span> Torna alla Home</a></nav>'+terminalHeader({path:'~/progetti/dashboard-generator',title:'Dashboard generator',summary:'Carica un CSV, controlla i dati, prepara ciò che serve e scegli i grafici adatti alle tue domande.'})+
  '<p>Il CSV resta nel browser. Esporta i dati prima di chiudere la pagina.</p><nav class="workflow-nav" aria-label="Fasi del lavoro">'+stages.map((s,i)=>'<button type="button" data-stage="'+i+'" '+(i?'disabled':'')+'>'+String(i+1).padStart(2,'0')+' '+s+'</button>').join('')+'</nav><p id="csv-status" class="data-feedback" role="status"></p>'+
  '<section data-panel="0" class="data-panel"><h2>Carica una tabella</h2><div id="csv-drop" class="drop-zone"><label for="csv-file">Trascina qui un CSV oppure scegli un file</label><input id="csv-file" type="file" accept=".csv,text/csv"><p id="csv-filename">Nessun file selezionato</p></div><p>Prima riga con nomi delle colonne. Fino a 10 MB, 30.000 righe e 100 colonne.</p><details><summary>Impostazioni di lettura</summary><div class="data-controls"><label>Separatore<select id="csv-delimiter"><option value="">Rileva automaticamente</option><option value=";">Punto e virgola</option><option value=",">Virgola</option><option value="tab">Tabulazione</option></select></label><label>Codifica<select id="csv-encoding"><option value="utf-8">UTF-8</option><option value="windows-1252">Windows-1252 (Excel)</option></select></label><label>Numeri<select id="csv-decimal"><option value=",">Italiano: 1.234,56</option><option value=".">Punto decimale: 1234.56</option></select></label></div><p>Se un numero come 1.234 è ambiguo, scegli esplicitamente il formato della fonte.</p></details><div class="workflow-actions"><button id="csv-open">Leggi il CSV</button><button id="csv-example">Prova un esempio</button></div></section>'+
  '<section data-panel="1" class="data-panel" hidden><h2>Controlla prima di proseguire</h2><p id="csv-summary"></p><p>Verifica anteprima e tipi. Codici, CAP e identificativi possono restare categorie anche se contengono cifre.</p><div id="csv-schema" class="data-schema"></div><div id="csv-preview" class="lab-table-scroll"></div><div class="workflow-actions"><button data-goto="0">Cambia lettura</button><button data-goto="2">Continua: prepara</button></div></section>'+
@@ -21,11 +21,11 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  '<section data-panel="4" hidden><h2>La tua dashboard</h2><p>Ogni grafico indica righe utilizzate ed escluse. Puoi cambiare le colonne e il calcolo.</p><div class="workflow-actions"><button data-goto="3">Aggiungi un grafico</button><button id="csv-export-dashboard">Scarica i dati</button></div><div class="lab-charts" id="csv-charts"></div></section>'+navigationHTML+'</section>';
  const status=$('#csv-status'),decimal=()=>$('#csv-decimal').value;
  const options=(selected,predicate=()=>true,empty=false)=>(empty?'<option value="-1">Nessuna</option>':'')+data.headers.map((h,i)=>predicate(i)?'<option value="'+i+'" '+(i===selected?'selected':'')+'>'+esc(h)+'</option>':'').join('');
- function show(n){
+ function show(n,moveFocus=true){
  if(n&&!data)return;for(const p of container.querySelectorAll('[data-panel]'))p.hidden=+p.dataset.panel!==n;
  for(const b of container.querySelectorAll('[data-stage]')){b.disabled=+b.dataset.stage>0&&!data;b.toggleAttribute('aria-current',+b.dataset.stage===n);if(+b.dataset.stage===n)b.setAttribute('aria-current','step');}
  if(n===3)questions();if(n===4)drawControls();
- const heading=$('[data-panel="'+n+'"] h2');heading.tabIndex=-1;heading.focus({preventScroll:true});
+ if(moveFocus){const heading=$('[data-panel="'+n+'"] h2');heading.tabIndex=-1;heading.focus({preventScroll:true});}
  }
  function sample(target){$(target).innerHTML='<table><caption>Anteprima · prime 15 righe'+'</caption><thead><tr>'+data.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+data.rows.slice(0,15).map(r=>'<tr>'+r.map(v=>'<td>'+esc(v||'—')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';}
  function stats(i){
@@ -106,6 +106,6 @@ export function mountExplorer(container,{navigationHTML='',isCurrent=()=>true}={
  if(b.dataset.removeChart!==undefined){specs.splice(+b.dataset.removeChart,1);drawControls();}
  },{signal:events.signal});
  $('#csv-charts').onchange=e=>{if(!e.target.dataset.spec)return;const s=specs[+e.target.closest('[data-chart]').dataset.chart],k=e.target.dataset.spec;s[k]=k==='aggregate'?e.target.value:+e.target.value;drawControls();};
- show(0);
+ show(0,false);
  return()=>{disposed=true;events.abort();generation++;importVersion++;for(const p of container.querySelectorAll('.explorer-plot'))window.Plotly?.purge(p);};
 }
