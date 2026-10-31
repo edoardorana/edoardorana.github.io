@@ -56,31 +56,8 @@ function europeMap() {
 function contact() {
   return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="contatti-title">collaborazioni</h2><p>Parliamo del problema, prima degli strumenti.</p></header>${contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false })}</section>`;
 }
-function treeView() {
-  return `<section class="page tree-section" id="tree" aria-labelledby="tree-title">
-    <div class="tree-root">edo.dot/</div>
-    <ul class="tree">
-      <li>
-        <a href="#/profilo"><span class="tree-folder">├── profilo/</span></a>
-        <ul class="tree">
-          <li><a href="cv.html">├── cv.html</a></li>
-          <li><a href="#/profilo">└── luoghi</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#/progetti"><span class="tree-folder">├── progetti/</span></a>
-        <ul class="tree">
-          <li><a href="#/progetti/immobiliare-data">├── scraper immobiliare.it</a></li>
-          <li><a href="#/progetti/dashboard-generator">└── dashboard generator</a></li>
-        </ul>
-      </li>
-      <li><a href="#/approccio"><span class="tree-folder">├── approccio/</span></a></li>
-      <li><a href="#/contatti"><span class="tree-folder">└── collaborazioni/</span></a></li>
-    </ul>
-  </section>`;
-}
 function landing() {
-  return `${home()}${treeView()}${profile()}${projectList()}${approach()}${contact()}`;
+  return `${home()}${profile()}${projectList()}${approach()}${contact()}`;
 }
 function setPlace(root, key) {
   selectedPlace = key;

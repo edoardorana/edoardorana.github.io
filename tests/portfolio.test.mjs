@@ -119,8 +119,9 @@ test('site menu uses a compact terminal tree without repeated paths or file mode
   const html = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
   assert.doesNotMatch(html, /drwx|rw-r|directory-mode/);
   assert.match(html, /<span class="menu-prompt"[^>]*>.*<strong>tree<\/strong>/);
-  for (const label of ['home', 'profilo', 'cv.html', 'progetti', 'dashboard-generator', 'immobiliare-data', 'approccio', 'contatti']) assert.match(html, new RegExp(`>${label.replace('.', '\\.')}<`));
-  assert.doesNotMatch(html, />\s*~\/(?:home|profilo|progetti|approccio|contatti)|>\s*progetti\/(?:dashboard-generator|immobiliare-data)/);
-  assert.ok(html.indexOf('aria-label="Progetti"') < html.indexOf('aria-label="Approccio"'));
+  for (const label of ['profilo', 'cv.html', 'luoghi', 'progetti', 'scraper immobiliare.it', 'dashboard generator', 'approccio', 'collaborazioni']) assert.match(html, new RegExp(label.replace('.', '\\.')));
+  assert.doesNotMatch(html, />\s*~\/(?:profilo|progetti|approccio|collaborazioni)|>\s*progetti\/(?:immobiliare-data|dashboard-generator)/);
+  assert.match(html, /tree-root/);
+  assert.match(html, /tree-folder/);
 });
 

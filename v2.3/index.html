@@ -15,15 +15,24 @@
     <a class="brand" href="#/" aria-label="edo dot, torna alla Home"><span class="brand-mark" aria-hidden="true">edo<span>.</span>dot</span></a>
     <button class="index-toggle" aria-label="Apri indice del sito" aria-expanded="false" aria-controls="site-index"><span class="menu-prompt" aria-hidden="true"><span>~</span>$ <strong>tree</strong></span><span class="menu-lines" aria-hidden="true"><i></i><i></i></span></button>
     <nav id="site-index" aria-label="Indice del sito" hidden>
-      <ul class="directory-list">
-        <li><a href="#/" aria-label="Home">home</a></li>
-        <li><a href="#/profilo" aria-label="Profilo">profilo</a><ul><li><a href="cv.html" aria-label="CV sintetico">cv.html</a></li></ul></li>
-        <li><a href="#/progetti" aria-label="Progetti">progetti</a><ul>
-          <li><a href="#/progetti/dashboard-generator" aria-label="Dashboard generator">dashboard-generator</a></li>
-          <li><a href="#/progetti/immobiliare-data" aria-label="Dashboard immobiliare">immobiliare-data</a></li>
-        </ul></li>
-        <li><a href="#/approccio" aria-label="Approccio">approccio</a></li>
-        <li><a href="#/contatti" aria-label="Collaborazioni">contatti</a></li>
+      <div class="tree-root">edo.dot/</div>
+      <ul class="tree">
+        <li>
+          <a href="#/profilo"><span class="tree-folder">├── profilo/</span></a>
+          <ul class="tree">
+            <li><a href="cv.html">├── cv.html</a></li>
+            <li><a href="#/profilo">└── luoghi</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#/progetti"><span class="tree-folder">├── progetti/</span></a>
+          <ul class="tree">
+            <li><a href="#/progetti/immobiliare-data">├── scraper immobiliare.it</a></li>
+            <li><a href="#/progetti/dashboard-generator">└── dashboard generator</a></li>
+          </ul>
+        </li>
+        <li><a href="#/approccio"><span class="tree-folder">├── approccio/</span></a></li>
+        <li><a href="#/contatti"><span class="tree-folder">└── collaborazioni/</span></a></li>
       </ul>
     </nav>
   </header>
