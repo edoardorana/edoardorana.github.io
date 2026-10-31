@@ -55,7 +55,7 @@ test('entry and CV use local assets and contain no duplicate HTML ids', async ()
     for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))(?:\?[^\"]*)?"/g)) await readFile(new URL(asset, new URL('../proposal/' + name, import.meta.url)));
   }
   const cv = await readFile(new URL('../proposal/cv.html', import.meta.url), 'utf8');
-  for (const section of ['profilo', 'esperienze', 'formazione', 'competenze']) assert.match(cv, new RegExp(`<section id="${section}"[^>]*><h2>${section}/<\\/h2>`));
+  for (const section of ['profilo', 'esperienze', 'formazione', 'competenze']) assert.match(cv, new RegExp(`<section id="${section}"[^>]*><h2[^>]*>${section}/<\\/h2>`));
   assert.doesNotMatch(cv, /Salva PDF|Stampa \/ salva PDF/);
 });
 test('terminal headings keep the title semantic and the readme always visible', () => {
