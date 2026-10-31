@@ -168,10 +168,12 @@ body[data-page="landing"] .terminal-heading { margin: 24px 0 28px; }
 .timeline h3, .timeline h4 { margin-bottom: 7px; font: 500 20px/1.14 var(--display); letter-spacing: -.3px; }
 .timeline p { margin: 0; color: var(--muted); font-size: 13px; }
 .mail-command { margin-top: 8px; border-top: 1px solid var(--line); }
-#contact-form { padding: 8px 18px 20px; font: 13px/1.6 var(--mono); }
+#contact-form { padding: 8px 18px 20px; font: 12px/1.55 var(--mono); }
 #contact-form label { display: block; color: var(--accent); }
-.mail-subject { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; gap: 12px; margin-bottom: 20px; }
-#contact-form input, #contact-form textarea { width: 100%; min-width: 0; padding: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font: inherit; border-radius: 0; caret-color: var(--wine); }
+.mail-subject { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 12px; margin-bottom: 18px; }
+#contact-form input, #contact-form textarea { width: 100%; min-width: 0; padding: 7px 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font: inherit; font-size: 12px; line-height: 1.55; border-radius: 0; caret-color: var(--wine); }
+#contact-form input { height: 34px; }
+#contact-form textarea { padding: 10px; }
 #contact-form textarea { display: block; min-height: 140px; margin-top: 8px; resize: vertical; }
 #contact-form input::placeholder, #contact-form textarea::placeholder { color: var(--muted); opacity: 1; }
 .mail-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 20px; }

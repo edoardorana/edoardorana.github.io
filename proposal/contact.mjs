@@ -8,8 +8,8 @@ export function contactHTML({ headingLevel = 1, titleId, showReadme = true } = {
   <p class="readme-command"><b>~/collaborazioni</b>$ <strong>contatti --list</strong></p>
   <div class="contact-links"><a href="mailto:${person.email}">${person.email}</a><a href="${person.github}" target="_blank" rel="noopener">github.com/edoardorana ↗</a></div>
   <p class="readme-command mail-command"><b>~/collaborazioni</b>$ <strong>mail --new</strong></p>
-  <form id="contact-form"><div class="mail-subject"><label for="subject">oggetto:</label><input id="subject" name="subject" maxlength="160" required placeholder="Di cosa parliamo?" value="${escapeHTML(subject)}"></div>
-  <label for="message">messaggio:</label><textarea id="message" name="message" rows="5" maxlength="4000" required placeholder="Scrivi qui il tuo messaggio…" aria-describedby="mail-help">${escapeHTML(message)}</textarea>
+  <form id="contact-form"><div class="mail-subject"><label for="subject">oggetto:</label><input id="subject" name="subject" maxlength="160" required placeholder="Breve descrizione del tema…" value="${escapeHTML(subject)}"></div>
+  <label for="message">messaggio:</label><textarea id="message" name="message" rows="5" maxlength="4000" required placeholder="Descrivi il contesto o la richiesta…" aria-describedby="mail-help">${escapeHTML(message)}</textarea>
   <p class="form-note" id="mail-help">Invio nell’oggetto passa al messaggio. Ctrl/⌘ + Invio prepara la bozza.</p>
   <div class="mail-actions"><button class="button" type="submit">Prepara bozza ↗</button><p class="form-note">Si apre il tuo programma di posta, da cui potrai inviarla.</p></div>
   <p id="contact-status" role="status"></p></form></div>`;
