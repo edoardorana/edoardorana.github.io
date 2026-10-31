@@ -393,6 +393,12 @@ body[data-page="landing"] .landing-section:focus { outline: none; }
 .profile-section .section-heading { margin-bottom: 34px; }
 .cv-callout { grid-column: 2; grid-row: 1; display: inline-flex; justify-self: start; align-items: center; gap: 18px; min-height: 40px; padding: 8px 12px; border: 1px solid var(--ink); color: var(--ink); font: 11px/1.5 var(--mono); }
 .cv-callout:hover { background: var(--ink); color: white; }
+/* Profile tree view */
+.compact-tree { list-style: none; padding: 0; margin: 0; font: 13px/1.6 var(--mono); color: var(--ink); }
+.compact-tree .tree { padding-left: 24px; }
+.compact-tree a { color: inherit; text-decoration: none; display: inline; }
+.compact-tree a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.tree-hashtags { color: var(--muted); font-size: 12px; }
 .profile-map { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); gap: clamp(36px, 7vw, 88px); align-items: center; padding-top: 38px; border-top: 1px solid var(--line); }
 .profile-map-copy { min-width: 0; }
 .profile-map-copy h3 { max-width: 540px; margin-bottom: 16px; font: 600 clamp(23px, 2.6vw, 31px)/1.2 var(--mono); letter-spacing: -.7px; }

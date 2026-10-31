@@ -29,7 +29,13 @@ function home() {
 }
 function profile() {
   return `<section class="page profile-section landing-section" id="profilo" aria-labelledby="profilo-title">
-    <header class="section-heading compact-heading"><h2 class="compact-title" id="profilo-title"><span>profilo</span> <span>CV</span> #esperienze #formazione #competenze #lingue</h2><a class="cv-callout" href="cv.html"><span aria-hidden="true">Apri ↗</span></a></header>
+    <header class="section-heading compact-heading">
+      <div class="tree-root">profilo/</div>
+      <ul class="tree compact-tree">
+        <li><a href="cv.html">├── cv.html</a></li>
+        <li><span class="tree-hashtags">└── #esperienze #formazione #competenze #lingue</span></li>
+      </ul>
+    </header>
     <div class="profile-map"><div class="profile-map-copy"><p class="section-label">luoghi</p><h3>Quattro tappe, un percorso.</h3><p>Milano, Tromsø, Zugo e Stoccarda raccontano studi, lavoro da remoto e periodi personali. Seleziona una città per leggere il contesto.</p><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto. Cartografia: Natural Earth.</span></div></div>
   </section>`;
 }
