@@ -163,6 +163,8 @@ test('separate pages use the brand as Home link and share the minimal footer', a
   for (const label of ['dataset/', 'lettura/', 'attenzione/']) assert.match(housing, new RegExp(label.replace('/', '\\/')));
   assert.match(housing, /14\.731 annunci/);
   assert.match(housing, /class="page data-workspace housing-workspace"/);
+  assert.match(housing, /const pageSize=10;/);
+  assert.doesNotMatch(housing, /20 righe per pagina|page\*20/);
   for (const trace of ["kind:'lollipop'", "kind:'density'", "kind:'radial'", "kind:'heatmap'"]) assert.match(housing, new RegExp(trace));
   assert.doesNotMatch(housing, /Il dataset in breve|housing-method|lab-methodology/);
   const plotlyLoader = await readFile(new URL('../proposal/charts/plotly.mjs', import.meta.url), 'utf8');

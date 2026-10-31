@@ -8,6 +8,7 @@ const cats=['zone','type','condition','rooms','energy'], nums=['price','area','s
 const fmt=n=>n===null?'—':new Intl.NumberFormat('it-IT',{maximumFractionDigits:0}).format(n);
 const value=(r,key)=>key==='sqm'?pricePerSqm(r):r[key];
 const aggregates={median:'Mediana',mean:'Media',count:'Conteggio'};
+const pageSize=10;
 export function mountHousing(container,{signal,isCurrent=()=>true,navigationHTML=''}={}) {
  const events=new AbortController();
  const specs=[
@@ -35,8 +36,8 @@ export function mountHousing(container,{signal,isCurrent=()=>true,navigationHTML
  const setExtra=(key,val)=>{if(JSON.stringify(extra[key])===JSON.stringify(val))delete extra[key];else extra[key]=val;update();};
  function table(){
  const fields=['zone','type','price','area','sqm'];
- $('#housing-table').innerHTML='<table><caption>Annunci filtrati · 20 righe per pagina</caption><thead><tr>'+fields.map(k=>'<th>'+labels[k]+'</th>').join('')+'</tr></thead><tbody>'+selected.slice(page*20,page*20+20).map(r=>'<tr>'+fields.map(k=>'<td>'+esc(typeof value(r,k)==='number'?fmt(value(r,k)):value(r,k)??'—')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
- const total=Math.max(1,Math.ceil(selected.length/20));$('#housing-page').textContent='Pagina '+(page+1)+' di '+total;$('#housing-prev').disabled=page===0;$('#housing-next').disabled=page>=total-1;$('#housing-export').disabled=!selected.length||!form.checkValidity();
+ $('#housing-table').innerHTML='<table><caption>Annunci filtrati · '+pageSize+' righe per pagina</caption><thead><tr>'+fields.map(k=>'<th>'+labels[k]+'</th>').join('')+'</tr></thead><tbody>'+selected.slice(page*pageSize,page*pageSize+pageSize).map(r=>'<tr>'+fields.map(k=>'<td>'+esc(typeof value(r,k)==='number'?fmt(value(r,k)):value(r,k)??'—')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+ const total=Math.max(1,Math.ceil(selected.length/pageSize));$('#housing-page').textContent='Pagina '+(page+1)+' di '+total;$('#housing-prev').disabled=page===0;$('#housing-next').disabled=page>=total-1;$('#housing-export').disabled=!selected.length||!form.checkValidity();
  }
  function filterClick(d){
  if(!d)return;
