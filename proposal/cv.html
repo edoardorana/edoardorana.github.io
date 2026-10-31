@@ -7,12 +7,12 @@
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <style>
-    .cv { width: min(1180px, 100%); margin: 0 auto; padding: 28px clamp(20px, 4vw, 48px) 64px; }
-    .cv-nav { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); font: 12px var(--mono); }
+    .cv { width: min(1180px, 100%); margin: 0 auto; padding: 14px clamp(20px, 4vw, 48px) 64px; }
+    .cv-nav { display: flex; justify-content: flex-end; gap: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font: 12px var(--mono); }
     .cv-nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
     .cv-save { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 9px 16px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 600 12px/1.4 var(--mono); letter-spacing: .2px; transition: background .18s ease, border-color .18s ease, color .18s ease; }
     .cv-save:hover { border-color: var(--wine); background: var(--wine); color: white; }
-    .cv-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; padding: 38px 0 34px; }
+    .cv-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; padding: 20px 0 28px; }
     .cv-kicker { color: var(--wine); font: 11px var(--mono); letter-spacing: .7px; text-transform: uppercase; }
     .cv h1 { max-width: 680px; margin: 10px 0 12px; font: 600 clamp(36px, 5.4vw, 54px)/1.08 var(--mono); letter-spacing: -2px; }
     .cv-role { max-width: 620px; margin: 0; color: var(--muted); font-size: clamp(17px, 2vw, 21px); line-height: 1.5; }
@@ -66,7 +66,7 @@
     <a class="brand" href="index.html#/" aria-label="edo dot, torna alla Home"><span class="brand-mark" aria-hidden="true">edo<span>.</span>dot</span></a>
   </header>
   <main class="cv">
-    <nav class="cv-nav" aria-label="Navigazione CV"><a href="index.html#/">← Torna alla Home</a><button class="cv-save" type="button" onclick="window.print()">Salva PDF</button></nav>
+    <nav class="cv-nav" aria-label="Navigazione CV"><button class="cv-save" type="button" onclick="window.print()">Salva PDF</button></nav>
     <header class="cv-hero"><div><p class="cv-kicker">Curriculum vitae · 2026</p><h1>Edoardo Rana</h1><p class="cv-role">Consulenza tecnica su infrastrutture, dati e automazione.</p></div><div class="cv-contact"><a href="mailto:edoardorana@outlook.com">edoardorana@outlook.com</a><a href="https://github.com/edoardorana">github.com/edoardorana ↗</a></div></header>
     <section id="profilo" class="cv-section"><h2>profilo/</h2><p class="cv-summary">Esperienza in infrastrutture Linux, database in produzione e analisi dei dati. Lavoro su requisiti, diagnosi delle cause, documentazione tecnica e processi, collegando il contesto operativo agli strumenti più adatti.</p></section>
     <section id="esperienze" class="cv-section"><h2>esperienze/</h2><div class="cv-list">
