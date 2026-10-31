@@ -130,7 +130,8 @@ test('Approach documents are direct CV-style pages without terminal headers', as
     const html = await readFile(new URL(`../proposal/approccio/${name}.html`, import.meta.url), 'utf8');
     assert.doesNotMatch(html, /cat readme\.md/);
     assert.match(html, /<main>/);
-    assert.match(html, /href="\.\.\/index\.html#\/">← Torna alla Home<\/a>/);
+    assert.match(html, /class="document-brand"/);
+    assert.doesNotMatch(html, /Torna alla Home/);
     assert.match(html, /class="document-save"[^>]*>Salva PDF<\/button>/);
     assert.doesNotMatch(html, /Stampa \/ salva PDF|← Approccio/);
   }
@@ -144,14 +145,15 @@ test('the landing is the only site index and the duplicate header menu is absent
 test('separate pages return to Home without duplicate project footers', async () => {
   for (const name of ['cv.html', 'luoghi.html', 'contatti.html']) {
     const html = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
-    assert.match(html, /Torna alla Home/);
+    assert.match(html, /class="brand"/);
+    assert.doesNotMatch(html, /Torna alla Home/);
     assert.doesNotMatch(html, /Torna al Profilo|Torna alla landing/);
   }
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
   assert.doesNotMatch(source, /projectNav|navigationHTML:/);
   for (const name of ['housing/page.mjs', 'explorer/page.mjs']) {
     const module = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
-    assert.match(module, /class="project-top-nav"[^>]*>.*Torna alla Home/);
+    assert.doesNotMatch(module, /Torna alla Home/);
   }
   const housing = await readFile(new URL('../proposal/housing/page.mjs', import.meta.url), 'utf8');
   for (const label of ['contenuto/', 'strumenti/', 'limiti/']) assert.match(housing, new RegExp(label.replace('/', '\\/')));
