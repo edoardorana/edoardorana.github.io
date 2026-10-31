@@ -2,9 +2,9 @@
 
 ## Decisione corrente — 30 ottobre 2026
 
-Edoardo ha approvato una landing continua con Profilo, Progetti, Approccio e Collaborazioni, ma ha scartato box e intestazioni `cat readme.md` ripetute. La Home è un hero personale essenziale con accesso evidente al CV e ai progetti. Il terminale resta soltanto dove rappresenta un'azione o un contenuto coerente: menu `tree`, `mail --new` e riepilogo skills nel CV.
+Edoardo ha approvato una landing continua con Profilo, Progetti, Approccio e Collaborazioni, ma ha scartato box e intestazioni `cat readme.md` ripetute. La Home è un hero personale compatto seguito dal tree che funge da unico indice del sito. Il menu duplicato nella testata è stato rimosso il 31 ottobre 2026; resta soltanto il marchio `edo.dot`. Il terminale compare solo dove rappresenta un'azione o un contenuto coerente: `~/collaborazioni/contatti$ mail --new` nella pagina Contatti e riepilogo skills nel CV.
 
-Profilo non replica più la cronologia: mette in evidenza il CV e conserva soltanto la mappa interattiva in formato più compatto. Il CV raccoglie esperienze, formazione, skills, lingue, interessi e certificazione. Progetti e Approccio usano intestazioni editoriali normali e un unico fondo; le dashboard, NetBox e i documenti operativi restano pagine separate. Il riferimento `alessiop.cc` è stato usato esclusivamente per studiare omogeneità e personalità, senza copiarne identità, palette, testi o componenti.
+Profilo non replica più la cronologia: presenta due accessi compatti, `cv.html` e `luoghi`. Il CV raccoglie esperienze, formazione, skills, lingue, interessi e certificazione; `luoghi.html` ospita l'intera mappa interattiva, rimossa dalla landing il 31 ottobre 2026. Profilo, Progetti, Approccio e Collaborazioni condividono un tree editoriale moderno: nessun connettore testuale `├──`/`└──`, ma rail, pallini circolari e raccordi disegnati in CSS; nomi a sinistra e hashtag descrittivi a destra. Le quattro intestazioni condividono tipografia e slash finale. Collaborazioni contiene soltanto il link `contatti`; `contatti.html` ospita il compositore esteso. CV, Luoghi, Contatti, dashboard e documenti Approccio tornano direttamente alla Home dall'alto; le dashboard non ripetono la navigazione nel footer. Il riferimento `alessiop.cc` è stato usato esclusivamente per studiare omogeneità e personalità, senza copiarne identità, palette, testi o componenti.
 
 Riferimento operativo storico: [piano per gli assistenti](LANDING_AI_PLAN.md). Stato effettivo: [registro](LANDING_PROGRESS.md) e [STATUS](STATUS.md). La pubblicazione non è inclusa.
 
@@ -55,6 +55,7 @@ Sorgenti in `proposal/`, sito statico HTML/CSS/JavaScript con moduli ES. `data.m
 
 - Elenco senza numeri, introduzione breve: “Esplora alcuni dei miei progetti.”
 - Percorsi canonici: `#/progetti/immobiliare-data` e `#/progetti/dashboard-generator`; i vecchi `market-data` e `csv-explorer` restano alias.
+- Immobiliare-data concentra descrizione, contenuto, strumenti e limiti nel `cat readme.md` superiore. Il precedente blocco finale “Il dataset in breve” è stato rimosso per evitare duplicazioni.
 - Scheda BI rimossa: esperienza e dashboard Qlik, Power BI e Tableau restano nella cronologia SB Italia del Profilo. Il vecchio link rimanda al Profilo.
 - La scheda `production-databases` descrive il lavoro in corso su IPAM/NetBox confermato dall'utente; il laboratorio locale Proxmox è soltanto uno sviluppo futuro. Nessuna implementazione completata o risultato inventato.
 - Menu ad albero compatto, con CV sotto Profilo e le tre schede sotto Progetti. Le etichette sono relative al livello superiore, senza percorsi ripetuti. La navigazione delle schede torna solo a Progetti o Home.

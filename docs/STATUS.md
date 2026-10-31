@@ -2,6 +2,56 @@
 
 Aggiornato il 31 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
 
+## README della dashboard immobiliare — 31 ottobre 2026
+
+- `~/progetti/immobiliare-data$ cat readme.md` spiega ora subito la pagina: archivio pubblico di 14.731 annunci di Milano 2021, strumenti disponibili e limiti di lettura.
+- La sintesi usa tre righe (`contenuto/`, `strumenti/`, `limiti/`) e raccoglie filtri, KPI, cinque grafici, tabella, export, natura storica dei prezzi richiesti, esclusione degli indirizzi e gestione iniziale delle 11 anomalie.
+- Rimossi il paragrafo introduttivo duplicato e il blocco finale “Il dataset in breve”, insieme a markup, aggiornamento dinamico e CSS non più utilizzati.
+- Verifiche da registrare al termine: check, build, desktop/mobile e assenza del vecchio blocco. Nessun push o deploy previsto.
+
+## Ritorni alla Home e gerarchia Contatti — 31 ottobre 2026
+
+- CV e Luoghi non tornano più al solo capitolo Profilo: il collegamento superiore è ora `Torna alla Home`. Lo stesso ritorno è usato dalla pagina Contatti e da tutti i documenti Approccio.
+- Immobiliare-data e Dashboard generator mostrano `Torna alla Home` sopra il README; rimossa la navigazione Progetti/Home in fondo alle dashboard. Le funzioni dei due strumenti e la gestione della route restano invariate.
+- Nei cinque documenti Approccio `← Approccio` è diventato `← Torna alla Home`; il controllo scuro usa soltanto `Salva PDF`, coerente con il CV.
+- Contatti non mostra più la frase “Parliamo del problema, prima degli strumenti.”. La gerarchia è esplicita nel prompt: `~/collaborazioni/contatti$ mail --new`, dove Collaborazioni è il capitolo e Contatti la pagina operativa.
+- Verifiche: `npm.cmd run check` 27/27, `npm.cmd run build` e `git diff --check` superati. Edge desktop ispezionato su CV, Luoghi, Contatti, Capire e le due dashboard; a 390 × 844 tutte le viste misurate mantengono `clientWidth = scrollWidth = 390` e un solo `h1`. Tab raggiunge il ritorno Home come primo controllo della dashboard e, nei documenti, firma, ritorno e `Salva PDF`. Corretto anche il focus iniziale del Dashboard generator per non saltare visivamente l'inizio pagina. PDF di prova generato. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
+
+## CV a piena larghezza — 31 ottobre 2026
+
+- Il CV usa ora la stessa larghezza massima della testata del sito. Rimossa la griglia esterna etichetta/contenuto che spingeva esperienze e formazione nell'ultima colonna a destra: le etichette sono sopra ogni capitolo e resta una sola divisione utile fra data e descrizione.
+- I capitoli seguono la grammatica della landing: `profilo/`, `esperienze/`, `formazione/`, `competenze/`, con ID diretti corrispondenti. Il controllo di stampa è diventato un pulsante scuro `Salva PDF`; testo e nota finale non usano più “Stampa / salva PDF”.
+- Verifiche: `npm.cmd run check` 26/26 e `npm.cmd run build` superati; screenshot Edge 1280 × 900 ispezionato. A 390 × 844 DevTools conferma `clientWidth = scrollWidth = 390`, un solo `h1` e nessun elemento fuori viewport. Tab raggiunge nell'ordine firma, ritorno e `Salva PDF`; generato correttamente anche il PDF di prova. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
+
+## Coerenza `edo.dot` su tutte le viste — 31 ottobre 2026
+
+- Sostituiti i nodi a rombo della landing con pallini circolari: rail e raccordi restano CSS, mentre il segno ricorrente segue ora esplicitamente il nome `edo.dot`.
+- Sfogliate tutte le viste pubbliche: landing, CV, Luoghi, Contatti, cinque documenti Approccio, due dashboard e pagina 404. CV e documenti Approccio riprendono firma, palette blu/viola, titoli monospaziati e ritmo compatto della landing; contenuti e funzioni di stampa restano invariati.
+- Le intestazioni README condivise dalle dashboard e dalla 404 sono state alleggerite: niente pannello pieno, bordi orizzontali e un pallino laterale. Grafici, filtri, importazione CSV e logiche applicative non sono stati modificati.
+- Verifiche: `npm.cmd run check` 26/26, `npm.cmd run build` e `git diff --check` superati. Screenshot desktop ispezionati per tutte le dodici viste. DevTools a 390 × 844 conferma `clientWidth = scrollWidth = 390` e un solo `h1` su landing, CV, Luoghi, Contatti, cinque documenti, Dashboard generator e 404; la tabella immobiliare resta larga soltanto nel contenitore scorrevole. Con Tab sono raggiungibili i nodi della landing e, in CV/Approccio, firma, ritorno e stampa nell'ordine previsto. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
+
+## Landing compatta, menu rimosso e Contatti separati — 31 ottobre 2026
+
+- Rimossi dalla testata pulsante, pannello e logica del menu `tree`: la landing è ora l'unico indice del sito. La testata conserva soltanto `edo.dot`; gli hash storici continuano a raggiungere i quattro rami senza ricreare la pagina.
+- Collaborazioni è stata ridotta a un nodo `contatti` con hashtag descrittivi. Il compositore completo è nella nuova pagina `proposal/contatti.html`, inizializzata da `proposal/contatti.mjs`; email, oggetto, messaggio e `mail --new` sono subito disponibili e l'azione continua a preparare una bozza `mailto` senza dichiarare un invio.
+- Ridotti hero, titolo, slogan, pattern decorativo, altezza della testata, padding delle sezioni, spazi fra le righe e margini dei titoli. Il tree usa pallini circolari, mantenendo rail e raccordi CSS.
+- Verifiche finali: `npm.cmd run check` 26/26, `npm.cmd run build` e `git diff --check` superati; risposte HTTP 200 per landing e Contatti. Edge desktop ispezionato. A 390 px reali entrambe le pagine hanno `scrollWidth = clientWidth = 390`; la testata ha un link, nessun pulsante e nessuna nav; tree 2/2/5/1, campi Contatti presenti e focus sull'oggetto verificato. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
+
+## Tree editoriale della landing — 31 ottobre 2026
+
+- Esteso a Profilo, Progetti e Approccio lo stesso linguaggio compatto: intestazioni `PROFILO/`, `PROGETTI/`, `APPROCCIO/` e `COLLABORAZIONI/` identiche; nomi tecnici a sinistra e hashtag descrittivi a destra. Il compositore Collaborazioni resta esteso e funzionalmente invariato.
+- Rimossi dalla landing e dal menu tutti i connettori testuali `├──` e `└──`. La gerarchia usa ora un rail verticale sfumato, nodi circolari e raccordi brevi generati soltanto in CSS; hover e focus evidenziano riga e nodo senza introdurre box permanenti.
+- Progetti mostra `immobiliare-data` e `dashboard-generator`; Approccio mostra in sequenza capire, raccogliere, custodire, leggere ed evolvere. Tutti i collegamenti continuano ad aprire le viste o i documenti separati già esistenti.
+- Verifiche finali: `npm.cmd run check` 26/26, `npm.cmd run build` e `git diff --check` superati; panoramica Edge desktop ispezionata. A 390 px reali: nessun overflow (`scrollWidth = clientWidth = 390`), tree con 2/2/5 nodi, quattro intestazioni tipograficamente identiche, focus tastiera visibile e menu contenuto fra 20 e 370 px. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
+
+## Allineamento successivo a `v2.5.1` — 31 ottobre 2026
+
+- Verificato il tag locale `v2.5.1` (`b4c1617`) e confrontate le note di `VERSION_ANALYSIS.md` con il codice: la nota dichiarava la mappa già in `luoghi.html`, ma il tag la renderizzava ancora nella landing e il link `LUOGHI` tornava a `#/profilo`.
+- Correzione candidata alla prossima versione: `PROFILO/` usa ora lo stesso `h2.compact-title` monospaziato da 11 px, con identici colore, interlinea e maiuscole di Progetti, Approccio e Collaborazioni. Contiene soltanto i link `cv.html` (con hashtag descrittivi) e `luoghi`.
+- L'intero blocco interattivo dei luoghi è stato spostato nella nuova pagina `proposal/luoghi.html`, con logica dedicata in `proposal/luoghi.mjs`; contenuti, città, coordinate e distinzioni geografiche sono invariati. Menu e Profilo aprono la pagina dedicata.
+- Ripristinati nei test i percorsi reali minuscoli `proposal/approccio/`, che la revisione precedente aveva indicato come `APPROCCIO/`: Windows non segnalava il problema, ma un filesystem Linux è case-sensitive. La sitemap non elenca più Servizi e NetBox, già rimossi, e include Luoghi.
+- Verifiche correnti: `npm.cmd run check` 26/26, `npm.cmd run build` e `git diff --check` superati; risposte HTTP 200 per landing, CV, Luoghi, relativo modulo e scheda Approccio. Screenshot Edge headless ispezionati a 1280 × 900; a 390 × 844 le misure DOM confermano `scrollWidth = clientWidth = 390` sia nella landing sia in Luoghi. I titoli Profilo e Progetti hanno valori computati identici (`11px`, interlinea `16.5px`, stesso monospaziato e colore). Nessun push o deploy.
+
 ## Landing compatta — 30 ottobre 2026
 
 - Prima evoluzione visiva `light editor` del 31 ottobre: struttura e contenuti invariati, palette resa più fredda con accenti blu/viola, titoli principali e di componente portati al monospaziato, corpo mantenuto in un sans di sistema leggibile. Hero e titoli ridimensionati; progetti, metodo e compositore assumono il ritmo di pannelli leggeri senza imitare una finestra IDE completa.
@@ -193,6 +243,19 @@ Aggiornato il 31 ottobre 2026. Le note precedenti sono state condensate; i commi
 
 ## Prossimi passi
 
+- Allineamento alla versione **v2.5.1** completato su branch `align/v2.5.1`. Test e build superati.
+- Verifica su dispositivi reali (Safari, device fisico).
+- Eventuali piccole correzioni stilistiche da decidere con Edoardo.
+
 1. Provare anche Safari e un dispositivo fisico; le verifiche sopra usano il browser locale con viewport ed emulazione touch.
 2. Concordare disponibilità e tipi di incarico prima di aggiungere offerte; pubblicare in futuro una prova di lavoro consultabile. Dettagli in `docs/FREELANCE_REVIEW.md`.
 3. Decidere separatamente se aggiornare la preview Sites. Riesaminare la descrizione del soggiorno a Stoccarda dopo il 2026.
+
+## Versione v2.6 — 31 ottobre 2026
+
+- Branch `align/v2.5.1` portato in produzione come `v2.6`.
+- Font uniformato tra le quattro sezioni; hashtag CV su riga unica; mappa spostata in `luoghi.html`.
+- Sezione Progetti: solo nomi + hashtag. Approccio: cinque fasi. Collaborazioni: frase intro rimossa.
+- 27 test superati, build OK, diff pulito.
+- Deploy: push su `feat/landing-page` → merge su `main` → GitHub Pages.
+- Prossimo passo: verifica su dispositivi reali (Safari, device fisico) e feedback di Edoardo.

@@ -1,6 +1,9 @@
 # Registro landing
 
-Landing implementata sul branch di prova. Incarico 10 completato il 30 ottobre 2026; nessuna pubblicazione. Le note dei precedenti incarichi restano come cronologia.
+Landing implementata sul branch di prova. Incarico 11 riallineato il 31 ottobre 2026 dopo la verifica del tag `v2.5.1`; nessuna pubblicazione. Le note dei precedenti incarichi restano come cronologia.
+
+- Rifinitura successiva richiesta da Edoardo: il modello compatto di Profilo è stato esteso a Progetti e Approccio. I caratteri `├──`/`└──` sono stati sostituiti da un tree CSS con rail e nodi; anche il menu usa la stessa grammatica visiva. Collaborazioni conserva il compositore email. Check 26/26, build e diff superati; Edge desktop e 390 px verificati senza overflow.
+- Rifinitura seguente: eliminato il menu duplicato dalla testata perché la landing è già l'indice. Hero e sezioni compressi; Collaborazioni ora collega la pagina separata `contatti.html`, che conserva il compositore immediatamente utilizzabile. La rifinitura successiva ripristina pallini circolari coerenti con `edo.dot` e armonizza CV, documenti Approccio e intestazioni delle dashboard. Check 26/26, build, diff ed Edge desktop/390 px superati.
 
 - Iterazione successiva: Home ricostruita, README rimossi dalla landing, Profilo ridotto a CV + mappa, cronologia e terminale competenze spostati nel CV, Progetti/Approccio/Contatti armonizzati. Verifiche e limiti correnti in `STATUS.md`.
 
@@ -26,6 +29,15 @@ Landing implementata sul branch di prova. Incarico 10 completato il 30 ottobre 2
 | 08 | Eseguito | Approvata | revisione finale in sola lettura; diff confrontato con base; nessun cambiamento a fatti professionali, dataset o logiche dashboard; prove browser NON VERIFICATO |
 | 09 | Eseguito | Non eseguita | 26 test, build e diff superati; estetica: home, mappa, ritmo, intestazioni, fluidità, contatto; prove browser NON VERIFICATO |
 | 10 | Eseguito | Autoverifica Codex; valutazione visiva di Edoardo in attesa | Redesign senza box, mappa desktop, cronologia e Approccio riordinati; 26 test, build, diagnostica; browser 1280/820/390/320 senza overflow. Limiti sotto. |
+| 11 | Eseguito nel working tree | Autoverifica Codex; commit non creato | Titolo Profilo uniformato agli altri capitoli; mappa spostata in `luoghi.html`; 26 test, build e diff superati; Edge 1280 e DOM a 390 px verificati. |
+
+## Consegna incarico 11
+
+- La verifica iniziale ha trovato una divergenza: `docs/VERSION_ANALYSIS.md` descriveva `luoghi.html`, ma il tag `v2.5.1` conservava ancora mappa e binding dentro `proposal/script.js`. La correzione è stata applicata senza riscrivere il tag.
+- `PROFILO/` condivide ora il componente tipografico `compact-title` con Progetti, Approccio e Collaborazioni e contiene due righe: `cv.html` con hashtag descrittivi e `luoghi` come collegamento alla nuova pagina.
+- Mappa, selettore, dettaglio e testi sono stati spostati integralmente in `proposal/luoghi.html` e `proposal/luoghi.mjs`; `data.mjs` resta invariato.
+- Corretto nei test un percorso `APPROCCIO/` introdotto nel commit `b4c1617`: il percorso pubblico reale resta `approccio/`, portabile su GitHub Pages/Linux.
+- Verifiche: check 26/26, build, diff, HTTP 200 e Edge headless desktop superati. A 390 px landing e Luoghi non hanno overflow (`scrollWidth = clientWidth`); i valori computati di Profilo e Progetti coincidono. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
 
 ## Consegna incarico 10
 

@@ -108,7 +108,8 @@ versions/
 - Le versioni sono **cumulative**: ogni versione include tutte le modifiche precedenti
 - I file con estensione `.vX.Y` sono **snapshots** della versione specifica
 - Il file `.edo.dot` contiene **metadata e documentazione**
-- La **v2.1** è la versione attualmente **approvata** dall'utente
+- La **v2.1** è una versione storica approvata dall'utente; il riferimento Git più recente è **v2.5.1** (tag sul commit `b4c1617`), seguito da correzioni locali candidate alla prossima versione.
+- Per l'analisi completa delle versioni e lo stato dei branch, consultare [`docs/VERSION_ANALYSIS.md`](../docs/VERSION_ANALYSIS.md).
 
 ## 📊 Statistiche
 
@@ -128,6 +129,9 @@ versions/
 - **Feedback**: APPROVATA
 
 ---
-*Ultimo aggiornamento: 30 Ottobre 2026*
-*Versione corrente: v2.1*
-*Prossima versione: v2.2 (ottimizzazioni grafiche)*
+*Ultimo aggiornamento: 31 Ottobre 2026*
+
+*Riferimento Git corrente: v2.5.1; correzioni successive non ancora versionate*
+
+*Snapshot in questa cartella: v2, v2.1*
+*Analisi dettagliata: `docs/VERSION_ANALYSIS.md`*
