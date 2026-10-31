@@ -8,9 +8,11 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<nav>
-<a class="document-brand" href="../index.html#/" aria-label="edo dot, torna alla Home">edo<span>.</span>dot</a>
-<button class="document-save" id="print" type="button">Salva PDF</button>
+<nav class="document-nav">
+  <a class="document-brand" href="../index.html#/" aria-label="edo dot, torna alla Home">edo<span>.</span>dot</a>
+  <ol class="approach-stepper" aria-label="Fasi dell'approccio" role="list">
+    <li class="approach-step-item"><a class="approach-step-link" href="capire.html"><span class="approach-dot" aria-hidden="true"></span>capire</a></li><li class="approach-step-item"><a class="approach-step-link" href="raccogliere.html"><span class="approach-dot" aria-hidden="true"></span>raccogliere</a></li><li class="approach-step-item"><a class="approach-step-link" href="custodire.html" aria-current="page"><span class="approach-dot" aria-hidden="true"></span><strong>custodire</strong></a></li><li class="approach-step-item"><a class="approach-step-link" href="leggere.html"><span class="approach-dot" aria-hidden="true"></span>leggere</a></li><li class="approach-step-item"><a class="approach-step-link" href="evolvere.html"><span class="approach-dot" aria-hidden="true"></span>evolvere</a></li>
+  </ol>
 </nav>
 <main>
 <header>
@@ -66,6 +68,9 @@
 <textarea id="field-2-4" rows="2" placeholder="Note da compilare"></textarea>
 </section>
 <aside>Una copia sullo stesso disco o host non copre la perdita del sistema. Il successo del job non sostituisce una prova di ripristino documentata.</aside>
+  <div class="document-footer-action">
+  <button class="document-save" id="print" type="button">Salva PDF</button>
+</div>
 </main>
 <script src="document.js">
 </script>
