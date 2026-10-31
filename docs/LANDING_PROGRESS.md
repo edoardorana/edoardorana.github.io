@@ -1,6 +1,8 @@
 # Registro landing
 
-Landing implementata sul branch di prova. Incarico 11 riallineato il 31 ottobre 2026 dopo la verifica del tag `v2.5.1`; nessuna pubblicazione. Le note dei precedenti incarichi restano come cronologia.
+> **Registro archiviato.** Gli incarichi 00–11 sono conclusi o superati dalla produzione corrente su `main`. Le diciture “non avviato”, “in attesa”, “working tree” o “nessuna pubblicazione” nelle sezioni successive descrivono soltanto lo stato storico al momento di ciascun incarico e non sono task pendenti.
+
+Landing implementata e integrata. Le note dei precedenti incarichi restano come cronologia.
 
 - Rifinitura successiva richiesta da Edoardo: il modello compatto di Profilo è stato esteso a Progetti e Approccio. I caratteri `├──`/`└──` sono stati sostituiti da un tree CSS con rail e nodi; anche il menu usa la stessa grammatica visiva. Collaborazioni conserva il compositore email. Check 26/26, build e diff superati; Edge desktop e 390 px verificati senza overflow.
 - Rifinitura seguente: eliminato il menu duplicato dalla testata perché la landing è già l'indice. Hero e sezioni compressi; Collaborazioni ora collega la pagina separata `contatti.html`, che conserva il compositore immediatamente utilizzabile. La rifinitura successiva ripristina pallini circolari coerenti con `edo.dot` e armonizza CV, documenti Approccio e intestazioni delle dashboard. Check 26/26, build, diff ed Edge desktop/390 px superati.
@@ -13,7 +15,7 @@ Landing implementata sul branch di prova. Incarico 11 riallineato il 31 ottobre 
 - Tag della base: `backup/pre-landing-2026-10-30`, creato nel compito 00 sul commit base `31bf4867902916fbf0f4137e12a38a77674cccca`.
 - Incarico **08** eseguito e revisionato. Revisione finale in sola lettura: diff completo confrontato con il tag `backup/pre-landing-2026-10-30`; cambiati navigazione/composizione/stili, non fatti professionali, dataset o logiche delle dashboard. CV, due dashboard, NetBox e cinque documenti restano separati. Giudizio: continuità e fedeltà allo stile conservate; lunghezza e densità da valutare visivamente. Prove browser NON VERIFICATO. Compiti 05 e 06 revisionati in questa sessione (sola lettura): nessun problema rilevato a livello di codice. Prossimo passo: valutazione visiva di Edoardo. Un solo scrittore alla volta.
 - Incarico **09** eseguito. Miglioramento estetico: home con frase personale, atlas compatto, linea decorativa; mappa con punti ingranditi (28px), etichette con ombra, spazio verticale; sezioni con separatore, sfondi alternati, margine 48px; intestazioni con prompt colorato per sezione, summary ridotto; fade-in per le sezioni (prefers-reduced-motion rispettato); focus outline 4px; contatto con frase invito e spazio form. 26 test, build e diff superati. Prove browser NON VERIFICATO. Prossimo incarico: nessuno (valutazione visiva di Edoardo). Un solo scrittore alla volta.
-- Incarico **10** creato (non avviato): redesign estetico della landing. Feedback di Edoardo: le box di navigazione (Profilo/Progetti/Approccio/Contatti) devono sparire; mappa da riposizionare in versione desktop; cronologia da migliorare (font, grandezza, spazi); tutto il resto poco armonioso. Trattare come graphic designer professionista. Scheda in `docs/landing-tasks/10-redesign.md`.
+- Incarico **10** era stato creato per il redesign estetico della landing ed è stato poi eseguito e superato dalle rifiniture successive. La scheda storica resta in `docs/landing-tasks/10-redesign.md`.
 - I documenti di pianificazione e le istruzioni condivise sono modifiche locali preparatorie, da preservare e registrare nel compito 00. Nessuna modifica al sito è stata effettuata per scrivere il piano.
 
 | ID | Esecuzione | Revisione | Commit / evidenza |
@@ -28,8 +30,8 @@ Landing implementata sul branch di prova. Incarico 11 riallineato il 31 ottobre 
 | 07 | Eseguito | Non eseguita | 26 test, build e diff superati; rapporto QA in docs/LANDING_QA.md; prove browser NON VERIFICATO (nessun browser) |
 | 08 | Eseguito | Approvata | revisione finale in sola lettura; diff confrontato con base; nessun cambiamento a fatti professionali, dataset o logiche dashboard; prove browser NON VERIFICATO |
 | 09 | Eseguito | Non eseguita | 26 test, build e diff superati; estetica: home, mappa, ritmo, intestazioni, fluidità, contatto; prove browser NON VERIFICATO |
-| 10 | Eseguito | Autoverifica Codex; valutazione visiva di Edoardo in attesa | Redesign senza box, mappa desktop, cronologia e Approccio riordinati; 26 test, build, diagnostica; browser 1280/820/390/320 senza overflow. Limiti sotto. |
-| 11 | Eseguito nel working tree | Autoverifica Codex; commit non creato | Titolo Profilo uniformato agli altri capitoli; mappa spostata in `luoghi.html`; 26 test, build e diff superati; Edge 1280 e DOM a 390 px verificati. |
+| 10 | Eseguito e integrato | Concluso; superato dalle rifiniture in produzione | Redesign senza box, mappa desktop, cronologia e Approccio riordinati; risultato incluso nella produzione corrente. |
+| 11 | Eseguito e integrato | Concluso; superato dalle rifiniture in produzione | Titolo Profilo uniformato agli altri capitoli; mappa spostata in `luoghi.html`; risultato incluso nella produzione corrente. |
 
 ## Consegna incarico 11
 
@@ -79,7 +81,7 @@ Problemi residui:
 Limiti delle prove: nessun browser, nessun telefono fisico, nessun Safari/Firefox, nessun lettore di schermo, nessun dialogo stampa, nessun client email.
 Riferimento per ripristinare la vecchia versione: tag `backup/pre-landing-2026-10-30` (`31bf4867902916fbf0f4137e12a38a77674cccca`) su branch `feat/landing-page`.
 Esito della revisione e autore, se avvenuta: eseguita in questa sessione (sola lettura).
-Prossimo incarico, non avviato: nessuno automatico. Valutazione visiva di Edoardo, poi eventuale nuovo incarico per l'estetica.
+Nessun incarico successivo aperto in questo registro.
 ```
 
 ## Cronologia

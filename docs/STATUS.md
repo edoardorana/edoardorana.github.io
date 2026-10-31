@@ -1,27 +1,29 @@
 # Stato del progetto
 
-Aggiornato il 31 ottobre 2026. Le note precedenti sono state condensate; i commit già pubblicati restano nella cronologia Git.
+## Footer condiviso e Immobiliare-data — 31 ottobre 2026
 
-## README della dashboard immobiliare — 31 ottobre 2026
+- Le rifiniture dell’utente a CV e Luoghi sono state pubblicate separatamente nel commit `218bce9`; il titolo `competenze/` resta disponibile alle tecnologie assistive senza tornare visibile.
+- Tutte le nove pagine HTML sorgente usano esclusivamente `<footer class="site-footer"><span>© 2026 edo.dot</span></footer>`; landing, dashboard e 404 condividono il footer di `index.html`.
+- Il README di Immobiliare-data non ha più linee sopra e sotto: usa un fondo leggero e tre voci più narrative (`dataset/`, `lettura/`, `attenzione/`).
+- Il pannello filtri è diventato un controllo monospaziato compatto da 36 px; i campi restano espandibili, accessibili e funzionalmente invariati.
+- Le cinque viste coordinate sono ora: distribuzione con mediana e taglio visivo al 99° percentile, classifica lollipop, densità bidimensionale a celle, composizione radiale e heatmap zona × tipologia. Clic, selezioni, filtri, tabella ed export restano coordinati.
+- Plotly completo 4.1.2 sostituisce il bundle basic, resta servito localmente e conserva la licenza MIT. Nessuna risorsa grafica esterna viene caricata a runtime.
+- Verifiche: `npm.cmd run check` 27/27, build, Edge desktop 1280 × 900 e mobile 390 × 844 senza overflow o errori runtime; cinque trace renderizzati. Il clic sulla heatmap ha applicato insieme Zona e Tipologia, riducendo la selezione da 14.720 a 480 annunci nel controllo browser.
 
-- `~/progetti/immobiliare-data$ cat readme.md` spiega ora subito la pagina: archivio pubblico di 14.731 annunci di Milano 2021, strumenti disponibili e limiti di lettura.
-- La sintesi usa tre righe (`contenuto/`, `strumenti/`, `limiti/`) e raccoglie filtri, KPI, cinque grafici, tabella, export, natura storica dei prezzi richiesti, esclusione degli indirizzi e gestione iniziale delle 11 anomalie.
-- Rimossi il paragrafo introduttivo duplicato e il blocco finale “Il dataset in breve”, insieme a markup, aggiornamento dinamico e CSS non più utilizzati.
-- Verifiche da registrare al termine: check, build, desktop/mobile e assenza del vecchio blocco. Nessun push o deploy previsto.
+## Produzione corrente — 31 ottobre 2026
 
-## Ritorni alla Home e gerarchia Contatti — 31 ottobre 2026
+- Fonte pubblicata: il branch `main`, distribuito dal workflow GitHub Pages dopo i controlli automatici.
+- Sorgente autorevole in `proposal/`; `dist/` resta un artefatto generato. Il tag `v2.6` identifica la release di base e `v2.6.1-backup` è soltanto un punto di recupero precedente alle ultime rifiniture.
+- Landing: indice unico e compatto con Profilo, Progetti, Approccio e Collaborazioni. Nessun menu duplicato o collegamento testuale di ritorno: il marchio `edo.dot` è il collegamento comune alla Home.
+- Profilo: CV e Luoghi restano pagine separate. Il CV usa tutta la larghezza utile e i capitoli `profilo/`, `esperienze/`, `formazione/`, `competenze/`; non espone un controllo dedicato per la stampa.
+- Progetti: le due dashboard restano separate. Immobiliare-data apre con `cat readme.md`, organizzato in `contenuto/`, `strumenti/` e `limiti/`; il vecchio blocco “Il dataset in breve” non esiste più.
+- Approccio: i cinque documenti condividono lo stepper orizzontale e mantengono `Salva PDF` in fondo alla pagina.
+- Collaborazioni: Contatti usa i comandi `~/collaborazioni$ contatti --list` e `~/collaborazioni$ mail --new`; oggetto e messaggio sono subito disponibili.
+- Restano verifiche migliorative non bloccanti su telefono fisico, Safari/Firefox e screen reader.
 
-- CV e Luoghi non tornano più al solo capitolo Profilo: il collegamento superiore è ora `Torna alla Home`. Lo stesso ritorno è usato dalla pagina Contatti e da tutti i documenti Approccio.
-- Immobiliare-data e Dashboard generator mostrano `Torna alla Home` sopra il README; rimossa la navigazione Progetti/Home in fondo alle dashboard. Le funzioni dei due strumenti e la gestione della route restano invariate.
-- Nei cinque documenti Approccio `← Approccio` è diventato `← Torna alla Home`; il controllo scuro usa soltanto `Salva PDF`, coerente con il CV.
-- Contatti non mostra più la frase “Parliamo del problema, prima degli strumenti.”. La gerarchia è esplicita nel prompt: `~/collaborazioni/contatti$ mail --new`, dove Collaborazioni è il capitolo e Contatti la pagina operativa.
-- Verifiche: `npm.cmd run check` 27/27, `npm.cmd run build` e `git diff --check` superati. Edge desktop ispezionato su CV, Luoghi, Contatti, Capire e le due dashboard; a 390 × 844 tutte le viste misurate mantengono `clientWidth = scrollWidth = 390` e un solo `h1`. Tab raggiunge il ritorno Home come primo controllo della dashboard e, nei documenti, firma, ritorno e `Salva PDF`. Corretto anche il focus iniziale del Dashboard generator per non saltare visivamente l'inizio pagina. PDF di prova generato. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
+Le sezioni successive sono cronologia di lavorazione. Possono descrivere stati intermedi, controlli poi rimossi o attività all'epoca non pubblicate: non prevalgono sul blocco di produzione corrente.
 
-## CV a piena larghezza — 31 ottobre 2026
-
-- Il CV usa ora la stessa larghezza massima della testata del sito. Rimossa la griglia esterna etichetta/contenuto che spingeva esperienze e formazione nell'ultima colonna a destra: le etichette sono sopra ogni capitolo e resta una sola divisione utile fra data e descrizione.
-- I capitoli seguono la grammatica della landing: `profilo/`, `esperienze/`, `formazione/`, `competenze/`, con ID diretti corrispondenti. Il controllo di stampa è diventato un pulsante scuro `Salva PDF`; testo e nota finale non usano più “Stampa / salva PDF”.
-- Verifiche: `npm.cmd run check` 26/26 e `npm.cmd run build` superati; screenshot Edge 1280 × 900 ispezionato. A 390 × 844 DevTools conferma `clientWidth = scrollWidth = 390`, un solo `h1` e nessun elemento fuori viewport. Tab raggiunge nell'ordine firma, ritorno e `Salva PDF`; generato correttamente anche il PDF di prova. Nessun telefono fisico, Safari/Firefox o screen reader; nessun push o deploy.
+## Cronologia storica — decisioni superate
 
 ## Coerenza `edo.dot` su tutte le viste — 31 ottobre 2026
 

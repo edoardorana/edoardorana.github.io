@@ -141,12 +141,17 @@ test('the landing is the only site index and the duplicate header menu is absent
   assert.match(html, /class="brand"/);
   assert.doesNotMatch(html, /site-index|index-toggle|menu-prompt|menu-lines|tree-root|tree-folder/);
 });
-test('separate pages return to Home without duplicate project footers', async () => {
+test('separate pages use the brand as Home link and share the minimal footer', async () => {
   for (const name of ['cv.html', 'luoghi.html', 'contatti.html']) {
     const html = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
     assert.match(html, /class="brand"/);
     assert.doesNotMatch(html, /Torna alla Home/);
     assert.doesNotMatch(html, /Torna al Profilo|Torna alla landing/);
+  }
+  const htmlPages = ['index.html', 'cv.html', 'luoghi.html', 'contatti.html', ...['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere'].map(name => `approccio/${name}.html`)];
+  for (const name of htmlPages) {
+    const html = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
+    assert.equal(html.match(/<footer class="site-footer"><span>© 2026 edo\.dot<\/span><\/footer>/g)?.length, 1);
   }
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
   assert.doesNotMatch(source, /projectNav|navigationHTML:/);
@@ -155,9 +160,13 @@ test('separate pages return to Home without duplicate project footers', async ()
     assert.doesNotMatch(module, /Torna alla Home/);
   }
   const housing = await readFile(new URL('../proposal/housing/page.mjs', import.meta.url), 'utf8');
-  for (const label of ['contenuto/', 'strumenti/', 'limiti/']) assert.match(housing, new RegExp(label.replace('/', '\\/')));
+  for (const label of ['dataset/', 'lettura/', 'attenzione/']) assert.match(housing, new RegExp(label.replace('/', '\\/')));
   assert.match(housing, /14\.731 annunci/);
+  for (const trace of ["kind:'lollipop'", "kind:'density'", "kind:'radial'", "kind:'heatmap'"]) assert.match(housing, new RegExp(trace));
   assert.doesNotMatch(housing, /Il dataset in breve|housing-method|lab-methodology/);
+  const plotlyLoader = await readFile(new URL('../proposal/charts/plotly.mjs', import.meta.url), 'utf8');
+  assert.match(plotlyLoader, /vendor\/plotly-4\.1\.2\.min\.js/);
+  assert.doesNotMatch(plotlyLoader, /plotly-basic/);
 });
 
 

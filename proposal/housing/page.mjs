@@ -11,17 +11,25 @@ const aggregates={median:'Mediana',mean:'Media',count:'Conteggio'};
 export function mountHousing(container,{signal,isCurrent=()=>true,navigationHTML=''}={}) {
  const events=new AbortController();
  const specs=[
- {kind:'histogram',title:'Distribuzione',x:'sqm'},
- {kind:'bar',title:'Confronto tra categorie',x:'zone',y:'sqm',aggregate:'median'},
- {kind:'scatter',title:'Relazione',x:'area',y:'price'},
- {kind:'bar',title:'Composizione',x:'type',y:'price',aggregate:'count'},
- {kind:'missing',title:'Completezza',x:'energy'}
+ {kind:'distribution',title:'Fasce di valore',x:'sqm'},
+ {kind:'lollipop',title:'Zone a confronto',x:'zone',y:'sqm',aggregate:'median'},
+ {kind:'density',title:'Superficie e prezzo',x:'area',y:'price'},
+ {kind:'radial',title:'Composizione dell’offerta',x:'condition'},
+ {kind:'heatmap',title:'Zone × tipologie',x:'type',y:'zone'}
  ];
  const options=(keys,current,map=labels)=>keys.map(k=>'<option value="'+k+'" '+(k===current?'selected':'')+'>'+map[k]+'</option>').join('');
- const controls=(s,i)=>'<details class="chart-settings"><summary>Personalizza grafico</summary><div class="data-controls"><label>'+(['bar','missing'].includes(s.kind)?'Categoria / campo':'Asse X')+'<select data-chart="'+i+'" data-key="x">'+options(s.kind==='missing'?[...cats,...nums.filter(k=>k!=='sqm')]:s.kind==='bar'?cats:nums,s.x)+'</select></label>'+(['bar','scatter'].includes(s.kind)?'<label>Misura<select data-chart="'+i+'" data-key="y">'+options(nums,s.y)+'</select></label>':'')+(s.kind==='bar'?'<label>Calcolo<select data-chart="'+i+'" data-key="aggregate">'+options(Object.keys(aggregates),s.aggregate,aggregates)+'</select></label>':'')+'</div></details>';
+ const controls=(s,i)=>{
+   const select=(label,key,keys)=>'<label>'+label+'<select data-chart="'+i+'" data-key="'+key+'">'+options(keys,s[key])+'</select></label>';
+   const fields=s.kind==='distribution'?select('Misura','x',nums)
+     :s.kind==='lollipop'?select('Categoria','x',cats)+select('Misura','y',nums)+'<label>Calcolo<select data-chart="'+i+'" data-key="aggregate">'+options(Object.keys(aggregates),s.aggregate,aggregates)+'</select></label>'
+     :s.kind==='density'?select('Asse X','x',nums)+select('Asse Y','y',nums)
+     :s.kind==='radial'?select('Categoria','x',cats)
+     :select('Colonne','x',cats)+select('Righe','y',cats);
+   return '<details class="chart-settings"><summary>configura/</summary><div class="data-controls">'+fields+'</div></details>';
+ };
  const bounds=[['minArea','Superficie minima'],['maxArea','Superficie massima'],['minPrice','Prezzo minimo (€)'],['maxPrice','Prezzo massimo (€)'],['minSqm','Minimo €/m²'],['maxSqm','Massimo €/m²']];
- container.innerHTML='<section class="page data-workspace">'+terminalHeader({path:'~/progetti/immobiliare-data',title:'Dashboard immobiliare',summary:'Dashboard esplorativa dell’archivio della tesi su annunci immobiliari di Milano.',sections:[{label:'contenuto/',text:'14.731 annunci del 2021, ripuliti per la consultazione pubblica dopo l’esclusione di aste e tipologie fuori perimetro.'},{label:'strumenti/',text:'Filtri coordinati, indicatori, cinque grafici, tabella ed esportazione CSV.'},{label:'limiti/',text:'Prezzi richiesti negli annunci, non compravendite; dati storici, indirizzi esclusi e 11 anomalie inizialmente nascoste.'}]})+
- '<p id="housing-load" role="status">Caricamento…</p><button id="housing-retry" hidden>Riprova</button><div id="housing-body" hidden><details class="data-panel housing-filter-panel"><summary>Filtra gli annunci</summary><form id="housing-filters"><div class="data-controls">'+cats.map(k=>'<label>'+labels[k]+'<select name="'+k+'"><option value="">Tutti</option></select></label>').join('')+bounds.map(([k,l])=>'<label>'+l+'<input name="'+k+'" type="number" min="0" step="any" placeholder="Nessun limite"></label>').join('')+'</div><label class="data-checkbox"><input type="checkbox" name="includeFlagged"> Includi le anomalie segnalate</label><button type="reset">Azzera filtri</button></form></details><div id="housing-active" class="active-filters" aria-label="Filtri attivi"></div><p id="housing-status" role="status"></p><div id="housing-kpis" class="lab-kpis"></div><div class="lab-charts">'+specs.map((s,i)=>'<figure class="lab-chart"><h2>'+s.title+'</h2>'+controls(s,i)+'<p data-note="'+i+'"></p><div id="housing-plot-'+i+'" class="lab-plot" aria-label="'+s.title+'"></div></figure>').join('')+'</div><p id="housing-chart-status" role="status"></p><section class="data-panel"><div class="lab-records-heading"><h2>Dati della selezione</h2><button id="housing-export">Scarica CSV filtrato</button></div><div id="housing-table" class="lab-table-scroll"></div><div class="lab-pagination"><button id="housing-prev">← Precedente</button><span id="housing-page"></span><button id="housing-next">Successiva →</button></div></section></div>'+navigationHTML+'</section>';
+ container.innerHTML='<section class="page data-workspace">'+terminalHeader({path:'~/progetti/immobiliare-data',title:'Dashboard immobiliare',summary:'Un archivio storico della tesi diventa uno spazio di esplorazione: filtra gli annunci, confronta le zone e osserva come cambiano prezzi e offerta.',sections:[{label:'dataset/',text:'14.731 annunci pubblicati a Milano nel 2021, ripuliti per la consultazione.'},{label:'lettura/',text:'Indicatori, cinque viste coordinate, dettaglio tabellare ed export della selezione.'},{label:'attenzione/',text:'Sono prezzi richiesti, non compravendite; indirizzi esclusi e 11 anomalie nascoste in partenza.'}]})+
+ '<p id="housing-load" role="status">Caricamento…</p><button id="housing-retry" hidden>Riprova</button><div id="housing-body" hidden><details class="data-panel housing-filter-panel"><summary><span>filtri/</span><small>restringi la selezione</small></summary><form id="housing-filters"><div class="data-controls">'+cats.map(k=>'<label>'+labels[k]+'<select name="'+k+'"><option value="">Tutti</option></select></label>').join('')+bounds.map(([k,l])=>'<label>'+l+'<input name="'+k+'" type="number" min="0" step="any" placeholder="Nessun limite"></label>').join('')+'</div><div class="housing-filter-actions"><label class="data-checkbox"><input type="checkbox" name="includeFlagged"> Includi le anomalie segnalate</label><button type="reset">Azzera filtri</button></div></form></details><div id="housing-active" class="active-filters" aria-label="Filtri attivi"></div><p id="housing-status" role="status"></p><div id="housing-kpis" class="lab-kpis"></div><div class="lab-charts">'+specs.map((s,i)=>'<figure class="lab-chart lab-chart-'+s.kind+'"><header class="lab-chart-heading"><p>0'+(i+1)+'/05</p><h2>'+s.title+'</h2></header>'+controls(s,i)+'<p data-note="'+i+'"></p><div id="housing-plot-'+i+'" class="lab-plot" aria-label="'+s.title+'"></div></figure>').join('')+'</div><p id="housing-chart-status" role="status"></p><section class="data-panel"><div class="lab-records-heading"><h2>Dati della selezione</h2><button id="housing-export">Scarica CSV filtrato</button></div><div id="housing-table" class="lab-table-scroll"></div><div class="lab-pagination"><button id="housing-prev">← Precedente</button><span id="housing-page"></span><button id="housing-next">Successiva →</button></div></section></div>'+navigationHTML+'</section>';
  const $=q=>container.querySelector(q),form=$('#housing-filters');
  let records=[],selected=[],page=0,disposed=false,generation=0,extra={};
  const setExtra=(key,val)=>{if(JSON.stringify(extra[key])===JSON.stringify(val))delete extra[key];else extra[key]=val;update();};
@@ -33,6 +41,7 @@ export function mountHousing(container,{signal,isCurrent=()=>true,navigationHTML
  function filterClick(d){
  if(!d)return;
  if(d.kind==='category'){const el=form.elements[d.field];el.value=el.value===d.value?'':d.value;update();}
+ else if(d.kind==='categories'){for(const [field,next] of Object.entries(d.value)){const el=form.elements[field];if(el)el.value=el.value===next?'':next;}update();}
  else if(d.kind==='range')setExtra('range',d.value);
  else if(d.kind==='ids')setExtra('ids',d.value);
  else if(d.kind==='presence')setExtra('present',d.value);
@@ -59,34 +68,53 @@ export function mountHousing(container,{signal,isCurrent=()=>true,navigationHTML
  try{
  const plotly=await loadPlotly();if(disposed||!isCurrent()||version!==generation)return;
  for(let i=0;i<specs.length;i++){
- const s=specs[i],node=$('#housing-plot-'+i);let trace,xtitle=labels[s.x],ytitle='Annunci',note='';
- if(s.kind==='histogram'){
- const vals=selected.map(r=>value(r,s.x)).filter(Number.isFinite),h=histogram(vals,20);
- trace={type:'bar',...h,customdata:h.x.map((x,j)=>({kind:'range',value:{field:s.x,min:Math.min(...vals)+j*h.width,max:j===h.x.length-1?Math.max(...vals):Math.min(...vals)+(j+1)*h.width,includeMax:j===h.x.length-1}}))};
- note=fmt(vals.length)+' valori disponibili. Clic su una fascia: filtro globale.';
- }else if(s.kind==='bar'){
+ const s=specs[i],node=$('#housing-plot-'+i);let traces=[],xtitle=labels[s.x],ytitle='Annunci',note='',layoutExtra={};
+ if(s.kind==='distribution'){
+ const vals=selected.map(r=>value(r,s.x)).filter(Number.isFinite),cap=quantile(vals,.99),shown=vals.filter(v=>v<=cap),h=histogram(shown,22),median=quantile(vals,.5),minimum=Math.min(...shown),maximum=Math.max(...shown);
+ traces=[{type:'bar',...h,marker:{color:'#7898ad',line:{color:'#f7f8fa',width:1}},hovertemplate:'%{x:,.0f}<br>%{y} annunci<extra></extra>',customdata:h.x.map((x,j)=>({kind:'range',value:{field:s.x,min:minimum+j*h.width,max:j===h.x.length-1?maximum:minimum+(j+1)*h.width,includeMax:j===h.x.length-1}}))}];
+ layoutExtra={shapes:[{type:'line',x0:median,x1:median,y0:0,y1:1,yref:'paper',line:{color:'#7b507d',width:2,dash:'dot'}}],annotations:[{x:median,y:1,xref:'x',yref:'paper',text:'mediana '+fmt(median),showarrow:false,yanchor:'bottom',font:{size:10,color:'#7b507d'}}]};
+ note=fmt(vals.length)+' valori; vista limitata al 99° percentile per leggere la forma. La linea indica la mediana.';
+ }else if(s.kind==='lollipop'){
  const groups=new Map();for(const r of selected){const k=r[s.x]??'__missing',v=s.aggregate==='count'?1:value(r,s.y);if(v===null)continue;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(v);}
- const entries=[...groups].map(([k,v])=>({k,n:v.length,v:s.aggregate==='count'?v.length:s.aggregate==='mean'?v.reduce((a,b)=>a+b,0)/v.length:quantile(v,.5)})).sort((a,b)=>b.v-a.v).slice(0,20);
- trace={type:'bar',orientation:'h',y:entries.map(e=>esc(e.k==='__missing'?'Non disponibile':e.k)),x:entries.map(e=>e.v),customdata:entries.map(e=>({kind:'category',field:s.x,value:e.k})),text:entries.map(e=>'n='+e.n)};
- xtitle=s.aggregate==='count'?'Annunci':aggregates[s.aggregate]+' · '+labels[s.y];ytitle=labels[s.x];note='Fino a 20 categorie ordinate per valore. Clicca una barra per filtrare.';
- }else if(s.kind==='scatter'){
- const valid=selected.filter(r=>Number.isFinite(value(r,s.x))&&Number.isFinite(value(r,s.y))),shown=valid.filter((_,j)=>j%Math.max(1,Math.ceil(valid.length/4000))===0);
- trace={type:'scatter',mode:'markers',x:shown.map(r=>value(r,s.x)),y:shown.map(r=>value(r,s.y)),customdata:shown.map(r=>({kind:'ids',value:[r.id]})),marker:{size:5,opacity:.5,color:'#87515d'}};
- ytitle=labels[s.y];note=fmt(shown.length)+' punti su '+fmt(valid.length)+' coppie. Clic per un annuncio; trascina per selezionare i punti mostrati.';
+ const entries=[...groups].map(([k,v])=>({k,n:v.length,v:s.aggregate==='count'?v.length:s.aggregate==='mean'?v.reduce((a,b)=>a+b,0)/v.length:quantile(v,.5)})).sort((a,b)=>b.v-a.v).slice(0,14).reverse();
+ const names=entries.map(e=>esc(e.k==='__missing'?'Non disponibile':e.k)),values=entries.map(e=>e.v),custom=entries.map(e=>({kind:'category',field:s.x,value:e.k}));
+ traces=[{type:'bar',orientation:'h',y:names,x:values,width:.08,marker:{color:'#a9bbc7'},customdata:custom,hoverinfo:'skip'},
+   {type:'scatter',mode:'markers+text',y:names,x:values,text:entries.map(e=>fmt(e.v)),textposition:'middle right',cliponaxis:false,marker:{size:10,color:'#2f6f9f',line:{color:'#fff',width:1}},customdata:custom,hovertemplate:'%{y}<br>%{x:,.0f} · n=%{meta}<extra></extra>',meta:entries.map(e=>e.n)}];
+ xtitle=s.aggregate==='count'?'Annunci':aggregates[s.aggregate]+' · '+labels[s.y];ytitle='';note='Prime '+entries.length+' categorie. Il punto è il valore, la linea facilita il confronto; clicca per filtrare.';
+ }else if(s.kind==='density'){
+ const allValid=selected.filter(r=>Number.isFinite(value(r,s.x))&&Number.isFinite(value(r,s.y))),xCap=quantile(allValid.map(r=>value(r,s.x)),.99),yCap=quantile(allValid.map(r=>value(r,s.y)),.99),valid=allValid.filter(r=>value(r,s.x)<=xCap&&value(r,s.y)<=yCap),xValues=valid.map(r=>value(r,s.x)),logY=valid.map(r=>Math.log10(value(r,s.y))),xMin=Math.min(...xValues),xMax=Math.max(...xValues),yMin=Math.min(...logY),yMax=Math.max(...logY),bins=new Map();
+ for(const r of valid){const x=value(r,s.x),y=value(r,s.y),xb=Math.min(19,Math.floor((x-xMin)/(xMax-xMin||1)*20)),yb=Math.min(15,Math.floor((Math.log10(y)-yMin)/(yMax-yMin||1)*16)),key=xb+':'+yb;if(!bins.has(key))bins.set(key,{xb,yb,ids:[]});bins.get(key).ids.push(r.id);}
+ const cells=[...bins.values()],counts=cells.map(cell=>cell.ids.length),maxCount=Math.max(...counts,1);
+ traces=[{type:'scatter',mode:'markers',x:cells.map(cell=>xMin+(cell.xb+.5)*(xMax-xMin)/20),y:cells.map(cell=>10**(yMin+(cell.yb+.5)*(yMax-yMin)/16)),customdata:cells.map(cell=>({kind:'ids',value:cell.ids})),text:counts.map(count=>fmt(count)+' annunci'),marker:{symbol:'square',size:counts.map(count=>8+20*Math.sqrt(count/maxCount)),color:counts,colorscale:[[0,'#dfe9ef'],[.45,'#7898ad'],[1,'#7b507d']],showscale:false,opacity:.84,line:{color:'#f7f8fa',width:1}},hovertemplate:'%{text}<br>'+labels[s.x]+': %{x:,.0f}<br>'+labels[s.y]+': %{y:,.0f}<extra></extra>'}];
+ ytitle=labels[s.y]+' · scala log';layoutExtra={yaxis:{type:'log'}};note='Densità centrale di '+fmt(allValid.length)+' coppie; assi limitati al 99° percentile. Clicca una cella per filtrare.';
+ }else if(s.kind==='radial'){
+ const groups=new Map();for(const r of selected){const k=r[s.x]??'__missing';groups.set(k,(groups.get(k)||0)+1);}
+ const entries=[...groups].map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v).slice(0,12);
+ const radialLabel=key=>key==='__missing'?'Non disponibile':key.replace('Ottimo / Ristrutturato','Ottimo / ristrutt.').replace('Nuovo / In costruzione','Nuovo / costruzione');
+ traces=[{type:'barpolar',theta:entries.map(e=>radialLabel(e.k)),r:entries.map(e=>e.v),text:entries.map(e=>e.k==='__missing'?'Non disponibile':e.k),customdata:entries.map(e=>({kind:'category',field:s.x,value:e.k})),marker:{color:entries.map((_,j)=>j),colorscale:[[0,'#2f6f9f'],[.55,'#7898ad'],[1,'#7b507d']],line:{color:'#f7f8fa',width:1}},opacity:.9,hovertemplate:'%{text}<br>%{r} annunci<extra></extra>'}];
+ xtitle='';ytitle='';layoutExtra={polar:{bgcolor:'rgba(0,0,0,0)',radialaxis:{showticklabels:false,ticks:'',gridcolor:'#d9dee3'},angularaxis:{gridcolor:'#e8ebee',tickfont:{size:10}}}};note='Le categorie più presenti. La lunghezza radiale comunica il peso; il tooltip conserva il valore esatto.';
  }else{
- const present=selected.filter(r=>r[s.x]!==null).length;
- trace={type:'bar',x:['Presenti','Mancanti'],y:[present,selected.length-present],customdata:[{kind:'presence',value:s.x},{kind:'absent',value:s.x}]};
- note='Clicca per filtrare gli annunci con o senza '+labels[s.x].toLowerCase()+'.';
+ const countBy=field=>{const m=new Map();for(const r of selected){const k=r[field]??'__missing';m.set(k,(m.get(k)||0)+1);}return [...m].sort((a,b)=>b[1]-a[1]).slice(0,9).map(([k])=>k);};
+ if(s.x===s.y){s.y=cats.find(k=>k!==s.x);const rowSelect=container.querySelector('[data-chart="'+i+'"][data-key="y"]');if(rowSelect)rowSelect.value=s.y;}
+ const columns=countBy(s.x),rows=countBy(s.y);
+ const matrix=rows.map(row=>columns.map(column=>selected.filter(r=>(r[s.y]??'__missing')===row&&(r[s.x]??'__missing')===column).length));
+ const custom=rows.map(row=>columns.map(column=>({kind:'categories',value:{[s.x]:column,[s.y]:row}})));
+ traces=[{type:'heatmap',x:columns.map(k=>k==='__missing'?'Non disponibile':k),y:rows.map(k=>k==='__missing'?'Non disponibile':k),z:matrix.map(row=>row.map(Math.sqrt)),text:matrix,customdata:custom,colorscale:[[0,'#f0f2f4'],[.35,'#bed0db'],[1,'#2f6f9f']],showscale:false,hovertemplate:'%{y} × %{x}<br>%{text} annunci<extra></extra>'}];
+ xtitle=labels[s.x];ytitle=labels[s.y];note='Incrocio delle categorie più frequenti; la scala √ rende visibili anche i gruppi piccoli. Clicca una cella per filtrare.';
  }
  $('[data-note="'+i+'"]').textContent=note;
  if(!selected.length){plotly.purge(node);node.textContent='Nessun dato. Rimuovi un filtro per riprendere.';node.dataset.empty='true';continue;}
  if(node.dataset.empty){node.replaceChildren();delete node.dataset.empty;}
- if(s.kind==='bar')node.style.height=Math.max(360,trace.y.length*24+100)+'px';
- const measure=container.querySelector('[data-chart="'+i+'"][data-key=y]');if(measure)measure.disabled=s.kind==='bar'&&s.aggregate==='count';
- await plotly.react(node,[trace],{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',colorway:['#476753'],font:{size:11,color:'#3d4640'},margin:{l:s.kind==='bar'?125:65,r:20,t:15,b:65},xaxis:{title:{text:xtitle},automargin:true},yaxis:{title:{text:ytitle},automargin:true,...(s.kind==='bar'?{autorange:'reversed',type:'category'}:{})},showlegend:false,dragmode:s.kind==='scatter'?'select':false},{responsive:true,displayModeBar:false});
+ node.style.height=s.kind==='lollipop'?Math.max(360,traces[0].y.length*25+100)+'px':'';
+ const measure=container.querySelector('[data-chart="'+i+'"][data-key=y]');if(measure)measure.disabled=s.kind==='lollipop'&&s.aggregate==='count';
+ const margin={l:s.kind==='radial'?82:['lollipop','heatmap'].includes(s.kind)?125:55,r:s.kind==='radial'?82:s.kind==='lollipop'?64:24,t:s.kind==='radial'?32:18,b:58};
+ const xaxis={title:{text:xtitle},automargin:true,gridcolor:'#e8ebee',zeroline:false};
+ const yaxis={title:{text:ytitle},automargin:true,gridcolor:'#e8ebee',zeroline:false,...(s.kind==='lollipop'?{type:'category'}:{})};
+ if(layoutExtra.yaxis){Object.assign(yaxis,layoutExtra.yaxis);delete layoutExtra.yaxis;}
+ await plotly.react(node,traces,{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{size:11,color:'#3d4640'},margin,xaxis,yaxis,showlegend:false,dragmode:s.kind==='density'?'select':false,...layoutExtra},{responsive:true,displayModeBar:false});
  if(disposed||version!==generation){if(disposed)plotly.purge(node);return;}
  node.removeAllListeners('plotly_click');node.on('plotly_click',e=>filterClick(e.points?.[0]?.customdata));
- node.removeAllListeners('plotly_selected');if(s.kind==='scatter')node.on('plotly_selected',e=>{if(e?.points?.length)setExtra('ids',e.points.flatMap(p=>p.customdata?.value||[]));});
+ node.removeAllListeners('plotly_selected');if(s.kind==='density')node.on('plotly_selected',e=>{if(e?.points?.length)setExtra('ids',e.points.flatMap(p=>p.customdata?.value||[]));});
  }
  $('#housing-chart-status').textContent='';
  }catch{if(!disposed)$('#housing-chart-status').textContent='Grafici non disponibili. Tabella e CSV restano utilizzabili; cambia un filtro per riprovare.';}

@@ -205,10 +205,17 @@ body[data-page="landing"] .terminal-heading { margin: 24px 0 28px; }
 .lab-pagination button:not(:disabled):hover { border-color: var(--accent); color: var(--accent); }
 /* Shared workspace: local CSV exploration and the historical thesis dashboard. */
 .data-workspace { min-width: 0; }
+.data-workspace > .terminal-heading { margin: 22px 0 24px; padding: 5px 8px 9px; border: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--soft) 82%, transparent), transparent 78%); }
+.data-workspace > .terminal-heading::before { top: 24px; }
 .data-panel { margin: 28px 0; padding: clamp(16px, 3vw, 28px); border: 1px solid var(--line); background: var(--soft); }
 .data-panel h2 { margin-top: 0; }
-.housing-filter-panel > summary { cursor: pointer; font: 500 22px var(--display); }
-.housing-filter-panel:not([open]) { margin-block: 20px; padding-block: 16px; }
+.housing-filter-panel { margin: 14px 0 22px; padding: 0; border: 0; background: transparent; }
+.housing-filter-panel > summary { display: inline-flex; align-items: baseline; gap: 10px; min-height: 36px; padding: 7px 12px; border: 1px solid var(--line); background: var(--card); cursor: pointer; font: 600 12px/1.5 var(--mono); list-style-position: inside; }
+.housing-filter-panel > summary small { color: var(--muted); font: 11px/1.5 var(--ui); }
+.housing-filter-panel[open] > summary { border-color: var(--accent); color: var(--accent); }
+.housing-filter-panel form { margin-top: 12px; padding: clamp(14px, 2.4vw, 22px); background: var(--soft); }
+.housing-filter-actions { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.housing-filter-actions button { flex: 0 0 auto; }
 .data-workspace summary { cursor: pointer; }
 .data-workspace input[aria-invalid="true"] { border-color: var(--wine); outline: 1px solid var(--wine); }
 .data-panel p { max-width: 85ch; color: var(--muted); }
@@ -230,9 +237,19 @@ body[data-page="landing"] .terminal-heading { margin: 24px 0 28px; }
 .data-workspace .lab-chart figcaption p { max-height: 100px; overflow: auto; }
 .data-workspace .lab-chart h2, .data-workspace .lab-chart h3 { margin: 0 0 14px; font: 500 clamp(21px, 2.2vw, 25px)/1.3 var(--display); }
 .data-workspace .lab-chart > p { font-size: 12px; color: var(--muted); }
+.data-workspace .lab-chart { overflow: hidden; border: 0; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--card) 82%, transparent); }
+.lab-chart-heading { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 12px; }
+.lab-chart-heading p { margin: 0; color: var(--wine); font: 10px/1.4 var(--mono); }
+.data-workspace .lab-chart-heading h2 { margin-bottom: 8px; }
+.data-workspace .chart-settings { margin: 0 0 8px 27px; }
+.data-workspace .chart-settings summary { display: inline-block; margin: 0; color: var(--accent); font: 11px/1.5 var(--mono); }
+.data-workspace .chart-settings .data-controls { margin: 10px 0 14px; }
+.lab-chart-radial .lab-plot { min-height: 390px; }
 @media (max-width: 600px) {
   .data-controls { grid-template-columns: 1fr; }
   .data-workspace .lab-plot { height: 320px; }
+  .housing-filter-actions { align-items: flex-start; flex-direction: column; }
+  .housing-filter-panel > summary { gap: 6px; }
 }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .skip { position: absolute; top: -70px; left: 15px; z-index: 10; padding: 10px; background: var(--card); }
