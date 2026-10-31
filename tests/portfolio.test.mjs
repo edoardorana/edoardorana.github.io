@@ -56,8 +56,7 @@ test('entry and CV use local assets and contain no duplicate HTML ids', async ()
   }
   const cv = await readFile(new URL('../proposal/cv.html', import.meta.url), 'utf8');
   for (const section of ['profilo', 'esperienze', 'formazione', 'competenze']) assert.match(cv, new RegExp(`<section id="${section}"[^>]*><h2>${section}/<\\/h2>`));
-  assert.match(cv, /class="cv-save"[^>]*>Salva PDF<\/button>/);
-  assert.doesNotMatch(cv, /Stampa \/ salva PDF/);
+  assert.doesNotMatch(cv, /Salva PDF|Stampa \/ salva PDF/);
 });
 test('terminal headings keep the title semantic and the readme always visible', () => {
   const html = terminalHeader({ path: '~/PROGETTI/demo', title: 'Titolo <demo>', summary: 'Sintesi & dettagli', sections: [{ label: 'voce/', text: 'Contenuto ordinato' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV' } });

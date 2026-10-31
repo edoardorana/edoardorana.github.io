@@ -27,7 +27,7 @@ function profile() {
     <header class="section-heading compact-heading tree-section-heading">
       <h2 class="compact-title" id="profilo-title">PROFILO/</h2>
       <ul class="landing-tree" role="list" aria-label="Contenuti del Profilo">
-        ${treeNode({ href: 'cv.html', label: 'cv.html', tags: ['esperienze', 'formazione', 'competenze', 'lingue'] })}
+        ${treeNode({ href: 'cv.html', label: 'cv', tags: ['esperienze', 'formazione', 'competenze', 'lingue'] })}
         ${treeNode({ href: 'luoghi.html', label: 'luoghi', tags: ['Milano', 'Tromsø', 'Zugo', 'Stoccarda'] })}
       </ul>
     </header>
