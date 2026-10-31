@@ -100,7 +100,7 @@ test('landing copy presents one narrative and keeps terminal language for action
   assert.match(entry, /edo<span>\.<\/span>dot/);
   assert.doesNotMatch(entry, /brand-name|netbox-ipam/);
   assert.match(source, /La complessità non scompare/);
-  assert.match(source, /<h2 id="profilo-title">CV<\/h2>/);
+  assert.match(source, /<h2 class="compact-title" id="profilo-title"><span>\.01 Profilo<\/span><span aria-hidden="true">##<\/span><span>CV<\/span><\/h2>/);
   assert.doesNotMatch(source, /Esplora i progetti|Il percorso completo è nel CV|production-databases/);
   assert.doesNotMatch(source, /journeyContent|renderServices|sectionNav/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');

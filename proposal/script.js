@@ -29,18 +29,18 @@ function home() {
 }
 function profile() {
   return `<section class="page profile-section landing-section" id="profilo" aria-labelledby="profilo-title">
-    <header class="section-heading compact-heading"><p class="section-number">.01 Profilo</p><h2 id="profilo-title">CV</h2><a class="cv-callout" href="cv.html"><span>Esperienze · formazione · skills · lingue</span><span aria-hidden="true">Apri ↗</span></a></header>
+    <header class="section-heading compact-heading"><h2 class="compact-title" id="profilo-title"><span>.01 Profilo</span><span aria-hidden="true">##</span><span>CV</span></h2><a class="cv-callout" href="cv.html"><span>Esperienze · formazione · skills · lingue</span><span aria-hidden="true">Apri ↗</span></a></header>
     <div class="profile-map"><div class="profile-map-copy"><p class="section-label">Luoghi</p><h3>Quattro tappe, un percorso.</h3><p>Milano, Tromsø, Zugo e Stoccarda raccontano studi, lavoro da remoto e periodi personali. Seleziona una città per leggere il contesto.</p><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto. Cartografia: Natural Earth.</span></div></div>
   </section>`;
 }
 function approach() {
   const documents = ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere'];
-  return `<section class="page approach-section landing-section" id="approccio" aria-labelledby="approccio-title"><header class="section-heading compact-heading"><p class="section-number">.03</p><h2 id="approccio-title">Approccio</h2></header>
+  return `<section class="page approach-section landing-section" id="approccio" aria-labelledby="approccio-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="approccio-title">.03 Approccio</h2></header>
   <div class="method" aria-label="Le cinque fasi del metodo">${steps.map((s,i) => `<article class="method-step" aria-labelledby="method-${i}"><p class="eyebrow">0${i+1} / 05</p><h3 id="method-${i}">${s.title}</h3><p class="method-short">${s.short}</p><a class="method-document" href="/approccio/${documents[i]}.html" aria-label="Apri la scheda ${s.title}">Apri ↗</a></article>`).join('')}</div>
   </section>`;
 }
 function projectList() {
-  return `<section class="page projects-section landing-section" id="progetti" aria-labelledby="progetti-title"><header class="section-heading compact-heading"><p class="section-number">.02</p><h2 id="progetti-title">Progetti</h2></header>
+  return `<section class="page projects-section landing-section" id="progetti" aria-labelledby="progetti-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="progetti-title">.02 Progetti</h2></header>
   <div class="project-list">${projects.map((p,index) => `<a class="project-row" href="#/progetti/${p.id}"><span class="project-index" aria-hidden="true">.0${index + 1}</span><div><p class="eyebrow">${p.kind}</p><h3>${p.title}</h3><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
 }
 function europeMap() {
@@ -54,7 +54,7 @@ function europeMap() {
   }).join('')}</div>`;
 }
 function contact() {
-  return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading compact-heading"><p class="section-number">.04</p><h2 id="contatti-title">Collaborazioni</h2><p>Parliamo del problema, prima degli strumenti.</p></header>${contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false })}</section>`;
+  return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="contatti-title">.04 Collaborazioni</h2><p>Parliamo del problema, prima degli strumenti.</p></header>${contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false })}</section>`;
 }
 function landing() {
   return `${home()}${profile()}${projectList()}${approach()}${contact()}`;
