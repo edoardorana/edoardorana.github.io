@@ -20,7 +20,7 @@
     .cv-contact a { text-decoration: underline; text-underline-offset: 4px; }
     .cv-section { padding: 34px 0; border-top: 1px solid var(--line); }
     .cv-section > h2 { margin: 0 0 26px; color: var(--wine); font: 12px/1.5 var(--mono); letter-spacing: .5px; }
-    .cv-summary { max-width: 90ch; margin: 0; font-size: 17px; line-height: 1.8; }
+    .cv-summary { max-width: 90ch; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
     .cv-list { display: grid; gap: 0; }
     .cv article { display: grid; grid-template-columns: minmax(130px, 170px) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); padding: 0 0 28px; }
     .cv article:last-child { padding-bottom: 0; }
@@ -66,7 +66,6 @@
     <a class="brand" href="index.html#/" aria-label="edo dot, torna alla Home"><span class="brand-mark" aria-hidden="true">edo<span>.</span>dot</span></a>
   </header>
   <main class="cv">
-    <nav class="cv-nav" aria-label="Navigazione CV"><button class="cv-save" type="button" onclick="window.print()">Salva PDF</button></nav>
     <header class="cv-hero"><div><p class="cv-kicker">Curriculum vitae · 2026</p><h1>Edoardo Rana</h1><p class="cv-role">Consulenza tecnica su infrastrutture, dati e automazione.</p></div><div class="cv-contact"><a href="mailto:edoardorana@outlook.com">edoardorana@outlook.com</a><a href="https://github.com/edoardorana">github.com/edoardorana ↗</a></div></header>
     <section id="profilo" class="cv-section"><h2>profilo/</h2><p class="cv-summary">Esperienza in infrastrutture Linux, database in produzione e analisi dei dati. Lavoro su requisiti, diagnosi delle cause, documentazione tecnica e processi, collegando il contesto operativo agli strumenti più adatti.</p></section>
     <section id="esperienze" class="cv-section"><h2>esperienze/</h2><div class="cv-list">
@@ -83,13 +82,13 @@
       <article><p class="date">2017 — 2021</p><div><h3>Laurea in Statistica e Gestione delle Informazioni · Milano-Bicocca</h3><p>Statistica, sistemi informativi e programmazione. Tesi sul web scraping di annunci immobiliari per analisi di mercato.</p></div></article>
       <article><p class="date">2012 — 2017</p><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Amministrazione aziendale, contabilità, economia e marketing.</p></div></article>
     </div></section>
-    <section id="competenze" class="cv-section"><h2>competenze/</h2><div class="cv-terminal"><div class="cv-terminal-screen"><p class="terminal-command"><b>~/cv</b>$ skills --overview</p><div class="cv-skills">
+    <section id="competenze" class="cv-section"><h2>competenze/</h2><div class="cv-terminal"><div class="cv-terminal-screen"><p class="terminal-command"><b>~/cv/competenze</b>$ skills --overview</p><div class="cv-skills">
       <article><p class="terminal-path">consulenza/</p><h3>Supporto e metodo</h3><p>Requisiti · Diagnosi delle cause · Documentazione · Processi</p></article>
       <article><p class="terminal-path">infrastruttura/</p><h3>Sistemi Linux</h3><p>Debian · Proxmox VE / PBS · checkmk · Storage S3 · Backup</p></article>
       <article><p class="terminal-path">database_automazione/</p><h3>Dati e automazione</h3><p>Oracle · PostgreSQL · MariaDB / MySQL · SQL · Bash · Python</p></article>
       <article><p class="terminal-path">analisi_bi/</p><h3>Business Intelligence</h3><p>KPI · Power BI · Qlik Sense · Tableau · R · KNIME · Orange</p></article>
-    </div><div class="cv-meta"><p class="terminal-command"><b>~/cv</b>$ languages --list</p><p>Italiano madrelingua · Inglese C1 · Spagnolo B2</p><p class="terminal-command"><b>~/cv</b>$ interests --list</p><p>Judo · Ju jitsu · Arti marziali · Skateboard · Moto · Auto</p><p class="terminal-command"><b>~/cv</b>$ certifications --list</p><p>EDB Postgres Essentials v17 · 2025</p></div></div></div></section>
-    <p class="cv-note">Sintesi web dal CV 2026. Per una copia usa “Salva PDF”.</p>
+    </div><div class="cv-meta"><p class="terminal-command"><b>~/cv/competenze</b>$ languages --list</p><p>Italiano madrelingua · Inglese C1 · Spagnolo B2</p><p class="terminal-command"><b>~/cv/competenze</b>$ interests --list</p><p>Judo · Ju jitsu · Arti marziali · Skateboard · Moto · Auto</p><p class="terminal-command"><b>~/cv/competenze</b>$ certifications --list</p><p>EDB Postgres Essentials v17 · 2025</p></div></div></div></section>
+    <p class="cv-note">Sintesi web dal CV 2026.</p>
   </main>
 </body>
 </html>
