@@ -12,4 +12,5 @@ dist/
 .DS_Store
 private/
 coverage/
+/.tmp-qa/
 /Edoardo_Rana_CV_2026.pdf

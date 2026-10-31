@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { areas, projects, parseRoute, mailto, mapPoint, places } from '../proposal/data.mjs';
 import { resolveAsset } from '../scripts/dev.mjs';
 import { terminalHeader } from '../proposal/terminal-header.mjs';
+import { contactHTML } from '../proposal/contact.mjs';
 
 test('all areas and project deep links resolve; missing content gets a not-found route', () => {
   assert.deepEqual(parseRoute(''), { page: 'mappa' });
@@ -47,18 +48,22 @@ test('local preview limits assets to public files and rejects path escape attemp
   for (const path of ['/../README.md','/%2e%2e/private.html','/.env','/file.txt','/%00.html','/..%5csecret.html','/%zz','/.git/config','/folder/.secret.html']) assert.equal(resolveAsset(path), null, path);
 });
 test('entry and CV use local assets and contain no duplicate HTML ids', async () => {
-  for (const name of ['index.html', 'cv.html', ...['capire','raccogliere','custodire','leggere','evolvere'].map(n=>'approccio/'+n+'.html')]) {
+  for (const name of ['index.html', 'cv.html', 'luoghi.html', 'contatti.html', ...['capire','raccogliere','custodire','leggere','evolvere'].map(n=>'approccio/'+n+'.html')]) {
     const html = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
     assert.equal(new Set(ids).size, ids.length);
     for (const [, asset] of html.matchAll(/(?:src|href)="([^"#:]+\.(?:css|js|mjs|svg))(?:\?[^\"]*)?"/g)) await readFile(new URL(asset, new URL('../proposal/' + name, import.meta.url)));
   }
+  const cv = await readFile(new URL('../proposal/cv.html', import.meta.url), 'utf8');
+  for (const section of ['profilo', 'esperienze', 'formazione', 'competenze']) assert.match(cv, new RegExp(`<section id="${section}"[^>]*><h2>${section}/<\\/h2>`));
+  assert.match(cv, /class="cv-save"[^>]*>Salva PDF<\/button>/);
+  assert.doesNotMatch(cv, /Stampa \/ salva PDF/);
 });
 test('terminal headings keep the title semantic and the readme always visible', () => {
-  const html = terminalHeader({ path: '~/progetti/demo', title: 'Titolo <demo>', summary: 'Sintesi & dettagli', sections: [{ label: 'voce/', text: 'Contenuto ordinato' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV' } });
+  const html = terminalHeader({ path: '~/PROGETTI/demo', title: 'Titolo <demo>', summary: 'Sintesi & dettagli', sections: [{ label: 'voce/', text: 'Contenuto ordinato' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV' } });
   assert.match(html, /<h1 class="visually-hidden">Titolo &lt;demo&gt;<\/h1>/);
   assert.doesNotMatch(html, /edo@debian/);
-  assert.match(html, /~\/progetti\/demo/);
+  assert.match(html, /~\/PROGETTI\/demo/);
   assert.match(html, /cat readme\.md/);
   assert.doesNotMatch(html, /\shidden(?:\s|>)|aria-expanded/);
   assert.match(html, /Sintesi &amp; dettagli/);
@@ -66,14 +71,58 @@ test('terminal headings keep the title semantic and the readme always visible', 
   assert.match(html, /xdg-open cv\.html/);
   assert.match(html, /href="cv\.html"/);
 });
-test('README summaries explain the page and the next user action', async () => {
+test('terminal headings support safe section titles without changing the default level', () => {
+  const defaults = terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Sintesi' });
+  const section = terminalHeader({ path: '~/profilo', title: 'Profilo <dati>', summary: 'Sintesi', headingLevel: 2, titleId: 'profilo" onclick="alert(1)' });
+  const unsupported = terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Sintesi', headingLevel: 3 });
+  assert.match(defaults, /<h1 class="visually-hidden">Profilo<\/h1>/);
+  assert.match(section, /<h2 class="visually-hidden" id="profilo&quot; onclick=&quot;alert\(1\)">Profilo &lt;dati&gt;<\/h2>/);
+  assert.doesNotMatch(section, /<h1|onclick="alert/);
+  assert.match(unsupported, /<h1 class="visually-hidden">Profilo<\/h1>/);
+  assert.doesNotMatch(unsupported, /<h3/);
+});
+test('contact headings support safe section titles and keep the open composer', () => {
+  const defaults = contactHTML();
+  const section = contactHTML({ headingLevel: 2, titleId: 'COLLABORAZIONI"><script>' });
+  const landing = contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false });
+  assert.match(defaults, /<h1 class="visually-hidden">Componi una email<\/h1>/);
+  assert.match(section, /<h2 class="visually-hidden" id="COLLABORAZIONI&quot;&gt;&lt;script&gt;">Componi una email<\/h2>/);
+  for (const html of [defaults, section]) {
+    assert.match(html, /mail --new/);
+    assert.match(html, /<form id="contact-form">/);
+    assert.match(html, /id="subject"/);
+    assert.match(html, /id="message"/);
+    assert.doesNotMatch(html, /<form id="contact-form" hidden/);
+  }
+  assert.doesNotMatch(landing, /cat readme\.md/);
+  assert.match(landing, /class="contact-links"/);
+  assert.match(landing, /mail --new/);
+});
+test('landing copy presents one narrative and keeps terminal language for actions', async () => {
   const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
-  assert.match(source, /Benvenuto nel mio sito/);
-  assert.match(source, /Qui trovi formazione, esperienze e luoghi del mio percorso/);
-  assert.match(source, /Seleziona una fase e apri la scheda operativa/);
-  assert.match(source, /Seleziona una scheda per leggere il contesto/);
+  const entry = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
+  assert.match(entry, /edo<span>\.<\/span>dot/);
+  assert.doesNotMatch(entry, /brand-name|netbox-ipam/);
+  assert.match(source, /La complessità non scompare/);
+  assert.match(source, /<h2 class="compact-title" id="profilo-title">PROFILO\/<\/h2>/);
+  assert.match(source, /href: 'luoghi\.html', label: 'luoghi'/);
+  assert.match(source, /href: 'contatti\.html', label: 'contatti'/);
+  for (const label of ['PROFILO/', 'PROGETTI/', 'APPROCCIO/', 'COLLABORAZIONI/']) assert.match(source, new RegExp(label.replace('/', '\\/')));
+  assert.match(source, /class="landing-tree-name"/);
+  assert.match(source, /label: project\.id/);
+  assert.match(source, /label: documents\[index\]/);
+  assert.doesNotMatch(source, /├──|└──|project-row|method-step/);
+  assert.doesNotMatch(source, /profile-map|europeMap|bindProfile/);
+  assert.doesNotMatch(source, /Esplora i PROGETTI|Il percorso completo è nel CV|production-databases/);
+  assert.doesNotMatch(source, /journeyContent|renderServices|sectionNav/);
+  assert.doesNotMatch(source, /contactHTML|bindContact|site-index|index-toggle/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
+  const contactPage = await readFile(new URL('../proposal/contatti.mjs', import.meta.url), 'utf8');
   assert.match(contact, /mail --new/);
+  assert.match(contact, /~\/collaborazioni\/contatti/);
+  assert.doesNotMatch(contact, /<b>~\/contatti<\/b>/);
+  assert.match(contactPage, /contactHTML/);
+  assert.match(contactPage, /bindContact/);
   assert.doesNotMatch(contact, /mail-start|copy-email|wait-cursor|<form id="contact-form" hidden/);
 });
 test('Approach documents are direct CV-style pages without terminal headers', async () => {
@@ -81,14 +130,33 @@ test('Approach documents are direct CV-style pages without terminal headers', as
     const html = await readFile(new URL(`../proposal/approccio/${name}.html`, import.meta.url), 'utf8');
     assert.doesNotMatch(html, /cat readme\.md/);
     assert.match(html, /<main>/);
-    assert.match(html, /Stampa \/ salva PDF/);
+    assert.match(html, /href="\.\.\/index\.html#\/">← Torna alla Home<\/a>/);
+    assert.match(html, /class="document-save"[^>]*>Salva PDF<\/button>/);
+    assert.doesNotMatch(html, /Stampa \/ salva PDF|← Approccio/);
   }
 });
-test('site menu uses a compact terminal tree without repeated paths or file modes', async () => {
+test('the landing is the only site index and the duplicate header menu is absent', async () => {
   const html = await readFile(new URL('../proposal/index.html', import.meta.url), 'utf8');
-  assert.doesNotMatch(html, /drwx|rw-r|directory-mode/);
-  assert.match(html, /<span class="menu-prompt"[^>]*>.*<strong>tree<\/strong>/);
-  for (const label of ['home', 'profilo', 'cv.html', 'progetti', 'dashboard-generator', 'immobiliare-data', 'netbox-ipam', 'approccio', 'contatti']) assert.match(html, new RegExp(`>${label.replace('.', '\\.')}<`));
-  assert.doesNotMatch(html, />\s*~\/(?:home|profilo|progetti|approccio|contatti)|>\s*progetti\/(?:dashboard-generator|immobiliare-data)/);
-  assert.ok(html.indexOf('aria-label="Progetti"') < html.indexOf('aria-label="Approccio"'));
+  assert.match(html, /class="site-header"/);
+  assert.match(html, /class="brand"/);
+  assert.doesNotMatch(html, /site-index|index-toggle|menu-prompt|menu-lines|tree-root|tree-folder/);
 });
+test('separate pages return to Home without duplicate project footers', async () => {
+  for (const name of ['cv.html', 'luoghi.html', 'contatti.html']) {
+    const html = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
+    assert.match(html, /Torna alla Home/);
+    assert.doesNotMatch(html, /Torna al Profilo|Torna alla landing/);
+  }
+  const source = await readFile(new URL('../proposal/script.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(source, /projectNav|navigationHTML:/);
+  for (const name of ['housing/page.mjs', 'explorer/page.mjs']) {
+    const module = await readFile(new URL('../proposal/' + name, import.meta.url), 'utf8');
+    assert.match(module, /class="project-top-nav"[^>]*>.*Torna alla Home/);
+  }
+  const housing = await readFile(new URL('../proposal/housing/page.mjs', import.meta.url), 'utf8');
+  for (const label of ['contenuto/', 'strumenti/', 'limiti/']) assert.match(housing, new RegExp(label.replace('/', '\\/')));
+  assert.match(housing, /14\.731 annunci/);
+  assert.doesNotMatch(housing, /Il dataset in breve|housing-method|lab-methodology/);
+});
+
+

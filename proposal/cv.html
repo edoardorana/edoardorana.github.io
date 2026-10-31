@@ -7,97 +7,89 @@
   <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <style>
-    .cv { max-width: 850px; margin: 40px auto; padding: 25px; }
-    .cv h1 { font-size: 44px; }
-    .cv h2 { font-size: 26px; margin-top: 35px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
-    .cv h3 { font-size: 19px; margin-bottom: 5px; }
-    .cv p, .cv li { font-size: 14px; }
-    .cv article { margin: 23px 0; }
-    .cv .date { color: var(--muted); font-size: 12px; }
+    .cv { width: min(1180px, 100%); margin: 0 auto; padding: 28px clamp(20px, 4vw, 48px) 64px; }
+    .cv-nav { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); font: 12px var(--mono); }
+    .cv-nav a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+    .cv-save { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 9px 16px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 600 12px/1.4 var(--mono); letter-spacing: .2px; transition: background .18s ease, border-color .18s ease, color .18s ease; }
+    .cv-save:hover { border-color: var(--wine); background: var(--wine); color: white; }
+    .cv-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; padding: 38px 0 34px; }
+    .cv-kicker { color: var(--wine); font: 11px var(--mono); letter-spacing: .7px; text-transform: uppercase; }
+    .cv h1 { max-width: 680px; margin: 10px 0 12px; font: 600 clamp(36px, 5.4vw, 54px)/1.08 var(--mono); letter-spacing: -2px; }
+    .cv-role { max-width: 620px; margin: 0; color: var(--muted); font-size: clamp(17px, 2vw, 21px); line-height: 1.5; }
+    .cv-contact { display: grid; gap: 8px; justify-items: end; font-size: 12px; }
+    .cv-contact a { text-decoration: underline; text-underline-offset: 4px; }
+    .cv-section { padding: 34px 0; border-top: 1px solid var(--line); }
+    .cv-section > h2 { margin: 0 0 26px; color: var(--wine); font: 12px/1.5 var(--mono); letter-spacing: .5px; }
+    .cv-summary { max-width: 90ch; margin: 0; font-size: 17px; line-height: 1.8; }
+    .cv-list { display: grid; gap: 0; }
+    .cv article { display: grid; grid-template-columns: minmax(130px, 170px) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); padding: 0 0 28px; }
+    .cv article:last-child { padding-bottom: 0; }
+    .cv .date { margin: 3px 0 0; color: var(--muted); font: 11px/1.6 var(--mono); }
+    .cv h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.45; }
+    .cv article p:last-child { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .cv-terminal { border: 1px solid var(--line); background: var(--soft); }
+    .cv-terminal-screen { padding: 26px; }
+    .cv-terminal .terminal-command { margin-bottom: 22px; }
+    .cv-skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 30px; }
+    .cv-skills article { display: block; padding: 0; }
+    .cv-skills h3 { font: 600 15px/1.4 var(--mono); }
+    .cv-skills p { font: 12px/1.7 var(--mono) !important; }
+    .cv-meta { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .cv-meta p { margin: 0; font: 12px/1.7 var(--mono); }
+    .cv-note { color: var(--muted); font-size: 11px; }
+    @media (max-width: 700px) {
+      .cv-hero { grid-template-columns: 1fr; }
+      .cv-hero { gap: 24px; padding-block: 38px; }
+      .cv-contact { justify-items: start; }
+      .cv-section > h2 { margin-bottom: 22px; }
+      .cv article { grid-template-columns: 1fr; gap: 5px; }
+      .cv-skills { grid-template-columns: 1fr; }
+      .cv-meta { grid-template-columns: 1fr; gap: 4px; }
+      .cv-meta .terminal-command:not(:first-child) { margin-top: 12px; }
+    }
     @media print {
-      .cv { margin: 0; padding: 0; }
-      .cv nav { display: none; }
-      .cv h1 { font-size: 30px; }
-      .cv h2 { margin-top: 20px; }
+      .cv { width: 100%; margin: 0; padding: 0; }
+      .site-header, .cv-nav { display: none; }
+      .cv-hero { padding: 0 0 24px; }
+      .cv h1 { font-size: 38px; }
+      .cv-section { padding: 24px 0; }
+      .cv-section > h2 { margin-bottom: 18px; }
+      .cv article { grid-template-columns: 120px minmax(0, 1fr); gap: 24px; }
       .cv article { break-inside: avoid; }
+      .cv-terminal { break-inside: avoid; }
       a { color: inherit; }
     }
   </style>
 </head>
-<body>
+<body data-page="cv">
+  <header class="site-header">
+    <a class="brand" href="index.html#/" aria-label="edo dot, torna alla Home"><span class="brand-mark" aria-hidden="true">edo<span>.</span>dot</span></a>
+  </header>
   <main class="cv">
-    <nav><a href="index.html#/profilo">← Profilo</a></nav>
-    <h1>Edoardo Rana</h1>
-    <p>Consulente IT · Infrastrutture, dati e automazione</p>
-    <p><a href="mailto:edoardorana@outlook.com">edoardorana@outlook.com</a></p>
-
-    <h2>Profilo</h2>
-    <p>Esperienza in infrastrutture Linux, database in produzione e analisi dei dati. Il percorso comprende attività di consulenza tecnica, documentazione e diagnosi dei problemi, insieme a una formazione iniziale in amministrazione e contabilità.</p>
-
-    <h2>Esperienze</h2>
-    <article>
-      <h3>Linux Administrator · Broway SA</h3>
-      <p class="date">Maggio 2025 – oggi</p>
-      <p>Gestione e monitoraggio di infrastrutture Linux e Proxmox VE, diagnosi di incidenti con checkmk e analisi dei log. Script SQL e shell, aggiornamenti e verifica del comportamento applicativo su Debian e MariaDB. Attività su MultiPortal, Proxmox Backup Server e storage S3-compatibile; documentazione tecnica e contributo al rafforzamento della sicurezza operativa.</p>
-    </article>
-    <article>
-      <h3>Database Administrator · Broway SA</h3>
-      <p class="date">Ottobre 2024 – maggio 2025</p>
-      <p>Manutenzione e monitoraggio di database Oracle e PostgreSQL con checkmk e Oracle Enterprise Manager. Diagnosi di errori SQL e processi batch, backup e ripristino, gestione di schemi e remap di tabelle, supporto ai rilasci e confronto con gli altri referenti tecnici.</p>
-    </article>
-    <article>
-      <h3>Collaboratore operativo · Hubita APS</h3>
-      <p class="date">Gennaio 2024 – gennaio 2026</p>
-      <p>Coordinamento di attività per iniziative sociali e culturali, eventi e interlocutori coinvolti; supporto all’ambiente Google Workspace dell’associazione.</p>
-    </article>
-    <article>
-      <h3>Business Unit Intern · SB Italia</h3>
-      <p class="date">Gennaio 2023 – novembre 2023</p>
-      <p>Analisi di dataset aziendali, metodi di classificazione e sviluppo di report e dashboard con Qlik, Power BI e Tableau.</p>
-    </article>
-
-    <h2>Esperienze iniziali</h2>
-    <article>
-      <h3>Stage in contabilità e consulenza · LTA Advisory</h3>
-      <p class="date">2016</p>
-      <p>Contabilità generale e supporto alle attività di consulenza.</p>
-    </article>
-    <article>
-      <h3>Stage in contabilità · TaxiBlu</h3>
-      <p class="date">2015</p>
-      <p>Contabilità generale, utilizzo di Zucchetti e manutenzione di database.</p>
-    </article>
-
-    <h2>Formazione</h2>
-    <article>
-      <h3>Magistrale in Data Science · Milano-Bicocca</h3>
-      <p class="date">Dal 2021 · in corso</p>
-      <p>Statistica avanzata, machine learning, modelli predittivi e big data.</p>
-    </article>
-    <article>
-      <h3>Laurea in Statistica e Gestione delle Informazioni · Milano-Bicocca</h3>
-      <p class="date">2017 – 2021</p>
-      <p>Statistica, sistemi informativi e programmazione. Tesi sul web scraping di annunci immobiliari per analisi di mercato.</p>
-    </article>
-    <article>
-      <h3>Erasmus a Tromsø · UiT The Arctic University of Norway</h3>
-      <p class="date">Agosto 2021 – agosto 2022</p>
-    </article>
-    <article>
-      <h3>Diploma in Amministrazione, Finanza e Marketing · Istituto San Vincenzo / Regina Mundi</h3>
-      <p class="date">2012 – 2017</p>
-      <p>Amministrazione aziendale, contabilità, economia e marketing.</p>
-    </article>
-
-    <h2>Competenze</h2>
-    <p><strong>Supporto e metodo:</strong> requisiti, diagnosi delle cause, documentazione tecnica e miglioramento dei processi.</p>
-    <p><strong>Infrastruttura:</strong> Linux/Debian, Proxmox VE e Backup Server, checkmk, storage S3, monitoraggio, backup e ripristino.</p>
-    <p><strong>Database e automazione:</strong> Oracle, PostgreSQL, MariaDB/MySQL, SQL, Bash, Python, estrazione dati e web scraping.</p>
-    <p><strong>Dati e BI:</strong> analisi dati, indicatori KPI, Power BI, Qlik Sense, Tableau, R, KNIME e Orange.</p>
-    <h2>Certificazione e lingue</h2>
-    <p>EDB Postgres Essentials v17 · 2025</p>
-    <p>Italiano madrelingua · Inglese C1 · Spagnolo B2</p>
-    <p class="date">Sintesi web dal CV 2026. Per salvare in PDF: Stampa → Salva come PDF nel browser.</p>
+    <nav class="cv-nav" aria-label="Navigazione CV"><a href="index.html#/">← Torna alla Home</a><button class="cv-save" type="button" onclick="window.print()">Salva PDF</button></nav>
+    <header class="cv-hero"><div><p class="cv-kicker">Curriculum vitae · 2026</p><h1>Edoardo Rana</h1><p class="cv-role">Consulenza tecnica su infrastrutture, dati e automazione.</p></div><div class="cv-contact"><a href="mailto:edoardorana@outlook.com">edoardorana@outlook.com</a><a href="https://github.com/edoardorana">github.com/edoardorana ↗</a></div></header>
+    <section id="profilo" class="cv-section"><h2>profilo/</h2><p class="cv-summary">Esperienza in infrastrutture Linux, database in produzione e analisi dei dati. Lavoro su requisiti, diagnosi delle cause, documentazione tecnica e processi, collegando il contesto operativo agli strumenti più adatti.</p></section>
+    <section id="esperienze" class="cv-section"><h2>esperienze/</h2><div class="cv-list">
+      <article><p class="date">MAG 2025 — OGGI</p><div><h3>Linux Administrator · Broway SA</h3><p>Gestione e monitoraggio di infrastrutture Linux e Proxmox VE, diagnosi di incidenti con checkmk e analisi dei log. Script SQL e shell, aggiornamenti e verifica del comportamento applicativo su Debian e MariaDB. Attività su MultiPortal, Proxmox Backup Server e storage S3-compatibile; documentazione tecnica e contributo alla sicurezza operativa.</p></div></article>
+      <article><p class="date">OTT 2024 — MAG 2025</p><div><h3>Database Administrator · Broway SA</h3><p>Manutenzione e monitoraggio di database Oracle e PostgreSQL con checkmk e Oracle Enterprise Manager. Diagnosi di errori SQL e processi batch, backup e ripristino, gestione di schemi e remap di tabelle, supporto ai rilasci e confronto con gli altri referenti tecnici.</p></div></article>
+      <article><p class="date">GEN 2024 — GEN 2026</p><div><h3>Collaboratore operativo · Hubita APS</h3><p>Coordinamento di attività per iniziative sociali e culturali, eventi e interlocutori coinvolti; supporto all’ambiente Google Workspace dell’associazione.</p></div></article>
+      <article><p class="date">GEN — NOV 2023</p><div><h3>Business Unit Intern · SB Italia</h3><p>Analisi di dataset aziendali, metodi di classificazione e sviluppo di report e dashboard con Qlik, Power BI e Tableau.</p></div></article>
+      <article><p class="date">2016</p><div><h3>Stage in contabilità e consulenza · LTA Advisory</h3><p>Contabilità generale e supporto alle attività di consulenza.</p></div></article>
+      <article><p class="date">2015</p><div><h3>Stage in contabilità · TaxiBlu</h3><p>Contabilità generale, utilizzo di Zucchetti e manutenzione di database.</p></div></article>
+    </div></section>
+    <section id="formazione" class="cv-section"><h2>formazione/</h2><div class="cv-list">
+      <article><p class="date">DAL 2021 · IN CORSO</p><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></article>
+      <article><p class="date">AGO 2021 — AGO 2022</p><div><h3>Erasmus · UiT The Arctic University of Norway</h3><p>Un anno di studio a Tromsø, in Norvegia.</p></div></article>
+      <article><p class="date">2017 — 2021</p><div><h3>Laurea in Statistica e Gestione delle Informazioni · Milano-Bicocca</h3><p>Statistica, sistemi informativi e programmazione. Tesi sul web scraping di annunci immobiliari per analisi di mercato.</p></div></article>
+      <article><p class="date">2012 — 2017</p><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Amministrazione aziendale, contabilità, economia e marketing.</p></div></article>
+    </div></section>
+    <section id="competenze" class="cv-section"><h2>competenze/</h2><div class="cv-terminal"><div class="cv-terminal-screen"><p class="terminal-command"><b>~/cv</b>$ skills --overview</p><div class="cv-skills">
+      <article><p class="terminal-path">consulenza/</p><h3>Supporto e metodo</h3><p>Requisiti · Diagnosi delle cause · Documentazione · Processi</p></article>
+      <article><p class="terminal-path">infrastruttura/</p><h3>Sistemi Linux</h3><p>Debian · Proxmox VE / PBS · checkmk · Storage S3 · Backup</p></article>
+      <article><p class="terminal-path">database_automazione/</p><h3>Dati e automazione</h3><p>Oracle · PostgreSQL · MariaDB / MySQL · SQL · Bash · Python</p></article>
+      <article><p class="terminal-path">analisi_bi/</p><h3>Business Intelligence</h3><p>KPI · Power BI · Qlik Sense · Tableau · R · KNIME · Orange</p></article>
+    </div><div class="cv-meta"><p class="terminal-command"><b>~/cv</b>$ languages --list</p><p>Italiano madrelingua · Inglese C1 · Spagnolo B2</p><p class="terminal-command"><b>~/cv</b>$ interests --list</p><p>Judo · Ju jitsu · Arti marziali · Skateboard · Moto · Auto</p><p class="terminal-command"><b>~/cv</b>$ certifications --list</p><p>EDB Postgres Essentials v17 · 2025</p></div></div></div></section>
+    <p class="cv-note">Sintesi web dal CV 2026. Per una copia usa “Salva PDF”.</p>
   </main>
 </body>
 </html>

@@ -1,0 +1,151 @@
+# V2.EDO.DOT — Versione Base Landing Page
+# Data: 30 Ottobre 2026
+# Status: BASE PER LANDING PAGE (con errori da correggere)
+# Prossime versioni: v2.1, v2.2
+
+## 📌 IDENTITA' VERSIONE
+- **Nome**: v2.edo.dot
+- **Tipo**: Base per Landing Page Unificata
+- **Data creazione**: 30 Ottobre 2026
+- **Commit**: c6adf16 (feat/landing-page)
+- **Status**: Contiene errori, NON definitivamente approvata
+- **Scopo**: Base per iterazioni successive (v2.1, v2.2)
+
+## 🎯 OBIETTIVO PRINCIPALE
+Questa versione rappresenta la **base della landing page unificata** con:
+- Struttura a 5 sezioni (Profilo, Servizi, Progetti, Approccio, Collaborazioni)
+- Navigazione hash Fluida
+- Offerte freelance definite
+- SEO ottimizzato
+- Materiali verificabili aggiunti
+
+## 📦 FILE MODIFICATI
+| File | Modifiche | Status |
+|------|-----------|--------|
+| `proposal/data.mjs` | Aggiunti: services, case study progetti, parseRoute aggiornato | ✅ |
+| `proposal/script.js` | Aggiunte: renderServices(), aggiornati numeri sezioni, projectDetail() | ✅ |
+| `proposal/style.css` | Aggiunti: stili Servizi, Project Detail Enhancements | ✅ |
+| `proposal/index.html` | Aggiunti: meta OpenGraph, Twitter Cards, schema.org, sitemap link | ✅ |
+| `proposal/contact.mjs` | Aggiunti: email templates, service templates | ✅ |
+| `proposal/og-image.svg` | CREATO: immagine OG SVG | ✅ |
+| `proposal/sitemap.xml` | CREATO: sitemap completa | ✅ |
+| `tests/portfolio.test.mjs` | Aggiornati: assert per 5 aree | ✅ |
+
+## ✅ FUNZIONALITÀ IMPLEMENTATE
+
+### 1. Sezione Servizi
+- 6 offerte professionali (database, infrastrutture, pipeline dati, dashboard, IPAM, formazione)
+- Disponibilità: status, tempi risposta, location, tariffe
+- Processo in 5 passaggi
+- CTA: "Contattami per preventivo gratuito" + "Scopri progetti"
+- Design: cards responsive con hover effects
+
+### 2. SEO & Social Sharing
+- Meta OpenGraph completi (titolo, descrizione, immagine)
+- Twitter Cards (summary_large_image)
+- Schema.org (Person con occupazione e competenze)
+- Sitemap XML (14 URL indicizzate)
+- Favicon aggiornato (v3)
+
+### 3. Immagine OG
+- SVG 1200x630px
+- Design coerente con il sito
+- Colori: #f8f8f6 (sfondo), #365a45 (accent), #794957 (vino)
+- Contenuto: Nome, sottotitolo, descrizione, URL
+
+### 4. Materiali Verificabili
+- Case study per ogni progetto:
+  - Dashboard Immobiliare: Problema, Soluzione, Risultati, Tecnologie, Verifica
+  - Dashboard Generator: Problema, Soluzione, Risultati, Tecnologie, Verifica
+  - NetBox/IPAM: Problema, Soluzione, Risultati, Tecnologie, Verifica
+- Link diretti alle demo
+- Descrizioni dettagliate
+
+### 5. Email Templates
+- 4 template predefiniti (Generale, Database, Infrastruttura, Dashboard)
+- Template dinamici per ogni servizio
+- Applicazione automatica con un click
+- Dropdown accessibile
+
+### 6. Lazy Loading
+- Plotly già caricato dinamicamente (nessuna modifica necessaria)
+- Script caricati solo quando servono
+
+## ⚠️ ERRORI E LIMITI CONOSCIUTI
+
+### Errori da correggere nelle prossime versioni:
+1. **Test**: Tutti i 26 test passano, ma potrebbero esserci regressioni non rilevate
+2. **Mobile**: Non testato su dispositivi fisici (solo viewport emulati)
+3. **Accessibilità**: 
+   - Screen reader non testato
+   - Contrasti verificati solo teoricamente
+   - ARIA attributes potrebbero essere incompleti
+4. **Browser**: Testato solo su browser integrato, non su Safari/Firefox
+5. **Immagine OG**: SVG invece di PNG (alcuni social preferiscono PNG)
+6. **Template Email**: Potrebbero esserci formattazioni non ottimali per alcuni client email
+
+### Limiti architetturali:
+1. **Lazy Loading**: Plotly già implementato, ma altre librerie potrebbero essere caricate inutilmente
+2. **Code Splitting**: Non ancora implementato (tutto in un bundle)
+3. **i18n**: Non ancora implementato (solo italiano)
+4. **Analytics**: Non ancora aggiunto
+5. **Backup**: Non ancora automatizzato
+
+## 🔄 PROSSIME VERSIONI
+
+### V2.1 (Prevista: Novembre 2026)
+- [ ] Correzione errori noti
+- [ ] Test su dispositivi mobili reali
+- [ ] Test accessibilità completi (screen reader, contrasti)
+- [ ] Test cross-browser (Safari, Firefox)
+- [ ] Conversione og-image.svg in PNG
+- [ ] Ottimizzazione immagini
+- [ ] Minify CSS/JS
+
+### V2.2 (Prevista: Dicembre 2026)
+- [ ] Internazionalizzazione (i18n - italiano/inglese)
+- [ ] Analytics privacy-friendly (Plausible/Umami)
+- [ ] Blog/Note Tecniche
+- [ ] Backup automatici
+- [ ] Performance audit (Lighthouse)
+- [ ] SEO avanzata
+
+## 📊 STATISTICHE
+- File modificati: 8
+- File creati: 2
+- Righe aggiunte: ~750
+- Righe rimosse: ~30
+- Test: 26/26 ✅
+- Build: ✅
+- Commit: c6adf16
+
+## 🏷️ TAG
+- landing-page
+- base-version
+- has-errors
+- needs-review
+- v2
+- next:v2.1
+- next:v2.2
+
+## 📝 NOTE
+Questa versione è stata creata come **base per la landing page unificata**.
+Contiene le funzionalità principali richieste, ma **non è definitiva** e richiede
+ulteriori test e correzioni.
+
+Le versioni successive (v2.1, v2.2) dovranno:
+1. Correggere gli errori noti
+2. Aggiungere le funzionalità mancanti
+3. Ottimizzare le prestazioni
+4. Migliorare l'accessibilità
+
+## 🔗 RIFERIMENTI
+- Repository: https://github.com/edoardorana/edoardorana.github.io
+- Sito: https://edoardorana.github.io/
+- Branch: feat/landing-page
+- Commit: c6adf16
+
+---
+*Questo file è stato generato automaticamente il 30 Ottobre 2026*
+*Versione: v2.edo.dot*
+*Prossima revisione: v2.1.edo.dot*

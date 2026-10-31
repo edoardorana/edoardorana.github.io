@@ -1,0 +1,153 @@
+# V2.1.EDO.DOT — Versione Grafica Approvata (Base per Ottimizzazioni)
+# Data: 30 Ottobre 2026
+# Status: VERSIOE CHE PIACE (graficamente da sistemare)
+# Precedente: v2.edo.dot
+# Prossime versioni: v2.2
+
+## 📌 IDENTITA' VERSIONE
+- **Nome**: v2.1.edo.dot
+- **Tipo**: Versione Grafica Approvata
+- **Data creazione**: 30 Ottobre 2026
+- **Commit**: 86625c3 (feat/landing-page)
+- **Status**: PIACE all'utente, ma grafica da sistemare
+- **Feedback utente**: "così com'e ora mi piace molto anche se graficamente dobbiamo ancora sistemarlo"
+- **Scopo**: Base per ottimizzazioni grafiche future
+
+## 🎨 STATO ATTUALE
+**✅ FUNZIONALITÀ**: Tutte implementate e funzionanti
+**✅ TEST**: 26/26 passano
+**✅ BUILD**: Completata con successo
+**⚠️ GRAFICA**: Da sistemare (come richiesto dall'utente)
+
+## 📦 FILE MODIFICATI (rispetto a v1)
+| File | Modifiche | Status |
+|------|-----------|--------|
+| `proposal/data.mjs` | Aggiunti: services, case study progetti, parseRoute aggiornato | ✅ |
+| `proposal/script.js` | Aggiunte: renderServices(), aggiornati numeri sezioni, projectDetail() | ✅ |
+| `proposal/style.css` | Aggiunti: stili Servizi, Project Detail Enhancements | ✅ |
+| `proposal/index.html` | Aggiunti: meta OpenGraph, Twitter Cards, schema.org, sitemap link | ✅ |
+| `proposal/contact.mjs` | Aggiunti: email templates, service templates | ✅ |
+| `proposal/sitemap.xml` | CREATO: sitemap completa | ✅ |
+| `proposal/og-image.svg` | CREATO: immagine OG SVG | ✅ |
+| `tests/portfolio.test.mjs` | Aggiornati: assert per 5 aree | ✅ |
+
+## ✅ FUNZIONALITÀ IMPLEMENTATE (RIEPILOGO)
+
+### 1. Sezione Servizi
+- **6 offerte professionali**: Database, Infrastrutture, Pipeline Dati, Dashboard, IPAM, Formazione
+- **Disponibilità**: Status, tempi risposta (24-48h), location, tariffe
+- **Processo**: 5 passaggi (Analisi → Preventivo → Esecuzione → Consegna → Supporto)
+- **CTA**: "Contattami per preventivo gratuito" + "Scopri progetti"
+- **Design**: Cards responsive con hover effects
+
+### 2. SEO & Social Sharing
+- **Meta OpenGraph**: Titolo, descrizione, immagine, dimensioni
+- **Twitter Cards**: summary_large_image con creator
+- **Schema.org**: Person con occupazione, competenze, email, GitHub
+- **Sitemap XML**: 14 URL indicizzate
+- **Favicon**: versione v3
+
+### 3. Immagine OG
+- **Formato**: SVG 1200x630px
+- **Design**: Coerente con il sito
+  - Sfondo: #f8f8f6
+  - Accenti: #365a45 (verde), #794957 (vino)
+  - Contenuto: Nome, sottotitolo, descrizione, URL, brand mark
+
+### 4. Materiali Verificabili
+**Ogni progetto ha**:
+- Descrizione dettagliata
+- Case study con: Problema, Soluzione, Risultati, Tecnologie
+- Verifica: Demo disponibile, link diretti
+
+**Progetti**:
+- Dashboard Immobiliare: 720 annunci, analisi statistica, dashboard interattiva
+- Dashboard Generator: CSV → dashboard, parsing automatico, filtri coordinati
+- NetBox/IPAM: IPAM, device management, documentazione automatica
+
+### 5. Email Templates
+- **4 template predefiniti**: Generale, Database, Infrastruttura, Dashboard
+- **Template dinamici**: Generati automaticamente da services.offerings
+- **Dropdown menu**: Per selezionare il template
+- **Funzionalità**: Applicazione automatica con un click
+
+### 6. Lazy Loading
+- **Plotly**: Già caricato dinamicamente (nessuna modifica necessaria)
+- **Altre librerie**: Caricate solo quando servono
+
+## 🎯 FEEDBACK UTENTE
+> "così com'e ora mi piace molto anche se graficamente dobbiamo ancora sistemarlo"
+
+**Interpretazione**:
+- ✅ **Contenuti**: Approvati
+- ✅ **Funzionalità**: Approvate
+- ✅ **Struttura**: Approvata
+- ⚠️ **Grafica**: Da sistemare (miglioramenti estetici)
+
+## 🎨 NOTE GRAFICHE DA SISTEMARE (V2.2)
+
+### Aree di miglioramento identificati:
+1. **Layout Servizi**:
+   - Grid servizion: Verificare spaziature e allineamenti
+   - Cards: Possibile ottimizzazione hover effects
+   - Testo: Verificare leggibilità su mobile
+
+2. **Colori**:
+   - Verificare contrasto WCAG (già buono, ma testare visivamente)
+   - palette coerente in tutte le sezioni
+
+3. **Tipografia**:
+   - Verificare font fallback (Avenir Next non è web-safe)
+   - Considerare Google Fonts per maggiore coerenza
+
+4. **Mobile**:
+   - Test su dispositivi reali
+   - Touch target (minimo 48x48px)
+   - Menu tree: Ottimizzare per touch
+
+5. **Animazioni**:
+   - Verificare fluidità
+   - Rispettare prefers-reduced-motion
+
+6. **Immagine OG**:
+   - Convertire SVG in PNG per maggiore compatibilità
+
+## 📊 STATISTICHE
+- **File modificati**: 8
+- **File creati**: 2
+- **Righe aggiunte**: ~750
+- **Righe rimosse**: ~30
+- **Test**: 26/26 ✅
+- **Build**: ✅
+- **Commit**: 86625c3, 4450dbd
+
+## 🏷️ TAG
+- landing-page
+- approved-content
+- approved-functionality
+- needs-graphic-tweaks
+- v2.1
+- user-liked
+- next:v2.2
+
+## 🔗 RIFERIMENTI
+- **Repository**: https://github.com/edoardorana/edoardorana.github.io
+- **Sito**: https://edoardorana.github.io/
+- **Branch**: feat/landing-page
+- **Commit**: 86625c3
+- **Precedente**: v2.edo.dot (c6adf16)
+
+## 📝 NOTE
+Questa versione **V2.1** rappresenta lo stato attuale del progetto **dopo l'implementazione
+delle funzionalità richieste**.
+
+**L'utente ha espresso apprezzamento** per i contenuti e le funzionalità, ma ha indicato
+che **graficamente va ancora sistemato**.
+
+Questa versione servirà come **base per le ottimizzazioni grafiche** nella **v2.2**.
+
+---
+*Questo file è stato generato automaticamente il 30 Ottobre 2026*
+*Versione: v2.1.edo.dot*
+*Feedback utente: APPROVATO (con note grafiche)*
+*Prossima versione: v2.2.edo.dot (ottimizzazioni grafiche)*

@@ -69,7 +69,9 @@ Apri Estensioni e installa l'estensione ufficiale Codex di OpenAI. È inclusa fr
 
 Apri la barra laterale Codex; se non è visibile, nella palette cerca `Codex: Open Codex Sidebar`. Apri il repository e parti con questo messaggio:
 
-> Leggi AGENTS.md, docs/PROJECT_CONTEXT.md e docs/STATUS.md. Riassumi lo stato del portfolio, controlla il branch e proponi il prossimo piccolo miglioramento. Mantieni la navigazione a mappa. Prima di modificare i file, verifica che non ci siano modifiche locali da preservare.
+> Leggi AGENTS.md e la decisione corrente in testa a docs/PROJECT_CONTEXT.md e docs/STATUS.md. Per la migrazione landing leggi docs/LANDING_AI_PLAN.md e docs/LANDING_PROGRESS.md, poi esegui soltanto la scheda assegnata. Prima di modificare file controlla il branch e preserva le modifiche locali. Mantieni stile e contenuti; non pubblicare automaticamente.
+
+Per affidare il lavoro a un'altra estensione usa i [prompt pronti e gli incarichi sequenziali](LANDING_AI_PLAN.md). Allegare esplicitamente piano, registro e una scheda evita di dipendere dalla memoria di una particolare AI.
 
 La configurazione passa all'assistente codice, istruzioni e stato del progetto. Non importa automaticamente tutte le chat del progetto ChatGPT. I file AGENTS/CONTEXT/STATUS sono il riferimento portabile; aggiornarli evita di dipendere dalla memoria di un solo strumento.
 
@@ -101,7 +103,7 @@ La preview Sites si aggiorna separatamente, su richiesta dalla conversazione. Il
 
 - Apri ogni area; usa Indietro, Avanti e refresh su un link di progetto.
 - Verifica 320, 390, 768 e 1440 px; nessun testo tagliato o scorrimento orizzontale.
-- Usa Tab/Invio; prova le frecce nelle fasi dell'approccio e Escape nell'indice.
+- Usa Tab/Invio ed Escape nell'indice. Nella prova landing verifica che tutte le fasi dell'Approccio si leggano in sequenza e che le box portino alle rispettive sezioni.
 - Prova movimento ridotto e JavaScript disattivato (rimangono CV e email).
 - Cambia luogo nella mappa europea locale e verifica che testo, punto e selezione restino sincronizzati.
 - Prepara una email senza inviarla; verifica indirizzo e testo nel client.

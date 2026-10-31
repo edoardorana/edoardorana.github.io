@@ -1,153 +1,189 @@
-import { contactHTML, bindContact } from './contact.mjs';
-import { areas, steps, projects, places, parseRoute, mapPoint } from './data.mjs';
+import { areas, steps, projects } from './data.mjs';
 import { terminalHeader } from './terminal-header.mjs';
+import { resolveView } from './navigation.mjs';
 
 const main = document.querySelector('#main');
-const index = document.querySelector('#site-index');
-const indexToggle = document.querySelector('.index-toggle');
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-const chips = tags => `<div class="chips">${tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join('')}</div>`;
-let previousRoute = { page: 'mappa' };
-let selectedStep = 0;
-let selectedPlace = 'milano';
+const hashtag = value => `#${String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '')}`;
+const treeTags = tags => `<span class="tree-hashtags">${tags.map(tag => escapeHTML(hashtag(tag))).join(' ')}</span>`;
+const treeNode = ({ href, label, tags = [] }) => `<li class="landing-tree-item"><a class="landing-tree-link" href="${href}"><span class="landing-tree-name">${escapeHTML(label)}</span>${treeTags(tags)}</a></li>`;
 let renderVersion = 0;
 let pageController;
 let pageCleanup;
+let mountedView = null;
 
 function backLink(href = '#/', text = 'Torna alla Home') {
   return `<a class="back-link" href="${href}"><span aria-hidden="true">←</span> ${text}</a>`;
 }
-function pageHeader(id, text) {
-  const area = areas.find(area => area.id === id);
-  return terminalHeader({ path: `~/${id}`, title: area.title, summary: text });
-}
-function sectionNav(id) {
-  const position = areas.findIndex(area => area.id === id);
-  const previous = areas[position - 1];
-  const next = areas[position + 1];
-  const link = (area, direction, symbol) => `<a href="#/${area.id}" aria-label="${direction}: ${area.title}"><span aria-hidden="true">${symbol}</span><code>~/${area.id}</code></a>`;
-  return `<nav class="section-nav" aria-label="Navigazione tra le sezioni"><div class="section-nav-prev">${previous ? link(previous, 'Sezione precedente', '←') : ''}</div><a class="section-nav-home" href="#/" aria-label="Home"><code>~/home</code></a><div class="section-nav-next">${next ? link(next, 'Sezione successiva', '→') : ''}</div></nav>`;
-}
-function projectNav() {
-  return '<nav class="section-nav project-nav" aria-label="Navigazione del progetto"><a href="#/progetti"><span aria-hidden="true">←</span><code>~/progetti</code></a><a href="#/" aria-label="Home"><code>~/home</code></a></nav>';
-}
 function home() {
-  return `<section class="home">${terminalHeader({ path: '~/home', title: 'Sistemi Linux, database e analisi.', summary: 'Benvenuto nel mio sito. Scegli un’area da esplorare.' })}
-  <div class="atlas" aria-label="Le quattro aree del portfolio">
-  ${areas.map(area => `<a class="area area-${area.id}" href="#/${area.id}" data-node="${area.id}"><strong class="area-title">${area.title}</strong><span class="area-details"><span class="area-terminal"><span class="area-command-line" aria-hidden="true"><span class="area-path">~/${area.id}</span><span class="area-prompt-static">$</span> <span class="area-command-name">cat readme.md</span></span></span></span></a>`).join('')}</div></section>`;
+  return `<section class="home hero" id="home" aria-labelledby="home-title">
+    <p class="hero-kicker"><span aria-hidden="true"></span> infrastrutture / dati / automazione</p>
+    <h1 id="home-title">Sistemi e dati.</h1>
+    <p class="hero-lead">La complessità non scompare.<br>Si mette in ordine.</p>
+  </section>`;
 }
 function profile() {
-  return `<section class="page">${terminalHeader({ path: '~/profilo', title: 'Profilo', summary: 'Qui trovi formazione, esperienze e luoghi del mio percorso.', sections: [{ label: 'generale/', text: 'Lavoro su infrastrutture Linux, database e automazione, partendo da log, dati e contesto operativo.' }], action: { href: 'cv.html', command: 'xdg-open cv.html', label: 'Apri il CV sintetico' } })}
-  ${journeyContent()}
-  <section class="skills-terminal" aria-labelledby="skills-title"><h2 class="visually-hidden" id="skills-title">Competenze, lingue e interessi</h2><div class="terminal-screen"><p class="terminal-command"><b>~/profilo</b>$ skills --overview</p><div class="skills-grid"><article><p class="terminal-path">consulenza/</p><h3>Supporto e metodo</h3><p>Requisiti · Diagnosi delle cause · Documentazione · Processi</p></article><article><p class="terminal-path">infrastruttura/</p><h3>Sistemi Linux</h3><p>Debian · Proxmox VE / PBS · checkmk · Storage S3 · Backup</p></article><article><p class="terminal-path">database_automazione/</p><h3>Dati e automazione</h3><p>Oracle · PostgreSQL · MariaDB / MySQL · SQL · Bash · Python</p></article><article><p class="terminal-path">analisi_bi/</p><h3>Business Intelligence</h3><p>KPI · Power BI · Qlik Sense · Tableau · R · KNIME · Orange</p></article></div><div class="terminal-extra"><p class="terminal-command"><b>~/profilo</b>$ languages --list</p><p>Italiano madrelingua · Inglese C1 · Spagnolo B2</p><p class="terminal-command"><b>~/profilo</b>$ interests --list</p><p>Judo · Ju jitsu · Arti marziali · Skateboard · Moto · Auto</p></div></div></section>
-  ${sectionNav('profilo')}</section>`;
+  return `<section class="page profile-section landing-section" id="profilo" aria-labelledby="profilo-title">
+    <header class="section-heading compact-heading tree-section-heading">
+      <h2 class="compact-title" id="profilo-title">PROFILO/</h2>
+      <ul class="landing-tree" role="list" aria-label="Contenuti del Profilo">
+        ${treeNode({ href: 'cv.html', label: 'cv.html', tags: ['esperienze', 'formazione', 'competenze', 'lingue'] })}
+        ${treeNode({ href: 'luoghi.html', label: 'luoghi', tags: ['Milano', 'Tromsø', 'Zugo', 'Stoccarda'] })}
+      </ul>
+    </header>
+  </section>`;
 }
 function approach() {
-  return `<section class="page">${pageHeader('approccio','Cinque fasi per capire, raccogliere, custodire, leggere ed evolvere. Seleziona una fase e apri la scheda operativa.')}
-  <div class="method"><div class="method-steps" role="tablist" aria-label="Il percorso del dato">${steps.map((s,i) => `<button role="tab" id="method-${i}" aria-controls="method-panel" aria-selected="${i === selectedStep}" tabindex="${i === selectedStep ? 0 : -1}" data-step="${i}"><span>0${i+1}</span>${s.title}</button>`).join('')}</div><article id="method-panel" role="tabpanel" aria-labelledby="method-${selectedStep}"></article></div>
-  ${sectionNav('approccio')}</section>`;
+  const documents = ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere'];
+  return `<section class="page approach-section landing-section" id="approccio" aria-labelledby="approccio-title"><header class="section-heading compact-heading tree-section-heading"><h2 class="compact-title" id="approccio-title">APPROCCIO/</h2>
+  <ol class="landing-tree" role="list" aria-label="Le cinque fasi del metodo">${steps.map((step, index) => treeNode({ href: `approccio/${documents[index]}.html`, label: documents[index], tags: step.tags })).join('')}</ol></header>
+  </section>`;
 }
 function projectList() {
-  return `<section class="page">${pageHeader('progetti','Dashboard da provare e un progetto in corso. Seleziona una scheda per leggere il contesto.')}
-  <div class="project-list">${projects.map(p => `<a class="project-row" href="#/progetti/${p.id}"><div><p class="eyebrow">${p.kind}</p><h2>${p.title}</h2><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>${sectionNav('progetti')}</section>`;
+  return `<section class="page projects-section landing-section" id="progetti" aria-labelledby="progetti-title"><header class="section-heading compact-heading tree-section-heading"><h2 class="compact-title" id="progetti-title">PROGETTI/</h2>
+  <ul class="landing-tree" role="list" aria-label="Progetti">${projects.map(project => treeNode({ href: `#/progetti/${project.id}`, label: project.id, tags: project.tags })).join('')}</ul></header></section>`;
 }
-function projectDetail(id) {
-  const p = projects.find(p => p.id === id);
-  return `<article class="page project-detail">${terminalHeader({ path: `~/progetti/${p.id}`, title: p.title, summary: 'NetBox per organizzare gli indirizzi IP. Qui raccolgo il contesto del lavoro in corso e i prossimi sviluppi.' })}${chips(p.tags)}<div class="project-story"><section><h2>Il progetto</h2><p>${p.context}</p></section><section><h2>Lavoro in corso</h2><p>${p.contribution}</p></section><section><h2>Sviluppi futuri</h2><p>${p.output}</p></section></div>${projectNav()}</article>`;
+function contact() {
+  return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading compact-heading tree-section-heading"><h2 class="compact-title" id="contatti-title">COLLABORAZIONI/</h2>
+  <ul class="landing-tree" role="list" aria-label="Collaborazioni">${treeNode({ href: 'contatti.html', label: 'contatti', tags: ['oggetto', 'messaggio', 'mailto'] })}</ul></header></section>`;
 }
-function europeMap() {
-  const entries = Object.entries(places);
-  return `<div class="europe-map" aria-label="Mappa interattiva delle tappe in Europa"><img src="europe.svg" alt="" class="europe-base"><svg viewBox="0 0 600 650" aria-hidden="true" class="europe-overlay">${entries.map(([id,p]) => {
-    const [x,y] = mapPoint(p.coordinates); const [lx,ly] = p.mapLabel;
-    return `<g data-map-place="${id}"><path d="M${x},${y} L${lx},${ly}"/><circle cx="${x}" cy="${y}" r="5"/></g>`;
-  }).join('')}</svg><span class="europe-caption">QUATTRO TAPPE, UN PERCORSO</span>${entries.map(([id,p],i) => {
-    const [x,y] = mapPoint(p.coordinates);
-    return `<button class="map-point" data-place="${id}" aria-label="Seleziona ${p.name}" aria-controls="place-info" aria-pressed="${id===selectedPlace}" style="left:${x/6}%;top:${y/6.5}%"></button><button class="map-label" data-place="${id}" aria-controls="place-info" aria-pressed="${id===selectedPlace}" style="left:${p.mapLabel[0]/6}%;top:${p.mapLabel[1]/6.5}%"><span>0${i+1}</span> ${p.name}</button>`;
-  }).join('')}</div>`;
+function landing() {
+  return `${home()}${profile()}${projectList()}${approach()}${contact()}`;
 }
-function journeyContent() {
-  return `<section class="profile-journey" aria-labelledby="journey-title"><header><h2 id="journey-title">Formazione ed esperienze</h2><p>Seleziona una città per conoscerne il ruolo nel mio percorso. La cronologia riunisce studi ed esperienze professionali.</p></header>
-  <div class="journey-layout"><div><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto, non a una mia sede. Cartografia: Natural Earth.</span></div></div>
-  <div class="timeline"><h2>Cronologia</h2><ol><li><span>DAL 2025</span><div><h3>Linux Administrator · Broway SA</h3><p>Maggio 2025 – oggi. Infrastrutture Proxmox VE e Backup Server, monitoraggio con checkmk, analisi dei log, script SQL e shell. Attività su Debian, MariaDB, storage S3-compatibile, documentazione tecnica e sicurezza operativa.</p></div></li><li><span>2024 — 2025</span><div><h3>Database Administrator · Broway SA</h3><p>Ottobre 2024 – maggio 2025. Oracle e PostgreSQL: monitoraggio, diagnosi di errori SQL e batch, backup e ripristino, gestione degli schemi e supporto ai rilasci.</p></div></li><li><span>2024 — 2026</span><div><h3>Collaboratore operativo · Hubita APS</h3><p>Gennaio 2024 – gennaio 2026. Coordinamento di attività per progetti sociali e culturali, eventi e amministrazione di Google Workspace.</p></div></li><li><span>2023</span><div><h3>Business Unit Intern · SB Italia</h3><p>Gennaio – novembre 2023. Ho analizzato dataset aziendali e lavorato su metodi di classificazione. Ho inoltre creato report e dashboard con Qlik, Power BI e Tableau.</p></div></li><li><span>2021 — 2022</span><div><h3>Erasmus · UiT The Arctic University of Norway</h3><p>Agosto 2021 – agosto 2022. Un anno di studio a Tromsø, in Norvegia.</p></div></li><li><span>DAL 2021</span><div><h3>Magistrale in Data Science · Milano-Bicocca</h3><p>In corso. Statistica avanzata, machine learning, modelli predittivi e big data.</p></div></li><li><span>2017 — 2021</span><div><h3>Laurea in Statistica e Gestione delle Informazioni</h3><p>Milano-Bicocca. Statistica, sistemi informativi e programmazione; tesi sul web scraping di annunci immobiliari.</p></div></li><li><span>2015 — 2016</span><div><h3>Prime esperienze in amministrazione</h3><p>Stage in contabilità e supporto alla consulenza presso LTA Advisory (2016). Stage in contabilità presso TaxiBlu (2015), con Zucchetti e manutenzione di database.</p></div></li><li><span>2012 — 2017</span><div><h3>Diploma in Amministrazione, Finanza e Marketing</h3><p>Istituto San Vincenzo / Regina Mundi. Materie economico-aziendali, contabilità e marketing.</p></div></li></ol></div></section>`;
-}
-function contact() { return `<section class="page contact-page">${contactHTML()}${sectionNav('contatti')}</section>`; }
-function setStep(i, focus = false) {
-  selectedStep = i;
-  const s = steps[i];
-  const panel = document.querySelector('#method-panel');
-  document.querySelectorAll('[data-step]').forEach((b,n)=>{b.setAttribute('aria-selected',String(i===n));b.tabIndex=i===n?0:-1;if(focus&&i===n)b.focus();});
-  panel.setAttribute('aria-labelledby',`method-${i}`);
-  const previous = i > 0 ? `<button class="method-arrow method-arrow-prev" type="button" data-method-target="${i-1}" aria-label="Fase precedente: ${steps[i-1].title}"><span aria-hidden="true">‹</span></button>` : '';
-  const next = i < steps.length - 1 ? `<button class="method-arrow method-arrow-next" type="button" data-method-target="${i+1}" aria-label="Fase successiva: ${steps[i+1].title}"><span aria-hidden="true">›</span></button>` : '';
-  panel.innerHTML = `${previous}${next}<span class="method-big" aria-hidden="true">0${i+1}</span><p class="eyebrow">FASE 0${i+1} / 05</p><h2>${s.short}</h2><p>${s.text}</p><div class="method-output"><span>DOCUMENTAZIONE</span><p>${s.result}</p></div>${chips(s.tags)}<a class="button method-document" href="/approccio/${['capire','raccogliere','custodire','leggere','evolvere'][i]}.html">Apri la scheda operativa ↗</a>`;
-}
-function setPlace(key) {
-  selectedPlace = key;
-  const p = places[key];
-  document.querySelectorAll('[data-place]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.place===key)));
-  document.querySelector('#place-info').innerHTML = `<p class="eyebrow">${p.label}</p><h2>${p.name}</h2><p class="place-dates">${p.dates.replaceAll('\n','<br>')}</p><p>${p.text}</p>${chips(p.skills)}`;
-  document.querySelectorAll('[data-map-place]').forEach(group => group.classList.toggle('is-selected',group.dataset.mapPlace===key));
-}
-function bindPage(route) {
-  if(route.page==='approccio'){
-    setStep(selectedStep);
-    document.querySelectorAll('[data-step]').forEach((b,i)=>{b.addEventListener('click',()=>setStep(i));b.addEventListener('keydown',e=>{let next=i;if(['ArrowRight','ArrowDown'].includes(e.key))next=(i+1)%steps.length;else if(['ArrowLeft','ArrowUp'].includes(e.key))next=(i+steps.length-1)%steps.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=steps.length-1;else return;e.preventDefault();setStep(next,true);});});
-    document.querySelector('.method').addEventListener('click',e=>{const control=e.target.closest('[data-method-target]');if(control)setStep(Number(control.dataset.methodTarget),true);});
+function bindLanding(root = main) {
+  root.querySelectorAll('.landing-section').forEach(section => section.setAttribute('tabindex', '-1'));
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          entry.target.animate([{ opacity: .65, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 300, easing: 'ease-out' });
+        }
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .08 });
+    root.querySelectorAll('.landing-tree-item').forEach(item => observer.observe(item));
+    pageCleanup = () => observer.disconnect();
   }
-  if(route.page==='profilo'||route.page==='percorso'){
-    setPlace(selectedPlace);
-    document.querySelectorAll('[data-place]').forEach(b=>b.addEventListener('click',()=>setPlace(b.dataset.place)));
-  }
-  if(route.page==='contatti') bindContact(main);
 }
-function render() {
-  const route=parseRoute(location.hash);
-  const version=++renderVersion;
-  pageController?.abort();
-  pageCleanup?.();
-  pageController=undefined;
-  pageCleanup=undefined;
-  document.body.dataset.page=route.page;
-  const visiblePage=route.page==='percorso'?'profilo':route.page;
-  const area=areas.find(a=>a.id===visiblePage);
-  document.title=`${route.item?projects.find(p=>p.id===route.item).title:area?.title||'Sistemi, database e analisi'} — Edoardo Rana`;
-  setIndexOpen(false);
-  document.querySelectorAll('#site-index a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash===(route.page==='mappa'?'#/':`#/${visiblePage}${route.item?`/${route.item}`:''}`))a.setAttribute('aria-current','page');});
-  if(route.page==='progetti'&&['immobiliare-data','dashboard-generator'].includes(route.item)){
-    const controller=new AbortController();pageController=controller;
-    main.innerHTML='<section class="page"><p role="status">Caricamento del progetto…</p></section>';
-    const module=route.item==='immobiliare-data'?import('./housing/page.mjs'):import('./explorer/page.mjs');
-    module.then(exports=>{
-      if(version!==renderVersion||controller.signal.aborted)return;
-      const mount=exports.mountHousing||exports.mountExplorer;
-      pageCleanup=mount(main,{signal:controller.signal,isCurrent:()=>version===renderVersion,navigationHTML:projectNav()});
-    }).catch(()=>{
-      if(version!==renderVersion||controller.signal.aborted)return;
-      main.innerHTML=`<section class="page">${backLink('#/progetti','Torna ai progetti')}${terminalHeader({ path: `~/progetti/${route.item}`, title: 'Progetto non disponibile', summary: 'Ricarica la pagina per riprovare.' })}</section>`;
-    });
-  }else{
-    const renderers={mappa:home,profilo:profile,approccio:approach,percorso:profile,progetti:()=>route.item?projectDetail(route.item):projectList(),contatti:contact,'not-found':()=>`<section class="page">${backLink()}${terminalHeader({ path: '~/404', title: 'Pagina non trovata', summary: 'Controlla l’indirizzo oppure torna alla Home.' })}</section>`};
-    main.innerHTML=renderers[route.page]();
-    bindPage(route);
+function render({ behavior = 'auto' } = {}) {
+  const view = resolveView(location.hash);
+  const isLanding = view.kind === 'landing';
+  const section = isLanding ? view.section : null;
+  const sameLanding = isLanding && mountedView === 'landing';
+
+  if (!sameLanding) {
+    pageController?.abort();
+    pageController = undefined;
+    pageCleanup?.();
+    pageCleanup = undefined;
+    renderVersion++;
   }
-  if(route.page==='mappa'&&previousRoute.page!=='mappa')document.querySelector(`[data-node="${previousRoute.page==='percorso'?'profilo':previousRoute.page}"]`)?.focus({preventScroll:true});
-  else main.focus({preventScroll:true});
-  previousRoute=route;
+  const version = renderVersion;
+
+  let title = 'Sistemi, database e analisi';
+  if (view.kind === 'project') {
+    const project = projects.find(p => p.id === view.item);
+    title = project ? project.title : title;
+  } else if (isLanding && section && section !== 'home') {
+    const area = areas.find(a => a.id === section);
+    title = area ? area.title : title;
+  } else if (view.kind === 'not-found') {
+    title = 'Pagina non trovata';
+  }
+  document.title = isLanding && section === 'home'
+    ? 'edo.dot — Sistemi, database e analisi'
+    : `${title} — edo.dot · Edoardo Rana`;
+
+  if (isLanding) {
+    document.body.dataset.page = 'landing';
+    if (!sameLanding) {
+      main.innerHTML = landing();
+      bindLanding(main);
+      mountedView = 'landing';
+    }
+    if (section && section !== 'home') {
+      const target = document.getElementById(section);
+      if (target) target.scrollIntoView({ behavior, block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior });
+    }
+    if (section && section !== 'home') {
+      const target = document.getElementById(section);
+      if (target) target.focus({ preventScroll: true });
+    } else {
+      main.focus({ preventScroll: true });
+    }
+  } else if (view.kind === 'project') {
+    if (mountedView === 'landing') {
+      mountedView = null;
+    }
+    document.body.dataset.page = 'progetto';
+    if (['immobiliare-data', 'dashboard-generator'].includes(view.item)) {
+      const controller = new AbortController();
+      pageController = controller;
+      main.innerHTML = '<section class="page"><p role="status">Caricamento del progetto…</p></section>';
+      const module = view.item === 'immobiliare-data' ? import('./housing/page.mjs') : import('./explorer/page.mjs');
+      module.then(exports => {
+        if (version !== renderVersion || controller.signal.aborted) return;
+        const mount = exports.mountHousing || exports.mountExplorer;
+        pageCleanup = mount(main, { signal: controller.signal, isCurrent: () => version === renderVersion });
+      }).catch(() => {
+        if (version !== renderVersion || controller.signal.aborted) return;
+        main.innerHTML = `<section class="page">${backLink('#/progetti', 'Torna ai progetti')}${terminalHeader({ path: `~/progetti/${view.item}`, title: 'Progetto non disponibile', summary: 'Ricarica la pagina per riprovare.' })}</section>`;
+      });
+    }
+    window.scrollTo(0, 0);
+    main.focus({ preventScroll: true });
+  } else {
+    if (mountedView === 'landing') {
+      mountedView = null;
+    }
+    document.body.dataset.page = 'not-found';
+    main.innerHTML = `<section class="page">${backLink()}${terminalHeader({ path: '~/404', title: 'Pagina non trovata', summary: 'Controlla l’indirizzo oppure torna alla Home.' })}</section>`;
+    window.scrollTo(0, 0);
+    main.focus({ preventScroll: true });
+  }
+
 }
 function navigate() {
   render();
-  window.scrollTo(0,0);
 }
-function setIndexOpen(open) {
-  index.hidden=!open;
-  indexToggle.setAttribute('aria-expanded',String(open));
-  indexToggle.setAttribute('aria-label',open?'Chiudi indice del sito':'Apri indice del sito');
-}
-indexToggle.addEventListener('click',()=>setIndexOpen(index.hidden));
-document.addEventListener('pointerdown',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
-document.addEventListener('focusin',event=>{if(!index.hidden&&!index.contains(event.target)&&!indexToggle.contains(event.target))setIndexOpen(false);});
-index.addEventListener('click',event=>{const link=event.target.closest('a');if(!link)return;setIndexOpen(false);if(link.hash===location.hash)main.focus({preventScroll:true});});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!index.hidden){setIndexOpen(false);indexToggle.focus();}});
 document.querySelector('.skip').addEventListener('click',e=>{e.preventDefault();main.focus();});
 window.addEventListener('hashchange',()=>{if(location.hash==='#main'){main.focus();return;}navigate();});
+document.addEventListener('click',event=>{
+  if(event.defaultPrevented)return;
+  if(event.button!==0)return;
+  if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+  const link=event.target.closest('a');
+  if(!link)return;
+  const href=link.getAttribute('href');
+  if(!href||!href.startsWith('#'))return;
+  if(href.endsWith('.html'))return;
+  const destination=resolveView(href);
+  if(destination.kind==='landing' && mountedView==='landing' && href!==location.hash){
+    event.preventDefault();
+    history.pushState(null,'',href);
+    render({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    return;
+  }
+  if(href!==location.hash)return;
+  event.preventDefault();
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const behavior=reduceMotion?'auto':'smooth';
+  const view=resolveView(href);
+  if(view.kind==='landing'){
+    if(view.section&&view.section!=='home'){
+      const target=document.getElementById(view.section);
+      if(target){target.scrollIntoView({behavior,block:'start'});target.focus({preventScroll:true});}
+      else window.scrollTo({top:0,behavior});
+    }else{
+      window.scrollTo({top:0,behavior});
+      main.focus({preventScroll:true});
+    }
+  }else{
+    window.scrollTo({top:0,behavior});
+    main.focus({preventScroll:true});
+  }
+});
 render();

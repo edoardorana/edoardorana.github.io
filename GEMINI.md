@@ -1,1 +1,3 @@
-Read `AGENTS.md`, `docs/PROJECT_CONTEXT.md`, and `docs/STATUS.md` for this project's shared instructions and current state. Use `proposal/` as the editable source, preserve the map navigation and run `npm run check` and `npm run build`. Reply in Italian. Do not add API keys or private chat exports to this repository.
+Leggi `AGENTS.md`, la decisione corrente in testa a `docs/PROJECT_CONTEXT.md` e `docs/STATUS.md`. Rispondi in italiano. Per la migrazione landing usa `docs/LANDING_AI_PLAN.md`, `docs/LANDING_PROGRESS.md` e una sola scheda assegnata: non eseguire tutto il piano.
+
+Direzione approvata: quattro sezioni principali in una pagina, box come indice e menu tree; CV, dashboard e tutte le schede separati. Mantieni stile e contenuti verificati. Consulta il registro prima di presumere un incarico completato. Modifica `proposal/`, mai l'output generato. Esegui `npm.cmd run check` e `npm.cmd run build`. Nessuna credenziale, chat privata o pubblicazione automatica.

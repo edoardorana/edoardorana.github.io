@@ -1,1 +1,3 @@
-Project context and instructions: read `AGENTS.md`, `docs/PROJECT_CONTEXT.md`, and `docs/STATUS.md`. Active source: `proposal/`. Checks: `npm run check`; build: `npm run build`. Reply in Italian. Keep the area-map design and verified CV content.
+Leggi `AGENTS.md`, la decisione corrente in testa a `docs/PROJECT_CONTEXT.md` e `docs/STATUS.md`. Rispondi in italiano. Per la migrazione landing usa `docs/LANDING_AI_PLAN.md`, `docs/LANDING_PROGRESS.md` e una sola scheda assegnata: non eseguire tutto il piano.
+
+Direzione approvata: quattro sezioni principali in una pagina, box come indice e menu tree; CV, dashboard e tutte le schede separati. Mantieni stile e contenuti verificati. Il registro distingue pianificazione e lavoro eseguito. Sorgenti: `proposal/`; controlli: `npm.cmd run check`, poi `npm.cmd run build`. Nessuna pubblicazione automatica.
