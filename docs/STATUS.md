@@ -4,6 +4,7 @@ Aggiornato il 31 ottobre 2026. Le note precedenti sono state condensate; i commi
 
 ## Landing compatta — 30 ottobre 2026
 
+- Prima evoluzione visiva `light editor` del 31 ottobre: struttura e contenuti invariati, palette resa più fredda con accenti blu/viola, titoli principali e di componente portati al monospaziato, corpo mantenuto in un sans di sistema leggibile. Hero e titoli ridimensionati; progetti, metodo e compositore assumono il ritmo di pannelli leggeri senza imitare una finestra IDE completa.
 - Testata ridotta al solo marchio `edo.dot`; rimosse entrambe le ripetizioni visibili di Edoardo Rana. La Home ora contiene soltanto `Sistemi e dati`, `infrastrutture / dati / automazione` e lo slogan `La complessità non scompare. Si mette in ordine.`. Rimossi CTA e indice duplicato: la navigazione resta nel menu `tree`.
 - Profilo ridotto a etichetta, titolo `CV` e collegamento compatto. La mappa resta nella landing; etichette città rese stabili e leggibili anche su hover/focus con ordine di sovrapposizione esplicito.
 - Progetti ridotti alle due dashboard, affiancate su desktop e impilate su mobile. NetBox rimosso da dati, menu e route canoniche: il vecchio URL restituisce pagina non trovata.
