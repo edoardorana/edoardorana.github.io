@@ -118,7 +118,7 @@ test('landing copy presents one narrative and keeps terminal language for action
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
   const contactPage = await readFile(new URL('../proposal/contatti.mjs', import.meta.url), 'utf8');
   assert.match(contact, /mail --new/);
-  assert.match(contact, /~\/collaborazioni\/contatti/);
+  assert.match(contact, /~\/collaborazioni/);
   assert.doesNotMatch(contact, /<b>~\/contatti<\/b>/);
   assert.match(contactPage, /contactHTML/);
   assert.match(contactPage, /bindContact/);

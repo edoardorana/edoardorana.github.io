@@ -5,8 +5,9 @@ export function contactHTML({ headingLevel = 1, titleId, showReadme = true } = {
   const headingTag = headingLevel === 2 ? 'h2' : 'h1';
   const headingId = titleId == null ? '' : ` id="${escapeHTML(titleId)}"`;
   return `<div class="terminal-heading contact-composer"><${headingTag} class="visually-hidden"${headingId}>Componi una email</${headingTag}>
-  ${showReadme ? `<p class="readme-command"><b>~/collaborazioni/contatti</b>$ <strong>cat readme.md</strong></p><div class="readme-output"><dl class="readme-sections"><div><dt>generale/</dt><dd>Scrivimi per parlare di un problema tecnico o di una collaborazione.</dd></div><div><dt>contatti/</dt><dd><a href="mailto:${person.email}">${person.email}</a> · <a href="${person.github}" target="_blank" rel="noopener">github.com/edoardorana</a></dd></div></dl></div>` : `<div class="contact-links"><a href="mailto:${person.email}">${person.email}</a><a href="${person.github}" target="_blank" rel="noopener">GitHub ↗</a></div>`}
-  <p class="readme-command mail-command"><b>~/collaborazioni/contatti</b>$ <strong>mail --new</strong></p>
+  <p class="readme-command"><b>~/collaborazioni</b>$ <strong>contatti --list</strong></p>
+  <div class="contact-links"><a href="mailto:${person.email}">${person.email}</a><a href="${person.github}" target="_blank" rel="noopener">github.com/edoardorana ↗</a></div>
+  <p class="readme-command mail-command"><b>~/collaborazioni</b>$ <strong>mail --new</strong></p>
   <form id="contact-form"><div class="mail-subject"><label for="subject">oggetto:</label><input id="subject" name="subject" maxlength="160" required placeholder="Di cosa parliamo?" value="${escapeHTML(subject)}"></div>
   <label for="message">messaggio:</label><textarea id="message" name="message" rows="5" maxlength="4000" required placeholder="Scrivi qui il tuo messaggio…" aria-describedby="mail-help">${escapeHTML(message)}</textarea>
   <p class="form-note" id="mail-help">Invio nell’oggetto passa al messaggio. Ctrl/⌘ + Invio prepara la bozza.</p>

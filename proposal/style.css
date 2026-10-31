@@ -412,14 +412,14 @@ body[data-page="landing"] .approach-section,
 body[data-page="landing"] .contact-page { background: transparent; }
 .contact-composer { margin: 0; border: 1px solid var(--line); background: var(--soft); }
 .contact-composer h2 { font: 600 18px/1.35 var(--mono); letter-spacing: -.3px; }
-.contact-links { display: flex; flex-wrap: wrap; gap: 10px 26px; padding: 22px 24px 6px; font: 12px/1.6 var(--mono); }
+.contact-links { display: flex; flex-wrap: wrap; gap: 10px 26px; padding: 4px 18px 14px; font: 12px/1.6 var(--mono); }
 .contact-links a { text-decoration: underline; text-underline-offset: 4px; }
 body[data-page="landing"] :is(a, button, input, textarea):focus-visible { outline-offset: 4px; }
 .contact-standalone { width: min(940px, 100%); margin: 0 auto; padding: clamp(16px, 3vw, 32px) clamp(20px, 5vw, 64px) 60px; }
 .standalone-nav { margin-bottom: 0; display: none; }
 .standalone-heading { max-width: 680px; margin-bottom: 28px; }
 .standalone-heading h1 { margin-bottom: 10px; font: 600 clamp(30px, 4vw, 42px)/1.15 var(--mono); }
-body[data-page="contatti"] .contact-composer .mail-command { margin-top: 12px; }
+body[data-page="contatti"] .contact-composer .mail-command { margin-top: 0; }
 body[data-page="contatti"] #contact-form { padding: 14px 24px 28px; }
 body[data-page="contatti"] #contact-form input,
 body[data-page="contatti"] #contact-form textarea { padding: 14px; background: var(--card); font: 14px/1.6 var(--mono); }
