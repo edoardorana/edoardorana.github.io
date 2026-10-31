@@ -7,6 +7,8 @@
 - Il README di Immobiliare-data non ha più linee sopra e sotto: usa un fondo leggero e tre voci più narrative (`dataset/`, `lettura/`, `attenzione/`).
 - Rimosso il pallino decorativo davanti a `~/progetti/immobiliare-data$ cat readme.md`; il prompt resta allineato al contenuto come nella pagina Collaborazioni.
 - La tabella degli annunci mostra 10 righe per pagina; conteggio delle pagine e controlli precedente/successiva usano la stessa costante.
+- Dashboard generator condivide ora il README sfumato dei progetti, senza pallino decorativo e con lo stesso allineamento di Immobiliare-data.
+- Lo stesso token di sfondo sfumato è applicato al terminale `~/cv/competenze` e al compositore Contatti; rimossi i bordi esterni pieni, senza modificare contenuti o interazioni.
 - Il pannello filtri è diventato un controllo monospaziato compatto da 36 px; i campi restano espandibili, accessibili e funzionalmente invariati.
 - Le cinque viste coordinate sono ora: distribuzione con mediana e taglio visivo al 99° percentile, classifica lollipop, densità bidimensionale a celle, composizione radiale e heatmap zona × tipologia. Clic, selezioni, filtri, tabella ed export restano coordinati.
 - Plotly completo 4.1.2 sostituisce il bundle basic, resta servito localmente e conserva la licenza MIT. Nessuna risorsa grafica esterna viene caricata a runtime.

@@ -162,7 +162,7 @@ test('separate pages use the brand as Home link and share the minimal footer', a
   const housing = await readFile(new URL('../proposal/housing/page.mjs', import.meta.url), 'utf8');
   for (const label of ['dataset/', 'lettura/', 'attenzione/']) assert.match(housing, new RegExp(label.replace('/', '\\/')));
   assert.match(housing, /14\.731 annunci/);
-  assert.match(housing, /class="page data-workspace housing-workspace"/);
+  assert.match(housing, /class="page data-workspace housing-workspace project-readme-workspace"/);
   assert.match(housing, /const pageSize=10;/);
   assert.doesNotMatch(housing, /20 righe per pagina|page\*20/);
   for (const trace of ["kind:'lollipop'", "kind:'density'", "kind:'radial'", "kind:'heatmap'"]) assert.match(housing, new RegExp(trace));
@@ -171,7 +171,13 @@ test('separate pages use the brand as Home link and share the minimal footer', a
   assert.match(plotlyLoader, /vendor\/plotly-4\.1\.2\.min\.js/);
   assert.doesNotMatch(plotlyLoader, /plotly-basic/);
   const styles = await readFile(new URL('../proposal/style.css', import.meta.url), 'utf8');
-  assert.match(styles, /\.housing-workspace > \.terminal-heading::before \{ content: none; \}/);
+  assert.match(styles, /--terminal-fade:/);
+  assert.match(styles, /\.project-readme-workspace > \.terminal-heading::before \{ content: none; \}/);
+  assert.match(styles, /\.contact-composer \{[^}]*background: var\(--terminal-fade\);/);
+  const explorer = await readFile(new URL('../proposal/explorer/page.mjs', import.meta.url), 'utf8');
+  assert.match(explorer, /class="page data-workspace explorer-workspace project-readme-workspace"/);
+  const cv = await readFile(new URL('../proposal/cv.html', import.meta.url), 'utf8');
+  assert.match(cv, /\.cv-terminal \{ border: 0; background: var\(--terminal-fade\); \}/);
 });
 
 

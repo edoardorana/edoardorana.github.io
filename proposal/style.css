@@ -8,6 +8,7 @@
   --accent: #2f6f9f;
   --wine: #7b507d;
   --soft-green: #edf3f7;
+  --terminal-fade: linear-gradient(90deg, color-mix(in srgb, var(--soft) 82%, transparent), transparent 78%);
   --ui: system-ui, -apple-system, 'Segoe UI', Ubuntu, sans-serif;
   --display: 'Avenir Next', Avenir, 'Trebuchet MS', Ubuntu, system-ui, sans-serif;
   --mono: ui-monospace, SFMono-Regular, 'Cascadia Code', Consolas, 'Ubuntu Mono', 'Liberation Mono', monospace;
@@ -205,11 +206,11 @@ body[data-page="landing"] .terminal-heading { margin: 24px 0 28px; }
 .lab-pagination button:not(:disabled):hover { border-color: var(--accent); color: var(--accent); }
 /* Shared workspace: local CSV exploration and the historical thesis dashboard. */
 .data-workspace { min-width: 0; }
-.data-workspace > .terminal-heading { margin: 22px 0 24px; padding: 5px 8px 9px; border: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--soft) 82%, transparent), transparent 78%); }
+.data-workspace > .terminal-heading { margin: 22px 0 24px; padding: 5px 8px 9px; border: 0; background: var(--terminal-fade); }
 .data-workspace > .terminal-heading::before { top: 24px; }
-.housing-workspace > .terminal-heading::before { content: none; }
-.housing-workspace > .terminal-heading .readme-command,
-.housing-workspace > .terminal-heading .readme-output { padding-left: 18px; }
+.project-readme-workspace > .terminal-heading::before { content: none; }
+.project-readme-workspace > .terminal-heading .readme-command,
+.project-readme-workspace > .terminal-heading .readme-output { padding-left: 18px; }
 .data-panel { margin: 28px 0; padding: clamp(16px, 3vw, 28px); border: 1px solid var(--line); background: var(--soft); }
 .data-panel h2 { margin-top: 0; }
 .housing-filter-panel { margin: 14px 0 22px; padding: 0; border: 0; background: transparent; }
@@ -432,7 +433,7 @@ body[data-page="landing"] .profile-map #place-info > p { font-size: 13px; line-h
 body[data-page="landing"] .projects-section,
 body[data-page="landing"] .approach-section,
 body[data-page="landing"] .contact-page { background: transparent; }
-.contact-composer { margin: 0; border: 1px solid var(--line); background: var(--soft); }
+.contact-composer { margin: 0; border: 0; background: var(--terminal-fade); }
 .contact-composer h2 { font: 600 18px/1.35 var(--mono); letter-spacing: -.3px; }
 .contact-links { display: flex; flex-wrap: wrap; gap: 10px 26px; padding: 4px 18px 14px; font: 12px/1.6 var(--mono); }
 .contact-links a { text-decoration: underline; text-underline-offset: 4px; }
