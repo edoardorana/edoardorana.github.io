@@ -4,10 +4,10 @@ export const person = {
   github: 'https://github.com/edoardorana',
 };
 export const areas = [
-  { id: 'profilo', title: 'Profilo' },
-  { id: 'progetti', title: 'Progetti' },
-  { id: 'approccio', title: 'Approccio' },
-  { id: 'contatti', title: 'Collaborazioni' },
+  { id: 'profilo', title: 'PROFILO' },
+  { id: 'progetti', title: 'PROGETTI' },
+  { id: 'approccio', title: 'APPROCCIO' },
+  { id: 'contatti', title: 'COLLABORAZIONI' },
 ];
 export const steps = [
   {
