@@ -29,19 +29,19 @@ function home() {
 }
 function profile() {
   return `<section class="page profile-section landing-section" id="profilo" aria-labelledby="profilo-title">
-    <header class="section-heading compact-heading"><h2 class="compact-title" id="profilo-title"><span>.01 profilo</span> <span>CV</span> #esperienze #formazione #competenze #lingue</h2><a class="cv-callout" href="cv.html"><span aria-hidden="true">Apri ↗</span></a></header>
-    <div class="profile-map"><div class="profile-map-copy"><p class="section-label">Luoghi</p><h3>Quattro tappe, un percorso.</h3><p>Milano, Tromsø, Zugo e Stoccarda raccontano studi, lavoro da remoto e periodi personali. Seleziona una città per leggere il contesto.</p><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto. Cartografia: Natural Earth.</span></div></div>
+    <header class="section-heading compact-heading"><h2 class="compact-title" id="profilo-title"><span>profilo</span> <span>CV</span> #esperienze #formazione #competenze #lingue</h2><a class="cv-callout" href="cv.html"><span aria-hidden="true">Apri ↗</span></a></header>
+    <div class="profile-map"><div class="profile-map-copy"><p class="section-label">luoghi</p><h3>Quattro tappe, un percorso.</h3><p>Milano, Tromsø, Zugo e Stoccarda raccontano studi, lavoro da remoto e periodi personali. Seleziona una città per leggere il contesto.</p><div class="place-picker" aria-label="Seleziona un luogo">${Object.entries(places).map(([id,p])=>`<button data-place="${id}" aria-pressed="${id===selectedPlace}">${p.name}</button>`).join('')}</div><div id="place-info" aria-live="polite"></div></div><div class="geo-wrap">${europeMap()}<span class="map-attribution">I punti indicano città, non indirizzi precisi. Zugo si riferisce all’azienda con cui lavoro da remoto. Cartografia: Natural Earth.</span></div></div>
   </section>`;
 }
 function approach() {
   const documents = ['capire', 'raccogliere', 'custodire', 'leggere', 'evolvere'];
-  return `<section class="page approach-section landing-section" id="approccio" aria-labelledby="approccio-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="approccio-title">.03 Approccio</h2></header>
-  <div class="method" aria-label="Le cinque fasi del metodo">${steps.map((s,i) => `<article class="method-step" aria-labelledby="method-${i}"><p class="eyebrow">0${i+1} / 05</p><h3 id="method-${i}">${s.title}</h3><p class="method-short">${s.short}</p><a class="method-document" href="/approccio/${documents[i]}.html" aria-label="Apri la scheda ${s.title}">Apri ↗</a></article>`).join('')}</div>
+  return `<section class="page approach-section landing-section" id="approccio" aria-labelledby="approccio-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="approccio-title">approccio</h2></header>
+  <div class="method" aria-label="Le cinque fasi del metodo">${steps.map((s,i) => `<article class="method-step" aria-labelledby="method-${i}"><p class="eyebrow"></p><h3 id="method-${i}">${s.title}</h3><p class="method-short">${s.short}</p><a class="method-document" href="/approccio/${documents[i]}.html" aria-label="Apri la scheda ${s.title}">Apri ↗</a></article>`).join('')}</div>
   </section>`;
 }
 function projectList() {
-  return `<section class="page projects-section landing-section" id="progetti" aria-labelledby="progetti-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="progetti-title">.02 Progetti</h2></header>
-  <div class="project-list">${projects.map((p,index) => `<a class="project-row" href="#/progetti/${p.id}"><span class="project-index" aria-hidden="true">.0${index + 1}</span><div><p class="eyebrow">${p.kind}</p><h3>${p.title}</h3><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
+  return `<section class="page projects-section landing-section" id="progetti" aria-labelledby="progetti-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="progetti-title">progetti</h2></header>
+  <div class="project-list">${projects.map((p,index) => `<a class="project-row" href="#/progetti/${p.id}"><div><p class="eyebrow">${p.kind}</p><h3>${p.title}</h3><p>${p.subtitle}</p>${chips(p.tags)}</div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</div></section>`;
 }
 function europeMap() {
   const entries = Object.entries(places);
@@ -50,14 +50,37 @@ function europeMap() {
     return `<g data-map-place="${id}"><path d="M${x},${y} L${lx},${ly}"/><circle cx="${x}" cy="${y}" r="5"/></g>`;
   }).join('')}</svg><span class="europe-caption">QUATTRO TAPPE, UN PERCORSO</span>${entries.map(([id,p],i) => {
     const [x,y] = mapPoint(p.coordinates);
-    return `<button class="map-point" data-place="${id}" aria-label="Seleziona ${p.name}" aria-controls="place-info" aria-pressed="${id===selectedPlace}" style="left:${x/6}%;top:${y/6.5}%"></button><button class="map-label" data-place="${id}" aria-controls="place-info" aria-pressed="${id===selectedPlace}" style="left:${p.mapLabel[0]/6}%;top:${p.mapLabel[1]/6.5}%"><span>0${i+1}</span> ${p.name}</button>`;
+    return `<button class="map-point" data-place="${id}" aria-label="Seleziona ${p.name}" aria-controls="place-info" aria-pressed="${id===selectedPlace}" style="left:${x/6}%;top:${y/6.5}%"></button><button class="map-label" data-place="${id}" aria-controls="place-info" aria-pressed="${id===selectedPlace}" style="left:${p.mapLabel[0]/6}%;top:${p.mapLabel[1]/6.5}%">${p.name}</button>`;
   }).join('')}</div>`;
 }
 function contact() {
-  return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="contatti-title">.04 Collaborazioni</h2><p>Parliamo del problema, prima degli strumenti.</p></header>${contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false })}</section>`;
+  return `<section class="page contact-page landing-section" id="contatti" aria-labelledby="contatti-title"><header class="section-heading compact-heading"><h2 class="compact-title" id="contatti-title">collaborazioni</h2><p>Parliamo del problema, prima degli strumenti.</p></header>${contactHTML({ headingLevel: 2, titleId: 'contact-form-title', showReadme: false })}</section>`;
+}
+function treeView() {
+  return `<section class="page tree-section" id="tree" aria-labelledby="tree-title">
+    <div class="tree-root">edo.dot/</div>
+    <ul class="tree">
+      <li>
+        <a href="#/profilo"><span class="tree-folder">├── profilo/</span></a>
+        <ul class="tree">
+          <li><a href="cv.html">├── cv.html</a></li>
+          <li><a href="#/profilo">└── luoghi</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#/progetti"><span class="tree-folder">├── progetti/</span></a>
+        <ul class="tree">
+          <li><a href="#/progetti/immobiliare-data">├── scraper immobiliare.it</a></li>
+          <li><a href="#/progetti/dashboard-generator">└── dashboard generator</a></li>
+        </ul>
+      </li>
+      <li><a href="#/approccio"><span class="tree-folder">├── approccio/</span></a></li>
+      <li><a href="#/contatti"><span class="tree-folder">└── collaborazioni/</span></a></li>
+    </ul>
+  </section>`;
 }
 function landing() {
-  return `${home()}${profile()}${projectList()}${approach()}${contact()}`;
+  return `${home()}${treeView()}${profile()}${projectList()}${approach()}${contact()}`;
 }
 function setPlace(root, key) {
   selectedPlace = key;
