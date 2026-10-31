@@ -100,7 +100,7 @@ test('landing copy presents one narrative and keeps terminal language for action
   assert.match(entry, /edo<span>\.<\/span>dot/);
   assert.doesNotMatch(entry, /brand-name|netbox-ipam/);
   assert.match(source, /La complessità non scompare/);
-  assert.match(source, /<h2 class="compact-title" id="profilo-title"><span>\.01 Profilo<\/span><span aria-hidden="true">##<\/span><span>CV<\/span><\/h2>/);
+  assert.match(source, /<h2 class="compact-title" id="profilo-title"><span>\.01 profilo<\/span> <span>CV<\/span> #esperienze #formazione #competenze #lingue<\/h2>/);
   assert.doesNotMatch(source, /Esplora i progetti|Il percorso completo è nel CV|production-databases/);
   assert.doesNotMatch(source, /journeyContent|renderServices|sectionNav/);
   const contact = await readFile(new URL('../proposal/contact.mjs', import.meta.url), 'utf8');
@@ -123,3 +123,4 @@ test('site menu uses a compact terminal tree without repeated paths or file mode
   assert.doesNotMatch(html, />\s*~\/(?:home|profilo|progetti|approccio|contatti)|>\s*progetti\/(?:dashboard-generator|immobiliare-data)/);
   assert.ok(html.indexOf('aria-label="Progetti"') < html.indexOf('aria-label="Approccio"'));
 });
+

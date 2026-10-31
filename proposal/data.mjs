@@ -70,6 +70,15 @@ export const projects = [
   { id: 'immobiliare-data', kind: 'ANNUNCI IMMOBILIARI · MILANO, 2021', title: 'Dashboard interattiva su dati immobiliari', subtitle: 'Dati raccolti tramite script di scraping e utilizzati per la mia tesi di laurea.', tags: ['R', 'Python', 'Dati reali'] },
   { id: 'dashboard-generator', kind: 'STRUMENTO · DATI LOCALI', title: 'Dashboard generator', subtitle: 'Carica un CSV e genera viste interattive, scegliendo colonne e grafici adatti ai tuoi dati.', tags: ['CSV', 'JavaScript', 'Dashboard'] },
 ];
+
+export const services = {
+  offerings: [
+    { title: 'Infrastrutture', description: 'Progettazione e gestione di server Linux, monitoraggio e recovery.', tags: ['Linux', 'Backup', 'Monitoraggio'] },
+    { title: 'Database', description: 'Modellazione, ottimizzazione e migrazione di basi dati SQL.', tags: ['SQL', 'Ottimizzazione', 'Migrazione'] },
+    { title: 'Automazione', description: 'Script Python e Bash per pipeline di dati e processi ripetibili.', tags: ['Python', 'Bash', 'Pipeline'] },
+    { title: 'Analisi dati', description: 'Raccolta, pulizia e analisi dati con R, Python e dashboard interattive.', tags: ['R', 'Python', 'Dashboard'] },
+  ]
+};
 export const places = {
   milano: { name: 'Milano', label: 'FORMAZIONE', coordinates: [9.19,45.4642], mapLabel: [420,590], locationType: 'city', text: "A Milano-Bicocca ho costruito le basi di statistica, programmazione e analisi dei dati. Dopo la laurea triennale ho proseguito con il percorso magistrale in Data Science, tuttora in corso.", skills: ['Statistica', 'Python / R', 'Analisi'], dates: '2017–2021 · Laurea triennale\nDal 2021 · Magistrale in corso' },
   norvegia: { name: 'Tromsø', label: 'NORVEGIA · ERASMUS', coordinates: [18.9553,69.6492], mapLabel: [395,225], locationType: 'city', text: "A Tromsø, in Norvegia, ho svolto un anno Erasmus presso UiT The Arctic University of Norway. Un periodo di studio in un contesto internazionale, parte del mio percorso universitario.", skills: ['Erasmus', 'Studio all’estero'], dates: 'Agosto 2021 – agosto 2022' },

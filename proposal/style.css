@@ -136,12 +136,12 @@ body[data-page="landing"] .terminal-heading { margin: 24px 0 28px; }
 .method-output { position: relative; max-width: 620px; margin: 21px 0; padding-left: 14px; border-left: 1px solid var(--ink); }
 .method-output > span { color: var(--muted); font-size: 9px; letter-spacing: 1px; }
 .method-output p { margin: 5px 0 0; font-size: 13px; }
-.project-row { display: grid; grid-template-columns: 1fr 30px; align-items: center; gap: 22px; padding: 30px 0; border-top: 1px solid var(--line); }
+.project-row { display: grid; grid-template-columns: 1fr 30px; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
 .project-row:last-child { border-bottom: 1px solid var(--line); }
-.project-row:hover h2, .project-row:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
-.project-row h2, .project-row h3 { margin: 4px 0 8px; font-size: 28px; }
-.project-row p:not(.eyebrow) { margin-bottom: 11px; color: var(--muted); font-size: 13px; }
-.project-row .eyebrow { margin-bottom: 7px; font-size: 9px; }
+.project-row:hover h2, .project-row:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+.project-row h2, .project-row h3 { margin: 2px 0 6px; font-size: 24px; }
+.project-row p:not(.eyebrow) { margin-bottom: 8px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.project-row .eyebrow { margin-bottom: 4px; font-size: 8px; }
 .project-arrow { justify-self: end; font-size: 22px; }
 .project-detail > .terminal-heading { margin-bottom: 18px; }
 .project-detail > .chips { margin-bottom: 34px; }
@@ -412,23 +412,23 @@ body[data-page="landing"] .projects-section,
 body[data-page="landing"] .approach-section,
 body[data-page="landing"] .contact-page { background: transparent; }
 body[data-page="landing"] .project-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid var(--line); }
-body[data-page="landing"] .project-row { grid-template-columns: 34px minmax(0, 1fr) 20px; gap: 16px; padding: 28px; color: var(--ink); border: 0; }
+body[data-page="landing"] .project-row { grid-template-columns: 34px minmax(0, 1fr) 20px; gap: 12px; padding: 16px; color: var(--ink); border: 0; }
 body[data-page="landing"] .project-row + .project-row { border-left: 1px solid var(--line); }
 body[data-page="landing"] .project-row:hover { background: var(--soft); }
 .project-index { color: var(--wine); font: 11px/1.5 var(--mono); }
 body[data-page="landing"] .project-row > div { max-width: 780px; }
-body[data-page="landing"] .project-row h3 { margin: 7px 0 10px; font: 600 clamp(18px, 1.8vw, 22px)/1.3 var(--mono); letter-spacing: -.4px; }
-body[data-page="landing"] .project-row p:not(.eyebrow) { max-width: 680px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+body[data-page="landing"] .project-row h3 { margin: 4px 0 8px; font: 600 clamp(16px, 1.6vw, 20px)/1.2 var(--mono); letter-spacing: -.3px; }
+body[data-page="landing"] .project-row p:not(.eyebrow) { max-width: 600px; color: var(--muted); font-size: 12px; line-height: 1.6; }
 body[data-page="landing"] .project-row:hover { color: var(--accent); }
 body[data-page="landing"] .project-row:hover h3 { text-decoration: none; }
 body[data-page="landing"] .project-arrow { transition: transform .2s ease; }
 body[data-page="landing"] .project-row:hover .project-arrow { transform: translate(3px, -3px); }
 body[data-page="landing"] .method { display: flex; gap: 0; overflow-x: auto; border: 1px solid var(--line); background: var(--card); scroll-snap-type: x proximity; scrollbar-width: thin; }
-body[data-page="landing"] .method-step { flex: 0 0 clamp(190px, 22vw, 235px); min-height: 180px; padding: 22px; border: 0; border-right: 1px solid var(--line); background: transparent; scroll-snap-align: start; }
+body[data-page="landing"] .method-step { flex: 0 0 clamp(170px, 20vw, 220px); min-height: 160px; padding: 16px; border: 0; border-right: 1px solid var(--line); background: transparent; scroll-snap-align: start; }
 body[data-page="landing"] .method-step:last-child { border-right: 0; }
-body[data-page="landing"] .method-step > .eyebrow { margin: 0 0 20px; color: var(--wine); font-size: 9px; }
-body[data-page="landing"] .method-step h3 { margin: 0 0 8px; font: 600 17px/1.35 var(--mono); letter-spacing: -.2px; }
-body[data-page="landing"] .method-step > .method-short { min-height: 44px; margin: 0 0 20px; color: var(--muted); font-size: 13px; font-weight: 400; }
+body[data-page="landing"] .method-step > .eyebrow { margin: 0 0 16px; color: var(--wine); font-size: 8px; }
+body[data-page="landing"] .method-step h3 { margin: 0 0 6px; font: 600 15px/1.3 var(--mono); letter-spacing: -.2px; }
+body[data-page="landing"] .method-step > .method-short { min-height: 38px; margin: 0 0 16px; color: var(--muted); font-size: 12px; font-weight: 400; }
 body[data-page="landing"] .method-document { display: inline-block; color: var(--accent); font: 11px/1.5 var(--mono); text-decoration: underline; text-underline-offset: 4px; }
 .contact-composer { margin: 0; border: 1px solid var(--line); background: var(--soft); }
 .contact-composer h2 { font: 600 18px/1.35 var(--mono); letter-spacing: -.3px; }

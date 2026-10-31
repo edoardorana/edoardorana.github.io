@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Progetto di dashboard — Edoardo Rana</title>
+<link rel="stylesheet" href="document.css">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<nav>
+<a href="../index.html#/approccio">← Approccio</a>
+<button id="print" type="button">Stampa / salva PDF</button>
+</nav>
+<main>
+<header>
+<p>04 Leggere</p>
+<h1>Progetto di dashboard</h1>
+<p>Parti dalle decisioni: ogni indicatore deve avere una definizione, una fonte e una lettura chiara.</p>
+<small>Modello operativo · le note restano in questa pagina fino alla chiusura. Salva il PDF per conservarle.</small>
+</header>
+<div class="wireframe">
+<div>Filtri · periodo · categoria · azzera</div>
+<div class="kpis">
+<span>Indicatore A<br>valore / unità</span>
+<span>Indicatore B<br>valore / unità</span>
+<span>Indicatore C<br>valore / unità</span>
+</div>
+<div class="plots">
+<span>Confronto tra categorie<br>▂ ▅ ▃ ▇ ▄</span>
+<span>Andamento nel tempo<br>╱╲＿╱</span>
+</div>
+<div>Tabella di dettaglio · esportazione · definizioni</div>
+</div>
+<p>
+<a href="../index.html#/progetti/immobiliare-data">Prova la dashboard immobiliare</a> · <a href="../index.html#/progetti/dashboard-generator">Apri Dashboard generator</a>
+</p>
+<section>
+<h2>1. Domande e indicatori</h2>
+<label for="field-0-0">Chi consulta la dashboard e quale decisione prende?</label>
+<textarea id="field-0-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-1">Per ogni indicatore: formula, unità, denominatore, fonte e aggiornamento.</label>
+<textarea id="field-0-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-0-2">Come trattare mancanti, duplicati e valori anomali?</label>
+<textarea id="field-0-2" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<section>
+<h2>2. Layout e interazioni</h2>
+<label for="field-1-0">Quali filtri servono? Quali selezioni devono aggiornare tutti i grafici?</label>
+<textarea id="field-1-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-1">Quale confronto deve emergere per primo?</label>
+<textarea id="field-1-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-1-2">Quali colonne mostrare nella tabella e nell’esportazione?</label>
+<textarea id="field-1-2" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<section>
+<h2>3. Verifica con l’utente</h2>
+<label for="field-2-0">Confronta gli indicatori con calcoli indipendenti su un campione noto.</label>
+<textarea id="field-2-0" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-1">Prova insieme filtro, azzeramento e selezione vuota.</label>
+<textarea id="field-2-1" rows="2" placeholder="Note da compilare"></textarea>
+<label for="field-2-2">Controlla titoli, unità, leggibilità mobile, tastiera e significato dei colori.</label>
+<textarea id="field-2-2" rows="2" placeholder="Note da compilare"></textarea>
+</section>
+<aside>Scegli un grafico per la domanda: barre per confrontare categorie, istogramma per una distribuzione, punti per una relazione, linee per un andamento temporale.</aside>
+</main>
+<script src="document.js">
+</script>
+</body>
+</html>
