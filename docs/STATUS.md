@@ -1,5 +1,66 @@
 # Stato del progetto
 
+## README, filtri contestuali e confronto categorie — 2 novembre 2026
+
+- Il README di Immobiliare-data racconta ora esplicitamente il progetto di tesi: annunci raccolti nel 2021 da Immobiliare.it tramite uno script R di web scraping sviluppato per la ricerca. `+ dettagli` espande tre paragrafi su preparazione, versione pubblica, limiti e anomalie; il controllo diventa `− riduci` ed espone correttamente `aria-expanded`/`aria-controls`.
+- Rimosse le pillole duplicate dei filtri attivi. La testata mostra soltanto il conteggio dei filtri; select, intervalli e checkbox modificati si evidenziano direttamente. `Azzera filtri` continua a ripristinare anche categorie ed esclusioni.
+- Il grafico 01 include il controllo contestuale `Seleziona tutte`/`Deseleziona tutte`, applicato all’intera dimensione categorica anche quando sono visibili soltanto le cinque categorie rappresentative.
+- Il grafico 02 offre `Totale / filtrato` e `Confronto categorie`. La seconda modalità rimuove le curve aggregate e confronta da una a otto categorie selezionate con bin, asse e smoothing comuni; oltre otto mostra un’istruzione esplicita. Gli otto colori sono assegnati per posizione per evitare collisioni fra curve.
+- Verifiche: `npm.cmd run check` superato con 35 test, `npm.cmd run build` e `git diff --check` riusciti. Edge headless: README aperto/ridotto, filtro evidenziato con conteggio singolare, nessuna pillola legacy, messaggi corretti con 144 e zero categorie, confronto con tre curve e tre colori distinti, ritorno a due curve aggregate dopo il reset. A 390 px `scrollWidth = clientWidth = 390`; nessuna eccezione JavaScript.
+- Limiti: nessun test su telefono fisico, Safari/Firefox o screen reader. Nessun commit, push o deploy eseguito.
+
+## Peso delle categorie e reset coordinato — 2 novembre 2026
+
+- Tutte le categorie sono selezionate all’avvio; la vista compatta continua a mostrare soltanto `MIN · Q1 · MEDIANA · Q3 · MAX`. Cambiando asse categorico, la nuova dimensione parte anch’essa completamente selezionata.
+- `Azzera filtri` ripristina intervalli e categorie, rimuove le esclusioni degli outlier, richiude `Mostra tutto` e seleziona nuovamente tutte le categorie del grafico 01.
+- La modalità `Box + violin` è stata rinominata `Distribuzione`. A destra di ogni riga mostra il numero di annunci validi per la misura, la quota nell’universo filtrato e la quota nel dataset complessivo.
+- Le KDE non sono più normalizzate separatamente per riga: usano bandwidth e scala comuni, quindi l’area di ogni mezzo violin è proporzionale al peso della categoria nel filtrato. Box, contorno, mediana, media e outlier restano leggibili anche quando la densità è minima; sotto 10 osservazioni il violin resta omesso.
+- Verifiche: `npm.cmd run check` superato con 34 test, `npm.cmd run build` e `git diff --check` riusciti. Edge headless: avvio con 14.720 annunci e 144 zone selezionate; passando a Tipologia, Appartamento pesa 90,7% complessivo e, dopo un filtro sullo stato, 93,2% del filtrato con 3.373 osservazioni. Il reset ripristina 14.720 annunci, 18 tipologie selezionate, cinque righe compatte e zero filtri attivi. Nessuna eccezione JavaScript o overflow a 390 px.
+- Limiti: nessun test su telefono fisico, Safari/Firefox o screen reader. Nessun commit, push o deploy eseguito.
+
+## Rifinitura dashboard Immobiliare-data — 2 novembre 2026
+
+- Reintrodotto il mezzo violin nella modalità `Box + violin` del grafico 01, usando la precedente densità KDE sopra la baseline e conservando box Q1–Q3, mediana, media, whisker Tukey e outlier cliccabili.
+- Il grafico 02 mostra ora soltanto due distribuzioni sulla stessa scala: dataset complessivo in grigio e risultato corrente di filtri, categorie ed esclusioni in verde. Rimosse serie per singola categoria e switch impilate/sovrapposte.
+- KPI, stato e filtri attivi sono stati spostati dentro il pannello filtri. Spazi verticali e padding della dashboard sono stati ridotti senza comprimere i controlli.
+- Select, etichette, righe del grafico, legende, KPI e tabella usano una tipografia UI più coerente e leggibile. `Dati della selezione` condivide bordo, raggio, sfondo e ombra dei pannelli filtri e grafici.
+- Verifiche: `npm.cmd run check` superato con 33 test, `npm.cmd run build` e `git diff --check` riusciti. Edge headless: cinque mezzi violin visibili, 29 outlier, due voci di legenda e quattro path SVG nel grafico 02 (due aree e due curve), KPI contenuti nel pannello filtri e nessuna eccezione JavaScript. A 390 px `scrollWidth = clientWidth = 390`, KPI in griglia 2 × 2 e pannelli larghi 350 px.
+- Limiti: nessun test su telefono fisico, Safari/Firefox o screen reader. Nessun commit, push o deploy eseguito.
+
+## Grafico unificato e gestione outlier Immobiliare-data — 2 novembre 2026
+
+- Fusi i precedenti grafici 01 e 03 in un solo confronto a due modalità: `Barre` mostra il valore sintetico, `Box` mostra distribuzione, media, mediana, Q1–Q3, whisker Tukey e outlier. Il vecchio half-violin separato è stato rimosso.
+- L’asse categorico può usare Zona, Tipologia, Stato, Locali o Classe energetica; la misura può usare prezzo al m², prezzo richiesto, superficie o conteggio. Per le misure numeriche si sceglie mediana o media.
+- La vista compatta sceglie cinque categorie in base ai valori ordinati: `MIN · Q1 · MEDIANA · Q3 · MAX`. `Mostra tutto` espande l’elenco completo; selezioni e colori alimentano anche il grafico 02.
+- `Conteggio` torna automaticamente alle Barre, disabilita il pulsante Box e mostra la spiegazione “Il box plot richiede una misura numerica.”
+- Gli outlier sono calcolati con la regola di Tukey, sono raggiungibili da tastiera e possono essere esclusi singolarmente o tutti quelli visibili. Esclusione e ripristino aggiornano universo, distribuzione, KPI, tabella ed export CSV.
+- Verifiche: `npm.cmd run check` superato con 32 test, `npm.cmd run build` e `git diff --check` riusciti. Edge headless: cinque righe iniziali corrette, 29 outlier visibili nel campione iniziale, esclusione/ripristino verificati, cambio a 18 tipologie con espansione completa e blocco Box su Conteggio. Desktop ispezionato nelle viste Barre e Box; a 390 px `scrollWidth = clientWidth = 390`, senza eccezioni JavaScript.
+- Limiti: nessun test su telefono fisico, Safari/Firefox o screen reader. Nessun commit, push o deploy eseguito.
+
+## Integrazione sorgenti SVG Immobiliare-data — 2 novembre 2026
+
+- Usati come riferimento primario `immobiliare_charts_source_codex/immobiliare_charts_source/index.html`, `styles.css` e `charts.js`; i prototipi non sono stati rigenerati né modificati e restano fuori dall'artefatto `dist/`.
+- I tre grafici della dashboard immobiliare sono passati da Plotly a SVG nativo nel nuovo modulo `proposal/housing/charts.mjs`, conservando filtri, stato condiviso, KPI, tabella ed export CSV.
+- Portati dal prototipo pannelli a tutta larghezza, titoli compatti, palette a otto colori, righe selezionate scure, barre sottili arrotondate, switch segmentato, silhouette grigia, legenda, half-violin superiore e geometria di box, whisker, mediana e media.
+- Le prime otto zone seguono l'ordine del prototipo e le restanti zone reali continuano in ordine alfabetico stabile. La selezione iniziale è Brera, Duomo, Navigli - Darsena e Isola; tutte le 144 zone del dataset restano disponibili.
+- Il grafico 02 usa 60 bin comuni e smoothing lineare in scala di conteggi: stacked e overlay condividono le stesse serie e il totale di tutte le zone coincide con la silhouette grigia.
+- Il grafico 03 calcola una KDE sui prezzi reali con bandwidth comune e altezza dichiaratamente normalizzata per riga; min, Q1, mediana, media, Q3 e max sono reali. L'asse è limitato al 99° percentile per evitare che massimi fino a 22 milioni comprimano le forme; i massimi oltre scala restano nel tooltip. Gruppi sotto 10 prezzi mostrano solo le statistiche.
+- QA Edge: ordine e selezione iniziale corretti; zero zone lascia la sola silhouette e lo stato vuoto del violin; tutte le 144 zone producono 146 path nella distribuzione e 144 righe nel violin senza errori; verificati overlay, gruppi piccoli, prezzi mancanti, `prefers-reduced-motion` e viewport 390 px con `scrollWidth = clientWidth = 390`.
+- Nessun commit, push, merge o deploy eseguito. Restano non coperti Safari/Firefox, screen reader e telefono fisico.
+
+## Nuovi grafici Immobiliare-data — 1 novembre 2026
+
+- Creato il branch locale `feat/immobiliare-three-charts`; nessun push, merge o deploy eseguito.
+- Il pannello filtri è ora sempre visibile e separa variabili categoriche e numeriche. Superficie, prezzo richiesto e prezzo al m² usano segmenti a doppio cursore MIN/MAX; i valori agli estremi non applicano vincoli, così i mancanti restano inclusi finché l'utente non restringe davvero un intervallo.
+- I range derivano dai dati reali non anomali, sono controlli nativi da tastiera e mostrano valori e unità. Verifica Edge mobile: larghezza documento 390 px, pannello entro 370 px; portando il prezzo massimo a 500.000 € l'universo è sceso da 14.720 a 9.327 annunci e il reset ha ripristinato 14.720 senza filtri attivi.
+- Sostituite le cinque viste precedenti della dashboard immobiliare con tre visualizzazioni coordinate: selettore a barre per zona, distribuzioni dei prezzi sovrapposte/impilate e half-violin orizzontale con box plot.
+- Il grafico 01 usa tutte le 144 zone effettive del dataset, inclusa la categoria senza zona, in ordine alfabetico stabile. Le righe sono pulsanti con stato `aria-pressed`; sono disponibili Tutte, Nessuna, Ripristina e quattro metriche. La mediana €/m² è calcolata sui rapporti dei singoli annunci validi.
+- Il grafico 02 usa bin condivisi e lo stesso smoothing lineare per totale e zone. Il profilo grigio segue i filtri globali ma non la selezione delle zone; con tutte le zone, la somma delle serie impilate coincide numericamente con il totale. L'ultima fascia raccoglie i prezzi oltre il 99° percentile per mantenere leggibile l'asse.
+- Il grafico 03 mostra le sole zone selezionate su un asse comune: densità solo sopra la baseline, minimo/massimo osservato, Q1–Q3, mediana, media e tooltip completo. Sotto 10 prezzi validi la densità viene omessa, lasciando le statistiche.
+- Tipologia, stato, locali, energia, limiti numerici e anomalie restano filtri globali. KPI, tabella paginata ed export CSV seguono anche la selezione multipla delle zone.
+- Verifiche: `npm.cmd run check` superato con 29 test; `npm.cmd run build` superato; screenshot locali Edge a 1440 px e 390 px; nessun overflow di documento a 390 px. Verificati il rendering dei tre grafici, il cambio overlay/stacked e la rimozione di Navigli dalla distribuzione senza alterare il totale grigio. I controlli sono pulsanti e select nativi con focus visibile; non sono stati provati con screen reader, Safari o telefono fisico.
+- Differenze intenzionali rispetto ai mockup: le zone sono 144 anziché 8 e i prezzi reali producono code più lunghe; per questo l'elenco e il violin scorrono internamente e la legenda si nasconde oltre 12 zone. Prima della pubblicazione resta consigliata una prova su dispositivo fisico e con screen reader.
+
 ## Footer condiviso e Immobiliare-data — 31 ottobre 2026
 
 - Le rifiniture dell’utente a CV e Luoghi sono state pubblicate separatamente nel commit `218bce9`; il titolo `competenze/` resta disponibile alle tecnologie assistive senza tornare visibile.

@@ -1,135 +1,156 @@
-import { loadPlotly } from '../charts/plotly.mjs';
-import { histogram, quantile, escapeHTML as esc } from '../explorer/core.mjs';
+import { escapeHTML as esc } from '../explorer/core.mjs';
 import { downloadCSV } from '../explorer/download.mjs';
-import { selectRecords, summarize, pricePerSqm, validateDataset } from './metrics.mjs';
+import { selectRecords, summarize, pricePerSqm, validateDataset, sharedPriceDistribution, comparisonPriceDistribution, categoryKey, categoryLabel, categoryMetricRows, representativeCategoryKeys, categoryBoxStatistics } from './metrics.mjs';
+import { renderDistributionSVG, renderCategoryDistributionsSVG, renderBoxPlotSVG } from './charts.mjs';
 import { terminalHeader } from '../terminal-header.mjs';
-const labels={zone:'Zona',type:'Tipologia',condition:'Stato',rooms:'Locali',energy:'Classe energetica',price:'Prezzo (€)',area:'Superficie (m²)',sqm:'Prezzo al m²',id:'ID',flagged:'Anomalia'};
-const cats=['zone','type','condition','rooms','energy'], nums=['price','area','sqm'];
-const fmt=n=>n===null?'—':new Intl.NumberFormat('it-IT',{maximumFractionDigits:0}).format(n);
-const value=(r,key)=>key==='sqm'?pricePerSqm(r):r[key];
-const aggregates={median:'Mediana',mean:'Media',count:'Conteggio'};
+
+const labels={zone:'Zona',type:'Tipologia',condition:'Stato',rooms:'Locali',energy:'Classe energetica',price:'Prezzo (€)',area:'Superficie (m²)',sqm:'Prezzo al m²',count:'Conteggio',id:'ID',flagged:'Anomalia'};
+const categoryFields=['zone','type','condition','rooms','energy'];
+const filterCats=['type','condition','rooms','energy'];
+const exportFields=['id','zone',...filterCats,'price','area','sqm','flagged'];
 const pageSize=10;
+const prototypeOrder=['Brera','Duomo','Porta Venezia','Porta Romana - Medaglie d\'Oro','Navigli - Darsena','Isola','Lambrate','Bicocca'];
+const fmt=n=>n===null||n===undefined?'—':new Intl.NumberFormat('it-IT',{maximumFractionDigits:0}).format(n);
+const value=(record,key)=>key==='sqm'?pricePerSqm(record):record[key];
+const palette=['#269D83','#438EC1','#986FC4','#D99B48','#D26F83','#48A8AD','#8B9E51','#B37FA7'];
+const prototypeColors=new Map([['Brera',palette[0]],['Duomo',palette[1]],['Porta Venezia',palette[2]],['Porta Romana - Medaglie d\'Oro',palette[3]],['Navigli - Darsena',palette[4]],['Isola',palette[5]],['Lambrate',palette[6]],['Bicocca',palette[7]]]);
+const hashColor=key=>{if(prototypeColors.has(key))return prototypeColors.get(key);let hash=0;for(const char of key)hash=(hash*31+char.charCodeAt(0))>>>0;return palette[hash%palette.length];};
+
 export function mountHousing(container,{signal,isCurrent=()=>true,navigationHTML=''}={}) {
- const events=new AbortController();
- const specs=[
- {kind:'distribution',title:'Fasce di valore',x:'sqm'},
- {kind:'lollipop',title:'Zone a confronto',x:'zone',y:'sqm',aggregate:'median'},
- {kind:'density',title:'Superficie e prezzo',x:'area',y:'price'},
- {kind:'radial',title:'Composizione dell’offerta',x:'condition'},
- {kind:'heatmap',title:'Zone × tipologie',x:'type',y:'zone'}
- ];
- const options=(keys,current,map=labels)=>keys.map(k=>'<option value="'+k+'" '+(k===current?'selected':'')+'>'+map[k]+'</option>').join('');
- const controls=(s,i)=>{
-   const select=(label,key,keys)=>'<label>'+label+'<select data-chart="'+i+'" data-key="'+key+'">'+options(keys,s[key])+'</select></label>';
-   const fields=s.kind==='distribution'?select('Misura','x',nums)
-     :s.kind==='lollipop'?select('Categoria','x',cats)+select('Misura','y',nums)+'<label>Calcolo<select data-chart="'+i+'" data-key="aggregate">'+options(Object.keys(aggregates),s.aggregate,aggregates)+'</select></label>'
-     :s.kind==='density'?select('Asse X','x',nums)+select('Asse Y','y',nums)
-     :s.kind==='radial'?select('Categoria','x',cats)
-     :select('Colonne','x',cats)+select('Righe','y',cats);
-   return '<details class="chart-settings"><summary>configura/</summary><div class="data-controls">'+fields+'</div></details>';
- };
- const bounds=[['minArea','Superficie minima'],['maxArea','Superficie massima'],['minPrice','Prezzo minimo (€)'],['maxPrice','Prezzo massimo (€)'],['minSqm','Minimo €/m²'],['maxSqm','Massimo €/m²']];
- container.innerHTML='<section class="page data-workspace housing-workspace project-readme-workspace">'+terminalHeader({path:'~/progetti/immobiliare-data',title:'Dashboard immobiliare',summary:'Un archivio storico della tesi diventa uno spazio di esplorazione: filtra gli annunci, confronta le zone e osserva come cambiano prezzi e offerta.',sections:[{label:'dataset/',text:'14.731 annunci pubblicati a Milano nel 2021, ripuliti per la consultazione.'},{label:'lettura/',text:'Indicatori, cinque viste coordinate, dettaglio tabellare ed export della selezione.'},{label:'attenzione/',text:'Sono prezzi richiesti, non compravendite; indirizzi esclusi e 11 anomalie nascoste in partenza.'}]})+
- '<p id="housing-load" role="status">Caricamento…</p><button id="housing-retry" hidden>Riprova</button><div id="housing-body" hidden><details class="data-panel housing-filter-panel"><summary><span>filtri/</span><small>restringi la selezione</small></summary><form id="housing-filters"><div class="data-controls">'+cats.map(k=>'<label>'+labels[k]+'<select name="'+k+'"><option value="">Tutti</option></select></label>').join('')+bounds.map(([k,l])=>'<label>'+l+'<input name="'+k+'" type="number" min="0" step="any" placeholder="Nessun limite"></label>').join('')+'</div><div class="housing-filter-actions"><label class="data-checkbox"><input type="checkbox" name="includeFlagged"> Includi le anomalie segnalate</label><button type="reset">Azzera filtri</button></div></form></details><div id="housing-active" class="active-filters" aria-label="Filtri attivi"></div><p id="housing-status" role="status"></p><div id="housing-kpis" class="lab-kpis"></div><div class="lab-charts">'+specs.map((s,i)=>'<figure class="lab-chart lab-chart-'+s.kind+'"><header class="lab-chart-heading"><p>0'+(i+1)+'/05</p><h2>'+s.title+'</h2></header>'+controls(s,i)+'<p data-note="'+i+'"></p><div id="housing-plot-'+i+'" class="lab-plot" aria-label="'+s.title+'"></div></figure>').join('')+'</div><p id="housing-chart-status" role="status"></p><section class="data-panel"><div class="lab-records-heading"><h2>Dati della selezione</h2><button id="housing-export">Scarica CSV filtrato</button></div><div id="housing-table" class="lab-table-scroll"></div><div class="lab-pagination"><button id="housing-prev">← Precedente</button><span id="housing-page"></span><button id="housing-next">Successiva →</button></div></section></div>'+navigationHTML+'</section>';
- const $=q=>container.querySelector(q),form=$('#housing-filters');
- let records=[],selected=[],page=0,disposed=false,generation=0,extra={};
- const setExtra=(key,val)=>{if(JSON.stringify(extra[key])===JSON.stringify(val))delete extra[key];else extra[key]=val;update();};
- function table(){
- const fields=['zone','type','price','area','sqm'];
- $('#housing-table').innerHTML='<table><caption>Annunci filtrati · '+pageSize+' righe per pagina</caption><thead><tr>'+fields.map(k=>'<th>'+labels[k]+'</th>').join('')+'</tr></thead><tbody>'+selected.slice(page*pageSize,page*pageSize+pageSize).map(r=>'<tr>'+fields.map(k=>'<td>'+esc(typeof value(r,k)==='number'?fmt(value(r,k)):value(r,k)??'—')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
- const total=Math.max(1,Math.ceil(selected.length/pageSize));$('#housing-page').textContent='Pagina '+(page+1)+' di '+total;$('#housing-prev').disabled=page===0;$('#housing-next').disabled=page>=total-1;$('#housing-export').disabled=!selected.length||!form.checkValidity();
- }
- function filterClick(d){
- if(!d)return;
- if(d.kind==='category'){const el=form.elements[d.field];el.value=el.value===d.value?'':d.value;update();}
- else if(d.kind==='categories'){for(const [field,next] of Object.entries(d.value)){const el=form.elements[field];if(el)el.value=el.value===next?'':next;}update();}
- else if(d.kind==='range')setExtra('range',d.value);
- else if(d.kind==='ids')setExtra('ids',d.value);
- else if(d.kind==='presence')setExtra('present',d.value);
- else if(d.kind==='absent'){const el=form.elements[d.value]; if(el){el.value=el.value==='__missing'?'':'__missing';update();}else setExtra('ids',records.filter(r=>r[d.value]===null).map(r=>r.id));}
- }
- async function update(){
- if(disposed||!isCurrent())return;
- const filters={...Object.fromEntries(new FormData(form)),...extra,includeFlagged:form.elements.includeFlagged.checked};
- for(const [name] of bounds)form.elements[name].setCustomValidity('');
- for(const [a,b] of [['minArea','maxArea'],['minPrice','maxPrice'],['minSqm','maxSqm']])if(filters[a]!==''&&filters[b]!==''&&Number(filters[a])>Number(filters[b]))form.elements[b].setCustomValidity('Il massimo deve essere maggiore o uguale al minimo.');
- if(!form.checkValidity()){
-   $('#housing-status').textContent='Filtro non applicato: usa valori positivi e un minimo non superiore al massimo. I risultati mostrano l’ultima selezione valida; correggi i campi per esportare.';
-   $('#housing-export').disabled=true;
-   for(const [name] of bounds)form.elements[name].setAttribute('aria-invalid',String(!form.elements[name].validity.valid));
-   return;
- }
- for(const [name] of bounds)form.elements[name].removeAttribute('aria-invalid');
- const version=++generation;selected=selectRecords(records,filters);page=0;table();
- $('#housing-status').textContent=fmt(selected.length)+' annunci su '+fmt(records.length)+'. Clicca di nuovo una selezione o rimuovi il filtro per tornare indietro.';
- const active=Object.entries(filters).filter(([k,v])=>v!==''&&v!==false&&v!==undefined);
- $('#housing-active').innerHTML=active.map(([k,v])=>'<button type="button" data-remove="'+k+'">'+esc(k==='range'?labels[v.field]+': '+fmt(v.min)+'–'+fmt(v.max):k==='ids'?v.length+' annunci selezionati':k==='present'?'Valori presenti: '+labels[v]:k==='includeFlagged'?'Anomalie incluse':(labels[k]||bounds.find(b=>b[0]===k)?.[1]||k)+': '+(v==='__missing'?'Non disponibile':v))+' ×</button>').join('');
- const summary=summarize(selected);
- $('#housing-kpis').innerHTML='<article><span>ANNUNCI</span><strong>'+fmt(summary.count)+'</strong></article>'+[['price','PREZZO MEDIANO',' €'],['sqm','MEDIANA €/m²',' €/m²'],['area','SUPERFICIE MEDIANA',' m²']].map(([k,l,u])=>'<article><span>'+l+'</span><strong>'+fmt(summary[k].value)+(summary[k].value===null?'':u)+'</strong><small>'+fmt(summary[k].count)+' valori disponibili</small></article>').join('');
- try{
- const plotly=await loadPlotly();if(disposed||!isCurrent()||version!==generation)return;
- for(let i=0;i<specs.length;i++){
- const s=specs[i],node=$('#housing-plot-'+i);let traces=[],xtitle=labels[s.x],ytitle='Annunci',note='',layoutExtra={};
- if(s.kind==='distribution'){
- const vals=selected.map(r=>value(r,s.x)).filter(Number.isFinite),cap=quantile(vals,.99),shown=vals.filter(v=>v<=cap),h=histogram(shown,22),median=quantile(vals,.5),minimum=Math.min(...shown),maximum=Math.max(...shown);
- traces=[{type:'bar',...h,marker:{color:'#7898ad',line:{color:'#f7f8fa',width:1}},hovertemplate:'%{x:,.0f}<br>%{y} annunci<extra></extra>',customdata:h.x.map((x,j)=>({kind:'range',value:{field:s.x,min:minimum+j*h.width,max:j===h.x.length-1?maximum:minimum+(j+1)*h.width,includeMax:j===h.x.length-1}}))}];
- layoutExtra={shapes:[{type:'line',x0:median,x1:median,y0:0,y1:1,yref:'paper',line:{color:'#7b507d',width:2,dash:'dot'}}],annotations:[{x:median,y:1,xref:'x',yref:'paper',text:'mediana '+fmt(median),showarrow:false,yanchor:'bottom',font:{size:10,color:'#7b507d'}}]};
- note=fmt(vals.length)+' valori; vista limitata al 99° percentile per leggere la forma. La linea indica la mediana.';
- }else if(s.kind==='lollipop'){
- const groups=new Map();for(const r of selected){const k=r[s.x]??'__missing',v=s.aggregate==='count'?1:value(r,s.y);if(v===null)continue;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(v);}
- const entries=[...groups].map(([k,v])=>({k,n:v.length,v:s.aggregate==='count'?v.length:s.aggregate==='mean'?v.reduce((a,b)=>a+b,0)/v.length:quantile(v,.5)})).sort((a,b)=>b.v-a.v).slice(0,14).reverse();
- const names=entries.map(e=>esc(e.k==='__missing'?'Non disponibile':e.k)),values=entries.map(e=>e.v),custom=entries.map(e=>({kind:'category',field:s.x,value:e.k}));
- traces=[{type:'bar',orientation:'h',y:names,x:values,width:.08,marker:{color:'#a9bbc7'},customdata:custom,hoverinfo:'skip'},
-   {type:'scatter',mode:'markers+text',y:names,x:values,text:entries.map(e=>fmt(e.v)),textposition:'middle right',cliponaxis:false,marker:{size:10,color:'#2f6f9f',line:{color:'#fff',width:1}},customdata:custom,hovertemplate:'%{y}<br>%{x:,.0f} · n=%{meta}<extra></extra>',meta:entries.map(e=>e.n)}];
- xtitle=s.aggregate==='count'?'Annunci':aggregates[s.aggregate]+' · '+labels[s.y];ytitle='';note='Prime '+entries.length+' categorie. Il punto è il valore, la linea facilita il confronto; clicca per filtrare.';
- }else if(s.kind==='density'){
- const allValid=selected.filter(r=>Number.isFinite(value(r,s.x))&&Number.isFinite(value(r,s.y))),xCap=quantile(allValid.map(r=>value(r,s.x)),.99),yCap=quantile(allValid.map(r=>value(r,s.y)),.99),valid=allValid.filter(r=>value(r,s.x)<=xCap&&value(r,s.y)<=yCap),xValues=valid.map(r=>value(r,s.x)),logY=valid.map(r=>Math.log10(value(r,s.y))),xMin=Math.min(...xValues),xMax=Math.max(...xValues),yMin=Math.min(...logY),yMax=Math.max(...logY),bins=new Map();
- for(const r of valid){const x=value(r,s.x),y=value(r,s.y),xb=Math.min(19,Math.floor((x-xMin)/(xMax-xMin||1)*20)),yb=Math.min(15,Math.floor((Math.log10(y)-yMin)/(yMax-yMin||1)*16)),key=xb+':'+yb;if(!bins.has(key))bins.set(key,{xb,yb,ids:[]});bins.get(key).ids.push(r.id);}
- const cells=[...bins.values()],counts=cells.map(cell=>cell.ids.length),maxCount=Math.max(...counts,1);
- traces=[{type:'scatter',mode:'markers',x:cells.map(cell=>xMin+(cell.xb+.5)*(xMax-xMin)/20),y:cells.map(cell=>10**(yMin+(cell.yb+.5)*(yMax-yMin)/16)),customdata:cells.map(cell=>({kind:'ids',value:cell.ids})),text:counts.map(count=>fmt(count)+' annunci'),marker:{symbol:'square',size:counts.map(count=>8+20*Math.sqrt(count/maxCount)),color:counts,colorscale:[[0,'#dfe9ef'],[.45,'#7898ad'],[1,'#7b507d']],showscale:false,opacity:.84,line:{color:'#f7f8fa',width:1}},hovertemplate:'%{text}<br>'+labels[s.x]+': %{x:,.0f}<br>'+labels[s.y]+': %{y:,.0f}<extra></extra>'}];
- ytitle=labels[s.y]+' · scala log';layoutExtra={yaxis:{type:'log'}};note='Densità centrale di '+fmt(allValid.length)+' coppie; assi limitati al 99° percentile. Clicca una cella per filtrare.';
- }else if(s.kind==='radial'){
- const groups=new Map();for(const r of selected){const k=r[s.x]??'__missing';groups.set(k,(groups.get(k)||0)+1);}
- const entries=[...groups].map(([k,v])=>({k,v})).sort((a,b)=>b.v-a.v).slice(0,12);
- const radialLabel=key=>key==='__missing'?'Non disponibile':key.replace('Ottimo / Ristrutturato','Ottimo / ristrutt.').replace('Nuovo / In costruzione','Nuovo / costruzione');
- traces=[{type:'barpolar',theta:entries.map(e=>radialLabel(e.k)),r:entries.map(e=>e.v),text:entries.map(e=>e.k==='__missing'?'Non disponibile':e.k),customdata:entries.map(e=>({kind:'category',field:s.x,value:e.k})),marker:{color:entries.map((_,j)=>j),colorscale:[[0,'#2f6f9f'],[.55,'#7898ad'],[1,'#7b507d']],line:{color:'#f7f8fa',width:1}},opacity:.9,hovertemplate:'%{text}<br>%{r} annunci<extra></extra>'}];
- xtitle='';ytitle='';layoutExtra={polar:{bgcolor:'rgba(0,0,0,0)',radialaxis:{showticklabels:false,ticks:'',gridcolor:'#d9dee3'},angularaxis:{gridcolor:'#e8ebee',tickfont:{size:10}}}};note='Le categorie più presenti. La lunghezza radiale comunica il peso; il tooltip conserva il valore esatto.';
- }else{
- const countBy=field=>{const m=new Map();for(const r of selected){const k=r[field]??'__missing';m.set(k,(m.get(k)||0)+1);}return [...m].sort((a,b)=>b[1]-a[1]).slice(0,9).map(([k])=>k);};
- if(s.x===s.y){s.y=cats.find(k=>k!==s.x);const rowSelect=container.querySelector('[data-chart="'+i+'"][data-key="y"]');if(rowSelect)rowSelect.value=s.y;}
- const columns=countBy(s.x),rows=countBy(s.y);
- const matrix=rows.map(row=>columns.map(column=>selected.filter(r=>(r[s.y]??'__missing')===row&&(r[s.x]??'__missing')===column).length));
- const custom=rows.map(row=>columns.map(column=>({kind:'categories',value:{[s.x]:column,[s.y]:row}})));
- traces=[{type:'heatmap',x:columns.map(k=>k==='__missing'?'Non disponibile':k),y:rows.map(k=>k==='__missing'?'Non disponibile':k),z:matrix.map(row=>row.map(Math.sqrt)),text:matrix,customdata:custom,colorscale:[[0,'#f0f2f4'],[.35,'#bed0db'],[1,'#2f6f9f']],showscale:false,hovertemplate:'%{y} × %{x}<br>%{text} annunci<extra></extra>'}];
- xtitle=labels[s.x];ytitle=labels[s.y];note='Incrocio delle categorie più frequenti; la scala √ rende visibili anche i gruppi piccoli. Clicca una cella per filtrare.';
- }
- $('[data-note="'+i+'"]').textContent=note;
- if(!selected.length){plotly.purge(node);node.textContent='Nessun dato. Rimuovi un filtro per riprendere.';node.dataset.empty='true';continue;}
- if(node.dataset.empty){node.replaceChildren();delete node.dataset.empty;}
- node.style.height=s.kind==='lollipop'?Math.max(360,traces[0].y.length*25+100)+'px':'';
- const measure=container.querySelector('[data-chart="'+i+'"][data-key=y]');if(measure)measure.disabled=s.kind==='lollipop'&&s.aggregate==='count';
- const margin={l:s.kind==='radial'?82:['lollipop','heatmap'].includes(s.kind)?125:55,r:s.kind==='radial'?82:s.kind==='lollipop'?64:24,t:s.kind==='radial'?32:18,b:58};
- const xaxis={title:{text:xtitle},automargin:true,gridcolor:'#e8ebee',zeroline:false};
- const yaxis={title:{text:ytitle},automargin:true,gridcolor:'#e8ebee',zeroline:false,...(s.kind==='lollipop'?{type:'category'}:{})};
- if(layoutExtra.yaxis){Object.assign(yaxis,layoutExtra.yaxis);delete layoutExtra.yaxis;}
- await plotly.react(node,traces,{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{size:11,color:'#3d4640'},margin,xaxis,yaxis,showlegend:false,dragmode:s.kind==='density'?'select':false,...layoutExtra},{responsive:true,displayModeBar:false});
- if(disposed||version!==generation){if(disposed)plotly.purge(node);return;}
- node.removeAllListeners('plotly_click');node.on('plotly_click',e=>filterClick(e.points?.[0]?.customdata));
- node.removeAllListeners('plotly_selected');if(s.kind==='density')node.on('plotly_selected',e=>{if(e?.points?.length)setExtra('ids',e.points.flatMap(p=>p.customdata?.value||[]));});
- }
- $('#housing-chart-status').textContent='';
- }catch{if(!disposed)$('#housing-chart-status').textContent='Grafici non disponibili. Tabella e CSV restano utilizzabili; cambia un filtro per riprovare.';}
- }
- async function load(){ $('#housing-retry').hidden=true;try{
- const response=await fetch(new URL('./milano-2021.json',import.meta.url),{signal});if(!response.ok)throw Error();const data=validateDataset(await response.json());if(disposed||!isCurrent())return;records=data.records;
- for(const k of cats)form.elements[k].innerHTML='<option value="">Tutti</option>'+[...new Set(records.map(r=>r[k]).filter(v=>v!==null))].sort((a,b)=>a.localeCompare(b,'it')).map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('')+'<option value="__missing">Non disponibile</option>';
- $('#housing-load').textContent='';$('#housing-body').hidden=false;update();
- }catch(e){if(disposed||e.name==='AbortError')return;$('#housing-load').textContent='Archivio non disponibile. Riprova.';$('#housing-retry').hidden=false;}}
- form.onchange=update;form.onsubmit=e=>{e.preventDefault();update();};form.onreset=()=>{extra={};setTimeout(()=>{if(!disposed)update();},0);};
- $('#housing-active').onclick=e=>{const k=e.target.closest('[data-remove]')?.dataset.remove;if(!k)return;if(k in extra)delete extra[k];else if(k==='includeFlagged')form.elements[k].checked=false;else form.elements[k].value='';update();};
- container.addEventListener('change',e=>{const i=e.target.dataset.chart;if(i===undefined)return;specs[+i][e.target.dataset.key]=e.target.value;update();},{signal:events.signal});
- $('#housing-prev').onclick=()=>{page--;table();};$('#housing-next').onclick=()=>{page++;table();};
- $('#housing-export').onclick=()=>{const fields=['id',...cats,'price','area','sqm','flagged'];downloadCSV(fields,selected.map(r=>fields.map(k=>value(r,k))),'milano-2021-selezione.csv');};
- $('#housing-retry').onclick=load;load();
- return()=>{disposed=true;events.abort();generation++;for(let i=0;i<specs.length;i++)window.Plotly?.purge($('#housing-plot-'+i));};
+  const events=new AbortController();
+  const rangeSpecs=[
+    {key:'area',low:'minArea',high:'maxArea',label:'Superficie',unit:'m²',step:1},
+    {key:'price',low:'minPrice',high:'maxPrice',label:'Prezzo richiesto',unit:'€',step:10000},
+    {key:'sqm',low:'minSqm',high:'maxSqm',label:'Prezzo al m²',unit:'€/m²',step:100}
+  ];
+  const rangeMarkup=rangeSpecs.map(spec=>`<div class="housing-range" data-range="${spec.key}"><div class="housing-range-heading"><strong>${spec.label}</strong><span><output data-range-output="min">MIN —</output><output data-range-output="max">MAX —</output></span></div><div class="housing-range-track"><span aria-hidden="true"></span><input type="range" min="0" max="1" value="0" step="${spec.step}" data-range-handle="min" aria-label="${spec.label} minima"><input type="range" min="0" max="1" value="1" step="${spec.step}" data-range-handle="max" aria-label="${spec.label} massima"></div></div>`).join('');
+  const categoryOptions=categoryFields.map(key=>`<option value="${key}">${labels[key]}</option>`).join('');
+  container.innerHTML=`<section class="page data-workspace housing-workspace project-readme-workspace">${terminalHeader({path:'~/progetti/immobiliare-data',title:'Dashboard immobiliare',summary:'Questo progetto nasce dalla mia tesi sull’analisi del mercato immobiliare. Nel 2021 ho raccolto gli annunci pubblicati su Immobiliare.it con uno script R di web scraping sviluppato per la ricerca.',details:{id:'housing-readme-more',openLabel:'+ dettagli',closeLabel:'− riduci',paragraphs:['Il lavoro originale comprendeva acquisizione, pulizia e analisi degli annunci. La versione pubblica conserva 14.731 record di Milano e rimuove indirizzi, contatti e altri identificativi.','I dati descrivono prezzi richiesti, non compravendite concluse. Filtri e grafici permettono di esplorare differenze tra zone e tipologie, distribuzioni e valori anomali.','Undici anomalie segnalate restano escluse in partenza, ma possono essere incluse esplicitamente dai filtri.']}})}
+  <p id="housing-load" role="status">Caricamento…</p><button id="housing-retry" hidden>Riprova</button><div id="housing-body" hidden>
+  <section class="data-panel housing-filter-panel" aria-labelledby="housing-filters-title"><form id="housing-filters"><header class="housing-filter-heading"><div><p>filtri/</p><h2 id="housing-filters-title">Restringi l’universo di confronto</h2></div><div class="housing-filter-actions"><span id="housing-active-count" role="status">Nessun filtro attivo</span><button type="reset">Azzera filtri</button></div></header><fieldset class="housing-filter-group"><legend>Variabili categoriche</legend><div class="housing-category-filters">${filterCats.map(key=>`<label>${labels[key]}<select name="${key}"><option value="">Tutti</option></select></label>`).join('')}</div></fieldset><fieldset class="housing-filter-group housing-numeric-filters"><legend>Variabili numeriche</legend><div class="housing-range-filters">${rangeMarkup}</div></fieldset><label class="data-checkbox housing-anomaly-filter"><input type="checkbox" name="includeFlagged"> Includi le anomalie segnalate</label></form><div class="housing-filter-summary"><p id="housing-status" role="status"></p><div id="housing-kpis" class="lab-kpis"></div></div></section>
+  <div class="housing-charts"><figure class="housing-chart housing-zone-chart"><header class="housing-chart-heading"><div><h2><span>01 /</span> Confronta le categorie</h2><p>Cambia dimensione, misura e lettura. A riposo: MIN · Q1 · MEDIANA · Q3 · MAX.</p></div></header>
+  <div class="housing-chart-controls"><label>Raggruppa per<select id="housing-group-field">${categoryOptions}</select></label><label>Misura<select id="housing-metric"><option value="sqm">Prezzo al m²</option><option value="price">Prezzo richiesto</option><option value="area">Superficie</option><option value="count">Conteggio</option></select></label><label>Calcolo<select id="housing-aggregate"><option value="median">Mediana</option><option value="mean">Media</option></select></label><div class="housing-view-switch" role="group" aria-label="Tipo di grafico"><button type="button" data-comparison-mode="bar" aria-pressed="true">Barre</button><button type="button" data-comparison-mode="box" aria-pressed="false">Distribuzione</button></div></div>
+  <div class="housing-chart-toolbar"><button type="button" id="housing-toggle-all">Deseleziona tutte</button><button type="button" id="housing-show-all">Mostra tutto</button><button type="button" id="housing-exclude-outliers" hidden>Escludi estremi visibili</button><button type="button" id="housing-restore-excluded" hidden>Ripristina esclusi</button><span id="housing-box-disabled" class="housing-control-note" hidden>La distribuzione richiede una misura numerica.</span></div>
+  <div id="housing-category-rows" class="housing-zone-rows" role="group" aria-label="Selezione multipla delle categorie"></div><div id="housing-box-scroll" class="housing-plot-scroll housing-box-scroll" hidden><div id="housing-box" class="housing-svg-chart" aria-label="Distribuzione con mezzo violin e box plot per categoria"></div></div><p id="housing-category-note" class="housing-chart-note"></p></figure>
+  <figure class="housing-chart housing-distribution-chart"><header class="housing-chart-heading"><div><h2><span>02 /</span> Distribuzione prezzi</h2><p id="housing-distribution-description">Dataset complessivo e selezione corrente dopo filtri e categorie.</p></div><div class="housing-view-switch housing-distribution-switch" role="group" aria-label="Tipo di confronto"><button type="button" data-distribution-view="summary" aria-pressed="true">Totale / filtrato</button><button type="button" data-distribution-view="categories" aria-pressed="false">Confronto categorie</button></div></header><div class="housing-plot-scroll"><div id="housing-distribution" class="housing-svg-chart" aria-label="Distribuzioni dei prezzi"></div></div><div id="housing-distribution-legend" class="housing-distribution-legend" aria-label="Legenda delle distribuzioni"></div><p id="housing-distribution-note" class="housing-chart-note"></p></figure></div><p id="housing-chart-status" role="status"></p>
+  <section class="housing-chart housing-records-panel"><div class="lab-records-heading"><h2>Dati della selezione</h2><button id="housing-export">Scarica CSV filtrato</button></div><div id="housing-table" class="lab-table-scroll"></div><div class="lab-pagination"><button id="housing-prev">← Precedente</button><span id="housing-page"></span><button id="housing-next">Successiva →</button></div></section></div>${navigationHTML}</section>`;
+
+  const $=selector=>container.querySelector(selector),form=$('#housing-filters');
+  let records=[],comparisonUniverse=[],baseUniverse=[],universe=[],selected=[],page=0,disposed=false,groupField='zone',metric='sqm',aggregate='median',comparisonMode='bar',distributionView='summary',showAll=false,visibleOutlierIds=[];
+  const rangeState=new Map(),selectedByField=new Map(),excludedIds=new Set();
+  const selectedKeys=()=>selectedByField.get(groupField)??new Set();
+  const colorFor=key=>hashColor(groupField==='zone'?key:groupField+':'+key);
+  const categoryOrder=(field,source=universe)=>{
+    const keys=[...new Set(source.map(record=>categoryKey(record,field)))];
+    if(field!=='zone')return keys.sort((a,b)=>categoryLabel(a).localeCompare(categoryLabel(b),'it'));
+    const priority=new Map(prototypeOrder.map((key,index)=>[key,index]));
+    return keys.sort((a,b)=>priority.has(a)&&priority.has(b)?priority.get(a)-priority.get(b):priority.has(a)?-1:priority.has(b)?1:categoryLabel(a).localeCompare(categoryLabel(b),'it'));
+  };
+  const allMetricRows=()=>categoryMetricRows(universe,groupField,categoryOrder(groupField),metric,aggregate);
+  const representativeKeys=()=>representativeCategoryKeys(allMetricRows());
+  const visibleKeys=()=>showAll?categoryOrder(groupField):representativeKeys();
+  function ensureSelection(){if(!selectedByField.has(groupField))selectedByField.set(groupField,new Set(categoryOrder(groupField,records)));}
+
+  function table(){
+    const fields=['zone','type','price','area','sqm'];
+    $('#housing-table').innerHTML='<table><caption>Annunci filtrati · '+pageSize+' righe per pagina</caption><thead><tr>'+fields.map(key=>'<th>'+labels[key]+'</th>').join('')+'</tr></thead><tbody>'+selected.slice(page*pageSize,page*pageSize+pageSize).map(record=>'<tr>'+fields.map(key=>'<td>'+esc(typeof value(record,key)==='number'?fmt(value(record,key)):value(record,key)??'—')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+    const total=Math.max(1,Math.ceil(selected.length/pageSize));
+    $('#housing-page').textContent='Pagina '+(page+1)+' di '+total;$('#housing-prev').disabled=page===0;$('#housing-next').disabled=page>=total-1;$('#housing-export').disabled=!selected.length;
+  }
+
+  function metricSuffix(){return metric==='sqm'?' €/m²':metric==='price'?' €':metric==='area'?' m²':'';}
+  function renderComparison(){
+    const keys=visibleKeys(),rows=categoryMetricRows(universe,groupField,keys,metric,aggregate),chosen=selectedKeys(),selectedAvailable=categoryOrder(groupField).filter(key=>chosen.has(key)).length,boxAllowed=metric!=='count';let viewDetail='';
+    if(!boxAllowed&&comparisonMode==='box')comparisonMode='bar';
+    container.querySelectorAll('[data-comparison-mode]').forEach(button=>{const isBox=button.dataset.comparisonMode==='box';button.disabled=isBox&&!boxAllowed;button.setAttribute('aria-pressed',String(button.dataset.comparisonMode===comparisonMode));});
+    $('#housing-box-disabled').hidden=boxAllowed;$('#housing-aggregate').disabled=metric==='count';
+    $('#housing-category-rows').hidden=comparisonMode!=='bar';$('#housing-box-scroll').hidden=comparisonMode!=='box';$('#housing-exclude-outliers').hidden=comparisonMode!=='box';
+    if(comparisonMode==='bar'){
+      const max=Math.max(...rows.map(row=>row.value??0),1),suffix=metricSuffix();
+      $('#housing-category-rows').innerHTML=rows.map(row=>{const active=chosen.has(row.key),width=Math.max(0,(row.value??0)/max*100);return `<button type="button" class="housing-zone-row" data-category-key="${esc(row.key)}" aria-pressed="${active}" title="${esc(row.label)}: ${row.value===null?'valore non disponibile':fmt(row.value)+suffix}. ${active?'Deseleziona':'Seleziona'}"><span class="housing-zone-name">${esc(row.label)}</span><span class="housing-zone-track"><span style="width:${width}%;background:${colorFor(row.key)}"></span></span><strong>${row.value===null?'—':fmt(row.value)+suffix}</strong><span class="housing-zone-check" aria-hidden="true">${active?'✓':'○'}</span></button>`;}).join('');
+      visibleOutlierIds=[];
+    }else{
+      const boxRows=categoryBoxStatistics(universe,groupField,keys,metric,comparisonUniverse).filter(row=>row.count),result=renderBoxPlotSVG($('#housing-box'),{rows:boxRows,colorFor,selectedKeys:chosen,metricLabel:labels[metric]});
+      visibleOutlierIds=result.outlierIds;
+      viewDetail=` · area = peso nel filtrato; N e quote = valori validi della misura; box = Q1–Q3; linea bianca = mediana; punto scuro = media${result.smallCount?`; ${result.smallCount} gruppi sotto 10 valori senza densità`:''}.`;
+    }
+    $('#housing-show-all').textContent=showAll?'Riduci':'Mostra tutto';
+    $('#housing-toggle-all').textContent=selectedAvailable===categoryOrder(groupField).length&&selectedAvailable?'Deseleziona tutte':'Seleziona tutte';
+    $('#housing-restore-excluded').hidden=!excludedIds.size;$('#housing-restore-excluded').textContent=`Ripristina esclusi (${excludedIds.size})`;
+    const roleNames=['MIN','Q1','MEDIANA','Q3','MAX'];
+    $('#housing-category-note').textContent=(showAll?`${keys.length} categorie visibili · ${selectedAvailable} selezionate.`:`Campione rappresentativo: ${keys.map((key,index)=>`${roleNames[index]??''} ${categoryLabel(key)}`).join(' · ')} · ${selectedAvailable} categorie selezionate.`)+viewDetail;
+  }
+
+  function renderDistribution(){
+    try{
+      const active=categoryOrder(groupField).filter(key=>selectedKeys().has(key));
+      if(distributionView==='summary'){
+        const series=comparisonPriceDistribution(comparisonUniverse,selected,60);
+        renderDistributionSVG($('#housing-distribution'),$('#housing-distribution-legend'),{series});
+        $('#housing-distribution-description').textContent='Dataset complessivo e selezione corrente dopo filtri e categorie.';
+        $('#housing-distribution-note').textContent=`${fmt(series.validCount)} prezzi complessivi · ${fmt(series.filteredValidCount)} dopo filtri e categorie · asse condiviso al 99° percentile; ${fmt(series.overflowCount)} valori complessivi nell’ultima fascia.`;
+      }else if(!active.length||active.length>8){
+        $('#housing-distribution').classList.add('is-empty');
+        $('#housing-distribution').textContent=active.length?'Per confrontare le categorie, deseleziona tutte e scegline fino a 8.':'Seleziona da 1 a 8 categorie nel grafico 01.';
+        $('#housing-distribution-legend').replaceChildren();
+        $('#housing-distribution-description').textContent='Confronto diretto tra le distribuzioni delle categorie selezionate.';
+        $('#housing-distribution-note').textContent=`Categorie selezionate: ${active.length}. Il confronto ammette da 1 a 8 curve.`;
+      }else{
+        const series=sharedPriceDistribution(universe,active,60,groupField);
+        const comparisonColorFor=key=>palette[active.indexOf(key)%palette.length];
+        renderCategoryDistributionsSVG($('#housing-distribution'),$('#housing-distribution-legend'),{series,categoryKeys:active,colorFor:comparisonColorFor,labelFor:categoryLabel});
+        $('#housing-distribution-description').textContent='Confronto diretto tra le distribuzioni delle categorie selezionate.';
+        $('#housing-distribution-note').textContent=`${active.length} categorie · ${fmt(selected.filter(record=>Number.isFinite(record.price)).length)} prezzi nelle curve · asse calibrato sull’universo filtrato con gli stessi bin.`;
+      }
+      $('#housing-chart-status').textContent='';
+    }catch{$('#housing-chart-status').textContent='Grafici non disponibili. Filtri, tabella e CSV restano utilizzabili.';}
+  }
+
+  function syncRange(spec,changed){
+    const control=container.querySelector(`[data-range="${spec.key}"]`),low=control.querySelector('[data-range-handle="min"]'),high=control.querySelector('[data-range-handle="max"]'),state=rangeState.get(spec.key);
+    if(changed==='min'&&Number(low.value)>Number(high.value))low.value=high.value;if(changed==='max'&&Number(high.value)<Number(low.value))high.value=low.value;
+    const span=Math.max(1,state.max-state.min),start=(Number(low.value)-state.min)/span*100,end=(Number(high.value)-state.min)/span*100;
+    control.style.setProperty('--range-start',start+'%');control.style.setProperty('--range-end',end+'%');control.querySelector('[data-range-output="min"]').textContent=`MIN ${fmt(Number(low.value))} ${spec.unit}`;control.querySelector('[data-range-output="max"]').textContent=`MAX ${fmt(Number(high.value))} ${spec.unit}`;
+  }
+  function setupRanges(){
+    const clean=records.filter(record=>!record.flagged);
+    for(const spec of rangeSpecs){const values=clean.map(record=>value(record,spec.key)).filter(Number.isFinite),min=Math.floor(Math.min(...values)/spec.step)*spec.step,max=Math.ceil(Math.max(...values)/spec.step)*spec.step;rangeState.set(spec.key,{min,max});const control=container.querySelector(`[data-range="${spec.key}"]`),low=control.querySelector('[data-range-handle="min"]'),high=control.querySelector('[data-range-handle="max"]');for(const input of [low,high]){input.min=String(min);input.max=String(max);input.step=String(spec.step);}low.value=low.defaultValue=String(min);high.value=high.defaultValue=String(max);syncRange(spec);}
+  }
+  function filtersFromForm(){
+    const filters={...Object.fromEntries(new FormData(form)),includeFlagged:form.elements.includeFlagged.checked};
+    for(const spec of rangeSpecs){const control=container.querySelector(`[data-range="${spec.key}"]`),state=rangeState.get(spec.key),low=Number(control.querySelector('[data-range-handle="min"]').value),high=Number(control.querySelector('[data-range-handle="max"]').value);if(low>state.min)filters[spec.low]=low;if(high<state.max)filters[spec.high]=high;}
+    return filters;
+  }
+  function update(){
+    if(disposed||!isCurrent())return;const filters=filtersFromForm();comparisonUniverse=selectRecords(records,{includeFlagged:filters.includeFlagged});baseUniverse=selectRecords(records,filters);universe=baseUniverse.filter(record=>!excludedIds.has(record.id));ensureSelection();selected=universe.filter(record=>selectedKeys().has(categoryKey(record,groupField)));page=0;table();renderComparison();renderDistribution();
+    const summary=summarize(selected),selectedAvailable=categoryOrder(groupField).filter(key=>selectedKeys().has(key)).length;$('#housing-status').textContent=`${fmt(selected.length)} annunci in ${selectedAvailable} categorie selezionate; universo di confronto: ${fmt(universe.length)}${excludedIds.size?`; esclusi: ${fmt(excludedIds.size)}`:''}.`;
+    const activeFilterCount=filterCats.filter(key=>filters[key]).length+rangeSpecs.filter(spec=>filters[spec.low]!==undefined||filters[spec.high]!==undefined).length+(filters.includeFlagged?1:0);
+    $('#housing-active-count').textContent=(activeFilterCount?`${activeFilterCount} ${activeFilterCount===1?'filtro attivo':'filtri attivi'}`:'Nessun filtro attivo')+(excludedIds.size?` · ${excludedIds.size} esclusi`:``);
+    for(const key of filterCats)form.elements[key].closest('label').classList.toggle('is-active',Boolean(filters[key]));
+    for(const spec of rangeSpecs)container.querySelector(`[data-range="${spec.key}"]`).classList.toggle('is-active',filters[spec.low]!==undefined||filters[spec.high]!==undefined);
+    $('.housing-anomaly-filter').classList.toggle('is-active',filters.includeFlagged);
+    $('#housing-kpis').innerHTML='<article><span>ANNUNCI SELEZIONATI</span><strong>'+fmt(summary.count)+'</strong></article>'+[['price','PREZZO MEDIANO',' €'],['sqm','MEDIANA €/m²',' €/m²'],['area','SUPERFICIE MEDIANA',' m²']].map(([key,label,suffix])=>`<article><span>${label}</span><strong>${fmt(summary[key].value)}${summary[key].value===null?'':suffix}</strong><small>${fmt(summary[key].count)} valori disponibili</small></article>`).join('');
+  }
+
+  async function load(){
+    $('#housing-retry').hidden=true;
+    try{const response=await fetch(new URL('./milano-2021.json',import.meta.url),{signal});if(!response.ok)throw Error();const data=validateDataset(await response.json());if(disposed||!isCurrent())return;records=data.records;for(const key of filterCats)form.elements[key].innerHTML='<option value="">Tutti</option>'+[...new Set(records.map(record=>record[key]).filter(item=>item!==null))].sort((a,b)=>a.localeCompare(b,'it')).map(item=>`<option value="${esc(item)}">${esc(item)}</option>`).join('')+'<option value="__missing">Non disponibile</option>';setupRanges();$('#housing-load').textContent='';$('#housing-body').hidden=false;update();}
+    catch(error){if(disposed||error.name==='AbortError')return;$('#housing-load').textContent='Archivio non disponibile. Riprova.';$('#housing-retry').hidden=false;}
+  }
+
+  form.oninput=event=>{const handle=event.target.dataset.rangeHandle;if(!handle)return;syncRange(rangeSpecs.find(item=>item.key===event.target.closest('[data-range]').dataset.range),handle);};
+  form.onchange=update;form.onsubmit=event=>{event.preventDefault();update();};form.onreset=()=>setTimeout(()=>{if(disposed)return;selectedByField.clear();excludedIds.clear();showAll=false;for(const spec of rangeSpecs)syncRange(spec);update();},0);
+  $('#housing-group-field').onchange=event=>{groupField=event.target.value;showAll=false;ensureSelection();update();};
+  $('#housing-metric').onchange=event=>{metric=event.target.value;update();};$('#housing-aggregate').onchange=event=>{aggregate=event.target.value;update();};
+  $('#housing-show-all').onclick=()=>{showAll=!showAll;renderComparison();};
+  $('#housing-toggle-all').onclick=()=>{const available=categoryOrder(groupField),chosen=selectedKeys(),allSelected=available.length&&available.every(key=>chosen.has(key));selectedByField.set(groupField,allSelected?new Set():new Set(categoryOrder(groupField,records)));update();};
+  $('#housing-exclude-outliers').onclick=()=>{visibleOutlierIds.forEach(id=>excludedIds.add(id));update();};$('#housing-restore-excluded').onclick=()=>{excludedIds.clear();update();};
+  function toggleCategory(key){const chosen=selectedKeys();if(chosen.has(key))chosen.delete(key);else chosen.add(key);update();}
+  $('#housing-category-rows').onclick=event=>{const row=event.target.closest('[data-category-key]');if(row)toggleCategory(row.dataset.categoryKey);};
+  $('#housing-box').onclick=event=>{const outlier=event.target.closest('[data-outlier-id]');if(outlier){excludedIds.add(outlier.dataset.outlierId);update();return;}const row=event.target.closest('[data-category-key]');if(row)toggleCategory(row.dataset.categoryKey);};
+  $('#housing-box').onkeydown=event=>{if(!['Enter',' '].includes(event.key))return;const target=event.target.closest('[data-outlier-id],[data-category-key]');if(!target)return;event.preventDefault();if(target.dataset.outlierId){excludedIds.add(target.dataset.outlierId);update();}else toggleCategory(target.dataset.categoryKey);};
+  container.addEventListener('click',event=>{const comparison=event.target.closest('[data-comparison-mode]')?.dataset.comparisonMode;if(comparison&&comparison!==comparisonMode){comparisonMode=comparison;renderComparison();return;}const view=event.target.closest('[data-distribution-view]')?.dataset.distributionView;if(view&&view!==distributionView){distributionView=view;container.querySelectorAll('[data-distribution-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.distributionView===view)));renderDistribution();}},{signal:events.signal});
+  $('.readme-toggle').onclick=event=>{const button=event.currentTarget,details=$('#'+button.getAttribute('aria-controls')),expanded=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!expanded));button.textContent=expanded?button.dataset.openLabel:button.dataset.closeLabel;details.hidden=expanded;};
+  $('#housing-prev').onclick=()=>{page--;table();};$('#housing-next').onclick=()=>{page++;table();};$('#housing-export').onclick=()=>downloadCSV(exportFields,selected.map(record=>exportFields.map(key=>value(record,key))),'milano-2021-selezione.csv');$('#housing-retry').onclick=load;load();
+  return()=>{disposed=true;events.abort();};
 }
