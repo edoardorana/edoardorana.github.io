@@ -7,7 +7,7 @@
 - Il grafico 01 include il controllo contestuale `Seleziona tutte`/`Deseleziona tutte`, applicato all’intera dimensione categorica anche quando sono visibili soltanto le cinque categorie rappresentative.
 - Il grafico 02 offre `Totale / filtrato` e `Confronto categorie`. La seconda modalità rimuove le curve aggregate e confronta da una a otto categorie selezionate con bin, asse e smoothing comuni; oltre otto mostra un’istruzione esplicita. Gli otto colori sono assegnati per posizione per evitare collisioni fra curve.
 - Verifiche: `npm.cmd run check` superato con 35 test, `npm.cmd run build` e `git diff --check` riusciti. Edge headless: README aperto/ridotto, filtro evidenziato con conteggio singolare, nessuna pillola legacy, messaggi corretti con 144 e zero categorie, confronto con tre curve e tre colori distinti, ritorno a due curve aggregate dopo il reset. A 390 px `scrollWidth = clientWidth = 390`; nessuna eccezione JavaScript.
-- Limiti: nessun test su telefono fisico, Safari/Firefox o screen reader. Nessun commit, push o deploy eseguito.
+- Pubblicazione: commit `e6b1dbf` integrato in `main`; il workflow GitHub Pages [41459030992](https://github.com/edoardorana/edoardorana.github.io/actions/runs/41459030992) è riuscito. I moduli pubblici `housing/charts.mjs`, `housing/page.mjs` e `housing/metrics.mjs` corrispondono all'artefatto locale (normalizzando CRLF/LF). Restano non coperti telefono fisico, Safari/Firefox e screen reader.
 
 ## Peso delle categorie e reset coordinato — 2 novembre 2026
 
