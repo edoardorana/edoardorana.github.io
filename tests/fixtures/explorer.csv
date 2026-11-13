@@ -1,0 +1,7 @@
+data;categoria;importo;nota
+2021-01-01; Nord ;"1.234,50";"test; separatore"
+2021-01-02;Sud;"20,00";"riga uno
+riga due"
+2021-01-02;Sud;"20,00";duplicato
+2021-01-02;Sud;"20,00";duplicato
+2021-01-03;"<img src=x onerror=alert(1)>";;"=SUM(A1:A2)"

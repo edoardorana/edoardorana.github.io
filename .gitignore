@@ -1,0 +1,16 @@
+node_modules/
+.venv/
+__pycache__/
+*.RData
+*.Rdata
+dist/
+.env
+.env.*
+!.env.example
+*.local
+*.log
+.DS_Store
+private/
+coverage/
+/.tmp-qa/
+/Edoardo_Rana_CV_2026.pdf

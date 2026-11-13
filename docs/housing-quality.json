@@ -1,0 +1,26 @@
+{
+  "archive_year": 2021,
+  "source_rows": 15308,
+  "source_columns": 213,
+  "source_sha256": "39bf6759914ed3143dc05d99341d5757d7ea049e22fd095ef5a514ffc75797bf",
+  "published_rows": 14731,
+  "excluded": {
+    "auction": 501,
+    "not_residential_or_unknown_type": 76
+  },
+  "flagged_rows": 11,
+  "missing": {
+    "zone": 20,
+    "condition": 763,
+    "area": 321,
+    "price": 1462,
+    "rooms": 874,
+    "energy": 2081
+  },
+  "comparison": {
+    "rows": 13139,
+    "columns": 24,
+    "shared_identifiers": 8757,
+    "used_for_publication": false
+  }
+}
