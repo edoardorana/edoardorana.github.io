@@ -5,7 +5,7 @@
 - La landing e le pagine separate sono implementate nei sorgenti `proposal/`.
 - Sono disponibili due progetti dati: dashboard immobiliare e Dashboard generator.
 - Il progetto usa 35 test Node e una build statica senza dipendenze npm.
-- `mywebsite` resta un archivio congelato; `mywebsite-staging` è l’area di lavoro attiva; production è ancora vuota.
+- `mywebsite` resta un archivio congelato; `mywebsite-staging` è l’area di lavoro attiva; `mywebsite-production` contiene la versione approvata e verificata promossa il 13 novembre 2026.
 
 ## Pulizia staging
 
@@ -32,4 +32,4 @@ Materiale mantenuto:
 
 1. Usare staging come unica area di lavoro per le prossime modifiche.
 2. Eseguire check, build e QA browser prima di ogni promozione.
-3. Popolare production soltanto dopo approvazione esplicita.
+3. Promozione in production completata con successo il 13 novembre 2026.
