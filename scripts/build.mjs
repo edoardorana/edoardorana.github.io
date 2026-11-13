@@ -4,7 +4,7 @@ import path from 'node:path';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const target = path.join(root, 'dist');
 const source = path.join(root, 'proposal');
-const extensions = new Set(['.html', '.css', '.js', '.mjs', '.svg', '.json', '.txt']);
+const extensions = new Set(['.html', '.css', '.js', '.mjs', '.svg', '.json', '.txt', '.xml']);
 // dist is derived output; source and user documents are never deleted.
 await rm(target, { recursive: true, force: true });
 async function copyPublic(directory, destination) {
