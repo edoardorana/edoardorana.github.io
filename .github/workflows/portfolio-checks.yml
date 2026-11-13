@@ -4,7 +4,6 @@ on:
     paths: ['proposal/**', 'scripts/**', 'tests/**', 'package.json', '.github/workflows/portfolio-checks.yml']
   push:
     branches: ['main']
-    paths: ['proposal/**', 'scripts/**', 'tests/**', 'package.json', '.github/workflows/portfolio-checks.yml']
   workflow_dispatch:
 permissions:
   contents: read
